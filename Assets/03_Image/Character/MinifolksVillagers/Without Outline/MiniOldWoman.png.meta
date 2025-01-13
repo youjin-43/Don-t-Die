@@ -636,7 +636,26 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MiniOldWoman_0: 3507580817375567413
+      MiniOldWoman_1: -5916963411815221307
+      MiniOldWoman_10: 6413528544447284929
+      MiniOldWoman_11: -4225126995078971614
+      MiniOldWoman_12: 8218694678842479811
+      MiniOldWoman_13: 3184935596032250400
+      MiniOldWoman_14: 1278908217880077960
+      MiniOldWoman_15: -2632324258453072280
+      MiniOldWoman_16: 6476772963670740565
+      MiniOldWoman_17: 473445480660085068
+      MiniOldWoman_18: -9128286439944407182
+      MiniOldWoman_2: 3078931612237138560
+      MiniOldWoman_3: -988895540546407139
+      MiniOldWoman_4: 7249749051367224420
+      MiniOldWoman_5: 7387166076080927373
+      MiniOldWoman_6: 7634732331007434074
+      MiniOldWoman_7: -5472422443031897077
+      MiniOldWoman_8: -7595139495878210166
+      MiniOldWoman_9: 5962484022855250910
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

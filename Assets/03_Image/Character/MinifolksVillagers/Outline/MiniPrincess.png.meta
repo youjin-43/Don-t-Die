@@ -686,7 +686,28 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MiniPrincess_0: -4145385630474837228
+      MiniPrincess_1: 7052537322361726253
+      MiniPrincess_10: 5546596325009282507
+      MiniPrincess_11: -2828875019683956456
+      MiniPrincess_12: 8111558413171187712
+      MiniPrincess_13: 3385326665418467706
+      MiniPrincess_14: 3857366259868768034
+      MiniPrincess_15: 8122786380022959640
+      MiniPrincess_16: 225613372021729095
+      MiniPrincess_17: 4504702147518487027
+      MiniPrincess_18: -3159909299350208564
+      MiniPrincess_19: -1488739488514913950
+      MiniPrincess_2: 600362870740375574
+      MiniPrincess_20: 1000950257184306719
+      MiniPrincess_3: 8421063791971589415
+      MiniPrincess_4: 368318592237580347
+      MiniPrincess_5: -995022992228821768
+      MiniPrincess_6: 7993514044276948413
+      MiniPrincess_7: -6952722390150936667
+      MiniPrincess_8: 4879199374349932647
+      MiniPrincess_9: 8617313918080419484
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

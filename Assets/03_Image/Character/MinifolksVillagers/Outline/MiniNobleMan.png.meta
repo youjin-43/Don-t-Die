@@ -661,7 +661,27 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MiniNobleMan_0: 1471327572736957275
+      MiniNobleMan_1: -493995988456213594
+      MiniNobleMan_10: -2706106492245448025
+      MiniNobleMan_11: 1833258450741683399
+      MiniNobleMan_12: -5561936192484494660
+      MiniNobleMan_13: 4223260579185007805
+      MiniNobleMan_14: -4767236166147813523
+      MiniNobleMan_15: -5273276580158822997
+      MiniNobleMan_16: -207937530391932947
+      MiniNobleMan_17: -3036254056688153769
+      MiniNobleMan_18: 769927228299722885
+      MiniNobleMan_19: -3229538174009518971
+      MiniNobleMan_2: -3860155507577422089
+      MiniNobleMan_3: 8102980300940503012
+      MiniNobleMan_4: 287879780892779027
+      MiniNobleMan_5: 1713405332583098350
+      MiniNobleMan_6: -2192521887911157061
+      MiniNobleMan_7: -3077360085231996457
+      MiniNobleMan_8: -5127018253701112460
+      MiniNobleMan_9: 5754424647602621909
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
