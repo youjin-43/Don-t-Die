@@ -861,7 +861,35 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MiniWorker_0: -6903121302223579341
+      MiniWorker_1: 2650379942340676672
+      MiniWorker_10: 2943271980395089467
+      MiniWorker_11: -8296288233293175179
+      MiniWorker_12: 5249187084140887441
+      MiniWorker_13: 5953307678000378809
+      MiniWorker_14: -5086219395375080659
+      MiniWorker_15: 4118111896159491420
+      MiniWorker_16: 6265401147294860568
+      MiniWorker_17: -2568404918840546324
+      MiniWorker_18: -1597777083626015721
+      MiniWorker_19: 4234839921595886724
+      MiniWorker_2: -1239888032622941178
+      MiniWorker_20: -64578812821539838
+      MiniWorker_21: -7432461765625948123
+      MiniWorker_22: 5344214553198249394
+      MiniWorker_23: 7469801881836076136
+      MiniWorker_24: -5819887854064526618
+      MiniWorker_25: 4266473048658087215
+      MiniWorker_26: -4395219971095212776
+      MiniWorker_27: 4738109932219454366
+      MiniWorker_3: 1032978395000564421
+      MiniWorker_4: 4266523239087781199
+      MiniWorker_5: -3690738662782117815
+      MiniWorker_6: 3841046833371124951
+      MiniWorker_7: -3544865837883586128
+      MiniWorker_8: 2299324446171959701
+      MiniWorker_9: -9064046699960507996
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

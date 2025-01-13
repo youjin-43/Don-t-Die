@@ -636,7 +636,26 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MiniVillagerWoman_0: -670523993443926617
+      MiniVillagerWoman_1: -9182412165773258267
+      MiniVillagerWoman_10: 5256309934561970527
+      MiniVillagerWoman_11: -2041204461126373644
+      MiniVillagerWoman_12: -3408020955346921912
+      MiniVillagerWoman_13: -8330605243807672883
+      MiniVillagerWoman_14: -6114166724505420333
+      MiniVillagerWoman_15: -926644241352322859
+      MiniVillagerWoman_16: -4083110843973425810
+      MiniVillagerWoman_17: -1971948550002854820
+      MiniVillagerWoman_18: -8204682756350420618
+      MiniVillagerWoman_2: 4302748597493127448
+      MiniVillagerWoman_3: -4004078155843907131
+      MiniVillagerWoman_4: -2603696699876743337
+      MiniVillagerWoman_5: 3270042883025125563
+      MiniVillagerWoman_6: -3107835409169422340
+      MiniVillagerWoman_7: -88900605779183915
+      MiniVillagerWoman_8: 5263892626629688288
+      MiniVillagerWoman_9: -2724507692706165004
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

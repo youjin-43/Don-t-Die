@@ -811,7 +811,33 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MiniPeasant_0: -5307449763204638251
+      MiniPeasant_1: 79626223475459167
+      MiniPeasant_10: -1392761508453126947
+      MiniPeasant_11: -6207276507229545994
+      MiniPeasant_12: 9147955937932707815
+      MiniPeasant_13: -3429345157343344224
+      MiniPeasant_14: -1326062817164165668
+      MiniPeasant_15: 1659584943918600525
+      MiniPeasant_16: 709203593662930005
+      MiniPeasant_17: 371992776464823813
+      MiniPeasant_18: 4640599147665573835
+      MiniPeasant_19: -8534794373817069479
+      MiniPeasant_2: -70922443511717263
+      MiniPeasant_20: 7210026658202720697
+      MiniPeasant_21: 3984912095894111069
+      MiniPeasant_22: 104056015770455418
+      MiniPeasant_23: 2579696598132842477
+      MiniPeasant_24: -2850070417603076747
+      MiniPeasant_25: -2523947229297452267
+      MiniPeasant_3: -4135243602870973951
+      MiniPeasant_4: 8542961311141676867
+      MiniPeasant_5: -3505014684004408816
+      MiniPeasant_6: -3715958487991386505
+      MiniPeasant_7: -8151970472247335884
+      MiniPeasant_8: -4058157304501658832
+      MiniPeasant_9: 7048233772989872724
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
