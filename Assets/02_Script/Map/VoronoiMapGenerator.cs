@@ -4,13 +4,11 @@ using UnityEngine.Tilemaps;
 
 public class VoronoiTilemapGenerator : MonoBehaviour
 {
-    public UnityEngine.Tilemaps.Tilemap landTilemap;
-    public UnityEngine.Tilemaps.Tilemap waterTilemap;
+    [SerializeField] Tilemap landTilemap;
+    [SerializeField] Tilemap waterTilemap;
 
-    public TileBase grassTile;
-    public TileBase desertTile;
-    public TileBase pollutionTile;
-    public TileBase waterTile;
+    [SerializeField] List<Biome> landBiomes;
+    [SerializeField] Biome waterBiome;
 
     public int mapWidth = 100;
     public int mapHeight = 100;
@@ -21,17 +19,14 @@ public class VoronoiTilemapGenerator : MonoBehaviour
     public float edgeNoiseScale = 0.1f;
     public float edgeNoiseStrength = 0.2f;
 
-    private enum BiomeType { Grass, Desert, Pollution }
-
     private struct SeedPoint
     {
         public Vector2 position;
-        public BiomeType biome;
+        public Biome biome;
     }
 
     void Start()
     {
-        
         GenerateVoronoiMap();
     }
 
@@ -55,7 +50,7 @@ public class VoronoiTilemapGenerator : MonoBehaviour
             {
                 Vector2 currentPos = new Vector2(x, y);
                 float minDistance = float.MaxValue;
-                BiomeType selectedBiome = BiomeType.Grass;
+                Biome selectedBiome = landBiomes[0];
 
                 foreach (var seed in seedPoints)
                 {
@@ -78,11 +73,11 @@ public class VoronoiTilemapGenerator : MonoBehaviour
 
                 if (distanceFromCenter > adjustedThreshold)
                 {
-                    waterTilemap.SetTile(new Vector3Int(x, y, 0), waterTile);  // ¹Ù´Ù
+                    waterTilemap.SetTile(new Vector3Int(x, y, 0), waterBiome.Tile);  // ¹Ù´Ù
                 }
                 else
                 {
-                    landTilemap.SetTile(new Vector3Int(x, y, 0), GetTileForBiome(selectedBiome));  // À°Áö
+                    landTilemap.SetTile(new Vector3Int(x, y, 0), selectedBiome.Tile);  // À°Áö
                 }
             }
         }
@@ -94,20 +89,9 @@ public class VoronoiTilemapGenerator : MonoBehaviour
         for (int i = 0; i < seedPointCount; i++)
         {
             Vector2 pos = new Vector2(Random.Range(-mapWidth / 2, mapWidth / 2), Random.Range(-mapHeight / 2, mapHeight / 2));
-            BiomeType biome = (BiomeType)(i % 3);
-            seeds.Add(new SeedPoint { position = pos, biome = biome });
+            int randIdx = Random.Range(0, landBiomes.Count);
+            seeds.Add(new SeedPoint { position = pos, biome = landBiomes[randIdx] });
         }
         return seeds;
-    }
-
-    TileBase GetTileForBiome(BiomeType biome)
-    {
-        switch (biome)
-        {
-            case BiomeType.Grass: return grassTile;
-            case BiomeType.Desert: return desertTile;
-            case BiomeType.Pollution: return pollutionTile;
-            default: return grassTile;
-        }
     }
 }

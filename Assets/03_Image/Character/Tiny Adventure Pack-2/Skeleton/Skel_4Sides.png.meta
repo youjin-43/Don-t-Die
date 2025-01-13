@@ -261,7 +261,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Skel_4Sides_0: -1259057120061053969
+      Skel_4Sides_1: -7980531738244730877
+      Skel_4Sides_2: 3728947539377352102
+      Skel_4Sides_3: -1892874495156675565
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
