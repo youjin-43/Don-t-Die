@@ -170,9 +170,9 @@ TextureImporter:
       name: Char_walk_up_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 14
+        width: 16
         height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -192,9 +192,9 @@ TextureImporter:
       name: Char_walk_up_1
       rect:
         serializedVersion: 2
-        x: 17
+        x: 16
         y: 0
-        width: 14
+        width: 16
         height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -214,10 +214,10 @@ TextureImporter:
       name: Char_walk_up_2
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 0
-        width: 14
-        height: 15
+        width: 16
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,9 +236,9 @@ TextureImporter:
       name: Char_walk_up_3
       rect:
         serializedVersion: 2
-        x: 49
+        x: 48
         y: 0
-        width: 14
+        width: 16
         height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -258,9 +258,9 @@ TextureImporter:
       name: Char_walk_up_4
       rect:
         serializedVersion: 2
-        x: 65
+        x: 64
         y: 0
-        width: 14
+        width: 16
         height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -280,10 +280,10 @@ TextureImporter:
       name: Char_walk_up_5
       rect:
         serializedVersion: 2
-        x: 81
+        x: 80
         y: 0
-        width: 14
-        height: 15
+        width: 16
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,7 +302,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f7e73e389b17a4c7384973dad9a9b1dd
     internalID: 0
     vertices: []
     indices: 

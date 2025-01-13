@@ -171,11 +171,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 6
-        width: 15
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 0
+        width: 23
+        height: 23
+      alignment: 9
+      pivot: {x: 0.3478261, y: 0.65217394}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -192,12 +192,12 @@ TextureImporter:
       name: Char_atk_down_1
       rect:
         serializedVersion: 2
-        x: 24
-        y: 1
-        width: 14
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 23
+        y: 0
+        width: 23
+        height: 23
+      alignment: 9
+      pivot: {x: 0.3478261, y: 0.65217394}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -216,10 +216,10 @@ TextureImporter:
         serializedVersion: 2
         x: 46
         y: 0
-        width: 22
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 23
+        height: 23
+      alignment: 9
+      pivot: {x: 0.3478261, y: 0.65217394}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -237,11 +237,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 69
-        y: 4
-        width: 24
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 0
+        width: 23
+        height: 23
+      alignment: 9
+      pivot: {x: 0.3478261, y: 0.65217394}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -259,18 +259,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 92
-        y: 4
-        width: 24
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 0
+        width: 23
+        height: 23
+      alignment: 9
+      pivot: {x: 0.3478261, y: 0.65217394}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2ae757f38edf34da0800000000000000
+      spriteID: e8dd99d259fa74aeebb27204a49d8c52
       internalID: -5961642307769499998
       vertices: []
       indices: 
@@ -281,18 +281,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 115
-        y: 4
+        y: 0
         width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 23
+      alignment: 9
+      pivot: {x: 0.3478261, y: 0.65217394}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 44c4f2d89aab95a40800000000000000
+      spriteID: 0c3ac5d14035947cda96e30a3b8f3ad2
       internalID: 5357518469114842180
       vertices: []
       indices: 
@@ -302,7 +302,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 35f388f9dbe554b198d7872fcffbc9dd
     internalID: 0
     vertices: []
     indices: 
