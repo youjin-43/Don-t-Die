@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 7fe0e41ef2fed4cf9808276e47405cf3
+guid: 0706a7d2e279946a8923d2c9a1185e3a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1259057120061053969
-    second: Skel_4Sides_0
+      213: 1122253991813010837
+    second: Skel_walk_down_0
   - first:
-      213: -7980531738244730877
-    second: Skel_4Sides_1
+      213: -2599302673829235089
+    second: Skel_walk_down_1
   - first:
-      213: 3728947539377352102
-    second: Skel_4Sides_2
+      213: 4772765237758603239
+    second: Skel_walk_down_2
   - first:
-      213: -1892874495156675565
-    second: Skel_4Sides_3
+      213: -3060057056721005503
+    second: Skel_walk_down_3
+  - first:
+      213: 4936892396675236447
+    second: Skel_walk_down_4
+  - first:
+      213: 1408786860099827959
+    second: Skel_walk_down_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +90,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -161,13 +167,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skel_4Sides_0
+      name: Skel_walk_down_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 16
-        height: 16
+        width: 14
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe3a5d6583ee68ee0800000000000000
-      internalID: -1259057120061053969
+      spriteID: 59557c14f0c039f00800000000000000
+      internalID: 1122253991813010837
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skel_4Sides_1
+      name: Skel_walk_down_1
       rect:
         serializedVersion: 2
-        x: 18
+        x: 17
         y: 0
-        width: 12
-        height: 16
+        width: 14
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,20 +204,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 300313faaa47f3190800000000000000
-      internalID: -7980531738244730877
+      spriteID: f667fa66dfb6debd0800000000000000
+      internalID: -2599302673829235089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skel_4Sides_2
+      name: Skel_walk_down_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 33
         y: 0
-        width: 16
-        height: 16
+        width: 14
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,20 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6ad67aeb702efb330800000000000000
-      internalID: 3728947539377352102
+      spriteID: 7ef2fe052b44c3240800000000000000
+      internalID: 4772765237758603239
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skel_4Sides_3
+      name: Skel_walk_down_3
       rect:
         serializedVersion: 2
-        x: 50
+        x: 49
         y: 0
-        width: 12
-        height: 16
+        width: 14
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,8 +248,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 31c1acfeca82bb5e0800000000000000
-      internalID: -1892874495156675565
+      spriteID: 14497bdd15e7885d0800000000000000
+      internalID: -3060057056721005503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skel_walk_down_4
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 0
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f52872e5a7d538440800000000000000
+      internalID: 4936892396675236447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skel_walk_down_5
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 0
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f8fc786f240d8310800000000000000
+      internalID: 1408786860099827959
       vertices: []
       indices: 
       edges: []
@@ -261,11 +311,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Skel_4Sides_0: -1259057120061053969
-      Skel_4Sides_1: -7980531738244730877
-      Skel_4Sides_2: 3728947539377352102
-      Skel_4Sides_3: -1892874495156675565
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

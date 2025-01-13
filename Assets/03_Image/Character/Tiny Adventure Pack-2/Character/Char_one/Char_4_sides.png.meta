@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 7fe0e41ef2fed4cf9808276e47405cf3
+guid: b31c45f5fa36f4caa97a9a6a63ec60c6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1259057120061053969
-    second: Skel_4Sides_0
+      213: -6266826460088475592
+    second: Char_4_sides_0
   - first:
-      213: -7980531738244730877
-    second: Skel_4Sides_1
+      213: -4418403556150121136
+    second: Char_4_sides_1
   - first:
-      213: 3728947539377352102
-    second: Skel_4Sides_2
+      213: 7896079621355848688
+    second: Char_4_sides_2
   - first:
-      213: -1892874495156675565
-    second: Skel_4Sides_3
+      213: -9204526993402539756
+    second: Char_4_sides_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -161,7 +161,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skel_4Sides_0
+      name: Char_4_sides_0
       rect:
         serializedVersion: 2
         x: 0
@@ -176,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe3a5d6583ee68ee0800000000000000
-      internalID: -1259057120061053969
+      spriteID: 8306861a982c709a0800000000000000
+      internalID: -6266826460088475592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skel_4Sides_1
+      name: Char_4_sides_1
       rect:
         serializedVersion: 2
         x: 18
@@ -198,14 +198,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 300313faaa47f3190800000000000000
-      internalID: -7980531738244730877
+      spriteID: 05d6959106daea2c0800000000000000
+      internalID: -4418403556150121136
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skel_4Sides_2
+      name: Char_4_sides_2
       rect:
         serializedVersion: 2
         x: 32
@@ -220,14 +220,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6ad67aeb702efb330800000000000000
-      internalID: 3728947539377352102
+      spriteID: 0f3cd159492849d60800000000000000
+      internalID: 7896079621355848688
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skel_4Sides_3
+      name: Char_4_sides_3
       rect:
         serializedVersion: 2
         x: 50
@@ -242,8 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 31c1acfeca82bb5e0800000000000000
-      internalID: -1892874495156675565
+      spriteID: 4115fb89773f24080800000000000000
+      internalID: -9204526993402539756
       vertices: []
       indices: 
       edges: []
@@ -262,10 +262,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Skel_4Sides_0: -1259057120061053969
-      Skel_4Sides_1: -7980531738244730877
-      Skel_4Sides_2: 3728947539377352102
-      Skel_4Sides_3: -1892874495156675565
+      Char_4_sides_0: -6266826460088475592
+      Char_4_sides_1: -4418403556150121136
+      Char_4_sides_2: 7896079621355848688
+      Char_4_sides_3: -9204526993402539756
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

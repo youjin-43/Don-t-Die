@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 7fe0e41ef2fed4cf9808276e47405cf3
+guid: b5dd98380a56c4076b79d0d694ff4508
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1259057120061053969
-    second: Skel_4Sides_0
+      213: 7961429234623898847
+    second: Char_idle_right_0
   - first:
-      213: -7980531738244730877
-    second: Skel_4Sides_1
+      213: -1810050921536098588
+    second: Char_idle_right_1
   - first:
-      213: 3728947539377352102
-    second: Skel_4Sides_2
+      213: 6642272525533082069
+    second: Char_idle_right_2
   - first:
-      213: -1892874495156675565
-    second: Skel_4Sides_3
+      213: 7398971711912535723
+    second: Char_idle_right_3
+  - first:
+      213: -8179346064036465739
+    second: Char_idle_right_4
+  - first:
+      213: -6158829882581500983
+    second: Char_idle_right_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +90,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -161,12 +167,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skel_4Sides_0
+      name: Char_idle_right_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2
         y: 0
-        width: 16
+        width: 12
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -176,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe3a5d6583ee68ee0800000000000000
-      internalID: -1259057120061053969
+      spriteID: fd4ea2a15bdac7e60800000000000000
+      internalID: 7961429234623898847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skel_4Sides_1
+      name: Char_idle_right_1
       rect:
         serializedVersion: 2
         x: 18
@@ -198,20 +204,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 300313faaa47f3190800000000000000
-      internalID: -7980531738244730877
+      spriteID: 4eee874e64861e6e0800000000000000
+      internalID: -1810050921536098588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skel_4Sides_2
+      name: Char_idle_right_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 34
         y: 0
-        width: 16
-        height: 16
+        width: 12
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,17 +226,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6ad67aeb702efb330800000000000000
-      internalID: 3728947539377352102
+      spriteID: 5d17cb17ba71e2c50800000000000000
+      internalID: 6642272525533082069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skel_4Sides_3
+      name: Char_idle_right_3
       rect:
         serializedVersion: 2
         x: 50
+        y: 0
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba6e5bf029d6ea660800000000000000
+      internalID: 7398971711912535723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Char_idle_right_4
+      rect:
+        serializedVersion: 2
+        x: 66
         y: 0
         width: 12
         height: 16
@@ -242,8 +270,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 31c1acfeca82bb5e0800000000000000
-      internalID: -1892874495156675565
+      spriteID: 5b3fd1e37102d7e80800000000000000
+      internalID: -8179346064036465739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Char_idle_right_5
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 0
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cb3ba84ad0778aa0800000000000000
+      internalID: -6158829882581500983
       vertices: []
       indices: 
       edges: []
@@ -261,11 +311,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Skel_4Sides_0: -1259057120061053969
-      Skel_4Sides_1: -7980531738244730877
-      Skel_4Sides_2: 3728947539377352102
-      Skel_4Sides_3: -1892874495156675565
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
