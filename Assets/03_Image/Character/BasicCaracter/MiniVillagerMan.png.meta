@@ -94,7 +94,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -108,7 +108,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,7 +132,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -212,10 +212,10 @@ TextureImporter:
       name: MiniVillagerMan_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 9
         y: 128
-        width: 16
-        height: 16
+        width: 14
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +234,10 @@ TextureImporter:
       name: MiniVillagerMan_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 41
         y: 128
-        width: 16
-        height: 16
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +256,10 @@ TextureImporter:
       name: MiniVillagerMan_2
       rect:
         serializedVersion: 2
-        x: 72
+        x: 73
         y: 128
-        width: 16
-        height: 16
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,10 +278,10 @@ TextureImporter:
       name: MiniVillagerMan_3
       rect:
         serializedVersion: 2
-        x: 104
+        x: 105
         y: 128
-        width: 16
-        height: 16
+        width: 14
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,7 +303,7 @@ TextureImporter:
         x: 8
         y: 96
         width: 16
-        height: 16
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,10 +322,10 @@ TextureImporter:
       name: MiniVillagerMan_5
       rect:
         serializedVersion: 2
-        x: 40
+        x: 41
         y: 96
-        width: 16
-        height: 16
+        width: 14
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,9 +344,9 @@ TextureImporter:
       name: MiniVillagerMan_6
       rect:
         serializedVersion: 2
-        x: 72
+        x: 74
         y: 96
-        width: 16
+        width: 13
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -366,10 +366,10 @@ TextureImporter:
       name: MiniVillagerMan_7
       rect:
         serializedVersion: 2
-        x: 104
+        x: 106
         y: 96
-        width: 16
-        height: 16
+        width: 12
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -388,10 +388,10 @@ TextureImporter:
       name: MiniVillagerMan_8
       rect:
         serializedVersion: 2
-        x: 136
+        x: 137
         y: 96
-        width: 16
-        height: 16
+        width: 14
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -434,7 +434,7 @@ TextureImporter:
         serializedVersion: 2
         x: 8
         y: 64
-        width: 16
+        width: 15
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -479,7 +479,7 @@ TextureImporter:
         x: 72
         y: 64
         width: 16
-        height: 16
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -500,8 +500,8 @@ TextureImporter:
         serializedVersion: 2
         x: 8
         y: 32
-        width: 16
-        height: 16
+        width: 15
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -517,13 +517,35 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+      name: MiniVillagerMan_14
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 32
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e624154f02b6a4220800000000000000
+      internalID: 2470905134848229998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: MiniVillagerMan_15
       rect:
         serializedVersion: 2
-        x: 39
+        x: 72
         y: 32
-        width: 16
-        height: 16
+        width: 15
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -542,10 +564,10 @@ TextureImporter:
       name: MiniVillagerMan_16
       rect:
         serializedVersion: 2
-        x: 72
-        y: 32
-        width: 16
-        height: 16
+        x: 8
+        y: 0
+        width: 15
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -564,10 +586,10 @@ TextureImporter:
       name: MiniVillagerMan_17
       rect:
         serializedVersion: 2
-        x: 8
+        x: 41
         y: 0
-        width: 16
-        height: 16
+        width: 13
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -586,10 +608,10 @@ TextureImporter:
       name: MiniVillagerMan_18
       rect:
         serializedVersion: 2
-        x: 40
+        x: 71
         y: 0
         width: 16
-        height: 16
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -608,10 +630,10 @@ TextureImporter:
       name: MiniVillagerMan_19
       rect:
         serializedVersion: 2
-        x: 72
+        x: 102
         y: 0
-        width: 16
-        height: 16
+        width: 17
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -626,33 +648,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: MiniVillagerMan_21
-      rect:
-        serializedVersion: 2
-        x: 103
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aca1f1f374dc84d63b652af061e1975f
-      internalID: 1811941852
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 803fe534c56f7438eb6fb1843b602228
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -675,8 +675,6 @@ TextureImporter:
       MiniVillagerMan_18: -4457887538907201497
       MiniVillagerMan_19: 5598346308811232822
       MiniVillagerMan_2: 7613916535989433153
-      MiniVillagerMan_20: -1379735355
-      MiniVillagerMan_21: 1811941852
       MiniVillagerMan_3: 1081737609636406025
       MiniVillagerMan_4: 2156752198631938562
       MiniVillagerMan_5: -7047747480412357966

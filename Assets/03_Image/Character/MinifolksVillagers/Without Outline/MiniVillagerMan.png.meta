@@ -636,7 +636,26 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MiniVillagerMan_0: -692003313702210500
+      MiniVillagerMan_1: -1267933262198126706
+      MiniVillagerMan_10: -1405475557987029143
+      MiniVillagerMan_11: -6423933912212348290
+      MiniVillagerMan_12: -426202526261773037
+      MiniVillagerMan_13: 3767277519008548263
+      MiniVillagerMan_14: 2470905134848229998
+      MiniVillagerMan_15: 3886862049335409516
+      MiniVillagerMan_16: 1210107605824529702
+      MiniVillagerMan_17: -4294347246226159305
+      MiniVillagerMan_18: -4457887538907201497
+      MiniVillagerMan_2: 7613916535989433153
+      MiniVillagerMan_3: 1081737609636406025
+      MiniVillagerMan_4: 2156752198631938562
+      MiniVillagerMan_5: -7047747480412357966
+      MiniVillagerMan_6: -7658067173236398781
+      MiniVillagerMan_7: 1190173943704126081
+      MiniVillagerMan_8: -1191863844423187476
+      MiniVillagerMan_9: -5085288625973695783
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -636,7 +636,26 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MiniOldMan_0: 8629931564238155836
+      MiniOldMan_1: -6367219164722605781
+      MiniOldMan_10: -3092268284029806510
+      MiniOldMan_11: -696509028552144199
+      MiniOldMan_12: -1235299563805628879
+      MiniOldMan_13: -8642814385185334403
+      MiniOldMan_14: -6372740140483510481
+      MiniOldMan_15: 861421377458693254
+      MiniOldMan_16: -3321113363609349188
+      MiniOldMan_17: -1622261969351226211
+      MiniOldMan_18: 3069733141801184598
+      MiniOldMan_2: -4043858417718822133
+      MiniOldMan_3: 4275170330674914112
+      MiniOldMan_4: -4748682206886874003
+      MiniOldMan_5: 9027570007681327586
+      MiniOldMan_6: -6649279300825400245
+      MiniOldMan_7: -7071907044495320185
+      MiniOldMan_8: -3026630518500107984
+      MiniOldMan_9: -4522166951963570913
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

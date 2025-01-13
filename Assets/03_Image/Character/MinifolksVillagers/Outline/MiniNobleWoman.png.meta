@@ -636,7 +636,26 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MiniNobleWoman_0: -397669154456918113
+      MiniNobleWoman_1: -6839170261005686664
+      MiniNobleWoman_10: -252027392866638225
+      MiniNobleWoman_11: 155162393970232894
+      MiniNobleWoman_12: 4432147843778774051
+      MiniNobleWoman_13: 3255137862366240288
+      MiniNobleWoman_14: 4811231303335437936
+      MiniNobleWoman_15: 5499297512309482609
+      MiniNobleWoman_16: -2471988811749774330
+      MiniNobleWoman_17: 3360743502946437151
+      MiniNobleWoman_18: 1142061079406661
+      MiniNobleWoman_2: 5281531734587367493
+      MiniNobleWoman_3: 1395391224441280758
+      MiniNobleWoman_4: -8632548644236342675
+      MiniNobleWoman_5: 8391214139698770639
+      MiniNobleWoman_6: 297264286890547415
+      MiniNobleWoman_7: -3425622903223516436
+      MiniNobleWoman_8: -547283075064570490
+      MiniNobleWoman_9: 7127924040555223801
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
