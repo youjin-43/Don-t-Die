@@ -3,19 +3,17 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     Transform plyerTransform;
-    SpriteRenderer spriteRenderer;
     Animator animator;
-    public float Speed = 0.01f;
-    float vx = 0f;
-    float vy = 0f;
+    public float Speed = 0.015f;
+    Vector2 dir = new Vector2(0f,0f);
 
 
     private void Start()
     {
         plyerTransform = GetComponent<Transform>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
+
     void Update()
     {
         HandleMovement();
@@ -24,25 +22,29 @@ public class PlayerMove : MonoBehaviour
 
     void HandleMovement()
     {
-        vx = Input.GetAxisRaw("Horizontal") * Speed;
-        vy = Input.GetAxisRaw("Vertical") * Speed;
+        dir.x = Input.GetAxisRaw("Horizontal") ;
+        dir.y = Input.GetAxisRaw("Vertical");
+        //Debug.Log(dir.x + "," + dir.y);
 
-        //좌우 바라보게 하기 
-        if (vx < 0) spriteRenderer.flipX = true;
-        if (vx > 0) spriteRenderer.flipX = false;
-
-        plyerTransform.position += new Vector3(vx, vy, 0);
+        plyerTransform.position += new Vector3(dir.x, dir.y, 0).normalized*Speed;
     }
 
     void HandleAnimation()
     {
-        if (vx == 0 && vy == 0)
+        if (dir.x == 0 && dir.y == 0)
         {
-            //animator.SetTrigger("Idle");
-            animator.SetBool("Walk",false);
+            animator.SetBool("IsMove", false);
         }
-        else animator.SetBool("Walk",true); 
+        else
+        {
+            animator.SetBool("IsMove", true);
+            // 이동했던 방향 기억 
+            animator.SetFloat("PreDx", dir.x);
+            animator.SetFloat("PreDy", dir.y);
+        }
+
+        animator.SetFloat("Dx", dir.x);
+        animator.SetFloat("Dy", dir.y);
+        
     }
-
-
 }
