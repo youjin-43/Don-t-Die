@@ -1,16 +1,7 @@
 using UnityEngine;
 
-public enum ObjectType
-{
-    Empty,
-    Unknown,
-    Tree,
-    Plant,
-    Mineral
-}
-
-[CreateAssetMenu(menuName = "Environment/Object/RenewableResourceData")]
-public class RenewableResourceData : ScriptableObject
+[CreateAssetMenu(menuName = "Environment/Object/NatureResourceData")]
+public class NatureResourceData : ScriptableObject
 {
     [SerializeField] GameObject prefab;
     [SerializeField] BiomeType biomeType;

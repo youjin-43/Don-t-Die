@@ -1,4 +1,12 @@
 using UnityEngine;
+public enum ObjectType
+{
+    Empty,
+    Unknown,
+    Tree,
+    Plant,
+    Mineral
+}
 
 public class ObjectMap
 {

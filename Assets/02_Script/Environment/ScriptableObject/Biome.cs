@@ -16,22 +16,22 @@ public class Biome : ScriptableObject
 {
     [SerializeField] TileBase tile;
     [SerializeField] BiomeType biomeType;
-    [SerializeField] List<RenewableResourceData> trees;
+    [SerializeField] List<NatureResourceData> trees;
     [SerializeField]
     [Range(0f, 1f)] float treesIntensity;
-    [SerializeField] List<RenewableResourceData> plants;
+    [SerializeField] List<NatureResourceData> plants;
     [SerializeField]
     [Range(0f, 1f)] float plantsIntensity;
-    [SerializeField] List<RenewableResourceData> minerals;
+    [SerializeField] List<NatureResourceData> minerals;
     [SerializeField]
     [Range(0f, 1f)] float mineralsIntensity;
 
     public TileBase Tile {  get { return tile; } }
     public BiomeType BiomeType { get { return biomeType; } }
-    public List<RenewableResourceData> Trees { get { return trees; } }
+    public List<NatureResourceData> Trees { get { return trees; } }
     public float TreesIntensity { get {  return treesIntensity; } }
-    public List<RenewableResourceData> Plants { get {  return plants; } }
+    public List<NatureResourceData> Plants { get {  return plants; } }
     public float PlantsIntensity { get { return plantsIntensity; } }
-    public List<RenewableResourceData> Minerals { get { return minerals; } }
+    public List<NatureResourceData> Minerals { get { return minerals; } }
     public float MineralsIntensity { get {  return mineralsIntensity;} }
 }

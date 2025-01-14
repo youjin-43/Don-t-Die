@@ -4,7 +4,7 @@ using UnityEngine;
 public struct ResourceObject
 {
     public Vector2Int position;
-    public RenewableResourceData data;
+    public NatureResourceData data;
 }
 
 public class ObjectGenerator
@@ -46,7 +46,7 @@ public class ObjectGenerator
                 if (Random.Range(0, 10000) / 100f < currentBiome.TreesIntensity)
                 {
                     int randIdx = Random.Range(0, currentBiome.Trees.Count);
-                    RenewableResourceData tree = currentBiome.Trees[randIdx];
+                    NatureResourceData tree = currentBiome.Trees[randIdx];
 
                     if (biomeMap.IsValidPosition(new Vector2Int(j, i), tree.Width, tree.Height, tree.BiomeType)
                         && objectMap.AreTilesEmpty(new Vector2Int(j, i), tree.Width, tree.Height))
@@ -79,7 +79,7 @@ public class ObjectGenerator
                 if (Random.Range(0, 10000) / 100f < currentBiome.PlantsIntensity)
                 {
                     int randIdx = Random.Range(0, currentBiome.Plants.Count);
-                    RenewableResourceData plant = currentBiome.Plants[randIdx];
+                    NatureResourceData plant = currentBiome.Plants[randIdx];
 
                     if (biomeMap.IsValidPosition(new Vector2Int(j, i), plant.Width, plant.Height, plant.BiomeType)
                         && objectMap.AreTilesEmpty(new Vector2Int(j, i), plant.Width, plant.Height))
@@ -112,7 +112,7 @@ public class ObjectGenerator
                 if (Random.Range(0, 10000) / 100f < currentBiome.MineralsIntensity)
                 {
                     int randIdx = Random.Range(0, currentBiome.Minerals.Count);
-                    RenewableResourceData mineral = currentBiome.Minerals[randIdx];
+                    NatureResourceData mineral = currentBiome.Minerals[randIdx];
 
                     if (biomeMap.IsValidPosition(new Vector2Int(j, i), mineral.Width, mineral.Height, mineral.BiomeType)
                         && objectMap.AreTilesEmpty(new Vector2Int(j, i), mineral.Width, mineral.Height))
