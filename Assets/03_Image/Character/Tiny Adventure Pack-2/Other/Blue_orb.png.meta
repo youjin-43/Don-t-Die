@@ -186,7 +186,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Blue_orb_0: -6020156628696418165
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

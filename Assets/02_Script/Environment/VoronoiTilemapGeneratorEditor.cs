@@ -1,14 +1,14 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(VoronoiTilemapGenerator))]
+[CustomEditor(typeof(VoronoiMapGenerator))]
 public class VoronoiTilemapGeneratorEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
 
-        VoronoiTilemapGenerator generator = (VoronoiTilemapGenerator)target;
+        VoronoiMapGenerator generator = (VoronoiMapGenerator)target;
 
         if (GUILayout.Button("Generate"))
         {
