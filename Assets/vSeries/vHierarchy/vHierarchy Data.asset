@@ -15,6 +15,7 @@ MonoBehaviour:
   sceneDatas_byGuid:
     keys:
     - 99c9720ab356a0642a771bea13969a05
+    - 3f5021ec6b04d45e28b9983d9e1f4953
     values:
     - goDatas_byGlobalId:
         keys:
@@ -28,3 +29,9 @@ MonoBehaviour:
           iconNameOrGuid: 
         - colorIndex: 2
           iconNameOrGuid: 
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-3f5021ec6b04d45e28b9983d9e1f4953-631565563-0
+        values:
+        - colorIndex: 0
+          iconNameOrGuid: AvatarMask On Icon
