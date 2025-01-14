@@ -1,5 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+public struct ResourceObject
+{
+    public Vector2Int position;
+    public RenewableResourceData data;
+}
 
 public class ObjectGenerator
 {
@@ -7,12 +13,6 @@ public class ObjectGenerator
     public ObjectMap objectMap;
 
     List<ResourceObject> resourceObjects;
-
-    public struct ResourceObject
-    {
-        public Vector2Int position;
-        public RenewableResourceData data;
-    }
 
     public ObjectGenerator(BiomeMap biomeMap, int width, int height)
     {
@@ -26,6 +26,7 @@ public class ObjectGenerator
         resourceObjects.Clear();
         GenerateTrees();
         GeneratePlants();
+        GenerateMinerals();
         return resourceObjects;
     }
 
@@ -36,6 +37,12 @@ public class ObjectGenerator
             for (int j = 0; j < objectMap.width; j++)
             {
                 Biome currentBiome = biomeMap.Map[i, j];
+
+                if (currentBiome.Trees.Count == 0)
+                {
+                    continue;
+                }
+
                 if (Random.Range(0, 10000) / 100f < currentBiome.TreesIntensity)
                 {
                     int randIdx = Random.Range(0, currentBiome.Trees.Count);
@@ -63,6 +70,12 @@ public class ObjectGenerator
             for (int j = 0; j < objectMap.width; j++)
             {
                 Biome currentBiome = biomeMap.Map[i, j];
+
+                if (currentBiome.Plants.Count == 0)
+                {
+                    continue;
+                }
+
                 if (Random.Range(0, 10000) / 100f < currentBiome.PlantsIntensity)
                 {
                     int randIdx = Random.Range(0, currentBiome.Plants.Count);
@@ -76,6 +89,39 @@ public class ObjectGenerator
                         {
                             position = new Vector2Int(j, i),
                             data = plant
+                        });
+                    }
+                }
+            }
+        }
+    }
+
+    void GenerateMinerals()
+    {
+        for (int i = 0; i < objectMap.height; i++)
+        {
+            for (int j = 0; j < objectMap.width; j++)
+            {
+                Biome currentBiome = biomeMap.Map[i, j];
+
+                if (currentBiome.Minerals.Count == 0)
+                {
+                    continue;
+                }
+
+                if (Random.Range(0, 10000) / 100f < currentBiome.MineralsIntensity)
+                {
+                    int randIdx = Random.Range(0, currentBiome.Minerals.Count);
+                    RenewableResourceData mineral = currentBiome.Minerals[randIdx];
+
+                    if (biomeMap.IsValidPosition(new Vector2Int(j, i), mineral.Width, mineral.Height, mineral.BiomeType)
+                        && objectMap.AreTilesEmpty(new Vector2Int(j, i), mineral.Width, mineral.Height))
+                    {
+                        objectMap.MarkTiles(new Vector2Int(j, i), mineral.Width, mineral.Height, ObjectType.Mineral);
+                        resourceObjects.Add(new ResourceObject
+                        {
+                            position = new Vector2Int(j, i),
+                            data = mineral
                         });
                     }
                 }

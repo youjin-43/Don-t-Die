@@ -22,6 +22,9 @@ public class Biome : ScriptableObject
     [SerializeField] List<RenewableResourceData> plants;
     [SerializeField]
     [Range(0f, 1f)] float plantsIntensity;
+    [SerializeField] List<RenewableResourceData> minerals;
+    [SerializeField]
+    [Range(0f, 1f)] float mineralsIntensity;
 
     public TileBase Tile {  get { return tile; } }
     public BiomeType BiomeType { get { return biomeType; } }
@@ -29,4 +32,6 @@ public class Biome : ScriptableObject
     public float TreesIntensity { get {  return treesIntensity; } }
     public List<RenewableResourceData> Plants { get {  return plants; } }
     public float PlantsIntensity { get { return plantsIntensity; } }
+    public List<RenewableResourceData> Minerals { get { return minerals; } }
+    public float MineralsIntensity { get {  return mineralsIntensity;} }
 }

@@ -5,7 +5,8 @@ public enum ObjectType
     Empty,
     Unknown,
     Tree,
-    Plant
+    Plant,
+    Mineral
 }
 
 [CreateAssetMenu(menuName = "Environment/Object/RenewableResourceData")]

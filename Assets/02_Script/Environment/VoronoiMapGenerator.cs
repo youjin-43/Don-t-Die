@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -90,22 +91,28 @@ public class VoronoiMapGenerator : MonoBehaviour
 
         foreach (var obj in objects)
         {
-            Vector3 cellCenterPosition = landTilemap.GetCellCenterWorld(new Vector3Int(obj.position.x, obj.position.y));
-            Vector3 cellPosition = landTilemap.CellToWorld(new Vector3Int(obj.position.x, obj.position.y));
-
-            Vector3 position = cellPosition;
-
-            if (obj.data.Width % 2 != 0)
-            {
-                position.x = cellCenterPosition.x;
-            }
-            if (obj.data.Height % 2 != 0)
-            {
-                position.y = cellCenterPosition.y;
-            }
-
-            Instantiate(obj.data.Prefab, position, Quaternion.identity, go.transform);
+            InstantiateObject(obj, go.transform);
         }
+    }
+
+    void InstantiateObject(ResourceObject obj, Transform parent)
+    {
+        Vector3 cellCenterPosition = landTilemap.GetCellCenterWorld(new Vector3Int(obj.position.x, obj.position.y));
+        Vector3 cellPosition = landTilemap.CellToWorld(new Vector3Int(obj.position.x, obj.position.y));
+
+        Vector3 position = cellPosition;
+
+        if (obj.data.Width % 2 != 0)
+        {
+            position.x = cellCenterPosition.x;
+        }
+        if (obj.data.Height % 2 != 0)
+        {
+            position.y = cellCenterPosition.y;
+        }
+
+        GameObject go = Instantiate(obj.data.Prefab, position, Quaternion.identity, parent);
+        go.GetOrAddComponent<ResourceNode>().SetData(obj.data);
     }
 
     /// <summary>
