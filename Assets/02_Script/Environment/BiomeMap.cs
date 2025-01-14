@@ -23,7 +23,7 @@ public class BiomeMap
         map[y, x] = biome;
     }
 
-    public Biome GetTileBiome(int x, int y)
+    public Biome GetTileBiomeByPosition(int x, int y)
     {
         return map[y, x];
     }

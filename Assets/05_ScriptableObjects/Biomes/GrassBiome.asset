@@ -18,3 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db63b823c9e25f344b11c07996c60784, type: 2}
   - {fileID: 11400000, guid: 0e87c2944305d1746a5e150a61572942, type: 2}
   treesIntensity: 0.8
+  plants:
+  - {fileID: 11400000, guid: 94d6084b8d268b74f94abcefecf468d3, type: 2}
+  plantsIntensity: 0.4

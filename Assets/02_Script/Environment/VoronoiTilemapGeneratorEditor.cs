@@ -12,7 +12,7 @@ public class VoronoiTilemapGeneratorEditor : Editor
 
         if (GUILayout.Button("Generate"))
         {
-            generator.GenerateVoronoiMap();
+            generator.Generate();
         }
 
         if (GUILayout.Button("Clear"))
