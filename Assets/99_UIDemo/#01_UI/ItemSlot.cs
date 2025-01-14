@@ -18,7 +18,10 @@ public class ItemSlot : MonoBehaviour
 
     void Update()
     {
-        
+        if(isActivated)
+        {
+
+        }
     }
 
     public void Activate()
