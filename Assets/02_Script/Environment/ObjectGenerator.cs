@@ -4,7 +4,7 @@ using UnityEngine;
 public class ObjectGenerator
 {
     BiomeMap biomeMap;
-    ObjectMap objectMap;
+    public ObjectMap objectMap;
 
     List<TreeObject> treeObjects;
 
@@ -34,7 +34,7 @@ public class ObjectGenerator
         {
             for (int j = 0; j < objectMap.width; j++)
             {
-                Biome currentBiome = biomeMap.GetMap()[i, j];
+                Biome currentBiome = biomeMap.Map[i, j];
                 if (Random.Range(0, 10000) / 100f < currentBiome.TreesIntensity)
                 {
                     int randIdx = Random.Range(0, currentBiome.Trees.Count);
@@ -43,7 +43,7 @@ public class ObjectGenerator
                     if (biomeMap.IsValidPosition(new Vector2Int(j, i), tree.Width, tree.Height, tree.BiomeType)
                         && objectMap.AreTilesEmpty(new Vector2Int(j, i), tree.Width, tree.Height))
                     {
-                        objectMap.MarkTiles(new Vector2Int(j,i), tree.Width, tree.Height, ObjectType.Tree);
+                        objectMap.MarkTiles(new Vector2Int(j, i), tree.Width, tree.Height, ObjectType.Tree);
                         treeObjects.Add(new TreeObject
                         {
                             position = new Vector2Int(j, i),

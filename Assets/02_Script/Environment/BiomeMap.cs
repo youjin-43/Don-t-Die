@@ -8,6 +8,8 @@ public class BiomeMap
 
     Biome[,] map;
 
+    public Biome[,] Map {  get { return map; } }
+
     public BiomeMap(int width, int height)
     {
         this.width = width;
@@ -21,8 +23,6 @@ public class BiomeMap
         map[y, x] = biome;
     }
 
-    public Biome[,] GetMap() { return map; }
-
     public Biome GetTileBiome(int x, int y)
     {
         return map[y, x];
@@ -34,7 +34,7 @@ public class BiomeMap
         {
             for (int j = pos.x - width + 1; j <= pos.x; j++)
             {
-                if (map[j, i].BiomeType != type) return false;
+                if (map[i, j].BiomeType != type) return false;
             }
         }
         return true;

@@ -7,6 +7,8 @@ public class ObjectMap
 
     ObjectType[,] map;
 
+    public ObjectType[,] Map {  get { return map; } }
+
     public ObjectMap(int width, int height)
     {
         this.width = width;
@@ -18,7 +20,7 @@ public class ObjectMap
         {
             for (int j = 0; j < width; j++)
             {
-                map[i, j] = ObjectType.Empty;
+                map[j, i] = ObjectType.Empty;
             }
         }
     }
@@ -34,7 +36,7 @@ public class ObjectMap
         {
             for (int j = pos.x - width + 1; j <= pos.x; j++)
             {
-                if (!IsTileEmpty(new Vector2Int(j, i))) return false;
+                if (!IsTileEmpty(new Vector2Int(i, j))) return false;
             }
         }
         return true;
@@ -46,7 +48,7 @@ public class ObjectMap
         {
             for (int j = pos.x - width + 1; j <= pos.x; j++)
             {
-                map[i, j] = type;
+                map[j, i] = type;
             }
         }
     }

@@ -26,10 +26,7 @@ public class VoronoiMapGenerator : MonoBehaviour
     public float edgeNoiseStrength = 0.2f;
 
     BiomeMap biomeMap;
-
-    public GameObject prefab;
-
-    public Transform objectParent;
+    ObjectMap objectMap;
 
     /// <summary>
     /// Voronoi Diagram의 구성 요소. 랜덤한 위치에 찍히는 점.
@@ -57,12 +54,13 @@ public class VoronoiMapGenerator : MonoBehaviour
 
             int x = tilemapPos.x + mapWidth / 2;
             int y = tilemapPos.y + mapHeight / 2;
-            Debug.Log(biomeMap.GetTileBiome(x, y));
+            //Debug.Log(biomeMap.GetTileBiome(x, y));
+            Debug.Log(objectMap.Map[x, y]);
         }
     }
 
     /// <summary>
-    /// Tilemap의 모든 Land Tile, Water Tile을 지운다.
+    /// 맵의 모든 구성 요소를 지운다.
     /// </summary>
     public void Clear()
     {
@@ -77,13 +75,14 @@ public class VoronoiMapGenerator : MonoBehaviour
     {
         ObjectGenerator objectGenerator = new ObjectGenerator(biomeMap, mapWidth, mapHeight);
         var objects = objectGenerator.Generate();
+        objectMap = objectGenerator.objectMap;
 
         GameObject go = new GameObject("ObjectParent");
         go.transform.parent = transform;
 
-        foreach(var obj in objects)
+        foreach (var obj in objects)
         {
-            Instantiate(obj.prefab, new Vector3(obj.position.x-mapWidth/2, obj.position.y-mapHeight/2), Quaternion.identity, go.transform);
+            Instantiate(obj.prefab, new Vector3(obj.position.x - mapWidth / 2, obj.position.y - mapHeight / 2), Quaternion.identity, go.transform);
         }
     }
 
