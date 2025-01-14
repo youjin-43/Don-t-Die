@@ -2,19 +2,29 @@ using UnityEngine;
 using System.Linq;
 public class PlayerAction : MonoBehaviour
 {
+    // 에디터에서 값이 변경될 때마다 호출
+    private void OnValidate()
+    {
+        // 변경된 값 확인 
+        DebugController.Log("OnValidate called, detectionRange: " + detectionRange);
+    }
+
     #region components
     Transform plyerTransform;
     Animator animator;
     #endregion
 
 
-    [SerializeField] float moveSpeed = 4f; //이동 속도 
+    [SerializeField]float moveSpeed = 4f; //이동 속도 
     Vector2 dir = new Vector2(0f,0f);
 
-    [SerializeField] float detectionRange = 5f; // 탐색 반경
+    #region AutoInteracting
+    [Header("AutoInteracting")]
+    [SerializeField] Vector2 detectionRange = new Vector2(3f,5f); // 탐색 반경
     [SerializeField] float InteractionRange = 1f; // 상호작용 반경
-    [SerializeField] Transform autoInteractTargetTransform; // 이동 대상
-    [SerializeField] bool isAutoInteracting = false; // 상호작용 상태 //TODO : 지금은 디버그용 말고는 딱히 사용하는곳 없긴함.. 
+    [SerializeField] Transform autoInteractTargetTransform; // 자동 상호작용 대상
+    [SerializeField] bool isAutoInteracting = false; // 자동 상호작용 중인지(디버그용)
+    #endregion
 
     [SerializeField] Collider2D[] colliders;
     private void Start()
@@ -26,7 +36,7 @@ public class PlayerAction : MonoBehaviour
     void Update()
     {
         HandleMovement(); // 상하좌우 입력 관리 
-        HandleAnimation(); // 애니메이션 관리 
+        HandleMoveAnimation(); // 애니메이션 관리 
         AutoInteract(); // 스페이스 바를 누르면 근처 오브젝트와 자동 상호작용 
     }
 
@@ -34,12 +44,12 @@ public class PlayerAction : MonoBehaviour
     {
         dir.x = Input.GetAxisRaw("Horizontal") ;
         dir.y = Input.GetAxisRaw("Vertical");
-        //Debug.Log(dir.x + "," + dir.y);
+        //DebugController.Log(dir.x + "," + dir.y);
 
         plyerTransform.position += new Vector3(dir.x, dir.y, 0).normalized* moveSpeed * Time.deltaTime;
     }
 
-    void HandleAnimation()
+    void HandleMoveAnimation()
     {
         if (dir.x == 0 && dir.y == 0)
         {
@@ -77,22 +87,21 @@ public class PlayerAction : MonoBehaviour
     /// </summary>
     void FindClosestInteractableObj()
     {
-        Debug.Log("FindClosestInteractableObj 실행 ");
+        DebugController.Log("FindClosestInteractableObj 실행 ");
 
         // 탐색 반경 내에 있는 Interactable 물체 탐지
-        //Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRange, LayerMask.GetMask("Interactable"));
-        colliders = Physics2D.OverlapCircleAll(transform.position, detectionRange, LayerMask.GetMask("Interactable"));
+        colliders = Physics2D.OverlapBoxAll(transform.position, detectionRange, LayerMask.GetMask("Interactable"));
 
         if (colliders.Length > 0)
         {
             autoInteractTargetTransform = colliders // Collider2D 배열을 
                 .Select(collider => collider.transform) //transform 배열로 바꿔주고 (using System.Linq; 필요)
                 .OrderBy(t => Vector2.Distance(transform.position, t.position)) //Distance 기준 오름차순으로 정렬 
-                .FirstOrDefault(); // 첫번째 혹은 null 반환 ->  탐지된 물체가 없을 때도 오류 없이 처리가능 
+                .FirstOrDefault(); // 첫번째 혹은 null 반환 ->  탐지된 물체가 없을 때도 오류 없이 처리가능
         }
         else
         {
-            Debug.Log("상호작용 가능한 오브젝트가 없습니다 ");
+            DebugController.Log("상호작용 가능한 오브젝트가 없습니다 ");
             autoInteractTargetTransform = null;
         }
     }
@@ -108,6 +117,11 @@ public class PlayerAction : MonoBehaviour
 
             Vector3 direction = (autoInteractTargetTransform.position - transform.position).normalized;
             transform.position += direction * moveSpeed * Time.deltaTime;
+
+            //애니메이션 적용
+            animator.SetBool("IsMove", true);
+            animator.SetFloat("Dx", direction.x);
+            animator.SetFloat("Dy", direction.y);
         }
 
         // 타겟 근처에 도달하면 상호작용
@@ -119,27 +133,30 @@ public class PlayerAction : MonoBehaviour
 
     void InteractWithTarget()
     {
-        Debug.Log("InteractWithTarget 실행됨");
+        DebugController.Log("InteractWithTarget 실행됨");
 
         if (autoInteractTargetTransform.CompareTag("Item")) GetItem();
 
         // TODO : 지금은 아이템밖에 없어서 한번만 상호작용하면 되지만 나중에 나무캐기나 공격같은거 하면 여러번 해야하니까 이후 수정 필요 
-        // 상호작용 완료 후 대상 초기화 
-        autoInteractTargetTransform = null;
+        // 상호작용 완료 후 대상 초기화
+        
+        autoInteractTargetTransform = null; //상호작용 완료한 타겟은 없애고
+        FindClosestInteractableObj();//새로운 타겟 탐색
+        if (autoInteractTargetTransform == null) StopAutoInteraction();
+
     }
 
     void StopAutoInteraction()
     {
+        DebugController.Log("StopAutoInteraction");
         isAutoInteracting = false;
+        animator.SetBool("IsMove", false);
         autoInteractTargetTransform = null;
     }
 
     void GetItem()
     {
-        //맵에서 아이템 없애고 
-        //인벤토리에 넣기
-
-        Debug.Log("GetItem 함수 실행됨");
+        DebugController.Log("GetItem 함수 실행됨");
         autoInteractTargetTransform.gameObject.SetActive(false); //TODO : 일단 비활성화 되도록 했고 이후에 인벤토리에 들어가고 기타등등 수정 
     }
 
@@ -147,7 +164,7 @@ public class PlayerAction : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        Gizmos.DrawWireCube(transform.position, detectionRange);
         Gizmos.DrawWireSphere(transform.position, InteractionRange);
     }
 }
