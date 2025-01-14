@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class DayNightController : MonoBehaviour
+public class TimeController : MonoBehaviour
 {
     const float secondsInDay = 86400f;
 
@@ -51,6 +51,16 @@ public class DayNightController : MonoBehaviour
         {
             NextDay();
         }
+    }
+
+    public void Subscribe(TimeAgent agent)
+    {
+        agents.Add(agent);
+    }
+
+    public void Unsubscribe(TimeAgent agent)
+    {
+        agents.Remove(agent);
     }
 
     void DisplayTime()
