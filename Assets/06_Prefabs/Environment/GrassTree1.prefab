@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6681076387862373544}
   - component: {fileID: 3955360821751606142}
-  - component: {fileID: -1303191355293560934}
+  - component: {fileID: -7661903600643516969}
   m_Layer: 0
   m_Name: GrassTree1
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1303191355293560934
+--- !u!114 &-7661903600643516969
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2722301048121108459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6b91246de854c4a9c9a70bcb5ec994, type: 3}
+  m_Script: {fileID: 11500000, guid: 25b24ea6fc0c1e140a5003ddd2f90392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100

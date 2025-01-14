@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5321771025759845177}
   - component: {fileID: 6820363340931110211}
-  - component: {fileID: 277352861449490884}
+  - component: {fileID: 2430297418036209293}
   m_Layer: 0
   m_Name: DesertMineral3
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &277352861449490884
+--- !u!114 &2430297418036209293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7935299722805880507}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6b91246de854c4a9c9a70bcb5ec994, type: 3}
+  m_Script: {fileID: 11500000, guid: 25b24ea6fc0c1e140a5003ddd2f90392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100

@@ -60,4 +60,15 @@ public class ObjectMap
             }
         }
     }
+
+    public void ClearTiles(Vector2Int pos, int width, int height)
+    {
+        for (int i = pos.y - height + 1; i <= pos.y; i++)
+        {
+            for (int j = pos.x - width + 1; j <= pos.x; j++)
+            {
+                map[i, j] = ObjectType.Empty;
+            }
+        }
+    }
 }
