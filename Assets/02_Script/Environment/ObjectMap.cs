@@ -1,4 +1,12 @@
 using UnityEngine;
+public enum ObjectType
+{
+    Empty,
+    Unknown,
+    Tree,
+    Plant,
+    Mineral
+}
 
 public class ObjectMap
 {
@@ -20,7 +28,7 @@ public class ObjectMap
         {
             for (int j = 0; j < width; j++)
             {
-                map[j, i] = ObjectType.Empty;
+                map[i, j] = ObjectType.Empty;
             }
         }
     }
@@ -36,7 +44,7 @@ public class ObjectMap
         {
             for (int j = pos.x - width + 1; j <= pos.x; j++)
             {
-                if (!IsTileEmpty(new Vector2Int(i, j))) return false;
+                if (!IsTileEmpty(new Vector2Int(j, i))) return false;
             }
         }
         return true;
@@ -48,7 +56,18 @@ public class ObjectMap
         {
             for (int j = pos.x - width + 1; j <= pos.x; j++)
             {
-                map[j, i] = type;
+                map[i, j] = type;
+            }
+        }
+    }
+
+    public void ClearTiles(Vector2Int pos, int width, int height)
+    {
+        for (int i = pos.y - height + 1; i <= pos.y; i++)
+        {
+            for (int j = pos.x - width + 1; j <= pos.x; j++)
+            {
+                map[i, j] = ObjectType.Empty;
             }
         }
     }

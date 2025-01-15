@@ -1,58 +1,308 @@
 {
   "Items": [
     {
+      "Name": "BoneBottle",
+      "NameKR": "뼈물병",
+      "Category": "Bone",
+      "NumOfMaterial": "1",
+      "NeedCraftingTable": "true",
+      "Recipe": "Bone_1"
+    },
+    {
+      "Name": "BoneAx",
+      "NameKR": "뼈도끼",
+      "Category": "Bone",
+      "NumOfMaterial": "3",
+      "NeedCraftingTable": "true",
+      "Recipe": "Bone_1+Wood_1+Rope_1"
+    },
+    {
+      "Name": "BonePickax",
+      "NameKR": "뼈곡괭이",
+      "Category": "Bone",
+      "NumOfMaterial": "3",
+      "NeedCraftingTable": "true",
+      "Recipe": "Bone_1+Wood_1+Rope_1"
+    },
+    {
+      "Name": "BoneSword",
+      "NameKR": "뼈칼",
+      "Category": "Bone",
+      "NumOfMaterial": "3",
+      "NeedCraftingTable": "true",
+      "Recipe": "Bone_1+Wood_1+Rope_1"
+    },
+    {
+      "Name": "BoneHelmet",
+      "NameKR": "뼈투구",
+      "Category": "Bone",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "true",
+      "Recipe": "Bone_2+Rope_2"
+    },
+    {
+      "Name": "BoneArmor",
+      "NameKR": "뼈갑옷",
+      "Category": "Bone",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "true",
+      "Recipe": "Bone_2+Rope_2"
+    },
+    {
+      "Name": "GoldBottle",
+      "NameKR": "금물병",
+      "Category": "Gold",
+      "NumOfMaterial": "1",
+      "NeedCraftingTable": "true",
+      "Recipe": "Gold_1"
+    },
+    {
+      "Name": "GoldAx",
+      "NameKR": "금도끼",
+      "Category": "Gold",
+      "NumOfMaterial": "3",
+      "NeedCraftingTable": "true",
+      "Recipe": "Gold_1+Wood_1+Rope_1"
+    },
+    {
+      "Name": "GoldPickax",
+      "NameKR": "금곡괭이",
+      "Category": "Gold",
+      "NumOfMaterial": "3",
+      "NeedCraftingTable": "true",
+      "Recipe": "Gold_1+Wood_1+Rope_1"
+    },
+    {
+      "Name": "GoldSword",
+      "NameKR": "금칼",
+      "Category": "Gold",
+      "NumOfMaterial": "3",
+      "NeedCraftingTable": "true",
+      "Recipe": "Gold_1+Wood_1+Rope_1"
+    },
+    {
+      "Name": "GoldHelmet",
+      "NameKR": "금투구",
+      "Category": "Gold",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "true",
+      "Recipe": "Gold_2+Rope_2"
+    },
+    {
+      "Name": "GoldArmor",
+      "NameKR": "금갑옷",
+      "Category": "Gold",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "true",
+      "Recipe": "Gold_2+Rope_2"
+    },
+    {
+      "Name": "IronBottle",
+      "NameKR": "철물병",
+      "Category": "Iron",
+      "NumOfMaterial": "1",
+      "NeedCraftingTable": "true",
+      "Recipe": "Iron_1"
+    },
+    {
+      "Name": "IronAx",
+      "NameKR": "철도끼",
+      "Category": "Iron",
+      "NumOfMaterial": "3",
+      "NeedCraftingTable": "true",
+      "Recipe": "Iron_1+Wood_1+Rope_1"
+    },
+    {
+      "Name": "IronPickax",
+      "NameKR": "철곡괭이",
+      "Category": "Iron",
+      "NumOfMaterial": "3",
+      "NeedCraftingTable": "true",
+      "Recipe": "Iron_1+Wood_1+Rope_1"
+    },
+    {
+      "Name": "IronSword",
+      "NameKR": "철칼",
+      "Category": "Iron",
+      "NumOfMaterial": "3",
+      "NeedCraftingTable": "true",
+      "Recipe": "Iron_1+Wood_1+Rope_1"
+    },
+    {
+      "Name": "IronHelmet",
+      "NameKR": "철투구",
+      "Category": "Iron",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "true",
+      "Recipe": "Iron_2+Rope_2"
+    },
+    {
+      "Name": "IronArmor",
+      "NameKR": "철갑옷",
+      "Category": "Iron",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "true",
+      "Recipe": "Iron_2+Rope_2"
+    },
+    {
+      "Name": "StoneBottle",
+      "NameKR": "돌물병",
+      "Category": "Stone",
+      "NumOfMaterial": "1",
+      "NeedCraftingTable": "true",
+      "Recipe": "Stone_1"
+    },
+    {
+      "Name": "StoneAx",
+      "NameKR": "돌도끼",
+      "Category": "Stone",
+      "NumOfMaterial": "3",
+      "NeedCraftingTable": "true",
+      "Recipe": "Stone_1+Wood_1+Rope_1"
+    },
+    {
+      "Name": "StonePickax",
+      "NameKR": "돌곡괭이",
+      "Category": "Stone",
+      "NumOfMaterial": "3",
+      "NeedCraftingTable": "true",
+      "Recipe": "Stone_1+Wood_1+Rope_1"
+    },
+    {
+      "Name": "StoneSword",
+      "NameKR": "돌칼",
+      "Category": "Stone",
+      "NumOfMaterial": "3",
+      "NeedCraftingTable": "true",
+      "Recipe": "Stone_1+Wood_1+Rope_1"
+    },
+    {
+      "Name": "StoneHelmet",
+      "NameKR": "돌투구",
+      "Category": "Stone",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "true",
+      "Recipe": "Stone_2+Rope_2"
+    },
+    {
+      "Name": "StoneArmor",
+      "NameKR": "돌갑옷",
+      "Category": "Stone",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "true",
+      "Recipe": "Stone_2+Rope_2"
+    },
+    {
       "Name": "Campfire",
+      "NameKR": "모닥불",
       "Category": "Tool",
       "NumOfMaterial": "2",
+      "NeedCraftingTable": "false",
       "Recipe": "Wood_1+Flint_1"
     },
     {
       "Name": "Torch",
+      "NameKR": "횃불",
       "Category": "Tool",
       "NumOfMaterial": "2",
+      "NeedCraftingTable": "false",
       "Recipe": "Branch_1+Grass_1"
     },
     {
       "Name": "Rope",
+      "NameKR": "밧줄",
       "Category": "Tool",
       "NumOfMaterial": "1",
+      "NeedCraftingTable": "false",
       "Recipe": "Grass_4"
     },
     {
-      "Name": "CraftBox",
+      "Name": "Carrier",
+      "NameKR": "지게",
+      "Category": "Tool",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "false",
+      "Recipe": "Rope_2+Branch_4"
+    },
+    {
+      "Name": "Bag",
+      "NameKR": "가방",
       "Category": "Tool",
       "NumOfMaterial": "3",
-      "Recipe": "Bone_3+Stone_10+Wood_10"
+      "NeedCraftingTable": "false",
+      "Recipe": "Rope_4+Branch_4+Leather_3"
     },
     {
-      "Name": "WoodAxe",
+      "Name": "Box",
+      "NameKR": "상자",
+      "Category": "Tool",
+      "NumOfMaterial": "3",
+      "NeedCraftingTable": "false",
+      "Recipe": "Wood_6+Rope_2+Iron_1"
+    },
+    {
+      "Name": "CraftingTable",
+      "NameKR": "제작대",
+      "Category": "Tool",
+      "NumOfMaterial": "3",
+      "NeedCraftingTable": "false",
+      "Recipe": "Wood_10+Bone_3+Stone_10"
+    },
+    {
+      "Name": "WoodBottle",
+      "NameKR": "나무물병",
+      "Category": "Wood",
+      "NumOfMaterial": "1",
+      "NeedCraftingTable": "false",
+      "Recipe": "Wood_1"
+    },
+    {
+      "Name": "WoodAx",
+      "NameKR": "나무도끼",
       "Category": "Wood",
       "NumOfMaterial": "2",
-      "Recipe": "Rope_1+Wood_2"
+      "NeedCraftingTable": "false",
+      "Recipe": "Wood_2+Rope_1"
     },
     {
-      "Name": "StoneAxe",
-      "Category": "Stone",
-      "NumOfMaterial": "3",
-      "Recipe": "Rope_1+Wood_1+Stone_1"
+      "Name": "WoodPickax",
+      "NameKR": "나무곡괭이",
+      "Category": "Wood",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "false",
+      "Recipe": "Wood_2+Rope_1"
     },
     {
-      "Name": "BoneAxe",
-      "Category": "Bone",
-      "NumOfMaterial": "3",
-      "Recipe": "Rope_1+Wood_1+Bone_1"
+      "Name": "WoodSword",
+      "NameKR": "나무칼",
+      "Category": "Wood",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "false",
+      "Recipe": "Wood_2+Rope_1"
     },
     {
-      "Name": "IronAxe",
-      "Category": "Iron",
-      "NumOfMaterial": "3",
-      "Recipe": "Rope_1+Wood_1+Iron_1"
+      "Name": "SlingShot",
+      "NameKR": "새총",
+      "Category": "Wood",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "false",
+      "Recipe": "Wood_1+Rope_1"
     },
     {
-      "Name": "GoldAxe",
-      "Category": "Gold",
-      "NumOfMaterial": "3",
-      "Recipe": "Rope_1+Wood_1+Gold_1"
+      "Name": "WoodHelmet",
+      "NameKR": "나무투구",
+      "Category": "Wood",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "true",
+      "Recipe": "Wood_2+Rope_2"
+    },
+    {
+      "Name": "WoodArmor",
+      "NameKR": "나무갑옷",
+      "Category": "Wood",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "true",
+      "Recipe": "Wood_2+Rope_2"
     }
   ]
 }

@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: IconImage
+  m_EditorClassIdentifier: 
+  m_GroupName: IconImage
+  m_GUID: ffd961bf4a655554a997e2a2f98cf31f
+  m_SerializeEntries:
+  - m_GUID: 02c50b0915e730e429442c5a1c279568
+    m_Address: Forbid
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 225069a750824944db4866ac56c72092
+    m_Address: Branch
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 34d5507f2605f8049b22019c8fb87aed
+    m_Address: Bone
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f631d884aa618c4288926d349e36c49
+    m_Address: Equal
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5dcd4cf57dcf1494dbfa8827373af932
+    m_Address: Gold
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 69302f908c7154a41945c603bf6531d9
+    m_Address: Rope
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9698ca0bff4322244b7b493a170e78e4
+    m_Address: Wood
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9b2e138ccf9d482439dbbeed0d3b357f
+    m_Address: Stone
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b34c10ddc3aef3e4ebd4d20b54f3e10e
+    m_Address: Flint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b4dd2206500503f4ebff6b7027b6c17a
+    m_Address: Leather
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b68965ccc5823874386a54b1dad1e168
+    m_Address: Plus
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c670d8d0d7bc2e14b94770afbbb6e46d
+    m_Address: Shade
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dee3676c9076c4b4ea4b5e0ab8beb31c
+    m_Address: Iron
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9f24954e37f4974eadfb67740c3a713
+    m_Address: Grass
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 736d55df98445684191af185ca035f9d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e41cf30e974217d4fb2b68490be05b83, type: 2}
+    - {fileID: 11400000, guid: 4facfb101b36a8a4d9143ab95e5a1d47, type: 2}

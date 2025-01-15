@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eba1c3695c11a04bb53a61ae4f255e9, type: 3}
+  m_Name: GrassBush2
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4882174053066900562, guid: 49314d7d59063c24091858f539c37450, type: 3}
+  biomeType: 1
+  objectType: 3
+  width: 1
+  height: 1
+  timeToGrow: 10
+  sprites:
+  - {fileID: 2077047141, guid: 9b0d7c47dd6f44394a0e736658a5ab7d, type: 3}
+  - {fileID: 195927433, guid: 9b0d7c47dd6f44394a0e736658a5ab7d, type: 3}
+  growthStageTime: 0a000000

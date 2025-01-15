@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(VoronoiMapGenerator))]
-public class VoronoiTilemapGeneratorEditor : Editor
+public class VoronoiMapGeneratorEditor : Editor
 {
     public override void OnInspectorGUI()
     {
@@ -12,7 +12,7 @@ public class VoronoiTilemapGeneratorEditor : Editor
 
         if (GUILayout.Button("Generate"))
         {
-            generator.GenerateVoronoiMap();
+            generator.Generate();
         }
 
         if (GUILayout.Button("Clear"))

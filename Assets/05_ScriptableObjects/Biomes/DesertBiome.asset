@@ -14,3 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 11400000, guid: b8db8d92cdd867045aad190ac6f4a568, type: 2}
   biomeType: 2
+  trees: []
+  treesIntensity: 0
+  plants: []
+  plantsIntensity: 0
+  minerals:
+  - {fileID: 11400000, guid: 0e2417fa2ff442f43bcfc887038bbfbf, type: 2}
+  - {fileID: 11400000, guid: a9e8ba6620b544b49aca1fe1da97c66c, type: 2}
+  - {fileID: 11400000, guid: 42c73f8d6367c3b4dadcdb530cf86b4e, type: 2}
+  mineralsIntensity: 0.8
