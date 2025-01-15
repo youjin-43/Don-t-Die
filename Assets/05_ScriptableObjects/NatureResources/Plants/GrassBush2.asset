@@ -17,8 +17,8 @@ MonoBehaviour:
   objectType: 3
   width: 1
   height: 1
-  timeToAllGrown: 2
+  timeToAllGrown: 120
   sprites:
   - {fileID: 2077047141, guid: 9b0d7c47dd6f44394a0e736658a5ab7d, type: 3}
   - {fileID: 195927433, guid: 9b0d7c47dd6f44394a0e736658a5ab7d, type: 3}
-  growthStageTime: 01000000
+  growthStageTime: 3c00000078000000

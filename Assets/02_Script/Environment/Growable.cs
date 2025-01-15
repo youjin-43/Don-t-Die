@@ -7,33 +7,36 @@ public class Growable : TimeAgent
 {
     [SerializeField] GrowableResourceData data;
     SpriteRenderer spriteRenderer;
-    int growTimer;
     int growStage;
+
     bool isAllGrown // 최대로 성장했나?
     {
         get {
             if (data == null) { return false; }
-            return growTimer >= data.TimeToAllGrown; 
+            return timer >= data.TimeToAllGrown; 
         }
     }
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        onTimeTick += Tick;
-        Init();
+        // 임시!!!!!! 그리고 맵 Clear 된 상태로 실행해야 에러 안 남
+        transform.parent.parent.GetComponent<TimeController>().Subscribe(this);
     }
 
-    void Tick()
+    private void Update()
     {
-        DebugController.Log("Growable Tick");
+        
+    }
+
+    public override void UpdateTimer()
+    {
         if (isAllGrown) return;
 
-        growTimer++;
+        timer++;
 
-        if (growTimer > data.GrowthStageTime[growStage])
+        if (timer > data.GrowthStageTime[growStage])
         {
-            DebugController.Log("Change Sprite");
             growStage++;
             spriteRenderer.sprite = data.Sprites[growStage];
         }
