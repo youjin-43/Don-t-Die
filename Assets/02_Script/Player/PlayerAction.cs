@@ -20,7 +20,7 @@ public class PlayerAction : MonoBehaviour
 
     #region AutoInteracting
     [Header("AutoInteracting")]
-    [SerializeField] Vector2 detectionRange = new Vector2(3f,5f); // 탐색 반경
+    [SerializeField] float detectionRange = 5f; // 탐색 반경
     [SerializeField] float InteractionRange = 1f; // 상호작용 반경
     [SerializeField] Transform autoInteractTargetTransform; // 자동 상호작용 대상
     [SerializeField] bool isAutoInteracting = false; // 자동 상호작용 중인지(디버그용)
@@ -90,7 +90,7 @@ public class PlayerAction : MonoBehaviour
         DebugController.Log("FindClosestInteractableObj 실행 ");
 
         // 탐색 반경 내에 있는 Interactable 물체 탐지
-        colliders = Physics2D.OverlapBoxAll(transform.position, detectionRange, LayerMask.GetMask("Interactable"));
+        colliders = Physics2D.OverlapCircleAll(transform.position, detectionRange, LayerMask.GetMask("Interactable"));
 
         if (colliders.Length > 0)
         {
@@ -164,7 +164,7 @@ public class PlayerAction : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, detectionRange);
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
         Gizmos.DrawWireSphere(transform.position, InteractionRange);
     }
 }

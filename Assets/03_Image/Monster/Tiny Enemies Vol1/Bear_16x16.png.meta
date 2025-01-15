@@ -544,7 +544,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -558,7 +558,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -582,7 +582,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -659,365 +659,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bear_16x16_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 64
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d17af75a4695afa30800000000000000
-      internalID: 4249807487185692445
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 257
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2fa83fd94d8224910800000000000000
-      internalID: 1820062093059263218
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_2
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 239
-        width: 16
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 89f6ebf4c136e73b0800000000000000
-      internalID: -5512859920606793832
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_3
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 239
-        width: 16
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0b1092cf95012d620800000000000000
-      internalID: 2797316297219178928
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_4
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 257
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3bce613e1dd7454c0800000000000000
-      internalID: -4299673403820413773
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_5
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 256
-        width: 64
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 960483583df793410800000000000000
-      internalID: 1457336500880949353
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_6
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 239
-        width: 14
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 161532adf67bd3780800000000000000
-      internalID: -8701597213980929695
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_7
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 223
-        width: 16
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7616e9196c1c530c0800000000000000
-      internalID: -4596554786070961817
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_8
-      rect:
-        serializedVersion: 2
-        x: 97
-        y: 239
-        width: 14
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7fbb5d13a54014800800000000000000
-      internalID: 594761411219274743
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_9
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 223
-        width: 16
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c92b733337b3f9e60800000000000000
-      internalID: 7971155231435633308
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_10
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 256
-        width: 64
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0407574cde72c97e0800000000000000
-      internalID: -1757485852424572864
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_11
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 16
-        height: 257
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 21dabfa58e0dd9b30800000000000000
-      internalID: 4295819315958754578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_12
-      rect:
-        serializedVersion: 2
-        x: 143
-        y: 239
-        width: 18
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a900ed59913874080800000000000000
-      internalID: -9203243167596543846
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_13
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 239
-        width: 16
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 529b1683960d641a0800000000000000
-      internalID: -6825539034897336027
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_14
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 0
-        width: 16
-        height: 257
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 51d09fb35a017f060800000000000000
-      internalID: 6987071648750439701
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bear_16x16_15
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 256
-        width: 64
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a44b58fb2802354f0800000000000000
-      internalID: -841292959457102774
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Bear_16x16_16
       rect:
         serializedVersion: 2
-        x: 192
-        y: 239
+        x: 0
+        y: 240
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1036,10 +684,10 @@ TextureImporter:
       name: Bear_16x16_17
       rect:
         serializedVersion: 2
-        x: 17
-        y: 223
-        width: 13
-        height: 17
+        x: 16
+        y: 240
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1058,10 +706,10 @@ TextureImporter:
       name: Bear_16x16_18
       rect:
         serializedVersion: 2
-        x: 33
-        y: 223
-        width: 13
-        height: 17
+        x: 32
+        y: 240
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1080,10 +728,10 @@ TextureImporter:
       name: Bear_16x16_19
       rect:
         serializedVersion: 2
-        x: 64
-        y: 207
+        x: 48
+        y: 240
         width: 16
-        height: 33
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1102,10 +750,10 @@ TextureImporter:
       name: Bear_16x16_20
       rect:
         serializedVersion: 2
-        x: 96
-        y: 207
+        x: 64
+        y: 240
         width: 16
-        height: 33
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1124,9 +772,9 @@ TextureImporter:
       name: Bear_16x16_21
       rect:
         serializedVersion: 2
-        x: 145
-        y: 223
-        width: 14
+        x: 80
+        y: 240
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1146,9 +794,9 @@ TextureImporter:
       name: Bear_16x16_22
       rect:
         serializedVersion: 2
-        x: 161
-        y: 223
-        width: 14
+        x: 96
+        y: 240
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1168,10 +816,10 @@ TextureImporter:
       name: Bear_16x16_23
       rect:
         serializedVersion: 2
-        x: 194
-        y: 223
-        width: 14
-        height: 17
+        x: 112
+        y: 240
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1190,10 +838,10 @@ TextureImporter:
       name: Bear_16x16_24
       rect:
         serializedVersion: 2
-        x: 208
-        y: 239
+        x: 128
+        y: 240
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1212,9 +860,9 @@ TextureImporter:
       name: Bear_16x16_25
       rect:
         serializedVersion: 2
-        x: 209
-        y: 223
-        width: 14
+        x: 144
+        y: 240
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1234,10 +882,10 @@ TextureImporter:
       name: Bear_16x16_26
       rect:
         serializedVersion: 2
-        x: 224
-        y: 239
+        x: 160
+        y: 240
         width: 16
-        height: 14
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1256,10 +904,10 @@ TextureImporter:
       name: Bear_16x16_27
       rect:
         serializedVersion: 2
-        x: 240
-        y: 239
+        x: 176
+        y: 240
         width: 16
-        height: 14
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1278,10 +926,10 @@ TextureImporter:
       name: Bear_16x16_28
       rect:
         serializedVersion: 2
-        x: 16
-        y: 207
+        x: 192
+        y: 240
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1300,10 +948,10 @@ TextureImporter:
       name: Bear_16x16_29
       rect:
         serializedVersion: 2
-        x: 32
-        y: 207
+        x: 208
+        y: 240
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1322,10 +970,10 @@ TextureImporter:
       name: Bear_16x16_30
       rect:
         serializedVersion: 2
-        x: 80
-        y: 159
+        x: 224
+        y: 240
         width: 16
-        height: 65
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1344,10 +992,10 @@ TextureImporter:
       name: Bear_16x16_31
       rect:
         serializedVersion: 2
-        x: 112
-        y: 159
+        x: 240
+        y: 240
         width: 16
-        height: 65
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1366,10 +1014,10 @@ TextureImporter:
       name: Bear_16x16_32
       rect:
         serializedVersion: 2
-        x: 143
-        y: 207
-        width: 18
-        height: 17
+        x: 0
+        y: 224
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1388,10 +1036,10 @@ TextureImporter:
       name: Bear_16x16_33
       rect:
         serializedVersion: 2
-        x: 160
-        y: 207
+        x: 16
+        y: 224
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1410,10 +1058,10 @@ TextureImporter:
       name: Bear_16x16_34
       rect:
         serializedVersion: 2
-        x: 192
-        y: 207
+        x: 32
+        y: 224
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1432,8 +1080,8 @@ TextureImporter:
       name: Bear_16x16_35
       rect:
         serializedVersion: 2
-        x: 208
-        y: 207
+        x: 48
+        y: 224
         width: 16
         height: 16
       alignment: 0
@@ -1454,10 +1102,10 @@ TextureImporter:
       name: Bear_16x16_36
       rect:
         serializedVersion: 2
-        x: 225
-        y: 223
-        width: 15
-        height: 15
+        x: 64
+        y: 224
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1476,10 +1124,10 @@ TextureImporter:
       name: Bear_16x16_37
       rect:
         serializedVersion: 2
-        x: 241
-        y: 223
-        width: 15
-        height: 15
+        x: 80
+        y: 224
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1498,10 +1146,10 @@ TextureImporter:
       name: Bear_16x16_38
       rect:
         serializedVersion: 2
-        x: 17
-        y: 191
-        width: 13
-        height: 17
+        x: 96
+        y: 224
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1520,10 +1168,10 @@ TextureImporter:
       name: Bear_16x16_39
       rect:
         serializedVersion: 2
-        x: 33
-        y: 191
-        width: 13
-        height: 17
+        x: 112
+        y: 224
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1542,10 +1190,10 @@ TextureImporter:
       name: Bear_16x16_40
       rect:
         serializedVersion: 2
-        x: 65
-        y: 191
-        width: 13
-        height: 17
+        x: 128
+        y: 224
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1564,10 +1212,10 @@ TextureImporter:
       name: Bear_16x16_41
       rect:
         serializedVersion: 2
-        x: 96
-        y: 191
-        width: 14
-        height: 17
+        x: 144
+        y: 224
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1586,9 +1234,9 @@ TextureImporter:
       name: Bear_16x16_42
       rect:
         serializedVersion: 2
-        x: 145
-        y: 191
-        width: 14
+        x: 160
+        y: 224
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1608,9 +1256,9 @@ TextureImporter:
       name: Bear_16x16_43
       rect:
         serializedVersion: 2
-        x: 161
-        y: 191
-        width: 14
+        x: 176
+        y: 224
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1631,9 +1279,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 191
-        width: 14
-        height: 17
+        y: 224
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1652,9 +1300,9 @@ TextureImporter:
       name: Bear_16x16_45
       rect:
         serializedVersion: 2
-        x: 209
-        y: 191
-        width: 14
+        x: 208
+        y: 224
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1675,9 +1323,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 224
-        y: 207
+        y: 224
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1697,9 +1345,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 240
-        y: 207
+        y: 224
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1718,10 +1366,10 @@ TextureImporter:
       name: Bear_16x16_48
       rect:
         serializedVersion: 2
-        x: 16
-        y: 175
+        x: 0
+        y: 208
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1740,10 +1388,10 @@ TextureImporter:
       name: Bear_16x16_49
       rect:
         serializedVersion: 2
-        x: 32
-        y: 175
+        x: 16
+        y: 208
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1762,10 +1410,10 @@ TextureImporter:
       name: Bear_16x16_50
       rect:
         serializedVersion: 2
-        x: 65
-        y: 175
-        width: 14
-        height: 17
+        x: 32
+        y: 208
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1784,10 +1432,10 @@ TextureImporter:
       name: Bear_16x16_51
       rect:
         serializedVersion: 2
-        x: 97
-        y: 175
-        width: 14
-        height: 17
+        x: 48
+        y: 208
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1806,10 +1454,10 @@ TextureImporter:
       name: Bear_16x16_52
       rect:
         serializedVersion: 2
-        x: 143
-        y: 175
-        width: 18
-        height: 17
+        x: 64
+        y: 208
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1828,10 +1476,10 @@ TextureImporter:
       name: Bear_16x16_53
       rect:
         serializedVersion: 2
-        x: 160
-        y: 175
+        x: 80
+        y: 208
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1850,10 +1498,10 @@ TextureImporter:
       name: Bear_16x16_54
       rect:
         serializedVersion: 2
-        x: 192
-        y: 175
+        x: 96
+        y: 208
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1872,10 +1520,10 @@ TextureImporter:
       name: Bear_16x16_55
       rect:
         serializedVersion: 2
-        x: 224
-        y: 191
-        width: 15
-        height: 15
+        x: 112
+        y: 208
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1894,10 +1542,10 @@ TextureImporter:
       name: Bear_16x16_56
       rect:
         serializedVersion: 2
-        x: 240
-        y: 191
-        width: 15
-        height: 15
+        x: 128
+        y: 208
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1916,10 +1564,10 @@ TextureImporter:
       name: Bear_16x16_57
       rect:
         serializedVersion: 2
-        x: 17
-        y: 159
-        width: 13
-        height: 17
+        x: 144
+        y: 208
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1938,10 +1586,10 @@ TextureImporter:
       name: Bear_16x16_58
       rect:
         serializedVersion: 2
-        x: 33
-        y: 159
-        width: 13
-        height: 17
+        x: 160
+        y: 208
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1960,10 +1608,10 @@ TextureImporter:
       name: Bear_16x16_59
       rect:
         serializedVersion: 2
-        x: 64
-        y: 143
+        x: 176
+        y: 208
         width: 16
-        height: 33
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1982,10 +1630,10 @@ TextureImporter:
       name: Bear_16x16_60
       rect:
         serializedVersion: 2
-        x: 96
-        y: 143
+        x: 192
+        y: 208
         width: 16
-        height: 33
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2004,9 +1652,9 @@ TextureImporter:
       name: Bear_16x16_61
       rect:
         serializedVersion: 2
-        x: 145
-        y: 159
-        width: 14
+        x: 208
+        y: 208
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2026,9 +1674,9 @@ TextureImporter:
       name: Bear_16x16_62
       rect:
         serializedVersion: 2
-        x: 161
-        y: 159
-        width: 14
+        x: 224
+        y: 208
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2048,10 +1696,10 @@ TextureImporter:
       name: Bear_16x16_63
       rect:
         serializedVersion: 2
-        x: 194
-        y: 159
-        width: 14
-        height: 17
+        x: 240
+        y: 208
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2070,10 +1718,10 @@ TextureImporter:
       name: Bear_16x16_64
       rect:
         serializedVersion: 2
-        x: 208
-        y: 175
+        x: 0
+        y: 192
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2092,9 +1740,9 @@ TextureImporter:
       name: Bear_16x16_65
       rect:
         serializedVersion: 2
-        x: 209
-        y: 159
-        width: 14
+        x: 16
+        y: 192
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2114,10 +1762,10 @@ TextureImporter:
       name: Bear_16x16_66
       rect:
         serializedVersion: 2
-        x: 224
-        y: 175
+        x: 32
+        y: 192
         width: 16
-        height: 14
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2136,10 +1784,10 @@ TextureImporter:
       name: Bear_16x16_67
       rect:
         serializedVersion: 2
-        x: 240
-        y: 175
+        x: 48
+        y: 192
         width: 16
-        height: 14
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2158,10 +1806,10 @@ TextureImporter:
       name: Bear_16x16_68
       rect:
         serializedVersion: 2
-        x: 16
-        y: 143
+        x: 64
+        y: 192
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2180,10 +1828,10 @@ TextureImporter:
       name: Bear_16x16_69
       rect:
         serializedVersion: 2
-        x: 32
-        y: 143
+        x: 80
+        y: 192
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2202,10 +1850,10 @@ TextureImporter:
       name: Bear_16x16_70
       rect:
         serializedVersion: 2
-        x: 80
-        y: 95
+        x: 96
+        y: 192
         width: 16
-        height: 65
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2225,9 +1873,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 95
+        y: 192
         width: 16
-        height: 65
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2246,10 +1894,10 @@ TextureImporter:
       name: Bear_16x16_72
       rect:
         serializedVersion: 2
-        x: 143
-        y: 143
-        width: 18
-        height: 17
+        x: 128
+        y: 192
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2268,10 +1916,10 @@ TextureImporter:
       name: Bear_16x16_73
       rect:
         serializedVersion: 2
-        x: 160
-        y: 143
+        x: 144
+        y: 192
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2290,10 +1938,10 @@ TextureImporter:
       name: Bear_16x16_74
       rect:
         serializedVersion: 2
-        x: 192
-        y: 143
+        x: 160
+        y: 192
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2312,8 +1960,8 @@ TextureImporter:
       name: Bear_16x16_75
       rect:
         serializedVersion: 2
-        x: 208
-        y: 143
+        x: 176
+        y: 192
         width: 16
         height: 16
       alignment: 0
@@ -2334,10 +1982,10 @@ TextureImporter:
       name: Bear_16x16_76
       rect:
         serializedVersion: 2
-        x: 225
-        y: 159
-        width: 15
-        height: 15
+        x: 192
+        y: 192
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2356,10 +2004,10 @@ TextureImporter:
       name: Bear_16x16_77
       rect:
         serializedVersion: 2
-        x: 241
-        y: 159
-        width: 15
-        height: 15
+        x: 208
+        y: 192
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2378,10 +2026,10 @@ TextureImporter:
       name: Bear_16x16_78
       rect:
         serializedVersion: 2
-        x: 17
-        y: 127
-        width: 13
-        height: 17
+        x: 224
+        y: 192
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2400,10 +2048,10 @@ TextureImporter:
       name: Bear_16x16_79
       rect:
         serializedVersion: 2
-        x: 33
-        y: 127
-        width: 13
-        height: 17
+        x: 240
+        y: 192
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2422,10 +2070,10 @@ TextureImporter:
       name: Bear_16x16_80
       rect:
         serializedVersion: 2
-        x: 65
-        y: 127
-        width: 13
-        height: 17
+        x: 0
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2444,10 +2092,10 @@ TextureImporter:
       name: Bear_16x16_81
       rect:
         serializedVersion: 2
-        x: 96
-        y: 127
-        width: 14
-        height: 17
+        x: 16
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2466,9 +2114,9 @@ TextureImporter:
       name: Bear_16x16_82
       rect:
         serializedVersion: 2
-        x: 145
-        y: 127
-        width: 14
+        x: 32
+        y: 176
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2488,9 +2136,9 @@ TextureImporter:
       name: Bear_16x16_83
       rect:
         serializedVersion: 2
-        x: 161
-        y: 127
-        width: 14
+        x: 48
+        y: 176
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2510,10 +2158,10 @@ TextureImporter:
       name: Bear_16x16_84
       rect:
         serializedVersion: 2
-        x: 192
-        y: 127
-        width: 14
-        height: 17
+        x: 64
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2532,9 +2180,9 @@ TextureImporter:
       name: Bear_16x16_85
       rect:
         serializedVersion: 2
-        x: 209
-        y: 127
-        width: 14
+        x: 80
+        y: 176
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2554,10 +2202,10 @@ TextureImporter:
       name: Bear_16x16_86
       rect:
         serializedVersion: 2
-        x: 224
-        y: 143
+        x: 96
+        y: 176
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2576,10 +2224,10 @@ TextureImporter:
       name: Bear_16x16_87
       rect:
         serializedVersion: 2
-        x: 240
-        y: 143
+        x: 112
+        y: 176
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2598,10 +2246,10 @@ TextureImporter:
       name: Bear_16x16_88
       rect:
         serializedVersion: 2
-        x: 16
-        y: 111
+        x: 128
+        y: 176
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2620,10 +2268,10 @@ TextureImporter:
       name: Bear_16x16_89
       rect:
         serializedVersion: 2
-        x: 32
-        y: 111
+        x: 144
+        y: 176
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2642,10 +2290,10 @@ TextureImporter:
       name: Bear_16x16_90
       rect:
         serializedVersion: 2
-        x: 65
-        y: 111
-        width: 14
-        height: 17
+        x: 160
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2664,10 +2312,10 @@ TextureImporter:
       name: Bear_16x16_91
       rect:
         serializedVersion: 2
-        x: 97
-        y: 111
-        width: 14
-        height: 17
+        x: 176
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2686,10 +2334,10 @@ TextureImporter:
       name: Bear_16x16_92
       rect:
         serializedVersion: 2
-        x: 143
-        y: 111
-        width: 18
-        height: 17
+        x: 192
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2708,10 +2356,10 @@ TextureImporter:
       name: Bear_16x16_93
       rect:
         serializedVersion: 2
-        x: 160
-        y: 111
+        x: 208
+        y: 176
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2730,10 +2378,10 @@ TextureImporter:
       name: Bear_16x16_94
       rect:
         serializedVersion: 2
-        x: 192
-        y: 111
+        x: 224
+        y: 176
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2752,10 +2400,10 @@ TextureImporter:
       name: Bear_16x16_95
       rect:
         serializedVersion: 2
-        x: 224
-        y: 127
-        width: 15
-        height: 15
+        x: 240
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2774,10 +2422,10 @@ TextureImporter:
       name: Bear_16x16_96
       rect:
         serializedVersion: 2
-        x: 240
-        y: 127
-        width: 15
-        height: 15
+        x: 0
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2796,10 +2444,10 @@ TextureImporter:
       name: Bear_16x16_97
       rect:
         serializedVersion: 2
-        x: 17
-        y: 95
-        width: 13
-        height: 17
+        x: 16
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2818,10 +2466,10 @@ TextureImporter:
       name: Bear_16x16_98
       rect:
         serializedVersion: 2
-        x: 33
-        y: 95
-        width: 13
-        height: 17
+        x: 32
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2840,10 +2488,10 @@ TextureImporter:
       name: Bear_16x16_99
       rect:
         serializedVersion: 2
-        x: 64
-        y: 79
+        x: 48
+        y: 160
         width: 16
-        height: 33
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2862,10 +2510,10 @@ TextureImporter:
       name: Bear_16x16_100
       rect:
         serializedVersion: 2
-        x: 96
-        y: 79
+        x: 64
+        y: 160
         width: 16
-        height: 33
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2884,9 +2532,9 @@ TextureImporter:
       name: Bear_16x16_101
       rect:
         serializedVersion: 2
-        x: 145
-        y: 95
-        width: 14
+        x: 80
+        y: 160
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2906,9 +2554,9 @@ TextureImporter:
       name: Bear_16x16_102
       rect:
         serializedVersion: 2
-        x: 161
-        y: 95
-        width: 14
+        x: 96
+        y: 160
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2928,10 +2576,10 @@ TextureImporter:
       name: Bear_16x16_103
       rect:
         serializedVersion: 2
-        x: 194
-        y: 95
-        width: 14
-        height: 17
+        x: 112
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2950,10 +2598,10 @@ TextureImporter:
       name: Bear_16x16_104
       rect:
         serializedVersion: 2
-        x: 208
-        y: 111
+        x: 128
+        y: 160
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2972,9 +2620,9 @@ TextureImporter:
       name: Bear_16x16_105
       rect:
         serializedVersion: 2
-        x: 209
-        y: 95
-        width: 14
+        x: 144
+        y: 160
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2994,10 +2642,10 @@ TextureImporter:
       name: Bear_16x16_106
       rect:
         serializedVersion: 2
-        x: 224
-        y: 111
+        x: 160
+        y: 160
         width: 16
-        height: 14
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3016,10 +2664,10 @@ TextureImporter:
       name: Bear_16x16_107
       rect:
         serializedVersion: 2
-        x: 240
-        y: 111
+        x: 176
+        y: 160
         width: 16
-        height: 14
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3038,10 +2686,10 @@ TextureImporter:
       name: Bear_16x16_108
       rect:
         serializedVersion: 2
-        x: 16
-        y: 79
+        x: 192
+        y: 160
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3060,10 +2708,10 @@ TextureImporter:
       name: Bear_16x16_109
       rect:
         serializedVersion: 2
-        x: 32
-        y: 79
+        x: 208
+        y: 160
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3082,10 +2730,10 @@ TextureImporter:
       name: Bear_16x16_110
       rect:
         serializedVersion: 2
-        x: 80
-        y: 31
+        x: 224
+        y: 160
         width: 16
-        height: 65
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3104,10 +2752,10 @@ TextureImporter:
       name: Bear_16x16_111
       rect:
         serializedVersion: 2
-        x: 112
-        y: 31
+        x: 240
+        y: 160
         width: 16
-        height: 65
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3126,10 +2774,10 @@ TextureImporter:
       name: Bear_16x16_112
       rect:
         serializedVersion: 2
-        x: 143
-        y: 79
-        width: 18
-        height: 17
+        x: 0
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3148,10 +2796,10 @@ TextureImporter:
       name: Bear_16x16_113
       rect:
         serializedVersion: 2
-        x: 160
-        y: 79
+        x: 16
+        y: 144
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3170,10 +2818,10 @@ TextureImporter:
       name: Bear_16x16_114
       rect:
         serializedVersion: 2
-        x: 192
-        y: 79
+        x: 32
+        y: 144
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3192,8 +2840,8 @@ TextureImporter:
       name: Bear_16x16_115
       rect:
         serializedVersion: 2
-        x: 208
-        y: 79
+        x: 48
+        y: 144
         width: 16
         height: 16
       alignment: 0
@@ -3214,10 +2862,10 @@ TextureImporter:
       name: Bear_16x16_116
       rect:
         serializedVersion: 2
-        x: 225
-        y: 95
-        width: 15
-        height: 15
+        x: 64
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3236,10 +2884,10 @@ TextureImporter:
       name: Bear_16x16_117
       rect:
         serializedVersion: 2
-        x: 241
-        y: 95
-        width: 15
-        height: 15
+        x: 80
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3258,10 +2906,10 @@ TextureImporter:
       name: Bear_16x16_118
       rect:
         serializedVersion: 2
-        x: 17
-        y: 63
-        width: 13
-        height: 17
+        x: 96
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3280,10 +2928,10 @@ TextureImporter:
       name: Bear_16x16_119
       rect:
         serializedVersion: 2
-        x: 33
-        y: 63
-        width: 13
-        height: 17
+        x: 112
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3302,10 +2950,10 @@ TextureImporter:
       name: Bear_16x16_120
       rect:
         serializedVersion: 2
-        x: 65
-        y: 63
-        width: 13
-        height: 17
+        x: 128
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3324,10 +2972,10 @@ TextureImporter:
       name: Bear_16x16_121
       rect:
         serializedVersion: 2
-        x: 96
-        y: 63
-        width: 14
-        height: 17
+        x: 144
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3346,9 +2994,9 @@ TextureImporter:
       name: Bear_16x16_122
       rect:
         serializedVersion: 2
-        x: 145
-        y: 63
-        width: 14
+        x: 160
+        y: 144
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -3368,9 +3016,9 @@ TextureImporter:
       name: Bear_16x16_123
       rect:
         serializedVersion: 2
-        x: 161
-        y: 63
-        width: 14
+        x: 176
+        y: 144
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -3391,9 +3039,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 63
-        width: 14
-        height: 17
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3412,9 +3060,9 @@ TextureImporter:
       name: Bear_16x16_125
       rect:
         serializedVersion: 2
-        x: 209
-        y: 63
-        width: 14
+        x: 208
+        y: 144
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -3435,9 +3083,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 224
-        y: 79
+        y: 144
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3457,9 +3105,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 240
-        y: 79
+        y: 144
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3478,10 +3126,10 @@ TextureImporter:
       name: Bear_16x16_128
       rect:
         serializedVersion: 2
-        x: 16
-        y: 47
+        x: 0
+        y: 128
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3500,10 +3148,10 @@ TextureImporter:
       name: Bear_16x16_129
       rect:
         serializedVersion: 2
-        x: 32
-        y: 47
+        x: 16
+        y: 128
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3522,10 +3170,10 @@ TextureImporter:
       name: Bear_16x16_130
       rect:
         serializedVersion: 2
-        x: 65
-        y: 47
-        width: 14
-        height: 17
+        x: 32
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3544,10 +3192,10 @@ TextureImporter:
       name: Bear_16x16_131
       rect:
         serializedVersion: 2
-        x: 97
-        y: 47
-        width: 14
-        height: 17
+        x: 48
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3566,10 +3214,10 @@ TextureImporter:
       name: Bear_16x16_132
       rect:
         serializedVersion: 2
-        x: 143
-        y: 47
-        width: 18
-        height: 17
+        x: 64
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3588,10 +3236,10 @@ TextureImporter:
       name: Bear_16x16_133
       rect:
         serializedVersion: 2
-        x: 160
-        y: 47
+        x: 80
+        y: 128
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3610,10 +3258,10 @@ TextureImporter:
       name: Bear_16x16_134
       rect:
         serializedVersion: 2
-        x: 192
-        y: 47
+        x: 96
+        y: 128
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3632,10 +3280,10 @@ TextureImporter:
       name: Bear_16x16_135
       rect:
         serializedVersion: 2
-        x: 224
-        y: 63
-        width: 15
-        height: 15
+        x: 112
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3654,10 +3302,10 @@ TextureImporter:
       name: Bear_16x16_136
       rect:
         serializedVersion: 2
-        x: 240
-        y: 63
-        width: 15
-        height: 15
+        x: 128
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3676,10 +3324,10 @@ TextureImporter:
       name: Bear_16x16_137
       rect:
         serializedVersion: 2
-        x: 17
-        y: 31
-        width: 13
-        height: 17
+        x: 144
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3698,10 +3346,10 @@ TextureImporter:
       name: Bear_16x16_138
       rect:
         serializedVersion: 2
-        x: 33
-        y: 31
-        width: 13
-        height: 17
+        x: 160
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3720,10 +3368,10 @@ TextureImporter:
       name: Bear_16x16_139
       rect:
         serializedVersion: 2
-        x: 64
-        y: 15
+        x: 176
+        y: 128
         width: 16
-        height: 33
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3742,10 +3390,10 @@ TextureImporter:
       name: Bear_16x16_140
       rect:
         serializedVersion: 2
-        x: 96
-        y: 15
+        x: 192
+        y: 128
         width: 16
-        height: 33
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3764,9 +3412,9 @@ TextureImporter:
       name: Bear_16x16_141
       rect:
         serializedVersion: 2
-        x: 145
-        y: 31
-        width: 14
+        x: 208
+        y: 128
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -3786,9 +3434,9 @@ TextureImporter:
       name: Bear_16x16_142
       rect:
         serializedVersion: 2
-        x: 161
-        y: 31
-        width: 14
+        x: 224
+        y: 128
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -3808,10 +3456,10 @@ TextureImporter:
       name: Bear_16x16_143
       rect:
         serializedVersion: 2
-        x: 194
-        y: 31
-        width: 14
-        height: 17
+        x: 240
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3830,10 +3478,10 @@ TextureImporter:
       name: Bear_16x16_144
       rect:
         serializedVersion: 2
-        x: 208
-        y: 47
+        x: 0
+        y: 112
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3852,9 +3500,9 @@ TextureImporter:
       name: Bear_16x16_145
       rect:
         serializedVersion: 2
-        x: 209
-        y: 31
-        width: 14
+        x: 16
+        y: 112
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -3874,10 +3522,10 @@ TextureImporter:
       name: Bear_16x16_146
       rect:
         serializedVersion: 2
-        x: 224
-        y: 47
+        x: 32
+        y: 112
         width: 16
-        height: 14
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3896,10 +3544,10 @@ TextureImporter:
       name: Bear_16x16_147
       rect:
         serializedVersion: 2
-        x: 240
-        y: 47
+        x: 48
+        y: 112
         width: 16
-        height: 14
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3918,10 +3566,10 @@ TextureImporter:
       name: Bear_16x16_148
       rect:
         serializedVersion: 2
-        x: 16
-        y: 15
+        x: 64
+        y: 112
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3940,10 +3588,10 @@ TextureImporter:
       name: Bear_16x16_149
       rect:
         serializedVersion: 2
-        x: 32
-        y: 15
+        x: 80
+        y: 112
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3962,10 +3610,10 @@ TextureImporter:
       name: Bear_16x16_150
       rect:
         serializedVersion: 2
-        x: 81
-        y: 0
-        width: 14
-        height: 32
+        x: 96
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3984,10 +3632,10 @@ TextureImporter:
       name: Bear_16x16_151
       rect:
         serializedVersion: 2
-        x: 113
-        y: 0
-        width: 14
-        height: 32
+        x: 112
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4006,10 +3654,10 @@ TextureImporter:
       name: Bear_16x16_152
       rect:
         serializedVersion: 2
-        x: 143
-        y: 15
-        width: 18
-        height: 17
+        x: 128
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4028,10 +3676,10 @@ TextureImporter:
       name: Bear_16x16_153
       rect:
         serializedVersion: 2
-        x: 160
-        y: 15
+        x: 144
+        y: 112
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4050,10 +3698,10 @@ TextureImporter:
       name: Bear_16x16_154
       rect:
         serializedVersion: 2
-        x: 192
-        y: 15
+        x: 160
+        y: 112
         width: 16
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4072,8 +3720,8 @@ TextureImporter:
       name: Bear_16x16_155
       rect:
         serializedVersion: 2
-        x: 208
-        y: 15
+        x: 176
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -4094,10 +3742,10 @@ TextureImporter:
       name: Bear_16x16_156
       rect:
         serializedVersion: 2
-        x: 225
-        y: 31
-        width: 15
-        height: 15
+        x: 192
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4116,10 +3764,10 @@ TextureImporter:
       name: Bear_16x16_157
       rect:
         serializedVersion: 2
-        x: 241
-        y: 31
-        width: 15
-        height: 15
+        x: 208
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4138,9 +3786,9 @@ TextureImporter:
       name: Bear_16x16_158
       rect:
         serializedVersion: 2
-        x: 17
-        y: 0
-        width: 13
+        x: 224
+        y: 112
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -4160,9 +3808,9 @@ TextureImporter:
       name: Bear_16x16_159
       rect:
         serializedVersion: 2
-        x: 33
-        y: 0
-        width: 13
+        x: 240
+        y: 112
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -4182,9 +3830,9 @@ TextureImporter:
       name: Bear_16x16_160
       rect:
         serializedVersion: 2
-        x: 65
-        y: 0
-        width: 13
+        x: 0
+        y: 96
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -4204,9 +3852,9 @@ TextureImporter:
       name: Bear_16x16_161
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 14
+        x: 16
+        y: 96
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -4226,10 +3874,10 @@ TextureImporter:
       name: Bear_16x16_162
       rect:
         serializedVersion: 2
-        x: 145
-        y: 0
-        width: 14
-        height: 15
+        x: 32
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4248,10 +3896,10 @@ TextureImporter:
       name: Bear_16x16_163
       rect:
         serializedVersion: 2
-        x: 161
-        y: 0
-        width: 14
-        height: 15
+        x: 48
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4270,9 +3918,9 @@ TextureImporter:
       name: Bear_16x16_164
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 14
+        x: 64
+        y: 96
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -4292,10 +3940,10 @@ TextureImporter:
       name: Bear_16x16_165
       rect:
         serializedVersion: 2
-        x: 209
-        y: 0
-        width: 14
-        height: 15
+        x: 80
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4314,10 +3962,10 @@ TextureImporter:
       name: Bear_16x16_166
       rect:
         serializedVersion: 2
-        x: 224
-        y: 15
+        x: 96
+        y: 96
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4336,10 +3984,10 @@ TextureImporter:
       name: Bear_16x16_167
       rect:
         serializedVersion: 2
-        x: 240
-        y: 15
+        x: 112
+        y: 96
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4358,10 +4006,10 @@ TextureImporter:
       name: Bear_16x16_168
       rect:
         serializedVersion: 2
-        x: 224
-        y: 0
-        width: 15
-        height: 14
+        x: 128
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4380,10 +4028,10 @@ TextureImporter:
       name: Bear_16x16_169
       rect:
         serializedVersion: 2
-        x: 240
-        y: 0
-        width: 15
-        height: 14
+        x: 144
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4398,11 +4046,2255 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_170
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee99cc1f2d152432494dc08178ffa165
+      internalID: 1737803111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_171
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1457273ddd73f4e2abb34cf02221b1b4
+      internalID: 630434624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_172
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f18bfa83d593471e8848e8bd170bce7
+      internalID: 1844037677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_173
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ebe4604ced074129aaa1419966f9494
+      internalID: -506711874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_174
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48b9ac46534fe4a5891655ef20466329
+      internalID: -1769669357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_175
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 943de0b85455e4e0c99cee4dafb7783c
+      internalID: 1764768966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_176
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 164eb1a6a0de647c19e48e4fe6c0b813
+      internalID: 1120348492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_177
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1638fe450847e41a4bcb23fa95383902
+      internalID: -1060596288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_178
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfa9b5f05eb24477cafddce8b566ae72
+      internalID: 1646783294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_179
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61f396a144404fcf858e6b7b88d3ea7
+      internalID: -1501890397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_180
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34c33d799d33c4f5a8ef050e00207761
+      internalID: -1076440388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_181
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cb0c94ad9a3949f09ee170a69b87865
+      internalID: -1310190640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_182
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7433b4afc890433492555cce7676a3f
+      internalID: 1035933354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_183
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dd1bb0c9683a41c089585aaf5359e48
+      internalID: 1031390227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_184
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f8c0cccadd6433593e816b5c180e8d
+      internalID: -1164073968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_185
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ee128b2676d5420ca36180240cc3cb7
+      internalID: 1873600729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_186
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58a56651a658f49ce8e467e1c6d58152
+      internalID: 1088921921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_187
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1120022f96a8c469d89788be94514342
+      internalID: 882841564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_188
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1a096794bb104902ab04b38b8cef79b
+      internalID: -1178374844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_189
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b72d1e44c76e4db6a838d9fa1aad805
+      internalID: -974410091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_190
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 337ef90b6e7b14b658d17a779df5a704
+      internalID: 1716163073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_191
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b945ed9dfe5c4c03aad762247e3963c
+      internalID: 2045748378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_192
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 633fe6ce8c5de4d1fa420a07517afa32
+      internalID: 513147272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_193
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 426c3fb9cbba94140bd397f303cb89fe
+      internalID: 1436303016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_194
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b6c58ee95e994ef78a7ed5f1cc947ae
+      internalID: 1998954247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_195
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 283a357ca780e4d2ea087f5efc9a0f99
+      internalID: 803053497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_196
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dea5e483454e4a62af04b078c4a9c10
+      internalID: -1072951591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_197
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b2d8862c700c45dcb3759284b688a28
+      internalID: -1303262980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_198
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83653dc667c0b40479df66368a417f62
+      internalID: 1234700389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_199
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9057614e81f0d44bea60b2dabb7f0fb5
+      internalID: 1970284992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_200
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 813c54c5ee9854aa085be1df46fccff5
+      internalID: 845986210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_201
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3c82e4b9bf5b4780a11c34f1eec35b5
+      internalID: -276823230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_202
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a56678f18ff0d48229162fd84e5817ae
+      internalID: -2007425324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_203
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5542e0b5f24834ff787ab341aca07402
+      internalID: 268786599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_204
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a63d60b630004a27a8c7517da2fc2ab
+      internalID: 1637696126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_205
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee68b4555fdfa4c6a8c5f5009066e1f2
+      internalID: -205754720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_206
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca8ae62ac91d04416bec4a2c4c314aae
+      internalID: -541649958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_207
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0735eb732902241be8ef7dc1f00e2891
+      internalID: -1766043989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_208
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce7d1c7e2db1248ca8819145fb96145d
+      internalID: -1107494253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_209
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38ef2ab331b1149f9b740e6af213561c
+      internalID: -909775658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_210
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c9b95af6104a4cde83d177299d398f2
+      internalID: 939977540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_211
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcb07d8ac9bef40269490b97c528036b
+      internalID: 1447562097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_212
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d5232acb69cc4489925509094f12039
+      internalID: -163940232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_213
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdfb62d5348ad49e1aa5c8ea91dc5789
+      internalID: 1824467587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_214
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90d79aec5af214649aa351ad2a6b199b
+      internalID: 729914183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_215
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bff31e517e2964684bc96061e3619c37
+      internalID: 2022631394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_216
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d44affd6576d54ad18636e6507386dcf
+      internalID: 1790892793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_217
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab2f172a8986947bd970813c0bdc8086
+      internalID: -352639421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_218
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4d284c4ee06846cdbb060586a4beb45
+      internalID: -1954618750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_219
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee0d89409774c47b9a51444272a98e01
+      internalID: 1340482341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_220
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f21c7d633fbb4637802d4a06a7018cf
+      internalID: -1535613412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_221
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf789800f7e474b36b7df5b15aa40417
+      internalID: 1725095048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_222
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc95965cb0aa84070ab28d09d9f7672e
+      internalID: 1736114869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_223
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 727f4ce9f3a90494b8953b0ffc21baf0
+      internalID: -355313476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_224
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3c67fd62b3654579ba83c71d8959b0b
+      internalID: 1476805534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_225
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8594a0a4e226a407ebc19256a117c68b
+      internalID: 316980858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_226
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e07895adde3e84710bb3155960ef5398
+      internalID: 152943717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_227
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68fda890f45ca4a32929f8f7374f3a30
+      internalID: 482060256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_228
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7bac864163854201a3d6c3e706c107d
+      internalID: -1559248440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_229
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26ce2835aff8b422e86b5c11ef107a8a
+      internalID: 991621064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_230
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c7c7fda9a7fb407098bb2460585373d
+      internalID: -739184343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_231
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be7952a1d05d44bf6af2e721786065d2
+      internalID: 2115949099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_232
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61e726995bbd48e4a18915794c3c9a6
+      internalID: 1850418134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_233
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c15e6e303efa8466ea798568b29a58de
+      internalID: -959862494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_234
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec1881a9aeb9c47acbf49cf104003bc5
+      internalID: -617548976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_235
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35f28d15554904330b6f58ae76983a26
+      internalID: -1115929307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_236
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c34333ae6c2c349f4b098503fe121fa9
+      internalID: 1978190993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_237
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d01aeee70fc5f4ce1b2e9f20a0737be0
+      internalID: -828585810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_238
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f2f1f1e32ea648dd906104311b92da3
+      internalID: -916302554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_239
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6adec46b15a644018d7e6b858a56f2c
+      internalID: 212143479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_240
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bae47360bbdd04994be676078ca81be3
+      internalID: 1830653368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_241
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a13f96d3de7274219895a924c3ad83e0
+      internalID: -480501938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_242
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab2e9687155c748b1af566f6d29c9874
+      internalID: 148933507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_243
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d492a8813117433a891148bb7557d8f
+      internalID: 1828985411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_244
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b38e46ecc5231472e88aeea47e67f7c0
+      internalID: 501923922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_245
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4069b105bfb849b0bc933e932f8e186
+      internalID: 1846713180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_246
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef364e94fa87543f2a3315b32fda1746
+      internalID: 2121351641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_247
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fafbe794eae64a2aa7579503e89bc10
+      internalID: 1514998523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_248
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987c9b632e7854db58061e1d9535c206
+      internalID: -1359682417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_249
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feda50cf37c954dc1b193ab1bccd07a7
+      internalID: 2098705382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_250
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91522a840bffa4b5cbf9ffddabaf296d
+      internalID: 1098030419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_251
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 162bd37ff1d6249b8ae7c7ddc95159bb
+      internalID: -1001732250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_252
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21cec03fa0ff94fc3bbc86798470d5f0
+      internalID: -182712193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_253
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fee95d74470874db9af260b394af8fe7
+      internalID: 1332581523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_254
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fe4045a51b3844df9219775b99f1c80
+      internalID: 1983576363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_255
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5c1559512ffd4111b0972c05260533c
+      internalID: -646041059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_256
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 673201cf257124ac4a4de153b14da198
+      internalID: -893834973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_257
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec7172ca8f9ea4b65a748660c71cf16b
+      internalID: -901179765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_258
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03e8526f005db4ef48ca99c20422fb05
+      internalID: 1352390884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_259
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0efd7adbc896449fe88619f5aef5fe15
+      internalID: -1955901664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_260
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcb6573a588164d7c954a23978a63c4f
+      internalID: 570131373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_261
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d97098598970842ed9e12d7fa021d22c
+      internalID: -192683334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_262
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd398bfe6bf1c483689d9e6d34a52742
+      internalID: 2102233140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_263
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b8224df8b8914433b0b77197a31440b
+      internalID: 662775106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_264
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac4acbedfff2f4b28ba8c9313b610831
+      internalID: -1387832290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_265
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3554f46505e94c6cba9d0b2e2d30ec3
+      internalID: -2113360834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_266
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fce6a07cb666f400ba0c09edf6df77fd
+      internalID: -844801176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_267
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4281f9ca2c9cb4fd183ba985939befc4
+      internalID: 879723690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_268
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cd15f6056ab5407ba9eb84847d2b31e
+      internalID: 1362468125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_269
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cbccb70881df40fbbb2b4688683c500
+      internalID: 1792156471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_270
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b22b609cdf59431eb3623aaa68aea99
+      internalID: -698677509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bear_16x16_271
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9659ee60fa834845a0a8b224695364a
+      internalID: 930542455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a6cf1edfd42de426c8bf1d31ea02b57a
     internalID: 0
     vertices: []
     indices: 
@@ -4492,17 +6384,119 @@ TextureImporter:
       Bear_16x16_168: 484821926935098024
       Bear_16x16_169: 2903729171285262056
       Bear_16x16_17: -5022762486056655731
+      Bear_16x16_170: 1737803111
+      Bear_16x16_171: 630434624
+      Bear_16x16_172: 1844037677
+      Bear_16x16_173: -506711874
+      Bear_16x16_174: -1769669357
+      Bear_16x16_175: 1764768966
+      Bear_16x16_176: 1120348492
+      Bear_16x16_177: -1060596288
+      Bear_16x16_178: 1646783294
+      Bear_16x16_179: -1501890397
       Bear_16x16_18: -1606829467510908018
+      Bear_16x16_180: -1076440388
+      Bear_16x16_181: -1310190640
+      Bear_16x16_182: 1035933354
+      Bear_16x16_183: 1031390227
+      Bear_16x16_184: -1164073968
+      Bear_16x16_185: 1873600729
+      Bear_16x16_186: 1088921921
+      Bear_16x16_187: 882841564
+      Bear_16x16_188: -1178374844
+      Bear_16x16_189: -974410091
       Bear_16x16_19: 8818676825120080658
+      Bear_16x16_190: 1716163073
+      Bear_16x16_191: 2045748378
+      Bear_16x16_192: 513147272
+      Bear_16x16_193: 1436303016
+      Bear_16x16_194: 1998954247
+      Bear_16x16_195: 803053497
+      Bear_16x16_196: -1072951591
+      Bear_16x16_197: -1303262980
+      Bear_16x16_198: 1234700389
+      Bear_16x16_199: 1970284992
       Bear_16x16_2: -5512859920606793832
       Bear_16x16_20: 5527131750357592571
+      Bear_16x16_200: 845986210
+      Bear_16x16_201: -276823230
+      Bear_16x16_202: -2007425324
+      Bear_16x16_203: 268786599
+      Bear_16x16_204: 1637696126
+      Bear_16x16_205: -205754720
+      Bear_16x16_206: -541649958
+      Bear_16x16_207: -1766043989
+      Bear_16x16_208: -1107494253
+      Bear_16x16_209: -909775658
       Bear_16x16_21: -7188329426037363970
+      Bear_16x16_210: 939977540
+      Bear_16x16_211: 1447562097
+      Bear_16x16_212: -163940232
+      Bear_16x16_213: 1824467587
+      Bear_16x16_214: 729914183
+      Bear_16x16_215: 2022631394
+      Bear_16x16_216: 1790892793
+      Bear_16x16_217: -352639421
+      Bear_16x16_218: -1954618750
+      Bear_16x16_219: 1340482341
       Bear_16x16_22: -1581220143841294282
+      Bear_16x16_220: -1535613412
+      Bear_16x16_221: 1725095048
+      Bear_16x16_222: 1736114869
+      Bear_16x16_223: -355313476
+      Bear_16x16_224: 1476805534
+      Bear_16x16_225: 316980858
+      Bear_16x16_226: 152943717
+      Bear_16x16_227: 482060256
+      Bear_16x16_228: -1559248440
+      Bear_16x16_229: 991621064
       Bear_16x16_23: -8118017293410381537
+      Bear_16x16_230: -739184343
+      Bear_16x16_231: 2115949099
+      Bear_16x16_232: 1850418134
+      Bear_16x16_233: -959862494
+      Bear_16x16_234: -617548976
+      Bear_16x16_235: -1115929307
+      Bear_16x16_236: 1978190993
+      Bear_16x16_237: -828585810
+      Bear_16x16_238: -916302554
+      Bear_16x16_239: 212143479
       Bear_16x16_24: 3152267631620121946
+      Bear_16x16_240: 1830653368
+      Bear_16x16_241: -480501938
+      Bear_16x16_242: 148933507
+      Bear_16x16_243: 1828985411
+      Bear_16x16_244: 501923922
+      Bear_16x16_245: 1846713180
+      Bear_16x16_246: 2121351641
+      Bear_16x16_247: 1514998523
+      Bear_16x16_248: -1359682417
+      Bear_16x16_249: 2098705382
       Bear_16x16_25: -7639537546272024303
+      Bear_16x16_250: 1098030419
+      Bear_16x16_251: -1001732250
+      Bear_16x16_252: -182712193
+      Bear_16x16_253: 1332581523
+      Bear_16x16_254: 1983576363
+      Bear_16x16_255: -646041059
+      Bear_16x16_256: -893834973
+      Bear_16x16_257: -901179765
+      Bear_16x16_258: 1352390884
+      Bear_16x16_259: -1955901664
       Bear_16x16_26: 3623233177438200795
+      Bear_16x16_260: 570131373
+      Bear_16x16_261: -192683334
+      Bear_16x16_262: 2102233140
+      Bear_16x16_263: 662775106
+      Bear_16x16_264: -1387832290
+      Bear_16x16_265: -2113360834
+      Bear_16x16_266: -844801176
+      Bear_16x16_267: 879723690
+      Bear_16x16_268: 1362468125
+      Bear_16x16_269: 1792156471
       Bear_16x16_27: -7323447007080050046
+      Bear_16x16_270: -698677509
+      Bear_16x16_271: 930542455
       Bear_16x16_28: -1027420384247077299
       Bear_16x16_29: -5375406595137384368
       Bear_16x16_3: 2797316297219178928
