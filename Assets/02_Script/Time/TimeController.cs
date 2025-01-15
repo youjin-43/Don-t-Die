@@ -18,6 +18,9 @@ public class TimeController : MonoBehaviour
     int days;
     float time;
 
+    float agentTimer;
+    float agentInterval = 3600f; // 게임 기준 1시간마다 한 번씩 에이전트에게 신호 보냄
+
     //Debug
     [SerializeField] TMP_Text timeDisplayer;
 
@@ -29,6 +32,7 @@ public class TimeController : MonoBehaviour
     void Start()
     {
         time = startAtTime;
+        agentTimer = 0f;
     }
 
     float Hours
@@ -44,6 +48,7 @@ public class TimeController : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime * timeScale;
+        agentTimer += Time.deltaTime * timeScale;
         DisplayTime();
         ControlLight();
 
@@ -51,11 +56,20 @@ public class TimeController : MonoBehaviour
         {
             NextDay();
         }
+
+        if (agentTimer >= agentInterval)
+        {
+            SignalToTimeAgents();
+            agentTimer = 0f;
+        }
     }
 
     void SignalToTimeAgents()
     {
-
+        foreach(TimeAgent agent in timeAgents)
+        {
+            agent.InvokeOnTimeTick();
+        }
     }
 
     public void Subscribe(TimeAgent agent)

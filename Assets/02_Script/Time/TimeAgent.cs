@@ -6,8 +6,9 @@ public class TimeAgent : MonoBehaviour
     public Action onTimeTick;
     TimeController timeController;
 
-    void Init()
+    protected void Init()
     {
+        timeController = transform.parent.parent.GetComponent<TimeController>();
         timeController.Subscribe(this);
     }
 
@@ -19,12 +20,12 @@ public class TimeAgent : MonoBehaviour
 
     public void InvokeOnTimeTick()
     {
+        DebugController.Log("InvokeOnTimeTick");
         onTimeTick?.Invoke();
     }
 
     void Start()
     {
-        timeController = transform.parent.parent.GetComponent<TimeController>();
         Init();
     }
 
