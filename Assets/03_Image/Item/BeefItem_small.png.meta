@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c1cf2031e53984a848c09ed2c434d894
+guid: 3182ac375b1fb472cbb068f6cc66eac2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -252239202885534404
-    second: BeefItem_0
+      213: -6874925331480114990
+    second: BeefItem_small_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,9 +40,9 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -152,13 +152,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BeefItem_0
+      name: BeefItem_small_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
+        x: 3
+        y: 3
+        width: 11
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,8 +167,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c3d749908cddf7cf0800000000000000
-      internalID: -252239202885534404
+      spriteID: 2d80bcff5db5790a0800000000000000
+      internalID: -6874925331480114990
       vertices: []
       indices: 
       edges: []
@@ -187,10 +187,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Skel_4Sides_0: -1259057120061053969
-      Skel_4Sides_1: -7980531738244730877
-      Skel_4Sides_2: 3728947539377352102
-      Skel_4Sides_3: -1892874495156675565
+      BeefItem_small_0: -6874925331480114990
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
