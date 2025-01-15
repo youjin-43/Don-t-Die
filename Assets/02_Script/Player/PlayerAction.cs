@@ -37,7 +37,14 @@ public class PlayerAction : MonoBehaviour
     {
         HandleMovement(); // 상하좌우 입력 관리 
         HandleMoveAnimation(); // 애니메이션 관리 
-        AutoInteract(); // 스페이스 바를 누르면 근처 오브젝트와 자동 상호작용 
+        AutoInteract(); // 스페이스 바를 누르면 근처 오브젝트와 자동 상호작용
+
+
+        // ㅇㅎㅈ 추가
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            UI_Craft.Instance.ToggleCraftingUI();
+        }
     }
 
     void HandleMovement()
@@ -156,8 +163,18 @@ public class PlayerAction : MonoBehaviour
 
     void GetItem()
     {
-        DebugController.Log("GetItem 함수 실행됨");
-        autoInteractTargetTransform.gameObject.SetActive(false); //TODO : 일단 비활성화 되도록 했고 이후에 인벤토리에 들어가고 기타등등 수정 
+        //DebugController.Log("GetItem 함수 실행됨");
+        //autoInteractTargetTransform.gameObject.SetActive(false); //TODO : 일단 비활성화 되도록 했고 이후에 인벤토리에 들어가고 기타등등 수정 
+
+
+        // ㅇㅎㅈ 추가
+
+        Item gotItem = autoInteractTargetTransform.GetComponent<Item>();
+
+        if (gotItem != null)
+        {
+            UI_Inventory.Instance.AddItem(gotItem);
+        }
     }
 
     // 탐색 반경 디버그용 표시

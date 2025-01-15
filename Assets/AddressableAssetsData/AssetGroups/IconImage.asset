@@ -40,7 +40,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5dcd4cf57dcf1494dbfa8827373af932
-    m_Address: Gold
+    m_Address: Assets/03_Image/Icon/Gold.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -52,7 +52,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9698ca0bff4322244b7b493a170e78e4
-    m_Address: Wood
+    m_Address: Assets/03_Image/Icon/Wood.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage

@@ -8,7 +8,7 @@ public class ItemSlot : MonoBehaviour
 
     private void Awake()
     {
-        itemImage = transform.GetChild(0).GetComponent<Image>();
+        itemImage = transform.Find("ItemImage").GetComponent<Image>();
     }
 
     void Start()

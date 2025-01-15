@@ -5,6 +5,28 @@ using VInspector;
 
 public class UI_Craft : MonoBehaviour
 {
+    private static UI_Craft instance;
+    public  static UI_Craft Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     [SerializeField] GameObject CraftListPrefab;
     [SerializeField] GameObject CraftListItemSlotPrefab;
 
@@ -21,10 +43,14 @@ public class UI_Craft : MonoBehaviour
         }
         foreach (var category in Categories)
         {
+            category.Value.Start();
+
             category.Value.transform.GetComponent<Button>().onClick.AddListener(() => TabClicked(category.Value.name));
 
             category.Value.CreateCraftList(CraftListPrefab, CraftListItemSlotPrefab);
         }
+
+        ToggleCraftingUI();
     }
 
     public void TabClicked(string tabName)
@@ -39,6 +65,18 @@ public class UI_Craft : MonoBehaviour
             {
                 tab.Value.Deactive();
             }
+        }
+    }
+
+    public void ToggleCraftingUI()
+    {
+        if(gameObject.activeSelf == true)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
         }
     }
 }

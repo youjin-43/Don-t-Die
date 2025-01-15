@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] Transform  _UIParent;
+    [SerializeField] GameObject _inventoryPrefab;
+    [SerializeField] GameObject _craftPrefab;
+
     private static UIManager instance;
     public  static UIManager Instance
     {
@@ -22,28 +26,8 @@ public class UIManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-    }
 
-    public UI_Craft ui;
-
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-        
-    }
-
-    public void OnOff()
-    {
-        if(ui.gameObject.activeSelf == false)
-        {
-            ui.gameObject.SetActive(true);
-        }
-        else
-        {
-            ui.gameObject.SetActive(false);
-        }
+        Instantiate(_inventoryPrefab, _UIParent);
+        Instantiate(_craftPrefab,     _UIParent);
     }
 }
