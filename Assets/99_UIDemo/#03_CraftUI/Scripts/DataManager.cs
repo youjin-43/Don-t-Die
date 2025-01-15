@@ -23,7 +23,6 @@ public class DataManager : MonoBehaviour
             return instance;
         }
     }
-
     // Json => Data
     public Dictionary<string, CraftingData> CraftingData { get; private set; } = new Dictionary<string, CraftingData>();
 

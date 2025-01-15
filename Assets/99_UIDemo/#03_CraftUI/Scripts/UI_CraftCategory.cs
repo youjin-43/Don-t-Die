@@ -12,7 +12,7 @@ public class UI_CraftCategory : MonoBehaviour
     private List<UI_CraftList>    _craftLists       = new List<UI_CraftList>();
     private List<CraftingData> _craftingDataList = new List<CraftingData>();
 
-    void Start()
+    public void Start()
     {
         _highLight  = transform.Find("Highlight").gameObject;
         _scrollView = transform.Find("ScrollViewArea").gameObject;
