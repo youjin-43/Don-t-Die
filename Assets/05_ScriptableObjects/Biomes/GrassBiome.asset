@@ -20,4 +20,7 @@ MonoBehaviour:
   treesIntensity: 0.8
   plants:
   - {fileID: 11400000, guid: 94d6084b8d268b74f94abcefecf468d3, type: 2}
+  - {fileID: 11400000, guid: ab19d40687711854daa3eb85ca2dd398, type: 2}
   plantsIntensity: 0.4
+  minerals: []
+  mineralsIntensity: 0

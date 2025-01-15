@@ -9,11 +9,11 @@ public class TimeController : MonoBehaviour
 
     [SerializeField] AnimationCurve[] timeCurves;
 
-    [SerializeField] float timeScale = 180f; // 하루 8분
+    [SerializeField] float timeScale = 180f; // 하루가 8분이 되려면 realtime보다 180배 빨라야 함
     [SerializeField] float startAtTime = 28800f; // 8am
     [SerializeField] Light2D globalLight;
 
-    List<TimeAgent> agents;
+    List<TimeAgent> timeAgents;
     int season;
     int days;
     float time;
@@ -23,7 +23,7 @@ public class TimeController : MonoBehaviour
 
     private void Awake()
     {
-        agents = new List<TimeAgent>();
+        timeAgents = new List<TimeAgent>();
     }
 
     void Start()
@@ -53,14 +53,19 @@ public class TimeController : MonoBehaviour
         }
     }
 
+    void SignalToTimeAgents()
+    {
+
+    }
+
     public void Subscribe(TimeAgent agent)
     {
-        agents.Add(agent);
+        timeAgents.Add(agent);
     }
 
     public void Unsubscribe(TimeAgent agent)
     {
-        agents.Remove(agent);
+        timeAgents.Remove(agent);
     }
 
     void DisplayTime()

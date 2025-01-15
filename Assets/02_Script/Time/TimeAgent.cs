@@ -4,20 +4,28 @@ using UnityEngine;
 public class TimeAgent : MonoBehaviour
 {
     public Action onTimeTick;
+    TimeController timeController;
 
     void Init()
     {
-        // timeController.Subscribe();
+        timeController.Subscribe(this);
     }
 
     private void OnDestroy()
     {
-        // timeController.Unsubscribe();
+        if (timeController != null)
+            timeController.Unsubscribe(this);
+    }
+
+    public void InvokeOnTimeTick()
+    {
+        onTimeTick?.Invoke();
     }
 
     void Start()
     {
-        
+        timeController = transform.parent.parent.GetComponent<TimeController>();
+        Init();
     }
 
     

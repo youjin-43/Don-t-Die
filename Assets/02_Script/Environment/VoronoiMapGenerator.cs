@@ -27,9 +27,7 @@ public class VoronoiMapGenerator : MonoBehaviour
     public float edgeNoiseStrength = 0.2f;
 
     BiomeMap biomeMap;
-    ObjectMap objectMap;
-
-    [SerializeField] GameObject prefab;
+    public ObjectMap objectMap;
 
     /// <summary>
     /// Voronoi Diagram의 구성 요소. 랜덤한 위치에 찍히는 점.
@@ -57,6 +55,17 @@ public class VoronoiMapGenerator : MonoBehaviour
 
             Debug.Log($"map[{tilemapPos.y}, {tilemapPos.x}] {biomeMap.GetTileBiomeByPosition(tilemapPos.x, tilemapPos.y)}");
             Debug.Log(objectMap.Map[tilemapPos.y, tilemapPos.x]);
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
+
+            if (hit && hit.transform.GetComponent<DamageableResourceNode>() != null)
+            {
+                hit.transform.GetComponent<DamageableResourceNode>().Hit(10);
+            }
         }
     }
 
@@ -112,7 +121,6 @@ public class VoronoiMapGenerator : MonoBehaviour
         }
 
         GameObject go = Instantiate(obj.data.Prefab, position, Quaternion.identity, parent);
-        go.GetOrAddComponent<ResourceNode>().SetData(obj.data);
     }
 
     /// <summary>
