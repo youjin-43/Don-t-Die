@@ -5,8 +5,9 @@ public class DamageableResourceNode : ResourceNode
     [SerializeField] int maxHealth;
     int currentHealth;
 
-    private void Init()
+    protected override void Init()
     {
+        base.Init();
         currentHealth = maxHealth;
     }
 
@@ -17,6 +18,7 @@ public class DamageableResourceNode : ResourceNode
 
     public void Hit(int damage)
     {
+        DebugController.Log($"Hit {gameObject.name}. Damage : {damage} CurrentHealth : {currentHealth}");
         currentHealth = Mathf.Max(0, currentHealth - damage);
 
         if (currentHealth == 0)

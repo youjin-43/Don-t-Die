@@ -16,6 +16,7 @@ MonoBehaviour:
     keys:
     - 99c9720ab356a0642a771bea13969a05
     - 3f5021ec6b04d45e28b9983d9e1f4953
+    - ccf7510250a50eb4fa1f3d0b02c190ef
     values:
     - goDatas_byGlobalId:
         keys:
@@ -35,3 +36,18 @@ MonoBehaviour:
         values:
         - colorIndex: 0
           iconNameOrGuid: AvatarMask On Icon
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-ccf7510250a50eb4fa1f3d0b02c190ef-2098676417-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ccf7510250a50eb4fa1f3d0b02c190ef-1052522842-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ccf7510250a50eb4fa1f3d0b02c190ef-522000098-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ccf7510250a50eb4fa1f3d0b02c190ef-78947585-0
+        values:
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+        - colorIndex: 0
+          iconNameOrGuid: Light Icon
+        - colorIndex: 0
+          iconNameOrGuid: Canvas Icon
+        - colorIndex: 2
+          iconNameOrGuid: 
