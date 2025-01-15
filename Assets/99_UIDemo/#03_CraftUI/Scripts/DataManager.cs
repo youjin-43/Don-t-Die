@@ -5,6 +5,8 @@ using System.IO;
 using System.Data;
 using System.Collections.Generic;
 using System;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public interface ILoader<Key, Value>
 {
@@ -25,6 +27,8 @@ public class DataManager : MonoBehaviour
     // Json => Data
     public Dictionary<string, CraftingData> CraftingData { get; private set; } = new Dictionary<string, CraftingData>();
 
+    public Dictionary<string, Sprite> IconImageData = new Dictionary<string, Sprite>();
+
     void Awake()
     {
         if (instance != null)
@@ -37,6 +41,10 @@ public class DataManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
+        // Addressable
+        Addressables.LoadAssetsAsync<Sprite>("IconImage", OnImageLoaded);
+
+
         // Load From Json
         CraftingData = LoadJson<CraftingDataLoader, string, CraftingData>("CraftingData").MakeDict();
     }
@@ -48,5 +56,12 @@ public class DataManager : MonoBehaviour
         string json = File.ReadAllText(fullPath);
 
         return JsonConvert.DeserializeObject<T>(json);
+    }
+
+
+    // Addressable
+    void OnImageLoaded(Sprite sprite)
+    {
+        IconImageData.Add(sprite.name, sprite);
     }
 }

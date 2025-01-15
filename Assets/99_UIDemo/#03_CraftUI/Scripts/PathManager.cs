@@ -16,8 +16,8 @@ public class PathManager
         }
     }
 
-    private string _excelFilePath = $"{Application.dataPath}/Data/";
-    private string _jsonFilePath  = $"{Application.dataPath}/Data/";
+    private string _excelFilePath = $"{Application.dataPath}/Data";
+    private string _jsonFilePath  = $"{Application.dataPath}/Data";
 
     public string ExcelFilePath(string fileName)
     {

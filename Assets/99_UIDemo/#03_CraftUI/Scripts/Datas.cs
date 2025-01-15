@@ -7,8 +7,10 @@ using UnityEngine;
 public class CraftingData
 {
     public string Name;
+    public string NameKr;
     public string Category;
     public int    NumOfMaterial;
+    public bool   NeedCraftingTable;
     public string Recipe;
 }
 
@@ -25,7 +27,7 @@ public class CraftingDataLoader : ILoader<string, CraftingData>
         {
             dict.Add(data.Name, data);
         }
-
+        
         return dict;
     }
 }
