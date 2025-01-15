@@ -1,47 +1,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using VInspector;
 
 public class UI_Craft : MonoBehaviour
 {
-    [SerializeField] Transform  ScrollViewArea;
-    [SerializeField] GameObject ScrollViewPrefab;
     [SerializeField] GameObject CraftListPrefab;
-    [SerializeField] GameObject CraftItemSlotPrefab;
+    [SerializeField] GameObject CraftListItemSlotPrefab;
 
-    private Dictionary<string, UI_CraftTab> _tabs = new Dictionary<string, UI_CraftTab>();
+    public SerializedDictionary<string, UI_CraftCategory> Categories = new SerializedDictionary<string, UI_CraftCategory>();
 
     void Start()
     {
-        foreach (Transform sibling in transform)
-        {
-            UI_CraftTab tab = sibling.GetComponent<UI_CraftTab>();
-
-            if (tab != null)
-            {
-                tab.transform.GetComponent<Button>().onClick.AddListener(() => TabClicked(tab.name));
-
-                _tabs.Add(tab.name, tab);
-            }
-        }
         foreach (var data in DataManager.Instance.CraftingData)
         {
-            if(_tabs.TryGetValue(data.Value.Category, out UI_CraftTab tab))
+            if(Categories.TryGetValue(data.Value.Category, out UI_CraftCategory category))
             {
-                tab.AddData(data.Value);
+                category.AddData(data.Value);
             }
         }
-        foreach (var tab in _tabs)
+        foreach (var category in Categories)
         {
-            tab.Value.CreateCraftList(ScrollViewArea, ScrollViewPrefab, CraftListPrefab, CraftItemSlotPrefab);
+            category.Value.transform.GetComponent<Button>().onClick.AddListener(() => TabClicked(category.Value.name));
+
+            category.Value.CreateCraftList(CraftListPrefab, CraftListItemSlotPrefab);
         }
     }
 
     public void TabClicked(string tabName)
     {
-        foreach(var tab in _tabs)
+        foreach(var tab in Categories)
         {
-            if(tab.Key == tabName)
+            if(tab.Value.name == tabName)
             {
                 tab.Value.Active();
             }
