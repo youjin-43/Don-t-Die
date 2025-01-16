@@ -56,7 +56,7 @@ public class VoronoiMapGenerator : MonoBehaviour
 
             //GenerateTreeTmp(tilemapPos);
 
-            DebugController.Log($"map[{tilemapPos.y}, {tilemapPos.x}] {biomeMap.GetTileBiome(tilemapPos.x, tilemapPos.y)}");
+            DebugController.Log($"map[{tilemapPos.y}, {tilemapPos.x}] {biomeMap.GetTileBiome(new Vector2Int(tilemapPos.x, tilemapPos.y))}");
             DebugController.Log($"{objectMap.Map[tilemapPos.y, tilemapPos.x]}");
         }
 
@@ -113,6 +113,7 @@ public class VoronoiMapGenerator : MonoBehaviour
 
         GameObject go = new GameObject("ObjectParent"); // 오브젝트들이 담길 부모 오브젝트를 만들고
         go.transform.parent = transform; // Map Generator의 자식으로 만든다.  구조 : Map Generator - ObjectParent - Objects
+        objectParent = go;
 
         foreach (ResourceObject obj in objects)
         {

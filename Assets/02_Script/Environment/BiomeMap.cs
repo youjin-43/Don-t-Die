@@ -23,9 +23,14 @@ public class BiomeMap
         map[y, x] = biome;
     }
 
-    public Biome GetTileBiome(int x, int y)
+    /// <summary>
+    /// 해당 position에 위치한 타일이 어떤 바이옴인지 반환한다
+    /// </summary>
+    /// <param name="pos">transform의 position 좌표.</param>
+    /// <returns></returns>
+    public Biome GetTileBiome(Vector2Int pos)
     {
-        return map[y, x];
+        return map[pos.y, pos.x];
     }
 
     public bool IsValidPosition(Vector2Int pos, int width, int height, BiomeType type)
