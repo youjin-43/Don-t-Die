@@ -16,7 +16,7 @@ public class DamageableResourceNode : ResourceNode
         Init();
     }
 
-    public void Hit(int damage)
+    public void Hit(int damage)     // 도구로 자원을 캐는 과정
     {
         DebugController.Log($"Hit {gameObject.name}. Damage : {damage} CurrentHealth : {currentHealth}");
         currentHealth = Mathf.Max(0, currentHealth - damage);

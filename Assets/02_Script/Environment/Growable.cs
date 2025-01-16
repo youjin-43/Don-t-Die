@@ -9,7 +9,10 @@ public class Growable : TimeAgent
     SpriteRenderer spriteRenderer;
     int growStage;
 
-    bool isAllGrown // 최대로 성장했나?
+    /// <summary>
+    /// 최대로 성장했는가
+    /// </summary>
+    bool isAllGrown 
     {
         get {
             if (data == null) { return false; }

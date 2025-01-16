@@ -19,9 +19,9 @@ public class TimeController : MonoBehaviour
     float time;
 
     float growTimer;
-    float growthInterval = 60f; // 게임 시간 기준 1분
+    float growthInterval = 60f; // 게임 시간 기준으로 1분
 
-    //Debug
+    // Debug용
     [SerializeField] TMP_Text timeDisplayer;
 
     private void Awake()
@@ -64,6 +64,9 @@ public class TimeController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 시간의 영향을 받는 agent들에게 신호를 보냄
+    /// </summary>
     void SignalToTimeAgents()
     {
         foreach (TimeAgent agent in timeAgents)
@@ -72,12 +75,20 @@ public class TimeController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 이 함수가 호출되면 agent가 시간의 영향을 받게 된다.
+    /// </summary>
+    /// <param name="agent"></param>
     public void Subscribe(TimeAgent agent)
     {
         DebugController.Log($"{agent.name} subscribes time controller.");
         timeAgents.Add(agent);
     }
 
+    /// <summary>
+    /// 이 함수가 호출되면 agent가 시간의 영향을 받지 않게 된다.
+    /// </summary>
+    /// <param name="agent"></param>
     public void Unsubscribe(TimeAgent agent)
     {
         timeAgents.Remove(agent);
@@ -90,6 +101,9 @@ public class TimeController : MonoBehaviour
         timeDisplayer.text = $"{h.ToString("00")} : {m.ToString("00")}";
     }
 
+    /// <summary>
+    /// 시간과 계절에 맞춰서 광원의 밝기를 조절한다.
+    /// </summary>
     void ControlLight()
     {
         float v = timeCurves[season].Evaluate(Hours);

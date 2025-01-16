@@ -56,7 +56,7 @@ public class VoronoiMapGenerator : MonoBehaviour
 
             //GenerateTreeTmp(tilemapPos);
 
-            DebugController.Log($"map[{tilemapPos.y}, {tilemapPos.x}] {biomeMap.GetTileBiomeByPosition(tilemapPos.x, tilemapPos.y)}");
+            DebugController.Log($"map[{tilemapPos.y}, {tilemapPos.x}] {biomeMap.GetTileBiome(tilemapPos.x, tilemapPos.y)}");
             DebugController.Log($"{objectMap.Map[tilemapPos.y, tilemapPos.x]}");
         }
 
