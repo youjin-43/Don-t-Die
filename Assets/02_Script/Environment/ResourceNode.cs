@@ -6,7 +6,7 @@ public class ResourceNode : MonoBehaviour
     [SerializeField] VoronoiMapGenerator mapGenerator;
     [SerializeField] NatureResourceData natureResourceData;
 
-    public void Init()
+    protected virtual void Init()
     {
         // 임시임. 나중에 GameManager에서 받아오는 식으로 수정.
         mapGenerator = transform.parent.parent.GetComponent<VoronoiMapGenerator>();

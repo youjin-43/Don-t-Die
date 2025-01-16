@@ -18,6 +18,9 @@ public class TimeController : MonoBehaviour
     int days;
     float time;
 
+    float growTimer;
+    float growthInterval = 60f; // 게임 시간 기준 1분
+
     //Debug
     [SerializeField] TMP_Text timeDisplayer;
 
@@ -28,6 +31,7 @@ public class TimeController : MonoBehaviour
 
     void Start()
     {
+        growTimer = 0;
         time = startAtTime;
     }
 
@@ -40,10 +44,11 @@ public class TimeController : MonoBehaviour
     {
         get { return time % 3600f / 60f; }
     }
-    
+
     void Update()
     {
         time += Time.deltaTime * timeScale;
+        growTimer += Time.deltaTime * timeScale;
         DisplayTime();
         ControlLight();
 
@@ -51,15 +56,25 @@ public class TimeController : MonoBehaviour
         {
             NextDay();
         }
+
+        if (growTimer >= growthInterval)
+        {
+            SignalToTimeAgents();
+            growTimer = 0;
+        }
     }
 
     void SignalToTimeAgents()
     {
-
+        foreach (TimeAgent agent in timeAgents)
+        {
+            agent.UpdateTimer();
+        }
     }
 
     public void Subscribe(TimeAgent agent)
     {
+        DebugController.Log($"{agent.name} subscribes time controller.");
         timeAgents.Add(agent);
     }
 
@@ -73,7 +88,7 @@ public class TimeController : MonoBehaviour
         int h = (int)Hours;
         int m = (int)Minutes;
         timeDisplayer.text = $"{h.ToString("00")} : {m.ToString("00")}";
-    } 
+    }
 
     void ControlLight()
     {
