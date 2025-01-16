@@ -22,7 +22,7 @@ public class UI_CraftList : MonoBehaviour
 
             if(j == count - 1)
             {
-                slot.SetType(UI_CraftListItemSlot.Type.ItemSlot, "Forbid");
+                slot.SetType(UI_CraftListItemSlot.Type.ItemSlot, _data.Name);
             }
             else if (j == count - 2)
             {

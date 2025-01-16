@@ -29,7 +29,15 @@ public class UI_CraftListItemSlot : MonoBehaviour
     {
         if(DataManager.Instance.IconImageData.Count > 0 )
         {
-            _image.sprite = DataManager.Instance.IconImageData[_imageName];
+            if(DataManager.Instance.IconImageData.TryGetValue(_imageName, out Sprite sprite))
+            {
+                _image.sprite = sprite;
+            }
+            else
+            {
+                _image.sprite = DataManager.Instance.IconImageData["Forbid"];
+            }
+            
         }
         if (_type != Type.ItemSlot)
         {
