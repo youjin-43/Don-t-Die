@@ -23,8 +23,8 @@ public class Growable : TimeAgent
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        // 임시!!!!!! 그리고 맵 Clear 된 상태로 실행해야 에러 안 남
-        transform.parent.parent.GetComponent<TimeController>().Subscribe(this);
+        // 맵 Clear 된 상태로 실행해야 에러 안 남
+        EnvironmentManager.Instance.GetComponent<TimeController>().Subscribe(this);
     }
 
     private void Update()

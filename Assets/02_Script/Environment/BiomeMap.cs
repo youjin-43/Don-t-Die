@@ -1,24 +1,25 @@
 using System;
 using UnityEngine;
 
+[Serializable]
 public class BiomeMap
 {
     public int width;
     public int height;
 
-    Biome[,] map;
+    public BiomeType[,] map;
 
-    public Biome[,] Map {  get { return map; } }
+    public BiomeType[,] Map {  get { return map; } }
 
     public BiomeMap(int width, int height)
     {
         this.width = width;
         this.height = height;
 
-        map = new Biome[height, width];
+        map = new BiomeType[height, width];
     }
 
-    public void MarkTile(int x, int y, Biome biome)
+    public void MarkTile(int x, int y, BiomeType biome)
     {
         map[y, x] = biome;
     }
@@ -28,7 +29,7 @@ public class BiomeMap
     /// </summary>
     /// <param name="pos">transform의 position 좌표.</param>
     /// <returns></returns>
-    public Biome GetTileBiome(Vector2Int pos)
+    public BiomeType GetTileBiome(Vector2Int pos)
     {
         return map[pos.y, pos.x];
     }
@@ -39,7 +40,7 @@ public class BiomeMap
         {
             for (int j = pos.x - width + 1; j <= pos.x; j++)
             {
-                if (map[i, j].BiomeType != type) return false;
+                if (map[i, j] != type) return false;
             }
         }
         return true;

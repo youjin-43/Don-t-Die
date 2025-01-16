@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -11,6 +12,7 @@ public enum BiomeType
     Water
 }
 
+[Serializable]
 [CreateAssetMenu(menuName = "Environment/Map/Biome")]
 public class Biome : ScriptableObject
 {

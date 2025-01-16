@@ -1,8 +1,17 @@
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using Unity.VisualScripting;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+
+[Serializable]
+public class MapData
+{
+    public BiomeMap biomeMap;
+    public ObjectMap objectMap;
+    public List<ResourceObject> resourceObjects;
+}
 
 public class VoronoiMapGenerator : MonoBehaviour
 {
@@ -40,9 +49,11 @@ public class VoronoiMapGenerator : MonoBehaviour
         public Biome biome;
     }
 
-    void Start()
+    private void Awake()
     {
-        Generate();
+        foreach (Biome biome in landBiomes)
+            EnvironmentManager.Instance.biomeDatas.Add(biome.BiomeType, biome);
+        EnvironmentManager.Instance.biomeDatas.Add(waterBiome.BiomeType, waterBiome);
     }
 
     private void Update()
@@ -72,6 +83,16 @@ public class VoronoiMapGenerator : MonoBehaviour
                 hit.transform.GetComponent<DamageableResourceNode>().Hit(10);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            SaveData();
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadData();
+        }
     }
 
     /// <summary>
@@ -89,6 +110,18 @@ public class VoronoiMapGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 데이터를 바탕으로 맵을 생성하는 함수
+    /// </summary>
+    /// <param name="biomeMap"></param>
+    /// <param name="objectMap"></param>
+    /// <param name="objects"></param>
+    public void GenerateFromData(BiomeMap biomeMap, ObjectMap objectMap, List<ResourceObject> objects)
+    {
+        Clear();
+        GenerateVoronoiMap(biomeMap);
+    }
+
     public void Generate()
     {
         // 맵을 생성하기 전 모든 타일을 삭제한다.
@@ -103,12 +136,12 @@ public class VoronoiMapGenerator : MonoBehaviour
     void GenerateObjects()
     {
         if (objectParent != null) // Generate하기 전에 Clear 과정이 있지만 안전을 위해
-        { 
+        {
             DestroyImmediate(objectParent.gameObject);
         }
 
         ObjectGenerator objectGenerator = new ObjectGenerator(biomeMap, mapWidth, mapHeight); // biome 정보에 맞춰서 오브젝트를 생성하기 때문에 파라미터로 건네준다.
-        var objects = objectGenerator.Generate();
+        List<ResourceObject> objects = objectGenerator.Generate();
         objectMap = objectGenerator.objectMap;
 
         GameObject go = new GameObject("ObjectParent"); // 오브젝트들이 담길 부모 오브젝트를 만들고
@@ -119,6 +152,9 @@ public class VoronoiMapGenerator : MonoBehaviour
         {
             InstantiateObject(obj, go.transform);
         }
+
+        EnvironmentManager.Instance.objectMap = objectMap;
+        EnvironmentManager.Instance.resourceObjects = objects;
     }
 
     /// <summary>
@@ -193,15 +229,22 @@ public class VoronoiMapGenerator : MonoBehaviour
                 if (distanceFromCenter > adjustedThreshold)
                 {
                     waterTilemap.SetTile(new Vector3Int(x, y, 0), waterBiome.Tile);  // 바다
-                    biomeMap.MarkTile(x, y, waterBiome);
+                    biomeMap.MarkTile(x, y, waterBiome.BiomeType);
                 }
                 else
                 {
                     landTilemap.SetTile(new Vector3Int(x, y, 0), selectedBiome.Tile);  // 육지
-                    biomeMap.MarkTile(x, y, selectedBiome);
+                    biomeMap.MarkTile(x, y, selectedBiome.BiomeType);
                 }
             }
         }
+
+        EnvironmentManager.Instance.biomeMap = biomeMap;
+    }
+
+    void GenerateVoronoiMap(BiomeMap biomeMap)
+    {
+        
     }
 
     /// <summary>
@@ -213,10 +256,41 @@ public class VoronoiMapGenerator : MonoBehaviour
         List<SeedPoint> seeds = new List<SeedPoint>();
         for (int i = 0; i < seedPointCount; i++)
         {
-            Vector2 pos = new Vector2(Random.Range(0, mapWidth), Random.Range(0, mapHeight));
-            int randIdx = Random.Range(0, landBiomes.Count);
+            Vector2 pos = new Vector2(UnityEngine.Random.Range(0, mapWidth), UnityEngine.Random.Range(0, mapHeight));
+            int randIdx = UnityEngine.Random.Range(0, landBiomes.Count);
             seeds.Add(new SeedPoint { position = pos, biome = landBiomes[randIdx] });
         }
         return seeds;
+    }
+
+    public void SaveData()
+    {
+        MapData mapData = new MapData
+        {
+            biomeMap = EnvironmentManager.Instance.biomeMap,
+            objectMap = EnvironmentManager.Instance.objectMap,
+            resourceObjects = EnvironmentManager.Instance.resourceObjects
+        };
+
+        string json = JsonUtility.ToJson(mapData, true);
+
+        File.WriteAllText(Application.persistentDataPath + "/mapData.json", json);
+    }
+
+    void LoadData()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Open(Application.persistentDataPath + "/mapData.dat", FileMode.Open);
+
+        if (file != null && file.Length > 0)
+        {
+            MapData mapData = (MapData)bf.Deserialize(file);
+
+            EnvironmentManager.Instance.biomeMap = mapData.biomeMap;
+            EnvironmentManager.Instance.objectMap = mapData.objectMap;
+            EnvironmentManager.Instance.resourceObjects = mapData.resourceObjects;
+        }
+
+        GenerateFromData(EnvironmentManager.Instance.biomeMap, EnvironmentManager.Instance.objectMap, EnvironmentManager.Instance.resourceObjects);
     }
 }

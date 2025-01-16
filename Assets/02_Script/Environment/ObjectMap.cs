@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 public enum ObjectType
 {
@@ -8,6 +9,7 @@ public enum ObjectType
     Mineral
 }
 
+[Serializable]
 public class ObjectMap
 {
     public int width;

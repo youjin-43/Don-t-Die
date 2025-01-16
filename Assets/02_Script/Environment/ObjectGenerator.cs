@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
+[Serializable]
 public struct ResourceObject
 {
     public Vector2Int position;
@@ -36,16 +39,16 @@ public class ObjectGenerator
         {
             for (int j = 0; j < objectMap.width; j++)
             {
-                Biome currentBiome = biomeMap.Map[i, j];
+                EnvironmentManager.Instance.biomeDatas.TryGetValue(biomeMap.Map[i, j], out Biome currentBiome);
 
-                if (currentBiome.Trees.Count == 0)
+                if (currentBiome == null || currentBiome.Trees.Count == 0)
                 {
                     continue;
                 }
 
-                if (Random.Range(0, 10000) / 100f < currentBiome.TreesIntensity)
+                if (UnityEngine.Random.Range(0, 10000) / 100f < currentBiome.TreesIntensity)
                 {
-                    int randIdx = Random.Range(0, currentBiome.Trees.Count);
+                    int randIdx = UnityEngine.Random.Range(0, currentBiome.Trees.Count);
                     NatureResourceData tree = currentBiome.Trees[randIdx];
 
                     if (biomeMap.IsValidPosition(new Vector2Int(j, i), tree.Width, tree.Height, tree.BiomeType)
@@ -69,16 +72,16 @@ public class ObjectGenerator
         {
             for (int j = 0; j < objectMap.width; j++)
             {
-                Biome currentBiome = biomeMap.Map[i, j];
+                EnvironmentManager.Instance.biomeDatas.TryGetValue(biomeMap.Map[i, j], out Biome currentBiome);
 
-                if (currentBiome.Plants.Count == 0)
+                if (currentBiome == null || currentBiome.Plants.Count == 0)
                 {
                     continue;
                 }
 
-                if (Random.Range(0, 10000) / 100f < currentBiome.PlantsIntensity)
+                if (UnityEngine.Random.Range(0, 10000) / 100f < currentBiome.PlantsIntensity)
                 {
-                    int randIdx = Random.Range(0, currentBiome.Plants.Count);
+                    int randIdx = UnityEngine.Random.Range(0, currentBiome.Plants.Count);
                     NatureResourceData plant = currentBiome.Plants[randIdx];
 
                     if (biomeMap.IsValidPosition(new Vector2Int(j, i), plant.Width, plant.Height, plant.BiomeType)
@@ -102,16 +105,16 @@ public class ObjectGenerator
         {
             for (int j = 0; j < objectMap.width; j++)
             {
-                Biome currentBiome = biomeMap.Map[i, j];
+                EnvironmentManager.Instance.biomeDatas.TryGetValue(biomeMap.Map[i, j], out Biome currentBiome);
 
-                if (currentBiome.Minerals.Count == 0)
+                if (currentBiome == null || currentBiome.Minerals.Count == 0)
                 {
                     continue;
                 }
 
-                if (Random.Range(0, 10000) / 100f < currentBiome.MineralsIntensity)
+                if (UnityEngine.Random.Range(0, 10000) / 100f < currentBiome.MineralsIntensity)
                 {
-                    int randIdx = Random.Range(0, currentBiome.Minerals.Count);
+                    int randIdx = UnityEngine.Random.Range(0, currentBiome.Minerals.Count);
                     NatureResourceData mineral = currentBiome.Minerals[randIdx];
 
                     if (biomeMap.IsValidPosition(new Vector2Int(j, i), mineral.Width, mineral.Height, mineral.BiomeType)

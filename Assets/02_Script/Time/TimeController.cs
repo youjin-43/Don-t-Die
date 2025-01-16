@@ -3,6 +3,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+public enum Season
+{
+    Fall,
+    Winter
+}
+
 public class TimeController : MonoBehaviour
 {
     const float secondsInDay = 86400f;
@@ -14,12 +20,15 @@ public class TimeController : MonoBehaviour
     [SerializeField] Light2D globalLight;
 
     List<TimeAgent> timeAgents;
-    int season;
+
+    Season currentSeason;
     int days;
     float time;
 
     float growTimer;
     float growthInterval = 60f; // 게임 시간 기준으로 1분
+
+    [SerializeField] List<int> daysPerSeason;
 
     // Debug용
     [SerializeField] TMP_Text timeDisplayer;
@@ -31,6 +40,7 @@ public class TimeController : MonoBehaviour
 
     void Start()
     {
+        currentSeason = Season.Fall;
         growTimer = 0;
         time = startAtTime;
     }
@@ -106,7 +116,7 @@ public class TimeController : MonoBehaviour
     /// </summary>
     void ControlLight()
     {
-        float v = timeCurves[season].Evaluate(Hours);
+        float v = timeCurves[(int)currentSeason].Evaluate(Hours);
         globalLight.intensity = v;
     }
 
@@ -114,5 +124,16 @@ public class TimeController : MonoBehaviour
     {
         time = 0;
         days++;
+
+        if (days >= daysPerSeason[(int)currentSeason])
+        {
+            NextSeason();
+        }
+    }
+
+    void NextSeason()
+    {
+        days = 0;
+        currentSeason = (Season)((int)((currentSeason + 1)) % System.Enum.GetValues(typeof(Season)).Length);
     }
 }
