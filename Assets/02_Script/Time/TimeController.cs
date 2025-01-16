@@ -9,7 +9,7 @@ public class TimeController : MonoBehaviour
 
     [SerializeField] AnimationCurve[] timeCurves;
 
-    [SerializeField] float timeScale = 180f; // ÇÏ·ç°¡ 8ºĞÀÌ µÇ·Á¸é realtimeº¸´Ù 180¹è »¡¶ó¾ß ÇÔ
+    [SerializeField] float timeScale = 180f; // í•˜ë£¨ê°€ 8ë¶„ì´ ë˜ë ¤ë©´ realtimeë³´ë‹¤ 180ë°° ë¹¨ë¼ì•¼ í•¨
     [SerializeField] float startAtTime = 28800f; // 8am
     [SerializeField] Light2D globalLight;
 
@@ -19,7 +19,7 @@ public class TimeController : MonoBehaviour
     float time;
 
     float growTimer;
-    float growthInterval = 60f; // °ÔÀÓ ½Ã°£ ±âÁØ 1ºĞ
+    float growthInterval = 60f; // ê²Œì„ ì‹œê°„ ê¸°ì¤€ 1ë¶„
 
     //Debug
     [SerializeField] TMP_Text timeDisplayer;

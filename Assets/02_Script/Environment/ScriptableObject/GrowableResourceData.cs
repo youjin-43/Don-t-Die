@@ -7,7 +7,7 @@ public class GrowableResourceData : NatureResourceData
     [SerializeField] int timeToAllGrown;
     [SerializeField] List<Sprite> sprites;
     [SerializeField] List<int> growthStageTime;
-    // Ãëµæ °¡´ÉÇÑ ¾ÆÀÌÅÛµµ Ãß°¡
+    // ì·¨ë“ ê°€ëŠ¥í•œ ì•„ì´í…œë„ ì¶”ê°€
 
     public int TimeToAllGrown { get { return timeToAllGrown; } }
     public List<Sprite> Sprites { get {  return sprites; } }

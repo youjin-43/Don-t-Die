@@ -8,7 +8,7 @@ public class ResourceNode : MonoBehaviour
 
     protected virtual void Init()
     {
-        // ÀÓ½ÃÀÓ. ³ªÁß¿¡ GameManager¿¡¼­ ¹Ş¾Æ¿À´Â ½ÄÀ¸·Î ¼öÁ¤.
+        // ì„ì‹œì„. ë‚˜ì¤‘ì— GameManagerì—ì„œ ë°›ì•„ì˜¤ëŠ” ì‹ìœ¼ë¡œ ìˆ˜ì •.
         mapGenerator = transform.parent.parent.GetComponent<VoronoiMapGenerator>();
     }
 

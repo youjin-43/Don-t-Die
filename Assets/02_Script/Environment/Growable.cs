@@ -9,7 +9,7 @@ public class Growable : TimeAgent
     SpriteRenderer spriteRenderer;
     int growStage;
 
-    bool isAllGrown // ÃÖ´ë·Î ¼ºÀåÇß³ª?
+    bool isAllGrown // ìµœëŒ€ë¡œ ì„±ì¥í–ˆë‚˜?
     {
         get {
             if (data == null) { return false; }
@@ -20,7 +20,7 @@ public class Growable : TimeAgent
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        // ÀÓ½Ã!!!!!! ±×¸®°í ¸Ê Clear µÈ »óÅÂ·Î ½ÇÇàÇØ¾ß ¿¡·¯ ¾È ³²
+        // ì„ì‹œ!!!!!! ê·¸ë¦¬ê³  ë§µ Clear ëœ ìƒíƒœë¡œ ì‹¤í–‰í•´ì•¼ ì—ëŸ¬ ì•ˆ ë‚¨
         transform.parent.parent.GetComponent<TimeController>().Subscribe(this);
     }
 
