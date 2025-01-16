@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -268,11 +269,11 @@ public class VoronoiMapGenerator : MonoBehaviour
         MapData mapData = new MapData
         {
             biomeMap = EnvironmentManager.Instance.biomeMap,
-            objectMap = EnvironmentManager.Instance.objectMap,
-            resourceObjects = EnvironmentManager.Instance.resourceObjects
+            //objectMap = EnvironmentManager.Instance.objectMap,
+            //resourceObjects = EnvironmentManager.Instance.resourceObjects
         };
 
-        string json = JsonUtility.ToJson(mapData, true);
+        string json = JsonConvert.SerializeObject(mapData);
 
         File.WriteAllText(Application.persistentDataPath + "/mapData.json", json);
     }

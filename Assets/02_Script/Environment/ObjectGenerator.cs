@@ -39,7 +39,7 @@ public class ObjectGenerator
         {
             for (int j = 0; j < objectMap.width; j++)
             {
-                EnvironmentManager.Instance.biomeDatas.TryGetValue(biomeMap.Map[i, j], out Biome currentBiome);
+                EnvironmentManager.Instance.biomeDatas.TryGetValue(biomeMap.map[i][j], out Biome currentBiome);
 
                 if (currentBiome == null || currentBiome.Trees.Count == 0)
                 {
@@ -72,7 +72,7 @@ public class ObjectGenerator
         {
             for (int j = 0; j < objectMap.width; j++)
             {
-                EnvironmentManager.Instance.biomeDatas.TryGetValue(biomeMap.Map[i, j], out Biome currentBiome);
+                EnvironmentManager.Instance.biomeDatas.TryGetValue(biomeMap.map[i][j], out Biome currentBiome);
 
                 if (currentBiome == null || currentBiome.Plants.Count == 0)
                 {
@@ -105,7 +105,7 @@ public class ObjectGenerator
         {
             for (int j = 0; j < objectMap.width; j++)
             {
-                EnvironmentManager.Instance.biomeDatas.TryGetValue(biomeMap.Map[i, j], out Biome currentBiome);
+                EnvironmentManager.Instance.biomeDatas.TryGetValue(biomeMap.map[i][j], out Biome currentBiome);
 
                 if (currentBiome == null || currentBiome.Minerals.Count == 0)
                 {
