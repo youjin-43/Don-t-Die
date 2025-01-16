@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c670d8d0d7bc2e14b94770afbbb6e46d
+guid: c9db6d5c67795d34a8174d27f9f20a1e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5463662778720006924
-    second: Shade_0
+      213: 7251055368854178593
+    second: GoldBottleMiddle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,12 +37,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shade_0
+      name: GoldBottleMiddle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 10
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c03312a7954d2db40800000000000000
-      internalID: 5463662778720006924
+      spriteID: 12b0e33b07ce0a460800000000000000
+      internalID: 7251055368854178593
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Shade_0: 5463662778720006924
+      GoldBottleMiddle_0: 7251055368854178593
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
