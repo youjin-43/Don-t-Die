@@ -29,6 +29,8 @@ public class VoronoiMapGenerator : MonoBehaviour
     BiomeMap biomeMap;
     public ObjectMap objectMap;
 
+    GameObject objectParent;
+
     /// <summary>
     /// Voronoi Diagram의 구성 요소. 랜덤한 위치에 찍히는 점.
     /// </summary>
@@ -45,6 +47,7 @@ public class VoronoiMapGenerator : MonoBehaviour
 
     private void Update()
     {
+        // --- 타일이 바이옴 정보와 오브젝트 정보를 잘 가지고 있는지 디버깅 하는 부분!! -- 나중에 지우셈
         if (Input.GetMouseButtonDown(0))
         {
             Vector3Int tilemapPos = landTilemap.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -56,6 +59,8 @@ public class VoronoiMapGenerator : MonoBehaviour
             DebugController.Log($"map[{tilemapPos.y}, {tilemapPos.x}] {biomeMap.GetTileBiomeByPosition(tilemapPos.x, tilemapPos.y)}");
             DebugController.Log($"{objectMap.Map[tilemapPos.y, tilemapPos.x]}");
         }
+
+        // --- Damageable Resource 잘 작동하는지 체크하는 부분. 지금은 Grass Tree 2 종류만 체크
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -77,8 +82,11 @@ public class VoronoiMapGenerator : MonoBehaviour
         landTilemap.ClearAllTiles();
         waterTilemap.ClearAllTiles();
 
-        if (transform.childCount > 1)
-            DestroyImmediate(transform.GetChild(1).gameObject);
+        if (objectParent != null)
+        {
+            DestroyImmediate(objectParent.gameObject);
+            objectParent = null;
+        }
     }
 
     public void Generate()
@@ -89,21 +97,32 @@ public class VoronoiMapGenerator : MonoBehaviour
         GenerateObjects();
     }
 
+    /// <summary>
+    /// 바이옴에 맞는 Tree, Plant, Mineral을 생성한다.
+    /// </summary>
     void GenerateObjects()
     {
-        ObjectGenerator objectGenerator = new ObjectGenerator(biomeMap, mapWidth, mapHeight);
+        if (objectParent != null) // Generate하기 전에 Clear 과정이 있지만 안전을 위해
+        { 
+            DestroyImmediate(objectParent.gameObject);
+        }
+
+        ObjectGenerator objectGenerator = new ObjectGenerator(biomeMap, mapWidth, mapHeight); // biome 정보에 맞춰서 오브젝트를 생성하기 때문에 파라미터로 건네준다.
         var objects = objectGenerator.Generate();
         objectMap = objectGenerator.objectMap;
 
-        GameObject go = new GameObject("ObjectParent");
-        go.transform.parent = transform;
+        GameObject go = new GameObject("ObjectParent"); // 오브젝트들이 담길 부모 오브젝트를 만들고
+        go.transform.parent = transform; // Map Generator의 자식으로 만든다.  구조 : Map Generator - ObjectParent - Objects
 
-        foreach (var obj in objects)
+        foreach (ResourceObject obj in objects)
         {
             InstantiateObject(obj, go.transform);
         }
     }
 
+    /// <summary>
+    /// 좌표에 맞춰 오브젝트를 생성한다.
+    /// </summary>
     void InstantiateObject(ResourceObject obj, Transform parent)
     {
         Vector3 cellCenterPosition = landTilemap.GetCellCenterWorld(new Vector3Int(obj.position.x, obj.position.y));
