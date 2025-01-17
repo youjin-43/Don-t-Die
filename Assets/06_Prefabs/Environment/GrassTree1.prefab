@@ -102,7 +102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   natureResourceData: {fileID: 11400000, guid: db63b823c9e25f344b11c07996c60784, type: 2}
-  maxHealth: 100
 --- !u!61 &7470784838888648028
 BoxCollider2D:
   m_ObjectHideFlags: 0

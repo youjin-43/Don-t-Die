@@ -2,13 +2,22 @@ using UnityEngine;
 
 public class DamageableResourceNode : ResourceNode
 {
-    [SerializeField] int maxHealth;
+    int maxHealth;
     int currentHealth;
+    public int CurrentHealth
+    {
+        get { return currentHealth; }
+        set { currentHealth = value; }
+    }
 
     protected override void Init()
     {
         base.Init();
-        currentHealth = maxHealth;
+        maxHealth = natureResourceData.MaxHealth;
+        if (currentHealth == 0)
+        {
+            currentHealth = maxHealth;
+        }
     }
 
     private void Start()

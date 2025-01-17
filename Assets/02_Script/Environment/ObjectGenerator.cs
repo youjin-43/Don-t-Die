@@ -4,15 +4,17 @@ using System.Linq;
 using UnityEngine;
 
 [Serializable]
-public struct ResourceObject
+public class ResourceObject
 {
     public Vector2Int position;
     public string dataName;
     public bool isDamageable;
     public bool isGrowable;
-    public float currentHealth;
+    public int currentHealth;
     public int growthStage;
-    public int timer; 
+    public int timer;
+
+    [System.NonSerialized] public GameObject gameObject;    // GameObject는 직렬화 못 함. 런타임에서 어떤 GameObject와 연결되어 있는지 캐싱
 }
 
 public class ObjectGenerator
@@ -64,8 +66,6 @@ public class ObjectGenerator
                         {
                             position = new Vector2Int(j, i),
                             dataName = tree.name,
-                            isDamageable = true,
-                            isGrowable = true
                         });
                     }
                 }
@@ -99,7 +99,6 @@ public class ObjectGenerator
                         {
                             position = new Vector2Int(j, i),
                             dataName = plant.name,
-                            isGrowable = true
                         });
                     }
                 }
@@ -133,7 +132,6 @@ public class ObjectGenerator
                         {
                             position = new Vector2Int(j, i),
                             dataName = mineral.name,
-                            isDamageable = true
                         });
                     }
                 }

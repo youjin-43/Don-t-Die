@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,8 +9,8 @@ public class EnvironmentManager : MonoBehaviour
 {
     public BiomeMap biomeMap;
     public ObjectMap objectMap;
-    public List<ResourceObject> resourceObjects;
     VoronoiMapGenerator voronoiMapGenerator;
+    public Dictionary<Vector3, ResourceObject> natureResources = new Dictionary<Vector3, ResourceObject>();
 
     public VoronoiMapGenerator VoronoiMapGenerator
     {
@@ -66,23 +67,37 @@ public class EnvironmentManager : MonoBehaviour
         {
             if (LoadData())
             {
-                VoronoiMapGenerator.GenerateFromData(biomeMap, null, null);
+                VoronoiMapGenerator.GenerateFromData(biomeMap, objectMap, natureResources.Values.ToList());
             } 
         }
     }
 
     public void SaveData()
     {
+        foreach (ResourceObject obj in natureResources.Values)
+        {
+            if (obj.isGrowable)
+            {
+                obj.growthStage = obj.gameObject.GetComponent<Growable>().GrowStage;
+                obj.timer = obj.gameObject.GetComponent<Growable>().Timer;
+            }
+            if (obj.isDamageable)
+            {
+                obj.currentHealth = obj.gameObject.GetComponent<DamageableResourceNode>().CurrentHealth;
+            }
+        }
+
         MapData mapData = new MapData
         {
             biomeMap = biomeMap,
-            //objectMap = objectMap,
-            //resourceObjects = resourceObjects
+            objectMap = objectMap,
+            resourceObjects = natureResources.Values.ToList()
         };
 
         string json = JsonConvert.SerializeObject(mapData);
 
         File.WriteAllText(Application.persistentDataPath + "/mapData.json", json);
+        DebugController.Log($"Save Map Data at {Application.persistentDataPath}");
     }
 
     bool LoadData()
@@ -95,12 +110,25 @@ public class EnvironmentManager : MonoBehaviour
 
             MapData mapData = JsonConvert.DeserializeObject<MapData>(json);
 
+            List<ResourceObject> resourceObjects = new List<ResourceObject>();
+
             if (mapData != null)
             {
                 biomeMap = mapData.biomeMap;
+                objectMap = mapData.objectMap;
+                resourceObjects = mapData.resourceObjects;
+
+                foreach(ResourceObject resourceObject in resourceObjects)
+                {
+                    Vector3 position = new Vector3(resourceObject.position.x, resourceObject.position.y, 0);
+                    natureResources.Add(position, resourceObject);
+                }
+
                 return true;
             }
         }
+
+        DebugController.Log($"Load Map Failed.");
         return false;
     }
 }

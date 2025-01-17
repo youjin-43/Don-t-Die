@@ -9,6 +9,12 @@ public class Growable : TimeAgent
     SpriteRenderer spriteRenderer;
     int growStage;
 
+    public int GrowStage
+    {
+        get { return growStage; }
+        set { growStage = Mathf.Clamp(value, 0, data.GrowthStageTime.Count - 1); }
+    }
+
     /// <summary>
     /// 최대로 성장했는가
     /// </summary>
@@ -25,6 +31,7 @@ public class Growable : TimeAgent
         spriteRenderer = GetComponent<SpriteRenderer>();
         // 맵 Clear 된 상태로 실행해야 에러 안 남
         EnvironmentManager.Instance.GetComponent<TimeController>().Subscribe(this);
+        UpdateSprite();
     }
 
     // 게임뷰에서 씬뷰로 넘어올 때 에러 방지
@@ -52,7 +59,12 @@ public class Growable : TimeAgent
         if (timer > data.GrowthStageTime[growStage])
         {
             growStage++;
-            spriteRenderer.sprite = data.Sprites[growStage];
+            UpdateSprite();
         }
+    }
+
+    void UpdateSprite()
+    {
+        spriteRenderer.sprite = data.Sprites[growStage];
     }
 }

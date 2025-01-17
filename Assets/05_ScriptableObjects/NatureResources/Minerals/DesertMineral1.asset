@@ -17,4 +17,4 @@ MonoBehaviour:
   objectType: 4
   width: 2
   height: 2
-  dropItems: []
+  maxHealth: 100
