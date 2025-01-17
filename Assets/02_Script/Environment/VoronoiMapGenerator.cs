@@ -79,16 +79,6 @@ public class VoronoiMapGenerator : MonoBehaviour
                 hit.transform.GetComponent<DamageableResourceNode>().Hit(10);
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SaveData();
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            LoadData();
-        }
     }
 
     /// <summary>
@@ -240,7 +230,21 @@ public class VoronoiMapGenerator : MonoBehaviour
 
     void GenerateVoronoiMap(BiomeMap biomeMap)
     {
-        
+        for (int x = 0; x<biomeMap.width; x++)
+        {
+            for (int y=0;y<biomeMap.height; y++)
+            {
+                TileBase tile = DataManager.Instance.BiomeDatas[biomeMap.map[y][x].ToString()].Tile;
+                if (biomeMap.map[y][x] == BiomeType.WaterBiome)
+                {
+                    waterTilemap.SetTile(new Vector3Int(x,y,0), tile);
+                }
+                else
+                {
+                    landTilemap.SetTile(new Vector3Int(x, y, 0), tile);
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -257,36 +261,5 @@ public class VoronoiMapGenerator : MonoBehaviour
             seeds.Add(new SeedPoint { position = pos, biome = landBiomes[randIdx] });
         }
         return seeds;
-    }
-
-    public void SaveData()
-    {
-        MapData mapData = new MapData
-        {
-            biomeMap = EnvironmentManager.Instance.biomeMap,
-            //objectMap = EnvironmentManager.Instance.objectMap,
-            //resourceObjects = EnvironmentManager.Instance.resourceObjects
-        };
-
-        string json = JsonConvert.SerializeObject(mapData);
-
-        File.WriteAllText(Application.persistentDataPath + "/mapData.json", json);
-    }
-
-    void LoadData()
-    {
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Open(Application.persistentDataPath + "/mapData.dat", FileMode.Open);
-
-        if (file != null && file.Length > 0)
-        {
-            MapData mapData = (MapData)bf.Deserialize(file);
-
-            EnvironmentManager.Instance.biomeMap = mapData.biomeMap;
-            EnvironmentManager.Instance.objectMap = mapData.objectMap;
-            EnvironmentManager.Instance.resourceObjects = mapData.resourceObjects;
-        }
-
-        GenerateFromData(EnvironmentManager.Instance.biomeMap, EnvironmentManager.Instance.objectMap, EnvironmentManager.Instance.resourceObjects);
     }
 }

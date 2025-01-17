@@ -27,9 +27,20 @@ public class Growable : TimeAgent
         EnvironmentManager.Instance.GetComponent<TimeController>().Subscribe(this);
     }
 
-    private void Update()
+    // 게임뷰에서 씬뷰로 넘어올 때 에러 방지
+    bool isQuitting = false;
+    private void OnApplicationQuit()
     {
-        
+        isQuitting = true;
+    }
+
+    private void OnDestroy()
+    {
+        if (isQuitting) { return; }
+        if (EnvironmentManager.Instance.TryGetComponent(out TimeController timeController))
+        {
+            timeController.Unsubscribe(this);
+        }
     }
 
     public override void UpdateTimer()

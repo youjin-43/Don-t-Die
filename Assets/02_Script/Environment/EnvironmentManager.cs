@@ -1,4 +1,6 @@
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -43,7 +45,7 @@ public class EnvironmentManager : MonoBehaviour
         }
     }
 
-    private void Awake()
+    void Awake()
     {
         Init();
     }
@@ -51,5 +53,54 @@ public class EnvironmentManager : MonoBehaviour
     void Start()
     {
         VoronoiMapGenerator.Generate();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            SaveData();
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            if (LoadData())
+            {
+                VoronoiMapGenerator.GenerateFromData(biomeMap, null, null);
+            } 
+        }
+    }
+
+    public void SaveData()
+    {
+        MapData mapData = new MapData
+        {
+            biomeMap = biomeMap,
+            //objectMap = objectMap,
+            //resourceObjects = resourceObjects
+        };
+
+        string json = JsonConvert.SerializeObject(mapData);
+
+        File.WriteAllText(Application.persistentDataPath + "/mapData.json", json);
+    }
+
+    bool LoadData()
+    {
+        string filePath = Application.persistentDataPath + "/mapData.json";
+
+        if (File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+
+            MapData mapData = JsonConvert.DeserializeObject<MapData>(json);
+
+            if (mapData != null)
+            {
+                biomeMap = mapData.biomeMap;
+                return true;
+            }
+        }
+        return false;
     }
 }
