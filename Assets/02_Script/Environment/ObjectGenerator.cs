@@ -7,7 +7,12 @@ using UnityEngine;
 public struct ResourceObject
 {
     public Vector2Int position;
-    public NatureResourceData data;
+    public string dataName;
+    public bool isDamageable;
+    public bool isGrowable;
+    public float currentHealth;
+    public int growthStage;
+    public int timer; 
 }
 
 public class ObjectGenerator
@@ -39,7 +44,7 @@ public class ObjectGenerator
         {
             for (int j = 0; j < objectMap.width; j++)
             {
-                EnvironmentManager.Instance.biomeDatas.TryGetValue(biomeMap.map[i][j], out Biome currentBiome);
+                DataManager.Instance.BiomeDatas.TryGetValue(biomeMap.map[i][j].ToString(), out Biome currentBiome);
 
                 if (currentBiome == null || currentBiome.Trees.Count == 0)
                 {
@@ -58,7 +63,9 @@ public class ObjectGenerator
                         resourceObjects.Add(new ResourceObject
                         {
                             position = new Vector2Int(j, i),
-                            data = tree
+                            dataName = tree.name,
+                            isDamageable = true,
+                            isGrowable = true
                         });
                     }
                 }
@@ -72,7 +79,7 @@ public class ObjectGenerator
         {
             for (int j = 0; j < objectMap.width; j++)
             {
-                EnvironmentManager.Instance.biomeDatas.TryGetValue(biomeMap.map[i][j], out Biome currentBiome);
+                DataManager.Instance.BiomeDatas.TryGetValue(biomeMap.map[i][j].ToString(), out Biome currentBiome);
 
                 if (currentBiome == null || currentBiome.Plants.Count == 0)
                 {
@@ -91,7 +98,8 @@ public class ObjectGenerator
                         resourceObjects.Add(new ResourceObject
                         {
                             position = new Vector2Int(j, i),
-                            data = plant
+                            dataName = plant.name,
+                            isGrowable = true
                         });
                     }
                 }
@@ -105,7 +113,7 @@ public class ObjectGenerator
         {
             for (int j = 0; j < objectMap.width; j++)
             {
-                EnvironmentManager.Instance.biomeDatas.TryGetValue(biomeMap.map[i][j], out Biome currentBiome);
+                DataManager.Instance.BiomeDatas.TryGetValue(biomeMap.map[i][j].ToString(), out Biome currentBiome);
 
                 if (currentBiome == null || currentBiome.Minerals.Count == 0)
                 {
@@ -124,7 +132,8 @@ public class ObjectGenerator
                         resourceObjects.Add(new ResourceObject
                         {
                             position = new Vector2Int(j, i),
-                            data = mineral
+                            dataName = mineral.name,
+                            isDamageable = true
                         });
                     }
                 }

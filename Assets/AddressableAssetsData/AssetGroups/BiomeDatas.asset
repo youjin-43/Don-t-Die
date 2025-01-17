@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: BiomeDatas
+  m_EditorClassIdentifier: 
+  m_GroupName: BiomeDatas
+  m_GUID: dc14d44d3300cef43b0ed1a456c7e2e6
+  m_SerializeEntries:
+  - m_GUID: 1e1cb5801b5824b4aa1620d6e5309412
+    m_Address: Assets/05_ScriptableObjects/Biomes/PollutionBiome.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BiomeDatas
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c1db19fb3bf8364c86ad0af8a4e5be9
+    m_Address: Assets/05_ScriptableObjects/Biomes/WaterBiome.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BiomeDatas
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71d13bbe17b2fd6478821b47219a5c62
+    m_Address: Assets/05_ScriptableObjects/Biomes/DesertBiome.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BiomeDatas
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6e0fd2fec92db647add71a135ecdeaf
+    m_Address: Assets/05_ScriptableObjects/Biomes/GrassBiome.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - BiomeDatas
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 736d55df98445684191af185ca035f9d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e0b4037f1b627764b83df2e3f87c81a0, type: 2}
+    - {fileID: 11400000, guid: 1cbe82d61b6fd5744864ab42b00a7a54, type: 2}

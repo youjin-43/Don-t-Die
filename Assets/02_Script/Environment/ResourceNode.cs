@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class ResourceNode : MonoBehaviour
 {
-    VoronoiMapGenerator mapGenerator;                       // Map Manager를 따로 만들지 Generator를 매니저처럼 쓸지 고민 중...
+    VoronoiMapGenerator mapGenerator;
     [SerializeField] NatureResourceData natureResourceData;
 
     protected virtual void Init()
     {
-        // 임시임. 나중에 GameManager에서 받아오는 식으로 수정.
-        mapGenerator = transform.parent.parent.GetComponent<VoronoiMapGenerator>();
+        mapGenerator = EnvironmentManager.Instance.VoronoiMapGenerator;
     }
 
     private void Start()

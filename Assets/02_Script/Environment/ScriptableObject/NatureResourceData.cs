@@ -11,8 +11,8 @@ public class NatureResourceData : ScriptableObject
     [SerializeField] ObjectType objectType;
     [SerializeField] int width;
     [SerializeField] int height;
+    [SerializeField] int maxHealth;
 
-    [Serializable]
     public struct DropItem
     {
         // TODO: Item 정보 넣기
@@ -27,4 +27,5 @@ public class NatureResourceData : ScriptableObject
     public ObjectType ObjectType { get { return objectType; } }
     public int Width { get { return width; } }
     public int Height { get { return height; } }
+    public int MaxHealth { get {  return maxHealth; } }
 }

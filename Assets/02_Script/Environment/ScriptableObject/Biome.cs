@@ -6,10 +6,10 @@ using UnityEngine.Tilemaps;
 public enum BiomeType
 {
     None,
-    Grass,
-    Desert,
-    Pollution,
-    Water
+    GrassBiome,
+    DesertBiome,
+    PollutionBiome,
+    WaterBiome
 }
 
 [Serializable]

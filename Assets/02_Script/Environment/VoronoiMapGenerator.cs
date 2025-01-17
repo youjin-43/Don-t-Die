@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.Tilemaps;
 
 [Serializable]
@@ -48,13 +50,6 @@ public class VoronoiMapGenerator : MonoBehaviour
     {
         public Vector2 position;
         public Biome biome;
-    }
-
-    private void Awake()
-    {
-        foreach (Biome biome in landBiomes)
-            EnvironmentManager.Instance.biomeDatas.Add(biome.BiomeType, biome);
-        EnvironmentManager.Instance.biomeDatas.Add(waterBiome.BiomeType, waterBiome);
     }
 
     private void Update()
@@ -168,16 +163,16 @@ public class VoronoiMapGenerator : MonoBehaviour
 
         Vector3 position = cellPosition;
 
-        if (obj.data.Width % 2 != 0)
+        if (DataManager.Instance.NatureResources[obj.dataName].Width % 2 != 0)
         {
             position.x = cellCenterPosition.x;
         }
-        if (obj.data.Height % 2 != 0)
+        if (DataManager.Instance.NatureResources[obj.dataName].Height % 2 != 0)
         {
             position.y = cellCenterPosition.y;
         }
 
-        GameObject go = Instantiate(obj.data.Prefab, position, Quaternion.identity, parent);
+        GameObject go = Instantiate(DataManager.Instance.NatureResources[obj.dataName].Prefab, position, Quaternion.identity, parent);
     }
 
     /// <summary>

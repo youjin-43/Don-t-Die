@@ -8,7 +8,6 @@ public class EnvironmentManager : MonoBehaviour
     public ObjectMap objectMap;
     public List<ResourceObject> resourceObjects;
     VoronoiMapGenerator voronoiMapGenerator;
-    public Dictionary<BiomeType, Biome> biomeDatas;
 
     public VoronoiMapGenerator VoronoiMapGenerator
     {
@@ -23,12 +22,12 @@ public class EnvironmentManager : MonoBehaviour
     }
 
     private static EnvironmentManager instance;
-    public static EnvironmentManager Instance 
+    public static EnvironmentManager Instance
     {
-        get 
+        get
         {
             return instance;
-        } 
+        }
     }
 
     void Init()
@@ -36,7 +35,6 @@ public class EnvironmentManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            biomeDatas = new Dictionary<BiomeType, Biome>();
             DontDestroyOnLoad(this);
         }
         else
@@ -53,11 +51,5 @@ public class EnvironmentManager : MonoBehaviour
     void Start()
     {
         VoronoiMapGenerator.Generate();
-    }
-
-    
-    void Update()
-    {
-        
     }
 }
