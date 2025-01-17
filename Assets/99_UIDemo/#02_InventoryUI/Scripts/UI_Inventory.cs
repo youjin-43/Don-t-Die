@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// ì¸ë²¤í† ë¦¬ UI
 public class UI_Inventory : MonoBehaviour
 {
+    #region SINGLETON
     private static UI_Inventory instance;
     public  static UI_Inventory Instance
     {
@@ -12,7 +14,7 @@ public class UI_Inventory : MonoBehaviour
         }
     }
 
-    private void Awake()
+    void SingletonInitialize()
     {
         if (instance != null)
         {
@@ -24,100 +26,70 @@ public class UI_Inventory : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+    #endregion
 
-    [SerializeField] Transform  QuickSlotArea;
+    // ì¸ë²¤í† ë¦¬ê°€ ë“¤ê³  ìˆì„ ì•„ì´í…œ ìŠ¬ë¡¯ í”„ë¦¬íŒ¹
     [SerializeField] GameObject ItemSlotPrefab;
 
-    // ÀÌ°Å ¹Ù²Ü°Å¸é UI Å©±â ¼öµ¿À¸·Î ¼³Á¤ÇØÁà¾ß ÇÔ
+    // ì•„ì´í…œ ìŠ¬ë¡¯ ìµœëŒ€ ê°¯ìˆ˜
     int _initialInventorySize = 15;
 
+    // ì•„ì´í…œ ìŠ¬ë¡¯ì„ ë‹´ì•„ë†“ì„ ì»¨í…Œì´ë„ˆ
     List<UI_ItemSlot> _inventory = new List<UI_ItemSlot>();
 
-    int _focusIndex = 0;
+    private void Awake()
+    {
+        SingletonInitialize();
+    }
 
     void Start()
     {
+        // ìì‹ìœ¼ë¡œ ì•„ì´í…œ ìŠ¬ë¡¯ì„ ìƒì„±
         for(int i = 0; i < _initialInventorySize; ++i)
         {
-            GameObject go = Instantiate(ItemSlotPrefab, QuickSlotArea);
+            GameObject go = Instantiate(ItemSlotPrefab, transform);
+
+            go.name = "ItemSlot_" + i;
 
             _inventory.Add(go.GetComponent<UI_ItemSlot>());
         }
-
     }
 
     void Update()
     {
-        ItemFocusing();
+
     }
 
-    void ItemFocusing()
+    public bool AddItem(ItemData item)
     {
-        // ¾ÕÀ¸·Î ±¼¸®±â = +Y
-        // µÚ·Î   ±¼¸®±â = -Y
-
-        Vector2 mouseWheelDelta = Input.mouseScrollDelta;
-
-        if(mouseWheelDelta.y != 0)
-        {
-            _focusIndex -= (int)mouseWheelDelta.y;
-        }
-        if(_focusIndex < 0)
-        {
-            _focusIndex += _initialInventorySize;
-        }
-        if(_focusIndex >= 15)
-        {
-            _focusIndex -= _initialInventorySize;
-        }
-
-        _inventory[_focusIndex].Activate();
-
-        for(int i = 0; i < _initialInventorySize; ++i)
-        {
-            if(i == _focusIndex)
-            {
-                _inventory[_focusIndex].Activate();
-            }
-            else
-            {
-                _inventory[i].Deactivate();
-            }
-        }
-    }
-
-    public bool AddItem(Item item)
-    {
+        // ì•„ì´í…œ ìŠ¬ë¡¯ì„ ìˆœíšŒí•˜ë©´ì„œ
         foreach (UI_ItemSlot slot in _inventory)
         {
-            // ½½·ÔÀÌ ºñ¾îÀÖÁö ¾Ê´Ù¸é
-            if(slot.IsEmpty() == false)
+            // ìŠ¬ë¡¯ì´ ë¹„ì–´ìˆë‹¤ë©´
+            if(slot.IsEmpty() == true)
             {
-                // ½½·Ô¿¡ µé¾î°¡ ÀÖ´Â ¾ÆÀÌÅÛÀÌ ÁÖ¿î ¾ÆÀÌÅÛÀÌ¶û °°°í, 64°³ ¹Ì¸¸ÀÌ¶ó¸é
-                if(slot.GetHavingItemName() == item.name && slot.IsFull() == false)
-                {
-                    slot.AddItem(item);
-                    return true;
-                }
-            }
-            else
-            {
-                // ½½·ÔÀÌ ºñ¾îÀÖ´Ù¸é
+                // ìŠ¬ë¡¯ì— ì•„ì´í…œì„ ì¶”ê°€
                 slot.AddItem(item);
                 return true;
             }
+            // ìŠ¬ë¡¯ì´ ë¹„ì–´ìˆì§€ ì•Šë‹¤ë©´
+            else
+            {
+                //// ì£¼ìš´ ì•„ì´í…œê³¼ ê°™ë‹¤ë©´ && ê·¸ ì•„ì´í…œì´ ìµœëŒ€ê°¯ìˆ˜ë³´ë‹¤ ì ë‹¤ë©´
+                //if (slot.GetItemName() == item.name && slot.IsFull() == false)
+                //{
+                //    slot.AddItem(item);
+                //    return true;
+                //}
+            }
         }
 
-        // ÀÌ¹Ì µé°í ÀÖ´Â °Íµµ ¾ø°í, ÀÎº¥Åä¸®µµ °¡µæ Âü
+        // ì´ë¯¸ ë“¤ê³  ìˆëŠ” ê²ƒë„ ì—†ê³ , ì¸ë²¤í† ë¦¬ë„ ê°€ë“ ì°¸
         return false;
     }
+
     public Item GetItem()
     {
-        if (_inventory[_focusIndex].IsEmpty() == false)
-        {
-            return _inventory[_focusIndex].GetItem();
-        }
-
         return null;
     }
 }

@@ -1,75 +1,121 @@
 using System.Collections.Generic;
+using System.Drawing;
+using Unity.Android.Gradle.Manifest;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
-public class UI_ItemSlot : MonoBehaviour
+                                          
+public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
 {
+    // 아이템 아래 그림자 효과
     private GameObject _shade;
-    private GameObject      _highlight;
+
+    // 들고 있는 아이템 이미지
     private Image      _itemImage;
 
-    private bool       _isActivated = false;
-
-    private Queue<Item> _items = new Queue<Item>();
+    // 아이템을 여러개 들고 있기 위한 컨테이너
+    //private Queue<ItemData> _items = new Queue<ItemData>();
+    private ItemData _item;
 
     private void Awake()
     {
-        _shade     = transform.Find("Shade").gameObject; 
-        _highlight = transform.Find("Highlight").gameObject;
-        _itemImage = transform.Find("ItemImage").GetComponent<Image>();
+        _shade     = transform.GetChild(0).gameObject;
+        _itemImage = transform.GetChild(1).GetComponent<Image>();
+
+        // 그림자 효과는 처음에는 꺼줌
+        _shade.SetActive(false);
     }
 
-    void Start()
-    {
+    static bool _isDragging = false;
 
-    }
-
-    void Update()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        if(IsEmpty() == true)
+        // 좌클릭 이벤트 (아이템 이동)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
-            _shade.gameObject.SetActive(false);
+            if (_isDragging == false)
+            {
+                _isDragging = true;
+                DragAndDrop.Instance.BeginDrag(this);
+            }
+            else
+            {
+                _isDragging = false;
+                DragAndDrop.Instance.EndDrag(this);
+            }
         }
-        else
+        // 우클릭 이벤트 (아이템 사용)
+        else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            _shade.gameObject.SetActive(true);
-        }
-    }
-
-    public void Activate()
-    {
-        _isActivated = true;
-        _highlight.SetActive(true);
-    }
-    public void Deactivate()
-    {
-        _isActivated = false;
-        _highlight.SetActive(false);
-    }
-
-    public void AddItem(Item item)
-    {
-        _items.Enqueue(item);
-
-        if(_itemImage.sprite == null)
-        {
-            _itemImage.sprite = DataManager.Instance.IconImageData[item.name];
+            if(_item == null)
+            {
+                DebugController.Log("아이템이 없어용");
+            }
+            else
+            {
+                DebugController.Log("아이템 사용");
+            }
         }
     }
-    public Item GetItem()
+
+    public void AddItem(ItemData item)
     {
-        return _items.Peek();
+        // 슬롯이 비어있다면
+        //if(IsEmpty() == true)
+        //{
+        //    // 이미지 바꿔줌
+        //    _itemImage.sprite = item.Image;
+        //    // 그림자 효과 활성화
+        //    _shade.SetActive(true);
+        //}
+
+        //_items.Enqueue(item);
+
+        _shade.SetActive (true);
+        _itemImage.sprite = item.Image;
+        _item = item;
     }
-    public string GetHavingItemName()
+
+    public ItemData GetItemData()
     {
-        return _items.Peek().name;
+        //ItemData item = _items.Dequeue();
+
+        //// 아이템이 없다면
+        //if(_items.Count == 0)
+        //{
+        //    // 그림자 효과 비활성화
+        //    _shade.SetActive(false);
+        //}
+
+        //return item;
+
+        _shade.SetActive(false);
+
+        return _item;
     }
+
+    public string GetItemName()
+    {
+        //return _items.Peek().name;
+        return _item.Name;
+    }
+
     public bool IsEmpty()
     {
-        return _items.Count == 0;
+       // return _items.Count == 0;
+        return _item == null;
     }
-    public bool IsFull()
+
+    public void ClearSlot()
     {
-        return _items.Count == 64;
+        _item = null;
+        _itemImage.sprite = null;
+        _shade.SetActive(false);
     }
+
+    //public bool IsFull()
+    //{
+    //    return _items.Count == 64;
+    //}
 }

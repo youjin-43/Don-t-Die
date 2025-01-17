@@ -173,8 +173,10 @@ public class PlayerAction : MonoBehaviour
 
         if (gotItem != null)
         {
-            UI_Inventory.Instance.AddItem(gotItem);
+            UI_Inventory.Instance.AddItem(gotItem.ItemData);
         }
+
+        Destroy(autoInteractTargetTransform.gameObject);
     }
 
     // 탐색 반경 디버그용 표시

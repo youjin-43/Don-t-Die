@@ -1,12 +1,10 @@
 using UnityEngine;
 using Newtonsoft.Json;
-using ExcelDataReader;
 using System.IO;
-using System.Data;
 using System.Collections.Generic;
-using System;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Threading.Tasks;
+using System.Collections;
 
 public interface ILoader<Key, Value>
 {
@@ -15,6 +13,7 @@ public interface ILoader<Key, Value>
 
 public class DataManager : MonoBehaviour
 {
+    #region SINGLETON
     private static DataManager instance;
     public  static DataManager Instance
     {
@@ -23,12 +22,8 @@ public class DataManager : MonoBehaviour
             return instance;
         }
     }
-    // Json => Data
-    public Dictionary<string, CraftingData> CraftingData { get; private set; } = new Dictionary<string, CraftingData>();
 
-    public Dictionary<string, Sprite> IconImageData = new Dictionary<string, Sprite>();
-
-    void Awake()
+    void SingletonInitialize()
     {
         if (instance != null)
         {
@@ -39,13 +34,29 @@ public class DataManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+    #endregion
 
-        // Addressable
-        Addressables.LoadAssetsAsync<Sprite>("IconImage", OnImageLoaded);
+    // Json => Data
+    public Dictionary<string, CraftingData> CraftingData { get; private set; } = new Dictionary<string, CraftingData>();
 
+    // Addressable
+    public Dictionary<string, Sprite>   IconImageData = new Dictionary<string, Sprite>();
+    public Dictionary<string, ItemData> ItemData      = new Dictionary<string, ItemData>();
+
+    async void Awake()
+    {
+        SingletonInitialize();
 
         // Load From Json
         CraftingData = LoadJson<CraftingDataLoader, string, CraftingData>("CraftingData").MakeDict();
+
+        // Addressable
+        var asyncOperation_1 = Addressables.LoadAssetsAsync<Sprite>("IconImage", OnImageLoaded);
+        var asyncOperation_2 = Addressables.LoadAssetsAsync<ItemData>("ItemData", OnItemDataLoaded);
+
+        asyncOperation_1.WaitForCompletion();
+        asyncOperation_2.WaitForCompletion();
     }
 
     private T LoadJson<T, Key, Value>(string fileName) where T : ILoader<Key, Value>
@@ -57,10 +68,15 @@ public class DataManager : MonoBehaviour
         return JsonConvert.DeserializeObject<T>(json);
     }
 
-
     // Addressable
     void OnImageLoaded(Sprite sprite)
     {
         IconImageData.Add(sprite.name, sprite);
+    }
+
+    // Addressable
+    void OnItemDataLoaded(ItemData data)
+    {
+        ItemData.Add(data.Name, data);
     }
 }
