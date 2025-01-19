@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using Unity.Collections;
+using System.Linq;
 
 public interface ILoader<Key, Value>
 {
@@ -27,6 +29,8 @@ public class DataManager : MonoBehaviour
     public Dictionary<string, CraftingData> CraftingData { get; private set; } = new Dictionary<string, CraftingData>();
 
     public Dictionary<string, Sprite> IconImageData = new Dictionary<string, Sprite>();
+    public Dictionary<string, NatureResourceData> NatureResources = new Dictionary<string, NatureResourceData>();
+    public Dictionary<string, Biome> BiomeDatas = new Dictionary<string, Biome>();
 
     void Awake()
     {
@@ -43,6 +47,43 @@ public class DataManager : MonoBehaviour
         // Addressable
         Addressables.LoadAssetsAsync<Sprite>("IconImage", OnImageLoaded);
 
+        var natureResourceHandle = Addressables.LoadAssetsAsync<NatureResourceData>("NatureResources");
+        natureResourceHandle.Completed += handle =>
+        {
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                foreach (var data in handle.Result)
+                {
+                    if (!NatureResources.ContainsKey(data.name))
+                    {
+                        NatureResources.Add(data.name, data);
+                    }
+                }
+            }
+            else
+            {
+                DebugController.Log("NatureResources Load Failed.");
+            }
+        };
+
+        var biomeDataHandle = Addressables.LoadAssetsAsync<Biome>("BiomeDatas");
+        biomeDataHandle.Completed += handle =>
+        {
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                foreach (var biome in handle.Result)
+                {
+                    if (!BiomeDatas.ContainsKey(biome.name))
+                    {
+                        BiomeDatas.Add(biome.name, biome);
+                    }
+                }
+            }
+            else
+            {
+                DebugController.Log("BiomeDatas Load Failed.");
+            }
+        };
 
         // Load From Json
         CraftingData = LoadJson<CraftingDataLoader, string, CraftingData>("CraftingData").MakeDict();

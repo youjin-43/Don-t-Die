@@ -1,8 +1,20 @@
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using Unity.VisualScripting;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.Tilemaps;
+
+[Serializable]
+public class MapData
+{
+    public BiomeMap biomeMap;
+    public ObjectMap objectMap;
+    public List<ResourceObject> resourceObjects;
+}
 
 public class VoronoiMapGenerator : MonoBehaviour
 {
@@ -16,7 +28,7 @@ public class VoronoiMapGenerator : MonoBehaviour
     public int mapHeight = 100;
 
     /// <summary>
-    /// Voronoi Digram¿¡ ÂïÈú Á¡ °³¼ö. Å¬¼ö·Ï ´õ Àß°Ô ÂÉ°³Áø´Ù.
+    /// Voronoi Digramì— ì°í ì  ê°œìˆ˜. í´ìˆ˜ë¡ ë” ì˜ê²Œ ìª¼ê°œì§„ë‹¤.
     /// </summary>
     public int seedPointCount = 20;
     public float noiseScale = 0.1f;
@@ -32,7 +44,7 @@ public class VoronoiMapGenerator : MonoBehaviour
     GameObject objectParent;
 
     /// <summary>
-    /// Voronoi DiagramÀÇ ±¸¼º ¿ä¼Ò. ·£´ıÇÑ À§Ä¡¿¡ ÂïÈ÷´Â Á¡.
+    /// Voronoi Diagramì˜ êµ¬ì„± ìš”ì†Œ. ëœë¤í•œ ìœ„ì¹˜ì— ì°íˆëŠ” ì .
     /// </summary>
     private struct SeedPoint
     {
@@ -40,14 +52,9 @@ public class VoronoiMapGenerator : MonoBehaviour
         public Biome biome;
     }
 
-    void Start()
-    {
-        Generate();
-    }
-
     private void Update()
     {
-        // --- Å¸ÀÏÀÌ ¹ÙÀÌ¿È Á¤º¸¿Í ¿ÀºêÁ§Æ® Á¤º¸¸¦ Àß °¡Áö°í ÀÖ´ÂÁö µğ¹ö±ë ÇÏ´Â ºÎºĞ!! -- ³ªÁß¿¡ Áö¿ì¼À
+        // --- íƒ€ì¼ì´ ë°”ì´ì˜´ ì •ë³´ì™€ ì˜¤ë¸Œì íŠ¸ ì •ë³´ë¥¼ ì˜ ê°€ì§€ê³  ìˆëŠ”ì§€ ë””ë²„ê¹… í•˜ëŠ” ë¶€ë¶„!! -- ë‚˜ì¤‘ì— ì§€ìš°ì…ˆ
         if (Input.GetMouseButtonDown(0))
         {
             Vector3Int tilemapPos = landTilemap.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -56,11 +63,11 @@ public class VoronoiMapGenerator : MonoBehaviour
 
             //GenerateTreeTmp(tilemapPos);
 
-            DebugController.Log($"map[{tilemapPos.y}, {tilemapPos.x}] {biomeMap.GetTileBiomeByPosition(tilemapPos.x, tilemapPos.y)}");
+            DebugController.Log($"map[{tilemapPos.y}, {tilemapPos.x}] {biomeMap.GetTileBiome(new Vector2Int(tilemapPos.x, tilemapPos.y))}");
             DebugController.Log($"{objectMap.Map[tilemapPos.y, tilemapPos.x]}");
         }
 
-        // --- Damageable Resource Àß ÀÛµ¿ÇÏ´ÂÁö Ã¼Å©ÇÏ´Â ºÎºĞ. Áö±İÀº Grass Tree 2 Á¾·ù¸¸ Ã¼Å©
+        // --- Damageable Resource ì˜ ì‘ë™í•˜ëŠ”ì§€ ì²´í¬í•˜ëŠ” ë¶€ë¶„. ì§€ê¸ˆì€ Grass Tree 2 ì¢…ë¥˜ë§Œ ì²´í¬
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -75,7 +82,7 @@ public class VoronoiMapGenerator : MonoBehaviour
     }
 
     /// <summary>
-    /// ¸ÊÀÇ ¸ğµç ±¸¼º ¿ä¼Ò¸¦ Áö¿î´Ù.
+    /// ë§µì˜ ëª¨ë“  êµ¬ì„± ìš”ì†Œë¥¼ ì§€ìš´ë‹¤.
     /// </summary>
     public void Clear()
     {
@@ -89,61 +96,119 @@ public class VoronoiMapGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// ë°ì´í„°ë¥¼ ë°”íƒ•ìœ¼ë¡œ ë§µì„ ìƒì„±í•˜ëŠ” í•¨ìˆ˜
+    /// </summary>
+    /// <param name="biomeMap"></param>
+    /// <param name="objectMap"></param>
+    /// <param name="objects"></param>
+    public void GenerateFromData(BiomeMap biomeMap, ObjectMap objectMap, List<ResourceObject> objects)
+    {
+        Clear();
+        GenerateVoronoiMap(biomeMap);
+        GenerateObjects(objects);
+    }
+
     public void Generate()
     {
-        // ¸ÊÀ» »ı¼ºÇÏ±â Àü ¸ğµç Å¸ÀÏÀ» »èÁ¦ÇÑ´Ù.
+        // ë§µì„ ìƒì„±í•˜ê¸° ì „ ëª¨ë“  íƒ€ì¼ì„ ì‚­ì œí•œë‹¤.
         Clear();
         GenerateVoronoiMap();
         GenerateObjects();
     }
 
     /// <summary>
-    /// ¹ÙÀÌ¿È¿¡ ¸Â´Â Tree, Plant, MineralÀ» »ı¼ºÇÑ´Ù.
+    /// ë°”ì´ì˜´ì— ë§ëŠ” Tree, Plant, Mineralì„ ìƒì„±í•œë‹¤.
     /// </summary>
     void GenerateObjects()
     {
-        if (objectParent != null) // GenerateÇÏ±â Àü¿¡ Clear °úÁ¤ÀÌ ÀÖÁö¸¸ ¾ÈÀüÀ» À§ÇØ
-        { 
+        if (objectParent != null) // Generateí•˜ê¸° ì „ì— Clear ê³¼ì •ì´ ìˆì§€ë§Œ ì•ˆì „ì„ ìœ„í•´
+        {
             DestroyImmediate(objectParent.gameObject);
         }
 
-        ObjectGenerator objectGenerator = new ObjectGenerator(biomeMap, mapWidth, mapHeight); // biome Á¤º¸¿¡ ¸ÂÃç¼­ ¿ÀºêÁ§Æ®¸¦ »ı¼ºÇÏ±â ¶§¹®¿¡ ÆÄ¶ó¹ÌÅÍ·Î °Ç³×ÁØ´Ù.
-        var objects = objectGenerator.Generate();
+        ObjectGenerator objectGenerator = new ObjectGenerator(biomeMap, mapWidth, mapHeight); // biome ì •ë³´ì— ë§ì¶°ì„œ ì˜¤ë¸Œì íŠ¸ë¥¼ ìƒì„±í•˜ê¸° ë•Œë¬¸ì— íŒŒë¼ë¯¸í„°ë¡œ ê±´ë„¤ì¤€ë‹¤.
+        List<ResourceObject> objects = objectGenerator.Generate();
         objectMap = objectGenerator.objectMap;
 
-        GameObject go = new GameObject("ObjectParent"); // ¿ÀºêÁ§Æ®µéÀÌ ´ã±æ ºÎ¸ğ ¿ÀºêÁ§Æ®¸¦ ¸¸µé°í
-        go.transform.parent = transform; // Map GeneratorÀÇ ÀÚ½ÄÀ¸·Î ¸¸µç´Ù.  ±¸Á¶ : Map Generator - ObjectParent - Objects
+        GameObject parent = new GameObject("ObjectParent"); // ì˜¤ë¸Œì íŠ¸ë“¤ì´ ë‹´ê¸¸ ë¶€ëª¨ ì˜¤ë¸Œì íŠ¸ë¥¼ ë§Œë“¤ê³ 
+        parent.transform.parent = transform; // Map Generatorì˜ ìì‹ìœ¼ë¡œ ë§Œë“ ë‹¤.  êµ¬ì¡° : Map Generator - ObjectParent - Objects
+        objectParent = parent;
 
         foreach (ResourceObject obj in objects)
         {
-            InstantiateObject(obj, go.transform);
+            GameObject go = InstantiateObject(obj, parent.transform);
+            obj.gameObject = go;
+            if (go.GetComponent<Growable>() != null)
+            {
+                obj.isGrowable = true;
+            }
+            if (go.GetComponent<DamageableResourceNode>() != null)
+            {
+                obj.isDamageable = true;
+            }
+            EnvironmentManager.Instance.natureResources.Add(obj.gameObject.transform.position, obj);
+        }
+
+        EnvironmentManager.Instance.objectMap = objectMap;
+        //EnvironmentManager.Instance.resourceObjects = objects;
+    }
+
+    void GenerateObjects(List<ResourceObject> objects)
+    {
+        if (objectParent != null)
+        {
+            DestroyImmediate(objectParent.gameObject);
+        }
+
+        GameObject parent = new GameObject("ObjectParent");
+        parent.transform.parent = transform;
+        objectParent = parent;
+
+        foreach (ResourceObject obj in objects)
+        {
+            GameObject go = InstantiateObject(obj, parent.transform);
+            
+            if (obj.isGrowable)
+            {
+                go.GetComponent<Growable>().GrowStage = obj.growthStage;
+                go.GetComponent<Growable>().Timer = obj.timer;
+            }
+
+            if (obj.isDamageable)
+            {
+                go.GetComponent<DamageableResourceNode>().CurrentHealth = obj.currentHealth;
+            }
         }
     }
 
     /// <summary>
-    /// ÁÂÇ¥¿¡ ¸ÂÃç ¿ÀºêÁ§Æ®¸¦ »ı¼ºÇÑ´Ù.
+    /// ì¢Œí‘œì— ë§ì¶° ì˜¤ë¸Œì íŠ¸ë¥¼ ìƒì„±í•œë‹¤.
     /// </summary>
-    void InstantiateObject(ResourceObject obj, Transform parent)
+    GameObject InstantiateObject(ResourceObject obj, Transform parent)
     {
         Vector3 cellCenterPosition = landTilemap.GetCellCenterWorld(new Vector3Int(obj.position.x, obj.position.y));
         Vector3 cellPosition = landTilemap.CellToWorld(new Vector3Int(obj.position.x, obj.position.y));
 
         Vector3 position = cellPosition;
 
-        if (obj.data.Width % 2 != 0)
+        if (DataManager.Instance.NatureResources[obj.dataName].Width % 2 != 0)
         {
             position.x = cellCenterPosition.x;
         }
-        if (obj.data.Height % 2 != 0)
+        if (DataManager.Instance.NatureResources[obj.dataName].Height % 2 != 0)
         {
             position.y = cellCenterPosition.y;
         }
 
-        GameObject go = Instantiate(obj.data.Prefab, position, Quaternion.identity, parent);
+        GameObject go = Instantiate(DataManager.Instance.NatureResources[obj.dataName].Prefab, position, Quaternion.identity, parent);
+        obj.gameObject = go;
+
+        return go;
     }
 
     /// <summary>
-    /// Voronoi DiagramÀ» »ç¿ëÇÏ¿© ·£´ıÇÏ°Ô ¸ÊÀ» »ı¼ºÇÑ´Ù.
+    /// Voronoi Diagramì„ ì‚¬ìš©í•˜ì—¬ ëœë¤í•˜ê²Œ ë§µì„ ìƒì„±í•œë‹¤.
     /// </summary>
     void GenerateVoronoiMap()
     {
@@ -151,13 +216,13 @@ public class VoronoiMapGenerator : MonoBehaviour
 
         biomeMap = new BiomeMap(mapWidth, mapHeight);
 
-        // ¸ÊÀÇ ¼¾ÅÍ´Â Áß¾ÓÀ¸·Î µĞ´Ù
+        // ë§µì˜ ì„¼í„°ëŠ” ì¤‘ì•™ìœ¼ë¡œ ë‘”ë‹¤
         Vector2 mapCenter = new Vector2(mapWidth / 2, mapHeight / 2);
 
-        // ¸ÊÀÇ Áß¾Ó¿¡¼­ °¡Àå ¸Ö¸® ¶³¾îÁø °Å¸®. ¿Ü°ûÀ» ¹Ù´Ù·Î ¼³Á¤ÇÏ±â À§ÇØ µĞ º¯¼öÀÌ´Ù. 
+        // ë§µì˜ ì¤‘ì•™ì—ì„œ ê°€ì¥ ë©€ë¦¬ ë–¨ì–´ì§„ ê±°ë¦¬. ì™¸ê³½ì„ ë°”ë‹¤ë¡œ ì„¤ì •í•˜ê¸° ìœ„í•´ ë‘” ë³€ìˆ˜ì´ë‹¤. 
         float maxDistance = Mathf.Sqrt(Mathf.Pow(mapWidth / 2, 2) + Mathf.Pow(mapHeight / 2, 2));
 
-        // ¸Ê ÀüÃ¼ ¼øÈ¸
+        // ë§µ ì „ì²´ ìˆœíšŒ
         for (int x = 0; x < mapWidth; x++)
         {
             for (int y = 0; y < mapHeight; y++)
@@ -166,10 +231,10 @@ public class VoronoiMapGenerator : MonoBehaviour
                 float minDistance = float.MaxValue;
                 Biome selectedBiome = landBiomes[0];
 
-                // Áö±İ À§Ä¡ÇÑ Å¸ÀÏ¿¡¼­ °¡Àå °¡±î¿î seed pointÀÇ biome typeÀ» µû¶ó°£´Ù.
+                // ì§€ê¸ˆ ìœ„ì¹˜í•œ íƒ€ì¼ì—ì„œ ê°€ì¥ ê°€ê¹Œìš´ seed pointì˜ biome typeì„ ë”°ë¼ê°„ë‹¤.
                 foreach (var seed in seedPoints)
                 {
-                    // Á÷¼±À¸·Î ³ª´©¾îÁö¸é ºÎÀÚ¿¬½º·¯¿ì¹Ç·Î Perlin Noise¸¦ ÀÌ¿ëÇØ seed pointµéÀÇ À§Ä¡¸¦ ¾à°£¾¿ Èçµç´Ù.
+                    // ì§ì„ ìœ¼ë¡œ ë‚˜ëˆ„ì–´ì§€ë©´ ë¶€ìì—°ìŠ¤ëŸ¬ìš°ë¯€ë¡œ Perlin Noiseë¥¼ ì´ìš©í•´ seed pointë“¤ì˜ ìœ„ì¹˜ë¥¼ ì•½ê°„ì”© í”ë“ ë‹¤.
                     float noise = Mathf.PerlinNoise((x + seed.position.x) * noiseScale, (y + seed.position.y) * noiseScale);
                     float jitter = Mathf.Lerp(-1f, 1f, noise) * 3f;
 
@@ -182,29 +247,50 @@ public class VoronoiMapGenerator : MonoBehaviour
                     }
                 }
 
-                // Áß½É¿¡¼­ºÎÅÍ ¾î´À Á¤µµ ¶³¾îÁ® ÀÖ´ÂÁö 0~1 »çÀÌÀÇ °ªÀ¸·Î º¯È¯ÇÑ´Ù.
+                // ì¤‘ì‹¬ì—ì„œë¶€í„° ì–´ëŠ ì •ë„ ë–¨ì–´ì ¸ ìˆëŠ”ì§€ 0~1 ì‚¬ì´ì˜ ê°’ìœ¼ë¡œ ë³€í™˜í•œë‹¤.
                 float distanceFromCenter = Vector2.Distance(currentPos, mapCenter) / maxDistance;
 
-                // ÀÚ¿¬½º·¯¿òÀ» À§ÇØ ÇØ¾È¼±µµ ¶È°°ÀÌ Perlin Noise¸¦ Àû¿ëÇÑ´Ù.
+                // ìì—°ìŠ¤ëŸ¬ì›€ì„ ìœ„í•´ í•´ì•ˆì„ ë„ ë˜‘ê°™ì´ Perlin Noiseë¥¼ ì ìš©í•œë‹¤.
                 float edgeNoise = Mathf.PerlinNoise(x * edgeNoiseScale, y * edgeNoiseScale) * edgeNoiseStrength;
                 float adjustedThreshold = (1 - waterEdgeSize) + edgeNoise;
 
                 if (distanceFromCenter > adjustedThreshold)
                 {
-                    waterTilemap.SetTile(new Vector3Int(x, y, 0), waterBiome.Tile);  // ¹Ù´Ù
-                    biomeMap.MarkTile(x, y, waterBiome);
+                    waterTilemap.SetTile(new Vector3Int(x, y, 0), waterBiome.Tile);  // ë°”ë‹¤
+                    biomeMap.MarkTile(x, y, waterBiome.BiomeType);
                 }
                 else
                 {
-                    landTilemap.SetTile(new Vector3Int(x, y, 0), selectedBiome.Tile);  // À°Áö
-                    biomeMap.MarkTile(x, y, selectedBiome);
+                    landTilemap.SetTile(new Vector3Int(x, y, 0), selectedBiome.Tile);  // ìœ¡ì§€
+                    biomeMap.MarkTile(x, y, selectedBiome.BiomeType);
+                }
+            }
+        }
+
+        EnvironmentManager.Instance.biomeMap = biomeMap;
+    }
+
+    void GenerateVoronoiMap(BiomeMap biomeMap)
+    {
+        for (int x = 0; x < biomeMap.width; x++)
+        {
+            for (int y = 0; y < biomeMap.height; y++)
+            {
+                TileBase tile = DataManager.Instance.BiomeDatas[biomeMap.map[y][x].ToString()].Tile;
+                if (biomeMap.map[y][x] == BiomeType.WaterBiome)
+                {
+                    waterTilemap.SetTile(new Vector3Int(x, y, 0), tile);
+                }
+                else
+                {
+                    landTilemap.SetTile(new Vector3Int(x, y, 0), tile);
                 }
             }
         }
     }
 
     /// <summary>
-    /// ÀüÃ¼ ¸ÊÀÇ ·£´ı Æ÷ÀÎÆ®¿¡ Á¡À» Âï°í biomeÀ» ·£´ıÇÏ°Ô Á¤ÇÑ´Ù.
+    /// ì „ì²´ ë§µì˜ ëœë¤ í¬ì¸íŠ¸ì— ì ì„ ì°ê³  biomeì„ ëœë¤í•˜ê²Œ ì •í•œë‹¤.
     /// </summary>
     /// <returns></returns>
     List<SeedPoint> GenerateSeedPoints()
@@ -212,8 +298,8 @@ public class VoronoiMapGenerator : MonoBehaviour
         List<SeedPoint> seeds = new List<SeedPoint>();
         for (int i = 0; i < seedPointCount; i++)
         {
-            Vector2 pos = new Vector2(Random.Range(0, mapWidth), Random.Range(0, mapHeight));
-            int randIdx = Random.Range(0, landBiomes.Count);
+            Vector2 pos = new Vector2(UnityEngine.Random.Range(0, mapWidth), UnityEngine.Random.Range(0, mapHeight));
+            int randIdx = UnityEngine.Random.Range(0, landBiomes.Count);
             seeds.Add(new SeedPoint { position = pos, biome = landBiomes[randIdx] });
         }
         return seeds;

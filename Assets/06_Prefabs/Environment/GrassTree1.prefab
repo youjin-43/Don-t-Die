@@ -101,9 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b24ea6fc0c1e140a5003ddd2f90392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapGenerator: {fileID: 0}
   natureResourceData: {fileID: 11400000, guid: db63b823c9e25f344b11c07996c60784, type: 2}
-  maxHealth: 100
 --- !u!61 &7470784838888648028
 BoxCollider2D:
   m_ObjectHideFlags: 0
