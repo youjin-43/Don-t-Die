@@ -1,11 +1,6 @@
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.Tilemaps;
 
 [Serializable]
@@ -14,6 +9,16 @@ public class MapData
     public BiomeMap biomeMap;
     public ObjectMap objectMap;
     public List<ResourceObject> resourceObjects;
+}
+
+
+/// <summary>
+/// Voronoi Diagram의 구성 요소. 랜덤한 위치에 찍히는 점.
+/// </summary>
+public struct SeedPoint
+{
+    public Vector2 position;
+    public Biome biome;
 }
 
 public class VoronoiMapGenerator : MonoBehaviour
@@ -42,15 +47,6 @@ public class VoronoiMapGenerator : MonoBehaviour
     public ObjectMap objectMap;
 
     GameObject objectParent;
-
-    /// <summary>
-    /// Voronoi Diagram의 구성 요소. 랜덤한 위치에 찍히는 점.
-    /// </summary>
-    private struct SeedPoint
-    {
-        public Vector2 position;
-        public Biome biome;
-    }
 
     private void Update()
     {
@@ -102,7 +98,7 @@ public class VoronoiMapGenerator : MonoBehaviour
     /// <param name="biomeMap"></param>
     /// <param name="objectMap"></param>
     /// <param name="objects"></param>
-    public void GenerateFromData(BiomeMap biomeMap, ObjectMap objectMap, List<ResourceObject> objects)
+    public void GenerateFromData(BiomeMap biomeMap, List<ResourceObject> objects)
     {
         Clear();
         GenerateVoronoiMap(biomeMap);
@@ -300,7 +296,19 @@ public class VoronoiMapGenerator : MonoBehaviour
         {
             Vector2 pos = new Vector2(UnityEngine.Random.Range(0, mapWidth), UnityEngine.Random.Range(0, mapHeight));
             int randIdx = UnityEngine.Random.Range(0, landBiomes.Count);
-            seeds.Add(new SeedPoint { position = pos, biome = landBiomes[randIdx] });
+            SeedPoint seed = new SeedPoint { position = pos, biome = landBiomes[randIdx] };
+            seeds.Add(seed);
+
+            if (EnvironmentManager.Instance.seedPoints.ContainsKey(seed.biome.BiomeType))
+            {
+                EnvironmentManager.Instance.seedPoints[seed.biome.BiomeType].Add(seed.position);
+            }
+            else
+            {
+                List<Vector3> v = new List<Vector3>();
+                v.Add(seed.position);
+                EnvironmentManager.Instance.seedPoints.Add(seed.biome.BiomeType, v);
+            }
         }
         return seeds;
     }
