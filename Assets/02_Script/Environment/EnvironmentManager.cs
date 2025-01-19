@@ -2,8 +2,8 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
+using VInspector;
 
 public class EnvironmentManager : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class EnvironmentManager : MonoBehaviour
     public ObjectMap objectMap;
     VoronoiMapGenerator voronoiMapGenerator;
     public Dictionary<Vector3, ResourceObject> natureResources = new Dictionary<Vector3, ResourceObject>();
+    public SerializedDictionary<BiomeType, List<Vector3>> seedPoints = new SerializedDictionary<BiomeType, List<Vector3>>();
 
     public VoronoiMapGenerator VoronoiMapGenerator
     {
@@ -67,7 +68,7 @@ public class EnvironmentManager : MonoBehaviour
         {
             if (LoadData())
             {
-                VoronoiMapGenerator.GenerateFromData(biomeMap, objectMap, natureResources.Values.ToList());
+                VoronoiMapGenerator.GenerateFromData(biomeMap, natureResources.Values.ToList());
             } 
         }
     }
