@@ -101,6 +101,7 @@ public class TimeController : MonoBehaviour
     /// <param name="agent"></param>
     public void Unsubscribe(TimeAgent agent)
     {
+        DebugController.Log($"{agent.name} unsubscribes time controller.");
         timeAgents.Remove(agent);
     }
 
