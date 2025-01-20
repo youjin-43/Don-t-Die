@@ -35,7 +35,7 @@ public class UI_Inventory : MonoBehaviour
     int _initialInventorySize = 15;
 
     // 아이템 슬롯을 담아놓을 컨테이너
-    List<UI_ItemSlot> _inventory = new List<UI_ItemSlot>();
+    List<UI_ItemSlot> _inventorySlot = new List<UI_ItemSlot>();
 
     private void Awake()
     {
@@ -49,12 +49,12 @@ public class UI_Inventory : MonoBehaviour
         {
             GameObject go = Instantiate(ItemSlotPrefab, transform);
 
-            _inventory.Add(go.GetComponent<UI_ItemSlot>());
+            _inventorySlot.Add(go.GetComponent<UI_ItemSlot>());
         }
     }
 
     // 아이템 캐싱용 컨테이너
-    private Dictionary<string, bool> _inventoryDict = new Dictionary<string, bool>();
+    private HashSet<string> _inventoryDict = new HashSet<string>();
 
     public bool AddItem(ItemData itemData)
     {
@@ -63,17 +63,17 @@ public class UI_Inventory : MonoBehaviour
         for(int i = 0; i < _initialInventorySize; ++i)
         {
             // 슬롯이 비어있다면
-            if(_inventory[i].IsEmpty() == true)
+            if(_inventorySlot[i].IsEmpty() == true)
             {
                 // 다른 슬롯에 같은 아이템이 있는가
-                if(_inventoryDict.TryGetValue(itemData.Name, out bool isExist))
+                if(_inventoryDict.Contains(itemData.Name) == true)
                 {
                     // 그 슬롯까지 갔는데 꽉 차 있어서
                     // 처음부터 다시 돌아서 빈 칸 찾아옴
                     if(isFull == true)
                     {
-                        _inventory[i].AddItemData(itemData);
-                        _inventoryDict.Add(itemData.Name, true);
+                        _inventorySlot[i].AddItemData(itemData);
+                        _inventoryDict.Add(itemData.Name);
 
                         return true;
                     }
@@ -84,8 +84,8 @@ public class UI_Inventory : MonoBehaviour
                 }
                 else
                 {
-                    _inventory[i].AddItemData(itemData);
-                    _inventoryDict.Add(itemData.Name, true);
+                    _inventorySlot[i].AddItemData(itemData);
+                    _inventoryDict.Add(itemData.Name);
 
                     return true;
                 }
@@ -94,19 +94,18 @@ public class UI_Inventory : MonoBehaviour
             else
             {
                 // 같은 아이템인가
-                if (_inventory[i].GetItemName() == itemData.Name)
+                if (_inventorySlot[i].GetItemName() == itemData.Name)
                 {
                     // 같은 아이템이지만 꽉 차있는가?
-                    if (_inventory[i].IsFull() == true)
+                    if (_inventorySlot[i].IsFull() == true)
                     {
                         isFull = true;
-                        i = -1;
                         continue;
                     }
                     else
                     {
-                        _inventory[i].AddItemData(itemData);
-                        _inventoryDict.TryAdd(itemData.Name, true);
+                        _inventorySlot[i].AddItemData(itemData);
+                        _inventoryDict.Add(itemData.Name);
 
                         return true;
                     }

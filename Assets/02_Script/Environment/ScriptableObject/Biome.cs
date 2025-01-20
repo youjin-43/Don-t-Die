@@ -38,7 +38,7 @@ public class Biome : ScriptableObject
     public float PlantsIntensity { get { return plantsIntensity; } }
     public List<NatureResourceData> Minerals { get { return minerals; } }
     public float MineralsIntensity { get { return mineralsIntensity; } }
-    public Dictionary<ObjectType, List<NatureResourceData>> NatureResources 
+    public Dictionary<ObjectType, List<NatureResourceData>> NatureResources
     {
         get
         {
@@ -46,13 +46,9 @@ public class Biome : ScriptableObject
             {
                 natureResources = new Dictionary<ObjectType, List<NatureResourceData>> {
                 { ObjectType.Tree, trees },
-                {ObjectType.Plant, plants },
-                {ObjectType.Mineral, minerals }
-            };
-
-                natureResources[ObjectType.Tree].AddRange(trees);
-                natureResources[ObjectType.Plant].AddRange(plants);
-                natureResources[ObjectType.Mineral].AddRange(minerals);
+                { ObjectType.Plant, plants },
+                { ObjectType.Mineral, minerals }
+                };
             }
 
             return natureResources;

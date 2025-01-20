@@ -9,12 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4301608c9d3b4e44d88695669be00389, type: 3}
+  m_Script: {fileID: 11500000, guid: 6eba1c3695c11a04bb53a61ae4f255e9, type: 3}
   m_Name: GrassTree1
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2722301048121108459, guid: 567579054e2ea9f4d899d89ef955879e, type: 3}
+  prefab: {fileID: 5575461910395406060, guid: 020225130ecab91429ca66c2abfe0442, type: 3}
   biomeType: 1
   objectType: 2
   width: 2
   height: 2
   maxHealth: 100
+  timeToAllGrown: 0
+  sprites:
+  - {fileID: 3814261555255109445, guid: 3f1d1cd014e6dd04e87cf281e579a41b, type: 3}
+  growthStageTime: 
+  minTimeToHarvest: 0

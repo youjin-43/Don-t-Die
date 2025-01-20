@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4301608c9d3b4e44d88695669be00389, type: 3}
-  m_Name: GrassBush1
+  m_Name: GrassMushroom
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3899602401943286142, guid: a3a2ef7d78aec904cb15908666dd75b0, type: 3}
+  prefab: {fileID: 688159776559383801, guid: 3c6125d99e58c0b45aa49a2b7b2589d7, type: 3}
   biomeType: 1
   objectType: 3
   width: 1
   height: 1
+  maxHealth: 0
