@@ -27,6 +27,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - NatureResources
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 21dba384d14db454c862f481060775bc
+    m_Address: Assets/05_ScriptableObjects/NatureResources/Plants/GrassMushroom.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - NatureResources
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 42c73f8d6367c3b4dadcdb530cf86b4e
     m_Address: Assets/05_ScriptableObjects/NatureResources/Minerals/DesertMineral3.asset
     m_ReadOnly: 0
