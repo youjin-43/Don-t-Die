@@ -22,3 +22,4 @@ MonoBehaviour:
   - {fileID: 2077047141, guid: 9b0d7c47dd6f44394a0e736658a5ab7d, type: 3}
   - {fileID: 195927433, guid: 9b0d7c47dd6f44394a0e736658a5ab7d, type: 3}
   growthStageTime: 3c00000078000000
+  minTimeToHarvest: 60

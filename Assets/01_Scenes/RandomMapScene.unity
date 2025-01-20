@@ -366,7 +366,6 @@ GameObject:
   m_Component:
   - component: {fileID: 78947587}
   - component: {fileID: 78947586}
-  - component: {fileID: 78947588}
   m_Layer: 0
   m_Name: VoronoiMapGenerator
   m_TagString: Untagged
@@ -400,6 +399,9 @@ MonoBehaviour:
   waterEdgeSize: 0.4
   edgeNoiseScale: 0.1
   edgeNoiseStrength: 0.1
+  objectMap:
+    width: 0
+    height: 0
 --- !u!4 &78947587
 Transform:
   m_ObjectHideFlags: 0
@@ -416,14 +418,32 @@ Transform:
   - {fileID: 910105776}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &78947588
+--- !u!1 &345499218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 345499221}
+  - component: {fileID: 345499220}
+  - component: {fileID: 345499219}
+  m_Layer: 0
+  m_Name: EnvironmentManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &345499219
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 78947585}
-  m_Enabled: 1
+  m_GameObject: {fileID: 345499218}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a5123f68a7c95b42be6c78cb4e5db60, type: 3}
   m_Name: 
@@ -547,10 +567,45 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  timeScale: 180
+  timeScale: 3600
   startAtTime: 28800
   globalLight: {fileID: 1052522843}
+  daysPerSeason: 1900000019000000
   timeDisplayer: {fileID: 662507139}
+--- !u!114 &345499220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345499218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e06075ef6b7ae4fa90da93a2e4f0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  biomeMap:
+    width: 0
+    height: 0
+  objectMap:
+    width: 0
+    height: 0
+  resourceObjects: []
+--- !u!4 &345499221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345499218}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &522000098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,6 +1146,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1719044545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1719044547}
+  - component: {fileID: 1719044546}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1719044546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719044545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d63fa171707f2db4d873659144111efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1719044547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719044545}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1917858893
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,3 +1416,5 @@ SceneRoots:
   - {fileID: 660536304}
   - {fileID: 522000102}
   - {fileID: 1917858896}
+  - {fileID: 345499221}
+  - {fileID: 1719044547}

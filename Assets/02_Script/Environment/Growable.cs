@@ -9,7 +9,16 @@ public class Growable : TimeAgent
     SpriteRenderer spriteRenderer;
     int growStage;
 
-    bool isAllGrown // ÃÖ´ë·Î ¼ºÀåÇß³ª?
+    public int GrowStage
+    {
+        get { return growStage; }
+        set { growStage = Mathf.Clamp(value, 0, data.GrowthStageTime.Count - 1); }
+    }
+
+    /// <summary>
+    /// ìµœëŒ€ë¡œ ì„±ì¥í–ˆëŠ”ê°€
+    /// </summary>
+    bool isAllGrown 
     {
         get {
             if (data == null) { return false; }
@@ -20,13 +29,25 @@ public class Growable : TimeAgent
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        // ÀÓ½Ã!!!!!! ±×¸®°í ¸Ê Clear µÈ »óÅÂ·Î ½ÇÇàÇØ¾ß ¿¡·¯ ¾È ³²
-        transform.parent.parent.GetComponent<TimeController>().Subscribe(this);
+        // ë§µ Clear ëœ ìƒíƒœë¡œ ì‹¤í–‰í•´ì•¼ ì—ëŸ¬ ì•ˆ ë‚¨
+        EnvironmentManager.Instance.GetComponent<TimeController>().Subscribe(this);
+        UpdateSprite();
     }
 
-    private void Update()
+    // ê²Œì„ë·°ì—ì„œ ì”¬ë·°ë¡œ ë„˜ì–´ì˜¬ ë•Œ ì—ëŸ¬ ë°©ì§€
+    bool isQuitting = false;
+    private void OnApplicationQuit()
     {
-        
+        isQuitting = true;
+    }
+
+    private void OnDestroy()
+    {
+        if (isQuitting) { return; }
+        if (EnvironmentManager.Instance.TryGetComponent(out TimeController timeController))
+        {
+            timeController.Unsubscribe(this);
+        }
     }
 
     public override void UpdateTimer()
@@ -38,7 +59,12 @@ public class Growable : TimeAgent
         if (timer > data.GrowthStageTime[growStage])
         {
             growStage++;
-            spriteRenderer.sprite = data.Sprites[growStage];
+            UpdateSprite();
         }
+    }
+
+    void UpdateSprite()
+    {
+        spriteRenderer.sprite = data.Sprites[growStage];
     }
 }

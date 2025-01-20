@@ -59,7 +59,8 @@ MonoBehaviour:
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
-  - {fileID: 11400000, guid: c4e376814cd98f6459a0235dc3625f0a, type: 2}
+  - {fileID: 11400000, guid: ddda1c4c5e8cfe74f89048914df32cea, type: 2}
+  - {fileID: 11400000, guid: ad2a3987a0653cb4babc39586c002d09, type: 2}
   - {fileID: 11400000, guid: 14933ce3312c0e94d8ca035e0b1fea41, type: 2}
   m_BuildSettings:
     m_LogResourceManagerExceptions: 1
@@ -101,7 +102,8 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - IconImage
-    - ItemData
+    - NatureResources
+    - BiomeDatas
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: aa10ac3f24ff8b04f857d1d11b239804, type: 2}

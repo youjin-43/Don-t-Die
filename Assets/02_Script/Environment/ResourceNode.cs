@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class ResourceNode : MonoBehaviour
 {
-    [SerializeField] VoronoiMapGenerator mapGenerator;
-    [SerializeField] NatureResourceData natureResourceData;
+    VoronoiMapGenerator mapGenerator;
+    [SerializeField] protected NatureResourceData natureResourceData;
 
     protected virtual void Init()
     {
-        // ÀÓ½ÃÀÓ. ³ªÁß¿¡ GameManager¿¡¼­ ¹Ş¾Æ¿À´Â ½ÄÀ¸·Î ¼öÁ¤.
-        mapGenerator = transform.parent.parent.GetComponent<VoronoiMapGenerator>();
+        mapGenerator = EnvironmentManager.Instance.VoronoiMapGenerator;
     }
 
     private void Start()
@@ -19,7 +18,10 @@ public class ResourceNode : MonoBehaviour
 
     protected void Harvest()
     {
-        mapGenerator.objectMap.ClearTiles(new Vector2Int((int)transform.position.x, (int)transform.position.y), natureResourceData.Width, natureResourceData.Height);
+        // ìˆ˜í™•ì´ ë˜ë©´ objectMapì—ì„œ ì •ë³´ë¥¼ ì§€ìš°ê³  ë¹„í™œì„±í™”í•œë‹¤. 
+        // Object Poolingì„ ì¨ì„œ ë¹„í™œì„±í™”/í™œì„±í™”í• ì§€ ì•„ì˜ˆ destroy instantiateë¥¼ í•´ë²„ë¦´ì§€ ê³ ë¯¼ì¤‘ ã„±-
+        EnvironmentManager.Instance.objectMap.ClearTiles(new Vector2Int((int)transform.position.x, (int)transform.position.y), natureResourceData.Width, natureResourceData.Height);
+        EnvironmentManager.Instance.natureResources.Remove(transform.position);
         gameObject.SetActive(false);
     }
 }

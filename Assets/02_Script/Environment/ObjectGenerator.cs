@@ -1,10 +1,20 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-public struct ResourceObject
+
+[Serializable]
+public class ResourceObject
 {
     public Vector2Int position;
-    public NatureResourceData data;
+    public string dataName;
+    public bool isDamageable;
+    public bool isGrowable;
+    public int currentHealth;
+    public int growthStage;
+    public int timer;
+
+    [System.NonSerialized] public GameObject gameObject;    // GameObject는 직렬화 못 함. 런타임에서 어떤 GameObject와 연결되어 있는지 캐싱
 }
 
 public class ObjectGenerator
@@ -24,104 +34,38 @@ public class ObjectGenerator
     public List<ResourceObject> Generate()
     {
         resourceObjects.Clear();
-        GenerateTrees();
-        GeneratePlants();
-        GenerateMinerals();
+        GenerateObjects(ObjectType.Tree);
+        GenerateObjects(ObjectType.Plant);
+        GenerateObjects(ObjectType.Mineral);
         return resourceObjects;
     }
 
-    void GenerateTrees()
+    void GenerateObjects(ObjectType type)
     {
         for (int i = 0; i < objectMap.height; i++)
         {
             for (int j = 0; j < objectMap.width; j++)
             {
-                Biome currentBiome = biomeMap.Map[i, j];
+                DataManager.Instance.BiomeDatas.TryGetValue(biomeMap.map[i][j].ToString(), out Biome currentBiome);
 
-                if (currentBiome.Trees.Count == 0)
+                if (currentBiome == null || currentBiome.NatureResources[type].Count == 0)
                 {
                     continue;
                 }
 
-                if (Random.Range(0, 10000) / 100f < currentBiome.TreesIntensity)
+                if (UnityEngine.Random.Range(0, 10000) / 100f < currentBiome.Intensities[type])
                 {
-                    int randIdx = Random.Range(0, currentBiome.Trees.Count);
-                    NatureResourceData tree = currentBiome.Trees[randIdx];
+                    int randIdx = UnityEngine.Random.Range(0, currentBiome.NatureResources[type].Count);
+                    NatureResourceData obj = currentBiome.NatureResources[type][randIdx];
 
-                    if (biomeMap.IsValidPosition(new Vector2Int(j, i), tree.Width, tree.Height, tree.BiomeType)
-                        && objectMap.AreTilesEmpty(new Vector2Int(j, i), tree.Width, tree.Height))
+                    if (biomeMap.IsValidPosition(new Vector2Int(j, i), obj.Width, obj.Height, obj.BiomeType)
+                        && objectMap.AreTilesEmpty(new Vector2Int(j, i), obj.Width, obj.Height))
                     {
-                        objectMap.MarkTiles(new Vector2Int(j, i), tree.Width, tree.Height, ObjectType.Tree);
+                        objectMap.MarkTiles(new Vector2Int(j, i), obj.Width, obj.Height, ObjectType.Tree);
                         resourceObjects.Add(new ResourceObject
                         {
                             position = new Vector2Int(j, i),
-                            data = tree
-                        });
-                    }
-                }
-            }
-        }
-    }
-
-    void GeneratePlants()
-    {
-        for (int i = 0; i < objectMap.height; i++)
-        {
-            for (int j = 0; j < objectMap.width; j++)
-            {
-                Biome currentBiome = biomeMap.Map[i, j];
-
-                if (currentBiome.Plants.Count == 0)
-                {
-                    continue;
-                }
-
-                if (Random.Range(0, 10000) / 100f < currentBiome.PlantsIntensity)
-                {
-                    int randIdx = Random.Range(0, currentBiome.Plants.Count);
-                    NatureResourceData plant = currentBiome.Plants[randIdx];
-
-                    if (biomeMap.IsValidPosition(new Vector2Int(j, i), plant.Width, plant.Height, plant.BiomeType)
-                        && objectMap.AreTilesEmpty(new Vector2Int(j, i), plant.Width, plant.Height))
-                    {
-                        objectMap.MarkTiles(new Vector2Int(j, i), plant.Width, plant.Height, ObjectType.Plant);
-                        resourceObjects.Add(new ResourceObject
-                        {
-                            position = new Vector2Int(j, i),
-                            data = plant
-                        });
-                    }
-                }
-            }
-        }
-    }
-
-    void GenerateMinerals()
-    {
-        for (int i = 0; i < objectMap.height; i++)
-        {
-            for (int j = 0; j < objectMap.width; j++)
-            {
-                Biome currentBiome = biomeMap.Map[i, j];
-
-                if (currentBiome.Minerals.Count == 0)
-                {
-                    continue;
-                }
-
-                if (Random.Range(0, 10000) / 100f < currentBiome.MineralsIntensity)
-                {
-                    int randIdx = Random.Range(0, currentBiome.Minerals.Count);
-                    NatureResourceData mineral = currentBiome.Minerals[randIdx];
-
-                    if (biomeMap.IsValidPosition(new Vector2Int(j, i), mineral.Width, mineral.Height, mineral.BiomeType)
-                        && objectMap.AreTilesEmpty(new Vector2Int(j, i), mineral.Width, mineral.Height))
-                    {
-                        objectMap.MarkTiles(new Vector2Int(j, i), mineral.Width, mineral.Height, ObjectType.Mineral);
-                        resourceObjects.Add(new ResourceObject
-                        {
-                            position = new Vector2Int(j, i),
-                            data = mineral
+                            dataName = obj.name,
                         });
                     }
                 }
