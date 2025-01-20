@@ -20,7 +20,7 @@ MonoBehaviour:
   maxHealth: 0
   timeToAllGrown: 20
   sprites:
-  - {fileID: -1365332469, guid: 6cd6a1f6639864d428fff3fd826770fe, type: 3}
-  - {fileID: -396074549, guid: 6cd6a1f6639864d428fff3fd826770fe, type: 3}
+  - {fileID: 76822181, guid: bbcd361f555a947ac98c3d39099e6235, type: 3}
+  - {fileID: 119448159, guid: bbcd361f555a947ac98c3d39099e6235, type: 3}
   growthStageTime: 0a00000014000000
   minTimeToHarvest: 10
