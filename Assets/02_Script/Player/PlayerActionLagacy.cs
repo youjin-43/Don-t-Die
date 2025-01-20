@@ -1,7 +1,6 @@
-using System.Linq;
 using UnityEngine;
-
-public class PlayerAction : MonoBehaviour
+using System.Linq;
+public class PlayerActionLagacy: MonoBehaviour
 {
     // 에디터에서 값이 변경될 때마다 호출
     private void OnValidate()
@@ -13,12 +12,11 @@ public class PlayerAction : MonoBehaviour
     #region components
     Transform plyerTransform;
     Animator animator;
-    SpriteRenderer spriteRenderer;
     #endregion
 
 
-    [SerializeField] float moveSpeed = 4f; //이동 속도 
-    Vector2 dir = new Vector2(0f, 0f);
+    [SerializeField]float moveSpeed = 4f; //이동 속도 
+    Vector2 dir = new Vector2(0f,0f);
 
     #region AutoInteracting
     [Header("AutoInteracting")]
@@ -28,13 +26,11 @@ public class PlayerAction : MonoBehaviour
     [SerializeField] bool isAutoInteracting = false; // 자동 상호작용 중인지(디버그용)
     #endregion
 
-    [SerializeField] Collider2D[] colliders; // 주변에 상호작용 가능한 물체가 있는지 (디버그용)
-
+    [SerializeField] Collider2D[] colliders;
     private void Start()
     {
         plyerTransform = GetComponent<Transform>();
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -45,7 +41,7 @@ public class PlayerAction : MonoBehaviour
 
 
         // ㅇㅎㅈ 추가
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if(Input.GetKeyDown(KeyCode.Tab))
         {
             UI_Craft.Instance.ToggleCraftingUI();
         }
@@ -53,28 +49,30 @@ public class PlayerAction : MonoBehaviour
 
     void HandleMovement()
     {
-        dir.x = Input.GetAxisRaw("Horizontal");
+        dir.x = Input.GetAxisRaw("Horizontal") ;
         dir.y = Input.GetAxisRaw("Vertical");
         //DebugController.Log(dir.x + "," + dir.y);
 
-        plyerTransform.position += new Vector3(dir.x, dir.y, 0).normalized * moveSpeed * Time.deltaTime;
+        plyerTransform.position += new Vector3(dir.x, dir.y, 0).normalized* moveSpeed * Time.deltaTime;
     }
 
     void HandleMoveAnimation()
     {
         if (dir.x == 0 && dir.y == 0)
         {
-            animator.SetBool("Move", false);
+            animator.SetBool("IsMove", false);
         }
         else
         {
-            animator.SetBool("Move", true);
+            animator.SetBool("IsMove", true);
+            // 이동했던 방향 기억 
+            animator.SetFloat("PreDx", dir.x);
+            animator.SetFloat("PreDy", dir.y);
         }
 
-        //좌우 바라보게 하기 
-        if (dir.x < 0) spriteRenderer.flipX = true;
-        if (dir.x > 0) spriteRenderer.flipX = false;
-
+        animator.SetFloat("Dx", dir.x);
+        animator.SetFloat("Dy", dir.y);
+        
     }
 
     void AutoInteract()
@@ -128,12 +126,9 @@ public class PlayerAction : MonoBehaviour
             transform.position += direction * moveSpeed * Time.deltaTime;
 
             //애니메이션 적용
-            animator.SetBool("Move", true);
-
-            //좌우 바라보게 하기 
-            if (direction.x < 0) spriteRenderer.flipX = true;
-            if (direction.x > 0) spriteRenderer.flipX = false;
-            
+            animator.SetBool("IsMove", true);
+            animator.SetFloat("Dx", direction.x);
+            animator.SetFloat("Dy", direction.y);
         }
 
         // 타겟 근처에 도달하면 상호작용
@@ -151,7 +146,7 @@ public class PlayerAction : MonoBehaviour
 
         // TODO : 지금은 아이템밖에 없어서 한번만 상호작용하면 되지만 나중에 나무캐기나 공격같은거 하면 여러번 해야하니까 이후 수정 필요 
         // 상호작용 완료 후 대상 초기화
-
+        
         autoInteractTargetTransform = null; //상호작용 완료한 타겟은 없애고
         FindClosestInteractableObj();//새로운 타겟 탐색
         if (autoInteractTargetTransform == null) StopAutoInteraction();
@@ -178,7 +173,7 @@ public class PlayerAction : MonoBehaviour
         if (gotItem != null)
         {
             // 필드의 아이템을 인벤토리에 추가했다면
-            if (UI_Inventory.Instance.AddItem(gotItem.ItemData))
+            if(UI_Inventory.Instance.AddItem(gotItem.ItemData))
             {
                 // 필드의 아이템은 지움
                 Destroy(autoInteractTargetTransform.gameObject);
