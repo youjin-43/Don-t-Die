@@ -44,20 +44,24 @@ public class MonsterSpawnManager : MonoBehaviour
 
     private void Start()
     {
-        InitializeBiomeMonsters();
+        //InitializeBiomeMonsters();
     }
 
 
     [SerializeField] float spawnRadius = 10f;
     [SerializeField] int MinSpawnCnt = 3;
     [SerializeField] int MaxSpawnCnt = 20;
-    [SerializeField] List<GameObject> TmpMonsters;
-    [SerializeField] List<GameObject> SpawnedMonster;
 
-    void InitializeBiomeMonsters()
+    public SerializedDictionary<BiomeType, List<Vector3>> seedPoints;
+    public SerializedDictionary<BiomeType, List<GameObject>> MonsterPrefab;
+    public SerializedDictionary<BiomeType, List<GameObject>> SpawnedMonster;
+
+    
+
+    public void InitializeBiomeMonsters()
     {
         DebugController.Log("InitializeBiomeMonsters 실행됨");
-        SerializedDictionary<BiomeType, List<Vector3>> seedPoints = EnvironmentManager.Instance.seedPoints;
+        seedPoints = EnvironmentManager.Instance.seedPoints;
         DebugController.Log(seedPoints.Count.ToString());
 
         // 각 바이옴 별로 몬스터 무리 생성
@@ -74,6 +78,7 @@ public class MonsterSpawnManager : MonoBehaviour
                 //현재 포인트가 현재 키 바이옴과 일치한다면(가끔 포인트가 바다 위에 있는 경우가 있음)
                 if (EnvironmentManager.Instance.biomeMap.GetTileBiome(new Vector2Int((int)points[i].x, (int)points[i].y))== biome)
                 {
+                    DebugController.Log($"Biome: {biome}, Seed Points: {points[i]}");
                     // 각 seed point를 중심으로 무작위 위치에 여러 몬스터 스폰
                     int monsterCount = Random.Range(MinSpawnCnt, MaxSpawnCnt); // 스폰할 몬스터 수 (조정 가능)
                     for (int m = 0; m < monsterCount; m++)
@@ -86,9 +91,9 @@ public class MonsterSpawnManager : MonoBehaviour
                         Vector2Int tilePosition = new Vector2Int((int)spawnPosition.x, (int)spawnPosition.y);
                         if (EnvironmentManager.Instance.biomeMap.GetTileBiome(tilePosition) == biome)
                         {
-                            GameObject go = Instantiate(TmpMonsters[tmp], spawnPosition, Quaternion.identity);
-                            go.GetComponent<SpriteRenderer>().sortingOrder = 100;
-                            SpawnedMonster.Add(go);
+                            //GameObject go = Instantiate(TmpMonsters[tmp], spawnPosition, Quaternion.identity);
+                            //go.GetComponent<SpriteRenderer>().sortingOrder = 100;
+                            //SpawnedMonster.Add(go);
                         }
                     }
                 }
