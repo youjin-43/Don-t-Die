@@ -49,42 +49,77 @@ public class UI_Inventory : MonoBehaviour
         {
             GameObject go = Instantiate(ItemSlotPrefab, transform);
 
-            go.name = "ItemSlot_" + i;
-
             _inventory.Add(go.GetComponent<UI_ItemSlot>());
         }
     }
 
-    void Update()
-    {
+    // 아이템 캐싱용 컨테이너
+    private Dictionary<string, bool> _inventoryDict = new Dictionary<string, bool>();
 
-    }
-
-    public bool AddItem(ItemData item)
+    public bool AddItem(ItemData itemData)
     {
-        // 아이템 슬롯을 순회하면서
-        foreach (UI_ItemSlot slot in _inventory)
+        bool isFull = false;
+
+        for(int i = 0; i < _initialInventorySize; ++i)
         {
             // 슬롯이 비어있다면
-            if(slot.IsEmpty() == true)
+            if(_inventory[i].IsEmpty() == true)
             {
-                // 슬롯에 아이템을 추가
-                slot.AddItem(item);
-                return true;
+                // 다른 슬롯에 같은 아이템이 있는가
+                if(_inventoryDict.TryGetValue(itemData.Name, out bool isExist))
+                {
+                    // 그 슬롯까지 갔는데 꽉 차 있어서
+                    // 처음부터 다시 돌아서 빈 칸 찾아옴
+                    if(isFull == true)
+                    {
+                        _inventory[i].AddItemData(itemData);
+                        _inventoryDict.Add(itemData.Name, true);
+
+                        return true;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                else
+                {
+                    _inventory[i].AddItemData(itemData);
+                    _inventoryDict.Add(itemData.Name, true);
+
+                    return true;
+                }
             }
             // 슬롯이 비어있지 않다면
             else
             {
-                //// 주운 아이템과 같다면 && 그 아이템이 최대갯수보다 적다면
-                //if (slot.GetItemName() == item.name && slot.IsFull() == false)
-                //{
-                //    slot.AddItem(item);
-                //    return true;
-                //}
+                // 같은 아이템인가
+                if (_inventory[i].GetItemName() == itemData.Name)
+                {
+                    // 같은 아이템이지만 꽉 차있는가?
+                    if (_inventory[i].IsFull() == true)
+                    {
+                        isFull = true;
+                        i = -1;
+                        continue;
+                    }
+                    else
+                    {
+                        _inventory[i].AddItemData(itemData);
+                        _inventoryDict.TryAdd(itemData.Name, true);
+
+                        return true;
+                    }
+                }
+                // 다른 아이템인가
+                else
+                {
+                    // 다음 슬롯으로
+                    continue;
+                }
             }
         }
 
-        // 이미 들고 있는 것도 없고, 인벤토리도 가득 참
         return false;
     }
 

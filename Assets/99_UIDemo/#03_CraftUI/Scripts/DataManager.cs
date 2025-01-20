@@ -44,7 +44,7 @@ public class DataManager : MonoBehaviour
     public Dictionary<string, Sprite>   IconImageData = new Dictionary<string, Sprite>();
     public Dictionary<string, ItemData> ItemData      = new Dictionary<string, ItemData>();
 
-    async void Awake()
+    void Awake()
     {
         SingletonInitialize();
 

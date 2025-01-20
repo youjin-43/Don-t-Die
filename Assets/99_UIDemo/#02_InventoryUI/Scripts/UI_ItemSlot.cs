@@ -1,5 +1,7 @@
+using NUnit.Framework.Interfaces;
 using System.Collections.Generic;
 using System.Drawing;
+using TMPro;
 using Unity.Android.Gradle.Manifest;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,114 +10,142 @@ using UnityEngine.UI;
                                           
 public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
 {
-    // 아이템 아래 그림자 효과
-    private GameObject _shade;
-
     // 들고 있는 아이템 이미지
-    private Image      _itemImage;
+    private Image _itemImage;
 
-    // 아이템을 여러개 들고 있기 위한 컨테이너
-    //private Queue<ItemData> _items = new Queue<ItemData>();
-    private ItemData _item;
+    // 아이템 카운트 텍스트
+    private TextMeshProUGUI _itemCountText;
+
+    // 아이템 데이터
+    private ItemData _itemData;
+
+    // 몇 개 까지?
+    private int _currItemCount = 0;
+    private int _maxItemCount  = 64;
+
+    // 드래깅 컨트롤용
+    static bool _isDragging = false;
 
     private void Awake()
     {
-        _shade     = transform.GetChild(0).gameObject;
-        _itemImage = transform.GetChild(1).GetComponent<Image>();
+        _itemImage    = transform.GetChild(0).GetComponent<Image>();
+        _itemCountText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
 
-        // 그림자 효과는 처음에는 꺼줌
-        _shade.SetActive(false);
+        _itemCountText.gameObject.SetActive(false);
     }
 
-    static bool _isDragging = false;
-
+    // IPointerClickHandler 인터페이스
     public void OnPointerClick(PointerEventData eventData)
     {
         // 좌클릭 이벤트 (아이템 이동)
         if (eventData.button == PointerEventData.InputButton.Left)
         {
+            // 오작동 방지
+            if (IsEmpty() == true && _isDragging == false)
+            {
+                return;
+            }
+
             if (_isDragging == false)
             {
                 _isDragging = true;
+
+                _itemCountText.gameObject.SetActive(false);
+
                 DragAndDrop.Instance.BeginDrag(this);
             }
             else
             {
                 _isDragging = false;
+
                 DragAndDrop.Instance.EndDrag(this);
             }
         }
         // 우클릭 이벤트 (아이템 사용)
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            if(_item == null)
+            // 오작동 방지
+            if (IsEmpty() == true)
             {
-                DebugController.Log("아이템이 없어용");
+                return;
+            }
+
+            if (_itemData == null)
+            {
+                DebugController.Log("아이템이 없어요");
             }
             else
             {
-                DebugController.Log("아이템 사용");
+                UseItem();
             }
         }
     }
 
-    public void AddItem(ItemData item)
+    public bool AddItemData(ItemData itemData)
     {
-        // 슬롯이 비어있다면
-        //if(IsEmpty() == true)
-        //{
-        //    // 이미지 바꿔줌
-        //    _itemImage.sprite = item.Image;
-        //    // 그림자 효과 활성화
-        //    _shade.SetActive(true);
-        //}
+        // 꽉 찼으면
+        if(_currItemCount == _maxItemCount)
+        {
+            return false;
+        }
 
-        //_items.Enqueue(item);
+        // 슬롯에 아이템이 처음 들어왔을 때
+        if( _itemData == null)
+        {
+            _itemImage.sprite = itemData.Image;
 
-        _shade.SetActive (true);
-        _itemImage.sprite = item.Image;
-        _item = item;
+            _itemCountText.gameObject.SetActive(true);
+        }
+
+        _itemData = itemData;
+
+        ++_currItemCount;
+
+        _itemCountText.text = _currItemCount.ToString();
+
+        return true;
     }
 
     public ItemData GetItemData()
     {
-        //ItemData item = _items.Dequeue();
-
-        //// 아이템이 없다면
-        //if(_items.Count == 0)
-        //{
-        //    // 그림자 효과 비활성화
-        //    _shade.SetActive(false);
-        //}
-
-        //return item;
-
-        _shade.SetActive(false);
-
-        return _item;
+        return _itemData;
     }
 
     public string GetItemName()
     {
-        //return _items.Peek().name;
-        return _item.Name;
+        return _itemData.Name;
+    }
+
+    public void UseItem()
+    {
+        DebugController.Log("아이템 사용");
+    }
+
+    public int GetItemCount()
+    {
+        return _currItemCount;
+    }
+
+    public void SetItemCount(int count)
+    {
+        _currItemCount = count;
     }
 
     public bool IsEmpty()
     {
-       // return _items.Count == 0;
-        return _item == null;
+        return _itemData == null;
+    }
+
+    public bool IsFull()
+    {
+        return _currItemCount == _maxItemCount;
     }
 
     public void ClearSlot()
     {
-        _item = null;
+        _itemData         = null;
         _itemImage.sprite = null;
-        _shade.SetActive(false);
+        _currItemCount    = 0;
+        _itemCountText.gameObject.SetActive(false);
     }
-
-    //public bool IsFull()
-    //{
-    //    return _items.Count == 64;
-    //}
 }
