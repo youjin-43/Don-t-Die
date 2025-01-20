@@ -1,8 +1,4 @@
-using NUnit.Framework.Interfaces;
-using System.Collections.Generic;
-using System.Drawing;
 using TMPro;
-using Unity.Android.Gradle.Manifest;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,25 +6,25 @@ using UnityEngine.UI;
                                           
 public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
 {
-    // 들고 있는 아이템 이미지
-    private Image _itemImage;
-
-    // 아이템 카운트 텍스트
-    private TextMeshProUGUI _itemCountText;
-
     // 아이템 데이터
-    private ItemData _itemData;
+    public struct ItemSlotData
+    {
+        public ItemData ItemData;
+        public int      ItemCount;
+    }
+    private ItemSlotData _itemSlotData;
 
-    // 몇 개 까지?
-    private int _currItemCount = 0;
-    private int _maxItemCount  = 64;
+    // 슬롯 데이터
+    private Image           _itemImage;
+    private TextMeshProUGUI _itemCountText;
+    private int             _maxItemCount  = 3;
 
-    // 드래깅 컨트롤용
-    static bool _isDragging = false;
+    // 드래깅 데이터
+    static bool             _isDragging    = false;
 
     private void Awake()
     {
-        _itemImage    = transform.GetChild(0).GetComponent<Image>();
+        _itemImage     = transform.GetChild(0).GetComponent<Image>();
         _itemCountText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
 
         _itemCountText.gameObject.SetActive(false);
@@ -52,13 +48,13 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
 
                 _itemCountText.gameObject.SetActive(false);
 
-                DragAndDrop.Instance.BeginDrag(this);
+                DragAndDrop.Instance.BeginDragData(this);
             }
             else
             {
                 _isDragging = false;
 
-                DragAndDrop.Instance.EndDrag(this);
+                DragAndDrop.Instance.EndDragData(this);
             }
         }
         // 우클릭 이벤트 (아이템 사용)
@@ -70,7 +66,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
                 return;
             }
 
-            if (_itemData == null)
+            if (_itemSlotData.ItemData == null)
             {
                 DebugController.Log("아이템이 없어요");
             }
@@ -83,37 +79,40 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public bool AddItemData(ItemData itemData)
     {
-        // 꽉 찼으면
-        if(_currItemCount == _maxItemCount)
+        // 슬롯이 가득 찼다면
+        if(_itemSlotData.ItemCount == _maxItemCount)
         {
             return false;
         }
-
-        // 슬롯에 아이템이 처음 들어왔을 때
-        if( _itemData == null)
+        // 슬롯에 최초로 아이템이 들어 온 경우
+        if(_itemSlotData.ItemData == null)
         {
             _itemImage.sprite = itemData.Image;
-
             _itemCountText.gameObject.SetActive(true);
         }
-
-        _itemData = itemData;
-
-        ++_currItemCount;
-
-        _itemCountText.text = _currItemCount.ToString();
+        // 아이템 추가
+        {
+            _itemSlotData.ItemData   = itemData;
+            _itemSlotData.ItemCount += 1;
+        }
+        // 아이템 갯수 UI 업데이트
+        {
+            _itemCountText.text = _itemSlotData.ItemCount.ToString();
+        }
 
         return true;
     }
 
     public ItemData GetItemData()
     {
-        return _itemData;
+        _itemSlotData.ItemCount -= 1;
+
+        return _itemSlotData.ItemData;
     }
 
     public string GetItemName()
     {
-        return _itemData.Name;
+        return _itemSlotData.ItemData.Name;
     }
 
     public void UseItem()
@@ -121,31 +120,62 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
         DebugController.Log("아이템 사용");
     }
 
-    public int GetItemCount()
-    {
-        return _currItemCount;
-    }
-
-    public void SetItemCount(int count)
-    {
-        _currItemCount = count;
-    }
-
     public bool IsEmpty()
     {
-        return _itemData == null;
+        return _itemSlotData.ItemData == null;
     }
 
     public bool IsFull()
     {
-        return _currItemCount == _maxItemCount;
+        return _itemSlotData.ItemCount == _maxItemCount;
     }
 
-    public void ClearSlot()
+    /// <summary>
+    /// 인벤토리 드래깅용
+    /// </summary>
+    public ItemSlotData GetItemSlotData()
     {
-        _itemData         = null;
-        _itemImage.sprite = null;
-        _currItemCount    = 0;
-        _itemCountText.gameObject.SetActive(false);
+        return _itemSlotData;
+    }
+
+    /// <summary>
+    /// 인벤토리 드래깅용
+    /// </summary>
+    public void SetItemSlotData(ItemSlotData itemSlotData)
+    {
+        // 데이터 초기화
+        {
+            _itemSlotData = itemSlotData;
+        }
+        // 이미지 초기화
+        {
+            _itemImage.sprite = itemSlotData.ItemData.Image;
+        }
+        // 카운트 초기화
+        {
+            _itemCountText.text = itemSlotData.ItemCount.ToString();
+            _itemCountText.gameObject.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// 인벤토리 드래깅용
+    /// </summary>
+    public void ClearItemSlotData()
+    {
+        // 데이터 초기화
+        {
+            _itemSlotData.ItemData = null;
+            _itemSlotData.ItemCount = 0;
+        }
+        // 이미지 초기화
+        {
+            _itemImage.sprite = null;
+        }
+        // 카운트 초기화
+        {
+            _itemCountText.text = "0";
+            _itemCountText.gameObject.SetActive(false);
+        }
     }
 }

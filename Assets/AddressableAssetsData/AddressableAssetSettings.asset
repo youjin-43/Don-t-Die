@@ -105,6 +105,7 @@ MonoBehaviour:
     - IconImage
     - NatureResources
     - BiomeDatas
+    - ItemData
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: aa10ac3f24ff8b04f857d1d11b239804, type: 2}
