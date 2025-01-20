@@ -79,11 +79,6 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public bool AddItemData(ItemData itemData)
     {
-        // 슬롯이 가득 찼다면
-        if(_itemSlotData.ItemCount == _maxItemCount)
-        {
-            return false;
-        }
         // 슬롯에 최초로 아이템이 들어 온 경우
         if(_itemSlotData.ItemData == null)
         {

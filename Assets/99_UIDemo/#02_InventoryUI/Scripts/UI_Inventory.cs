@@ -100,7 +100,6 @@ public class UI_Inventory : MonoBehaviour
                     if (_inventorySlot[i].IsFull() == true)
                     {
                         isFull = true;
-                        i = -1;
                         continue;
                     }
                     else

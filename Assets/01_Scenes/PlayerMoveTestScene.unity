@@ -102367,7 +102367,7 @@ GameObject:
   - component: {fileID: 1830500479}
   - component: {fileID: 1830500478}
   m_Layer: 5
-  m_Name: DragImageUI
+  m_Name: DragUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104723,7 +104723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636b438776cdce849ab4ede8f04e46cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dragItemUI: {fileID: 1830500477}
+  _dragUI: {fileID: 1830500477}
 --- !u!114 &4620481404385667052
 MonoBehaviour:
   m_ObjectHideFlags: 0
