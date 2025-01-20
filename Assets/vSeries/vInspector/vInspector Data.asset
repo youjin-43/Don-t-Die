@@ -14,18 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bookmarks:
   - globalId:
-      globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-196837717-0
+      globalObjectIdString: GlobalObjectId_V1-0-367c2576f353c483ba03c17f4e2d03e2-0-0
     _typeString: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     _obj: {fileID: 0}
     isSceneGameObject: 1
     isAsset: 0
-    id: 1046220626
-  - globalId:
-      globalObjectIdString: GlobalObjectId_V1-2-3f5021ec6b04d45e28b9983d9e1f4953-971619890-0
-    _typeString: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    _obj: {fileID: 0}
-    isSceneGameObject: 1
-    isAsset: 0
-    id: 1058319351
+    id: 1062608760
