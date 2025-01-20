@@ -392,16 +392,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e6e0fd2fec92db647add71a135ecdeaf, type: 2}
   - {fileID: 11400000, guid: 1e1cb5801b5824b4aa1620d6e5309412, type: 2}
   waterBiome: {fileID: 11400000, guid: 6c1db19fb3bf8364c86ad0af8a4e5be9, type: 2}
-  mapWidth: 250
-  mapHeight: 250
+  mapWidth: 300
+  mapHeight: 300
   seedPointCount: 25
   noiseScale: 0.2
   waterEdgeSize: 0.4
   edgeNoiseScale: 0.1
   edgeNoiseStrength: 0.1
-  objectMap:
-    width: 0
-    height: 0
+  riverCount: 3
+  lakeCount: 15
 --- !u!4 &78947587
 Transform:
   m_ObjectHideFlags: 0
