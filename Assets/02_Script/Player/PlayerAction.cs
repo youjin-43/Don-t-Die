@@ -168,12 +168,16 @@ public class PlayerAction : MonoBehaviour
 
 
         // ㅇㅎㅈ 추가
-
         Item gotItem = autoInteractTargetTransform.GetComponent<Item>();
 
         if (gotItem != null)
         {
-            UI_Inventory.Instance.AddItem(gotItem);
+            // 필드의 아이템을 인벤토리에 추가했다면
+            if(UI_Inventory.Instance.AddItem(gotItem.ItemData))
+            {
+                // 필드의 아이템은 지움
+                Destroy(autoInteractTargetTransform.gameObject);
+            }
         }
     }
 

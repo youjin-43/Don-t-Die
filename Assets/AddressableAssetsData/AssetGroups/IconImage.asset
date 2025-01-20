@@ -64,7 +64,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 225069a750824944db4866ac56c72092
-    m_Address: Assets/03_Image/Icon/Branch.png
+    m_Address: Branch
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -88,7 +88,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 34d5507f2605f8049b22019c8fb87aed
-    m_Address: Assets/03_Image/Icon/Bone.png
+    m_Address: Bone
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -202,7 +202,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 74aa28bf4fb2cf54aa8b4391cf69e3a7
-    m_Address: Assets/03_Image/Icon/GoldPickax.png
+    m_Address: GoldPickax
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage

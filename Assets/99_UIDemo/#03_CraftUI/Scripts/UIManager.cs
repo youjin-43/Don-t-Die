@@ -1,11 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] Transform  _UIParent;
-    [SerializeField] GameObject _inventoryPrefab;
-    [SerializeField] GameObject _craftPrefab;
-
+    #region SINGLETON
     private static UIManager instance;
     public  static UIManager Instance
     {
@@ -15,7 +13,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void Awake()
+    void SingletonInitialize()
     {
         if (instance != null)
         {
@@ -26,8 +24,27 @@ public class UIManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+    #endregion
 
-        Instantiate(_inventoryPrefab, _UIParent);
-        Instantiate(_craftPrefab,     _UIParent);
+    // 에디터 상에서 조합 UI가 켜있는게 보기 싫어서...
+    [SerializeField] GameObject _craftUI;
+
+    private void Awake()
+    {
+        SingletonInitialize();
+        
+        
+        _craftUI.SetActive(true);
+    }
+
+    public void Update()
+    {
+        //Vector3 point = Camera.main.ScreenToWorldPoint
+        //    (
+        //        new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Input.mousePosition.z)
+        //    );
+
+        //Debug.Log(point.ToString());
     }
 }

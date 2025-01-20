@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class UI_CraftList : MonoBehaviour
 {
+    // 아이템 슬롯 담아놓을 컨테이너
     private List<UI_CraftListItemSlot> _craftItemSlotList = new List<UI_CraftListItemSlot>();
 
     private CraftingData _data;
