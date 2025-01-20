@@ -16,7 +16,7 @@ public class Bear : MonsterBase
     // Update is called once per frame
     void Update()
     {
-        DebugController.Log(GetCurrnetPosTileInfo().ToString());
+        //DebugController.Log(GetCurrnetPosTileInfo().ToString());
     }
 
     public override void Attack(GameObject target)
