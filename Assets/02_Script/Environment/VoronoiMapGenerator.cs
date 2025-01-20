@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Build.Pipeline.Tasks;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -43,8 +45,8 @@ public class VoronoiMapGenerator : MonoBehaviour
     public float edgeNoiseScale = 0.1f;
     public float edgeNoiseStrength = 0.2f;
 
-    BiomeMap biomeMap;
-    public ObjectMap objectMap;
+    public int riverCount = 3;
+    public int lakeCount = 10;
 
     GameObject objectParent;
 
@@ -59,8 +61,8 @@ public class VoronoiMapGenerator : MonoBehaviour
 
             //GenerateTreeTmp(tilemapPos);
 
-            DebugController.Log($"map[{tilemapPos.y}, {tilemapPos.x}] {biomeMap.GetTileBiome(new Vector2Int(tilemapPos.x, tilemapPos.y))}");
-            DebugController.Log($"{objectMap.Map[tilemapPos.y, tilemapPos.x]}");
+            DebugController.Log($"map[{tilemapPos.y}, {tilemapPos.x}] {EnvironmentManager.Instance.biomeMap.GetTileBiome(new Vector2Int(tilemapPos.x, tilemapPos.y))}");
+            DebugController.Log($"{EnvironmentManager.Instance.objectMap.Map[tilemapPos.y, tilemapPos.x]}");
         }
 
         // --- Damageable Resource 잘 작동하는지 체크하는 부분. 지금은 Grass Tree 2 종류만 체크
@@ -113,6 +115,7 @@ public class VoronoiMapGenerator : MonoBehaviour
         // 맵을 생성하기 전 모든 타일을 삭제한다.
         Clear();
         GenerateVoronoiMap();
+        GenerateLakes();
         GenerateObjects();
     }
 
@@ -126,9 +129,9 @@ public class VoronoiMapGenerator : MonoBehaviour
             DestroyImmediate(objectParent.gameObject);
         }
 
-        ObjectGenerator objectGenerator = new ObjectGenerator(biomeMap, mapWidth, mapHeight); // biome 정보에 맞춰서 오브젝트를 생성하기 때문에 파라미터로 건네준다.
+        ObjectGenerator objectGenerator = new ObjectGenerator(EnvironmentManager.Instance.biomeMap, mapWidth, mapHeight); // biome 정보에 맞춰서 오브젝트를 생성하기 때문에 파라미터로 건네준다.
         List<ResourceObject> objects = objectGenerator.Generate();
-        objectMap = objectGenerator.objectMap;
+        EnvironmentManager.Instance.objectMap = objectGenerator.objectMap;
 
         GameObject parent = new GameObject("ObjectParent"); // 오브젝트들이 담길 부모 오브젝트를 만들고
         parent.transform.parent = transform; // Map Generator의 자식으로 만든다.  구조 : Map Generator - ObjectParent - Objects
@@ -148,9 +151,6 @@ public class VoronoiMapGenerator : MonoBehaviour
             }
             EnvironmentManager.Instance.natureResources.Add(obj.gameObject.transform.position, obj);
         }
-
-        EnvironmentManager.Instance.objectMap = objectMap;
-        //EnvironmentManager.Instance.resourceObjects = objects;
     }
 
     void GenerateObjects(List<ResourceObject> objects)
@@ -211,9 +211,9 @@ public class VoronoiMapGenerator : MonoBehaviour
     /// </summary>
     void GenerateVoronoiMap()
     {
-        List<SeedPoint> seedPoints = GenerateSeedPoints();
+        List<SeedPoint> seedPoints = GenerateSeedPoints(seedPointCount);
 
-        biomeMap = new BiomeMap(mapWidth, mapHeight);
+        EnvironmentManager.Instance.biomeMap = new BiomeMap(mapWidth, mapHeight);
 
         // 맵의 센터는 중앙으로 둔다
         Vector2 mapCenter = new Vector2(mapWidth / 2, mapHeight / 2);
@@ -256,17 +256,15 @@ public class VoronoiMapGenerator : MonoBehaviour
                 if (distanceFromCenter > adjustedThreshold)
                 {
                     waterTilemap.SetTile(new Vector3Int(x, y, 0), waterBiome.Tile);  // 바다
-                    biomeMap.MarkTile(x, y, waterBiome.BiomeType);
+                    EnvironmentManager.Instance.biomeMap.MarkTile(x, y, waterBiome.BiomeType);
                 }
                 else
                 {
                     landTilemap.SetTile(new Vector3Int(x, y, 0), selectedBiome.Tile);  // 육지
-                    biomeMap.MarkTile(x, y, selectedBiome.BiomeType);
+                    EnvironmentManager.Instance.biomeMap.MarkTile(x, y, selectedBiome.BiomeType);
                 }
             }
         }
-
-        EnvironmentManager.Instance.biomeMap = biomeMap;
     }
 
     void GenerateVoronoiMap(BiomeMap biomeMap)
@@ -288,14 +286,91 @@ public class VoronoiMapGenerator : MonoBehaviour
         }
     }
 
+    public void GenerateRiversAndLakes()
+    {
+        GenerateRivers();
+    }
+
+    void GenerateRivers()
+    {
+        List<SeedPoint> points = GenerateSeedPoints(riverCount * 2);
+        for (int i=0;i<riverCount;i+=2)
+        {
+            Vector2Int start = new Vector2Int((int)points[i].position.x, (int)points[i].position.y);
+            Vector2Int end = new Vector2Int((int)points[i+1].position.x, (int)points[i+1].position.y);
+
+            List<Vector2Int> riverPath = GenerateRiverPath(start, end);
+
+            foreach(Vector2Int pathPoint in riverPath)
+            {
+                if (isValidPosition(pathPoint))
+                {
+                    landTilemap.SetTile(new Vector3Int(pathPoint.y, pathPoint.x, 0), null);
+                    waterTilemap.SetTile(new Vector3Int(pathPoint.y, pathPoint.x, 0), waterBiome.Tile);
+                    EnvironmentManager.Instance.biomeMap.MarkTile(pathPoint.y, pathPoint.x, BiomeType.WaterBiome);
+                }
+            }
+        }
+    }
+
+    List<Vector2Int> GenerateRiverPath(Vector2Int start, Vector2Int end)
+    {
+        List<Vector2Int> path = new List<Vector2Int>();
+
+        Vector2 current = start;
+
+        while ((int) current.y < end.y)
+        {
+            path.Add(Vector2Int.RoundToInt(current));
+
+            float noise = Mathf.PerlinNoise(current.x * noiseScale, current.y * noiseScale);
+            current += new Vector2(UnityEngine.Random.Range(-1, 2) + noise, 1);
+        }
+
+        return path;
+    }
+
+    bool isValidPosition(Vector2 pos)
+    {
+        return pos.x >= 0 && pos.x < mapWidth && pos.y >= 0 && pos.y < mapHeight;
+    }
+
+    void GenerateLakes()
+    {
+        List<SeedPoint> points = GenerateSeedPoints(lakeCount);
+        foreach(SeedPoint center in points)
+        {
+            int maxRadius = UnityEngine.Random.Range(4, 6);
+            for (int x = -maxRadius; x <= maxRadius; x++)
+            {
+                for (int y = -maxRadius; y <= maxRadius; y++)
+                {
+                    Vector2Int pos = new Vector2Int((int)center.position.x+x, (int)center.position.y+y);
+
+                    float distance = Vector2.Distance(center.position, pos);
+
+                    float noise = Mathf.PerlinNoise(pos.x * noiseScale, pos.y * noiseScale);
+                    float adjustedRadius = maxRadius * (0.8f + noise * 0.4f);
+
+                    if (distance <= adjustedRadius && isValidPosition(pos))
+                    {
+                        landTilemap.SetTile(new Vector3Int(pos.y, pos.x, 0), null);
+                        waterTilemap.SetTile(new Vector3Int(pos.y, pos.x, 0), waterBiome.Tile);
+                        EnvironmentManager.Instance.biomeMap.MarkTile(pos.y, pos.x, BiomeType.WaterBiome);
+                    }
+                }
+            }
+        }
+    }
+
     /// <summary>
     /// 전체 맵의 랜덤 포인트에 점을 찍고 biome을 랜덤하게 정한다.
     /// </summary>
     /// <returns></returns>
-    List<SeedPoint> GenerateSeedPoints()
+    List<SeedPoint> GenerateSeedPoints(int count)
     {
         List<SeedPoint> seeds = new List<SeedPoint>();
-        for (int i = 0; i < seedPointCount; i++)
+        for (int i = 0; i < count; i++)
         {
             Vector2 pos = new Vector2(UnityEngine.Random.Range(0, mapWidth), UnityEngine.Random.Range(0, mapHeight));
             int randIdx = UnityEngine.Random.Range(0, landBiomes.Count);

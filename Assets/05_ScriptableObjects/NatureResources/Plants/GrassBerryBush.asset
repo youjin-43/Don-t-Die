@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6eba1c3695c11a04bb53a61ae4f255e9, type: 3}
-  m_Name: GrassBush2
+  m_Name: GrassBerryBush
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4882174053066900562, guid: 49314d7d59063c24091858f539c37450, type: 3}
+  prefab: {fileID: 6240440303929170768, guid: a45794b87f56f10419fe07a783c1b231, type: 3}
   biomeType: 1
   objectType: 3
-  width: 1
-  height: 1
-  timeToAllGrown: 120
+  width: 2
+  height: 2
+  maxHealth: 0
+  timeToAllGrown: 20
   sprites:
-  - {fileID: 2077047141, guid: 9b0d7c47dd6f44394a0e736658a5ab7d, type: 3}
-  - {fileID: 195927433, guid: 9b0d7c47dd6f44394a0e736658a5ab7d, type: 3}
-  growthStageTime: 3c00000078000000
-  minTimeToHarvest: 60
+  - {fileID: -1365332469, guid: 6cd6a1f6639864d428fff3fd826770fe, type: 3}
+  - {fileID: -396074549, guid: 6cd6a1f6639864d428fff3fd826770fe, type: 3}
+  growthStageTime: 0a00000014000000
+  minTimeToHarvest: 10
