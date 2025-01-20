@@ -90,6 +90,9 @@ public class VoronoiMapGenerator : MonoBehaviour
             DestroyImmediate(objectParent.gameObject);
             objectParent = null;
         }
+
+        EnvironmentManager.Instance.seedPoints.Clear();
+        EnvironmentManager.Instance.natureResources.Clear();
     }
 
     /// <summary>

@@ -107,6 +107,7 @@ public class EnvironmentManager : MonoBehaviour
 
         if (File.Exists(filePath))
         {
+            voronoiMapGenerator.Clear();
             string json = File.ReadAllText(filePath);
 
             MapData mapData = JsonConvert.DeserializeObject<MapData>(json);
