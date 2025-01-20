@@ -590,7 +590,9 @@ MonoBehaviour:
   objectMap:
     width: 0
     height: 0
-  resourceObjects: []
+  seedPoints:
+    serializedKvps: []
+    dividerPos: 0.33
 --- !u!4 &345499221
 Transform:
   m_ObjectHideFlags: 0
