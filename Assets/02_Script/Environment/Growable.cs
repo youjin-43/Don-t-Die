@@ -50,15 +50,6 @@ public class Growable : TimeAgent
         isQuitting = true;
     }
 
-    private void OnDestroy()
-    {
-        if (isQuitting) { return; }
-        if (EnvironmentManager.Instance.TryGetComponent(out TimeController timeController))
-        {
-            timeController.Unsubscribe(this);
-        }
-    }
-
     public override void UpdateTimer()
     {
         if (isAllGrown) return;

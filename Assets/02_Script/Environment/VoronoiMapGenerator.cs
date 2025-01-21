@@ -93,8 +93,14 @@ public class VoronoiMapGenerator : MonoBehaviour
 
         if (objectParent != null)
         {
-            DestroyImmediate(objectParent.gameObject);
-            objectParent = null;
+            Transform[] children = objectParent.GetComponentsInChildren<Transform>();
+
+            foreach(Transform child in children)
+            {
+                if (child.name == objectParent.name) { continue; }  // 자기 자신은 무시
+                if (!PoolManager.Instance.hasPool(child.name)) { continue; }
+                PoolManager.Instance.Push(child.gameObject);
+            }
         }
 
         EnvironmentManager.Instance.seedPoints.Clear();
@@ -200,7 +206,8 @@ public class VoronoiMapGenerator : MonoBehaviour
             position.y = cellCenterPosition.y;
         }
 
-        GameObject go = Instantiate(DataManager.Instance.NatureResources[obj.dataName].Prefab, position, Quaternion.identity, objectParent.transform);
+        GameObject go = PoolManager.Instance.InstantiatePoolObject(DataManager.Instance.NatureResources[obj.dataName].Prefab, rootParent:objectParent.transform);
+        go.transform.position = position;
         obj.gameObject = go;
 
         return go;

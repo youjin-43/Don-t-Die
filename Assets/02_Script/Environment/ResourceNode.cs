@@ -17,7 +17,7 @@ public class ResourceNode : MonoBehaviour
         // Object Pooling을 써서 비활성화/활성화할지 아예 destroy instantiate를 해버릴지 고민중 ㄱ-
         EnvironmentManager.Instance.objectMap.ClearTiles(new Vector2Int((int)transform.position.x, (int)transform.position.y), natureResourceData.Width, natureResourceData.Height);
         EnvironmentManager.Instance.natureResources.Remove(transform.position);
-        gameObject.SetActive(false);
+        PoolManager.Instance.Push(gameObject);
 
         foreach(var item in natureResourceData.dropItems)
         {

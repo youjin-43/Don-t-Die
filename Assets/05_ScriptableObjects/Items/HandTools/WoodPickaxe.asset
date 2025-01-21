@@ -18,4 +18,4 @@ MonoBehaviour:
   equipSlot: 2
   availableTypes: 04000000
   atk: 10
-  durability: 30
+  maxDurability: 30
