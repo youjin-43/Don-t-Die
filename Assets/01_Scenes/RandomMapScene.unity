@@ -401,6 +401,7 @@ MonoBehaviour:
   edgeNoiseStrength: 0.1
   riverCount: 3
   lakeCount: 15
+  objectParent: {fileID: 0}
 --- !u!4 &78947587
 Transform:
   m_ObjectHideFlags: 0
@@ -589,6 +590,9 @@ MonoBehaviour:
   objectMap:
     width: 0
     height: 0
+  natureResources:
+    serializedKvps: []
+    dividerPos: 0.33
   seedPoints:
     serializedKvps: []
     dividerPos: 0.33

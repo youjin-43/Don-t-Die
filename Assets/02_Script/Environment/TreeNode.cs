@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class TreeNode : DamageableResourceNode
 {
-    [SerializeField] GameObject crown;
     [SerializeField] GameObject trunkPrefab;
     public override void Harvest()
     {

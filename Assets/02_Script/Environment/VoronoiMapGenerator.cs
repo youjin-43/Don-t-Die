@@ -167,7 +167,7 @@ public class VoronoiMapGenerator : MonoBehaviour
         foreach (ResourceObject obj in objects)
         {
             GameObject go = InstantiateObject(obj);
-            
+
             if (obj.isGrowable)
             {
                 go.GetComponent<Growable>().GrowStage = obj.growthStage;
@@ -294,14 +294,14 @@ public class VoronoiMapGenerator : MonoBehaviour
     void GenerateLakes()
     {
         List<SeedPoint> points = GenerateSeedPoints(lakeCount);
-        foreach(SeedPoint center in points)
+        foreach (SeedPoint center in points)
         {
-            int maxRadius = UnityEngine.Random.Range(4, 6);
+            int maxRadius = UnityEngine.Random.Range(3, 8);
             for (int x = -maxRadius; x <= maxRadius; x++)
             {
                 for (int y = -maxRadius; y <= maxRadius; y++)
                 {
-                    Vector2Int pos = new Vector2Int((int)center.position.x+x, (int)center.position.y+y);
+                    Vector2Int pos = new Vector2Int((int)center.position.x + x, (int)center.position.y + y);
 
                     float distance = Vector2.Distance(center.position, pos);
 

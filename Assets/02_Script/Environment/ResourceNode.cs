@@ -11,11 +11,6 @@ public class ResourceNode : MonoBehaviour
 
     }
 
-    private void Start()
-    {
-        Init();
-    }
-
     public virtual void Harvest()
     {
         // 수확이 되면 objectMap에서 정보를 지우고 비활성화한다. 
@@ -23,5 +18,10 @@ public class ResourceNode : MonoBehaviour
         EnvironmentManager.Instance.objectMap.ClearTiles(new Vector2Int((int)transform.position.x, (int)transform.position.y), natureResourceData.Width, natureResourceData.Height);
         EnvironmentManager.Instance.natureResources.Remove(transform.position);
         gameObject.SetActive(false);
+
+        foreach(var item in natureResourceData.dropItems)
+        {
+            // spread Items
+        }
     }
 }
