@@ -13,4 +13,9 @@ public class Item : MonoBehaviour
     {
         
     }
+
+    public void SetItemData(ItemData itemData)
+    {
+        ItemData = itemData;
+    }
 }
