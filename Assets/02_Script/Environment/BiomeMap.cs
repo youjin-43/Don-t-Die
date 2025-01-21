@@ -40,6 +40,14 @@ public class BiomeMap
     /// <returns></returns>
     public BiomeType GetTileBiome(Vector2Int pos)
     {
+        // y 좌표가 유효한지 확인
+        if (pos.y < 0 || pos.y >= map.Count)
+            return BiomeType.None; // BiomeType.Default는 기본값으로 대체하세요.
+
+        // x 좌표가 유효한지 확인
+        if (pos.x < 0 || pos.x >= map[pos.y].Count)
+            return BiomeType.None;
+
         return map[pos.y][pos.x];
     }
 
