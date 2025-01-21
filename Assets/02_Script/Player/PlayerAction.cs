@@ -35,6 +35,10 @@ public class PlayerAction : MonoBehaviour
         plyerTransform = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // ㅇㅎㅈ 추가
+        // 인벤토리에 플레이어 트랜스폼 캐싱
+        UI_Inventory.Instance.CachingPlayerTransform(transform);
     }
 
     void Update()
@@ -43,8 +47,8 @@ public class PlayerAction : MonoBehaviour
         HandleMoveAnimation(); // 애니메이션 관리 
         AutoInteract(); // 스페이스 바를 누르면 근처 오브젝트와 자동 상호작용
 
-
         // ㅇㅎㅈ 추가
+        // 조합창 토글
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             UI_Craft.Instance.ToggleCraftingUI();

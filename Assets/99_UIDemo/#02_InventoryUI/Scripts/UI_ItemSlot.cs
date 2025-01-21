@@ -17,7 +17,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
     // 슬롯 데이터
     private Image           _itemImage;
     private TextMeshProUGUI _itemCountText;
-    private int             _maxItemCount  = 3;
+    private int             _maxItemCount  = 10;
 
     // 드래깅 데이터
     static bool             _isDragging    = false;
@@ -37,24 +37,19 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             // 오작동 방지
-            if (IsEmpty() == true && _isDragging == false)
+            if (IsEmpty() == true && UI_Inventory.Instance.IsDragging() == false)
             {
                 return;
             }
 
-            if (_isDragging == false)
+            // 아이템 인벤토리 상에서의 이동
+            if (UI_Inventory.Instance.IsDragging() == false)
             {
-                _isDragging = true;
-
-                _itemCountText.gameObject.SetActive(false);
-
-                DragAndDrop.Instance.BeginDragData(this);
+                UI_Inventory.Instance.BeginDragData(this);
             }
             else
             {
-                _isDragging = false;
-
-                DragAndDrop.Instance.EndDragData(this);
+                UI_Inventory.Instance.EndDragData(this);
             }
         }
         // 우클릭 이벤트 (아이템 사용)
@@ -172,5 +167,13 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
             _itemCountText.text = "0";
             _itemCountText.gameObject.SetActive(false);
         }
+    }
+
+    /// <summary>
+    /// 인벤토리 드래깅용
+    /// </summary>
+    public void EndDrag()
+    {
+        _isDragging = false;
     }
 }

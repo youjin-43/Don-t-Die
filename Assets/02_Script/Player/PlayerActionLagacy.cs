@@ -31,6 +31,10 @@ public class PlayerActionLagacy: MonoBehaviour
     {
         plyerTransform = GetComponent<Transform>();
         animator = GetComponent<Animator>();
+
+        // ㅇㅎㅈ 추가
+        // 인벤토리에 플레이어 트랜스폼 캐싱
+        UI_Inventory.Instance.CachingPlayerTransform(transform);
     }
 
     void Update()
