@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class DamageableResourceNode : ResourceNode
 {
-    int maxHealth;
-    int currentHealth;
-    public int CurrentHealth
+    float maxHealth;
+    float currentHealth;
+    public float CurrentHealth
     {
         get { return currentHealth; }
         set { currentHealth = value; }
@@ -30,7 +30,7 @@ public class DamageableResourceNode : ResourceNode
         DebugController.Log($"Hit {gameObject.name}. Damage : {damage} CurrentHealth : {currentHealth}");
         currentHealth = Mathf.Max(0, currentHealth - damage);
 
-        if (currentHealth == 0)
+        if (currentHealth < float.Epsilon)
         {
             Harvest();
         }

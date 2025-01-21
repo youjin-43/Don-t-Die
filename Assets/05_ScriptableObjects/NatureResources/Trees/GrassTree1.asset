@@ -18,8 +18,9 @@ MonoBehaviour:
   width: 2
   height: 2
   maxHealth: 100
+  isDestroyedOnHarvest: 1
   timeToAllGrown: 0
   sprites:
-  - {fileID: 3814261555255109445, guid: 3f1d1cd014e6dd04e87cf281e579a41b, type: 3}
+  - {fileID: 3814261555255109445, guid: 0b0eed48bf8f3470abb49d16fb11ace6, type: 3}
   growthStageTime: 
   minTimeToHarvest: 0

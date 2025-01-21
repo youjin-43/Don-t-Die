@@ -10,7 +10,7 @@ public class ResourceObject
     public string dataName;
     public bool isDamageable;
     public bool isGrowable;
-    public int currentHealth;
+    public float currentHealth;
     public int growthStage;
     public int timer;
 
@@ -61,7 +61,7 @@ public class ObjectGenerator
                     if (biomeMap.IsValidPosition(new Vector2Int(j, i), obj.Width, obj.Height, obj.BiomeType)
                         && objectMap.AreTilesEmpty(new Vector2Int(j, i), obj.Width, obj.Height))
                     {
-                        objectMap.MarkTiles(new Vector2Int(j, i), obj.Width, obj.Height, ObjectType.Tree);
+                        objectMap.MarkTiles(new Vector2Int(j, i), obj.Width, obj.Height, type);
                         resourceObjects.Add(new ResourceObject
                         {
                             position = new Vector2Int(j, i),
