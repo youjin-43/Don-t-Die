@@ -27,12 +27,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - NatureResources
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0e87c2944305d1746a5e150a61572942
-    m_Address: Assets/05_ScriptableObjects/NatureResources/Trees/GrassTree2.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - NatureResources
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 21dba384d14db454c862f481060775bc
     m_Address: Assets/05_ScriptableObjects/NatureResources/Plants/GrassMushroom.asset
     m_ReadOnly: 0

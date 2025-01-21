@@ -76,6 +76,10 @@ public class VoronoiMapGenerator : MonoBehaviour
             {
                 hit.transform.GetComponent<DamageableResourceNode>().Hit(10);
             }
+            else if (hit && hit.transform.GetComponent<ResourceNode>() != null)
+            {
+                hit.transform.GetComponent<ResourceNode>().Harvest();
+            }
         }
     }
 
@@ -284,50 +288,6 @@ public class VoronoiMapGenerator : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void GenerateRiversAndLakes()
-    {
-        GenerateRivers();
-    }
-
-    void GenerateRivers()
-    {
-        List<SeedPoint> points = GenerateSeedPoints(riverCount * 2);
-        for (int i=0;i<riverCount;i+=2)
-        {
-            Vector2Int start = new Vector2Int((int)points[i].position.x, (int)points[i].position.y);
-            Vector2Int end = new Vector2Int((int)points[i+1].position.x, (int)points[i+1].position.y);
-
-            List<Vector2Int> riverPath = GenerateRiverPath(start, end);
-
-            foreach(Vector2Int pathPoint in riverPath)
-            {
-                if (isValidPosition(pathPoint))
-                {
-                    landTilemap.SetTile(new Vector3Int(pathPoint.y, pathPoint.x, 0), null);
-                    waterTilemap.SetTile(new Vector3Int(pathPoint.y, pathPoint.x, 0), waterBiome.Tile);
-                    EnvironmentManager.Instance.biomeMap.MarkTile(pathPoint.y, pathPoint.x, BiomeType.WaterBiome);
-                }
-            }
-        }
-    }
-
-    List<Vector2Int> GenerateRiverPath(Vector2Int start, Vector2Int end)
-    {
-        List<Vector2Int> path = new List<Vector2Int>();
-
-        Vector2 current = start;
-
-        while ((int) current.y < end.y)
-        {
-            path.Add(Vector2Int.RoundToInt(current));
-
-            float noise = Mathf.PerlinNoise(current.x * noiseScale, current.y * noiseScale);
-            current += new Vector2(UnityEngine.Random.Range(-1, 2) + noise, 1);
-        }
-
-        return path;
     }
 
     bool isValidPosition(Vector2 pos)
