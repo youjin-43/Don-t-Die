@@ -51,6 +51,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - NatureResources
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e35807bd3f0d9c24eacf0b014d65756d
+    m_Address: Assets/05_ScriptableObjects/NatureResources/Trees/GrassTree1Trunk.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - NatureResources
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 736d55df98445684191af185ca035f9d, type: 2}
   m_SchemaSet:

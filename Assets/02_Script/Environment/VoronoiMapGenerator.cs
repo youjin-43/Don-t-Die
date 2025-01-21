@@ -48,7 +48,7 @@ public class VoronoiMapGenerator : MonoBehaviour
     public int riverCount = 3;
     public int lakeCount = 10;
 
-    GameObject objectParent;
+    public GameObject objectParent;
 
     private void Update()
     {
@@ -128,22 +128,20 @@ public class VoronoiMapGenerator : MonoBehaviour
     /// </summary>
     void GenerateObjects()
     {
-        if (objectParent != null) // Generate하기 전에 Clear 과정이 있지만 안전을 위해
+        if (objectParent == null)
         {
-            DestroyImmediate(objectParent.gameObject);
+            GameObject parent = new GameObject("ObjectParent");
+            parent.transform.parent = transform;
+            objectParent = parent;
         }
 
         ObjectGenerator objectGenerator = new ObjectGenerator(EnvironmentManager.Instance.biomeMap, mapWidth, mapHeight); // biome 정보에 맞춰서 오브젝트를 생성하기 때문에 파라미터로 건네준다.
         List<ResourceObject> objects = objectGenerator.Generate();
         EnvironmentManager.Instance.objectMap = objectGenerator.objectMap;
 
-        GameObject parent = new GameObject("ObjectParent"); // 오브젝트들이 담길 부모 오브젝트를 만들고
-        parent.transform.parent = transform; // Map Generator의 자식으로 만든다.  구조 : Map Generator - ObjectParent - Objects
-        objectParent = parent;
-
         foreach (ResourceObject obj in objects)
         {
-            GameObject go = InstantiateObject(obj, parent.transform);
+            GameObject go = InstantiateObject(obj);
             obj.gameObject = go;
             if (go.GetComponent<Growable>() != null)
             {
@@ -159,18 +157,16 @@ public class VoronoiMapGenerator : MonoBehaviour
 
     void GenerateObjects(List<ResourceObject> objects)
     {
-        if (objectParent != null)
+        if (objectParent == null)
         {
-            DestroyImmediate(objectParent.gameObject);
+            GameObject parent = new GameObject("ObjectParent");
+            parent.transform.parent = transform;
+            objectParent = parent;
         }
-
-        GameObject parent = new GameObject("ObjectParent");
-        parent.transform.parent = transform;
-        objectParent = parent;
 
         foreach (ResourceObject obj in objects)
         {
-            GameObject go = InstantiateObject(obj, parent.transform);
+            GameObject go = InstantiateObject(obj);
             
             if (obj.isGrowable)
             {
@@ -188,7 +184,7 @@ public class VoronoiMapGenerator : MonoBehaviour
     /// <summary>
     /// 좌표에 맞춰 오브젝트를 생성한다.
     /// </summary>
-    GameObject InstantiateObject(ResourceObject obj, Transform parent)
+    GameObject InstantiateObject(ResourceObject obj)
     {
         Vector3 cellCenterPosition = landTilemap.GetCellCenterWorld(new Vector3Int(obj.position.x, obj.position.y));
         Vector3 cellPosition = landTilemap.CellToWorld(new Vector3Int(obj.position.x, obj.position.y));
@@ -204,7 +200,7 @@ public class VoronoiMapGenerator : MonoBehaviour
             position.y = cellCenterPosition.y;
         }
 
-        GameObject go = Instantiate(DataManager.Instance.NatureResources[obj.dataName].Prefab, position, Quaternion.identity, parent);
+        GameObject go = Instantiate(DataManager.Instance.NatureResources[obj.dataName].Prefab, position, Quaternion.identity, objectParent.transform);
         obj.gameObject = go;
 
         return go;
