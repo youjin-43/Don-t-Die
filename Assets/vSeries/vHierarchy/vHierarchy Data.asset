@@ -17,6 +17,7 @@ MonoBehaviour:
     - 99c9720ab356a0642a771bea13969a05
     - 3f5021ec6b04d45e28b9983d9e1f4953
     - ccf7510250a50eb4fa1f3d0b02c190ef
+    - 2473683d200294ff59f79c241951402b
     values:
     - goDatas_byGlobalId:
         keys:
@@ -50,4 +51,16 @@ MonoBehaviour:
         - colorIndex: 0
           iconNameOrGuid: Canvas Icon
         - colorIndex: 2
+          iconNameOrGuid: 
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-2473683d200294ff59f79c241951402b-1443246693-0
+        - globalObjectIdString: GlobalObjectId_V1-2-2473683d200294ff59f79c241951402b-7080047188552132368-464700357
+        - globalObjectIdString: GlobalObjectId_V1-2-2473683d200294ff59f79c241951402b-853603359-0
+        values:
+        - colorIndex: 2
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 6
           iconNameOrGuid: 
