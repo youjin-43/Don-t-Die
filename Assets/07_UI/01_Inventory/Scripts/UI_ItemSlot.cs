@@ -18,7 +18,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
     private Image           _itemImage;
     private Image           _itemSelectImage;
     private TextMeshProUGUI _itemCountText;
-    private int             _maxItemCount  = 10;
+    private int             _maxItemCount  = 9;
 
     // 드래깅 데이터
     static bool             _isDragging    = false;
@@ -76,6 +76,16 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public bool AddItemData(ItemData itemData)
     {
+        if(itemData as ToolItemData != null)
+        {
+            // 들어온 아이템은 장비임
+            _maxItemCount = 1;
+        }
+        else
+        {
+            // 들어온 아이템은 재료임
+        }
+
         // 슬롯에 최초로 아이템이 들어 온 경우
         if(_itemSlotData.ItemData == null)
         {
@@ -115,18 +125,22 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
 
             if(itemData != null)
             {
-                ItemData equippedItemData = UI_Inventory.Instance.EquipItem(itemData, itemData.EquipSlot);
+                ItemData equippedItemData = UI_Inventory.Instance.ExchangeEquipItem(itemData, itemData.EquipSlot);
 
-                // 이미 장비하고 있음
-                if(equippedItemData != null)
+                // 장비창이 비어있었다면
+                if (equippedItemData == null)
                 {
-                    
+                    ClearItemSlotData();
                 }
+                // 장비창이 비어있지 않았다면
                 else
                 {
-                    //_itemSlotData.ItemData = equippedItemData;
-
-                    ClearItemSlotData();
+                    ItemSlotData itemSlotData;
+                    {
+                        itemSlotData.ItemData = equippedItemData;
+                        itemSlotData.ItemCount = 1;
+                    }
+                    SetItemSlotData(itemSlotData);
                 }
             }
         }
@@ -185,14 +199,15 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void ClearItemSlotData()
     {
-        // 데이터 초기화
+        // 아이템 데이터 초기화
         {
             _itemSlotData.ItemData = null;
             _itemSlotData.ItemCount = 0;
         }
-        // 이미지 초기화
+        // 슬롯 데이터 초기화
         {
             _itemImage.sprite = null;
+            _maxItemCount     = 9;
         }
         // 카운트 초기화
         {

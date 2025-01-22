@@ -26,6 +26,7 @@ MonoBehaviour:
     - a3fcf04bd68f04af88bf9817863a39a1
     - 7cbb2aa14e7fdb84588f972a5f3357ac
     - 58b244c33abecde4683c40e357b8dca3
+    - 5d942f4f46dc2904884cf5eb38af4a86
     values:
     - iconNameOrGuid: cs Script Icon
       colorIndex: 6
@@ -67,12 +68,16 @@ MonoBehaviour:
       colorIndex: 0
       isIconRecursive: 0
       isColorRecursive: 0
-    - iconNameOrGuid: 
+    - iconNameOrGuid: Prefab Icon
       colorIndex: 10
       isIconRecursive: 0
       isColorRecursive: 0
-    - iconNameOrGuid: 
+    - iconNameOrGuid: ScriptableObject Icon
       colorIndex: 6
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: RawImage Icon
+      colorIndex: 3
       isIconRecursive: 0
       isColorRecursive: 0
   bookmarks: []

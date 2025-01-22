@@ -104,7 +104,7 @@ public class UI_Inventory : MonoBehaviour
 
     public bool AddItem(ItemData itemData)
     {
-        for(int i = 0; i < _initialInventorySize; ++i)
+        for (int i = 0; i < _initialInventorySize; ++i)
         {
             // 슬롯이 비어있다면
             if(_inventorySlot[i].IsEmpty() == true)
@@ -118,17 +118,7 @@ public class UI_Inventory : MonoBehaviour
                 else
                 {
                     // 아이템 추가
-                    _inventorySlot[i].AddItemData(itemData);
-                    //_inventoryDict.Add(itemData.Name);
-                    
-                    if(_inventoryDict.ContainsKey(itemData.Name))
-                    {
-                        _inventoryDict[itemData.Name]++;
-                    }
-                    else
-                    {
-                        _inventoryDict[itemData.Name] = 1;
-                    }
+                    AddItemToSlot(itemData, i);
 
                     return true;
                 }
@@ -143,33 +133,22 @@ public class UI_Inventory : MonoBehaviour
                     if (_inventorySlot[i].IsFull() == true)
                     {
                         // 처음부터 다시 돌아서 빈 칸에 추가함
-                        addItem(itemData);
-
-                        if (_inventoryDict.ContainsKey(itemData.Name))
+                        if(SearchFromFirstSlot(itemData, out int slot) == true && slot >= 0)
                         {
-                            _inventoryDict[itemData.Name]++;
+                            AddItemToSlot(itemData, slot);
+
+                            return true;
                         }
+                        // 다 돌았는데도 슬롯이 없음 = 꽉참
                         else
                         {
-                            _inventoryDict[itemData.Name] = 1;
+                            break;
                         }
-
-                        return true;
                     }
                     else
                     {
                         // 아이템 추가
-                        _inventorySlot[i].AddItemData(itemData);
-                        //_inventoryDict.Add(itemData.Name);
-
-                        if (_inventoryDict.ContainsKey(itemData.Name))
-                        {
-                            _inventoryDict[itemData.Name]++;
-                        }
-                        else
-                        {
-                            _inventoryDict[itemData.Name] = 1;
-                        }
+                        AddItemToSlot(itemData, i);
 
                         return true;
                     }
@@ -187,15 +166,32 @@ public class UI_Inventory : MonoBehaviour
         return false;
     }
 
-    private void addItem(ItemData itemData)
+    private bool SearchFromFirstSlot(ItemData itemData, out int value)
     {
-        foreach(var slot in _inventorySlot)
+        for(int i = 0; i < _initialInventorySize; ++i)
         {
-            if(slot.IsEmpty() == true)
+            if (_inventorySlot[i].IsEmpty() == true)
             {
-                slot.AddItemData(itemData);
-                break;
+                value = i;
+                return true;
             }
+        }
+
+        value = -1;
+        return false;
+    }
+
+    private void AddItemToSlot(ItemData itemData, int slot)
+    {
+        _inventorySlot[slot].AddItemData(itemData);
+
+        if (_inventoryDict.ContainsKey(itemData.Name))
+        {
+            _inventoryDict[itemData.Name]++;
+        }
+        else
+        {
+            _inventoryDict[itemData.Name] = 1;
         }
     }
 
@@ -303,8 +299,33 @@ public class UI_Inventory : MonoBehaviour
 
     public ItemData EquipItem(ItemData itemData, EquipmentSlot slot)
     {
-        _inventoryDict[itemData.Name] -= 1;
+        
+        if(_inventoryDict.TryGetValue(itemData.Name, out int count) && count > 0)
+        {
+            _inventoryDict[itemData.Name] -= 1;
+        }
 
         return UI_Equipment.Instance.EquipItem(itemData, slot);
+    }
+
+    public ItemData ExchangeEquipItem(ItemData itemData, EquipmentSlot slot)
+    {
+        _inventoryDict[itemData.Name] -= 1;
+
+        // 받아 온 장비를 장착하고 장착하고 있던 장비는 가져옴
+        ItemData equipedItemData = UI_Equipment.Instance.EquipItem(itemData, slot);
+
+        // 장착하고 있던 장비가 없었다면
+        if (equipedItemData == null) 
+        {
+            return null;
+        }
+        // 장착하고 있던 장비가 있다면
+        else
+        {
+            _inventoryDict[equipedItemData.Name] += 1;
+
+            return equipedItemData;
+        }
     }
 }
