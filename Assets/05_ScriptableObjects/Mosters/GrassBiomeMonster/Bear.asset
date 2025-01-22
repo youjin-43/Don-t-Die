@@ -16,3 +16,4 @@ MonoBehaviour:
   MaxHP: 200
   MoveSpeed: 4
   AttackDamage: 30
+  biomeType: 1
