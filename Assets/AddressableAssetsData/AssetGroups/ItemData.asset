@@ -21,26 +21,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - ItemData
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 305a8b7bb5b6ddb4e9d1fadc4af31362
-    m_Address: GoldPickax
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - ItemData
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4f1dfe3c1158a8748a54e2cf2413bbdb
     m_Address: Wood
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - ItemData
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8188e76ddb2c69d43bb88d096afb8f22
-    m_Address: GoldSword
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - ItemData
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: aee460ed1d3ee1c45a8e8389d5f19ed2
-    m_Address: GoldAx
     m_ReadOnly: 0
     m_SerializedLabels:
     - ItemData

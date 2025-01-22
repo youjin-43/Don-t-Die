@@ -57,10 +57,13 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-2473683d200294ff59f79c241951402b-1443246693-0
         - globalObjectIdString: GlobalObjectId_V1-2-2473683d200294ff59f79c241951402b-7080047188552132368-464700357
         - globalObjectIdString: GlobalObjectId_V1-2-2473683d200294ff59f79c241951402b-853603359-0
+        - globalObjectIdString: GlobalObjectId_V1-2-2473683d200294ff59f79c241951402b-1464470220-0
         values:
         - colorIndex: 2
           iconNameOrGuid: 
         - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 6
           iconNameOrGuid: 
         - colorIndex: 6
           iconNameOrGuid: 
