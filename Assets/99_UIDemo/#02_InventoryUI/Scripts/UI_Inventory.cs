@@ -300,4 +300,11 @@ public class UI_Inventory : MonoBehaviour
 
         return randomPos;
     }
+
+    public ItemData EquipItem(ItemData itemData, EquipmentSlot slot)
+    {
+        _inventoryDict[itemData.Name] -= 1;
+
+        return UI_Equipment.Instance.EquipItem(itemData, slot);
+    }
 }
