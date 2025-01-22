@@ -21,7 +21,8 @@ public class Bear : MonsterBase
     {
         SetData(); // 몬스터 기본 데이터 셋팅
         SetCompoenets(); // 기본 컴포넌트들 셋팅
-        StartCoroutine(MoveRoutine());
+
+        StartCoroutine(MoveRoutine()); // 움직이기 시작! 
     }
     
 
@@ -62,8 +63,6 @@ public class Bear : MonsterBase
         }
 
     }
-
-
 
     private Vector3 GetRandomPosition()
     {

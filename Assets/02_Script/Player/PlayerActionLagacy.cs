@@ -40,7 +40,7 @@ public class PlayerActionLagacy: MonoBehaviour
     void Update()
     {
         HandleMovement(); // 상하좌우 입력 관리 
-        HandleMoveAnimation(); // 애니메이션 관리 
+        HandleMoveAnimation(); // 상하좌우로 움직일떄 애니메이션 관리 
         AutoInteract(); // 스페이스 바를 누르면 근처 오브젝트와 자동 상호작용
 
 
@@ -142,18 +142,41 @@ public class PlayerActionLagacy: MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 오브젝트 종류에 따라 알맞은 상호작용 실행 
+    /// </summary>
     void InteractWithTarget()
     {
-        DebugController.Log("InteractWithTarget 실행됨");
+        DebugController.Log($"InteractWithTarget with : {autoInteractTargetTransform.tag}");
 
-        if (autoInteractTargetTransform.CompareTag("Item")) GetItem();
+        switch (autoInteractTargetTransform.tag)
+        {
+            case "Item":
+                GetItem(); //아이템습득 
+                break;
+            case "Monster":
+                //공격
+                break;
+            case "Minerals":
+                //채굴(광질)
+                break;
+            case "Plants":
+                //채집  
+                break;
+            case "Trees":
+                //도끼질 
+                break;
+            default:
+                break;
+        }
+        
+
 
         // TODO : 지금은 아이템밖에 없어서 한번만 상호작용하면 되지만 나중에 나무캐기나 공격같은거 하면 여러번 해야하니까 이후 수정 필요 
-        // 상호작용 완료 후 대상 초기화
         
         autoInteractTargetTransform = null; //상호작용 완료한 타겟은 없애고
         FindClosestInteractableObj();//새로운 타겟 탐색
-        if (autoInteractTargetTransform == null) StopAutoInteraction();
+        if (autoInteractTargetTransform == null) StopAutoInteraction(); // 새로운 타겟이 없으면 자동상호작용 초기화 
 
     }
 
