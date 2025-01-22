@@ -32,7 +32,7 @@ public class ResourceNode : MonoBehaviour
     {
         foreach (var item in natureResourceData.dropItems)
         {
-            // spread Items
+            
         }
     }
 }

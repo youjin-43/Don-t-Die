@@ -18,6 +18,10 @@ MonoBehaviour:
   width: 2
   height: 2
   maxHealth: 100
+  dropItems:
+  - data: {fileID: 11400000, guid: 4f1dfe3c1158a8748a54e2cf2413bbdb, type: 2}
+    minAmount: 3
+    maxAmount: 5
   timeToAllGrown: 0
   sprites:
   - {fileID: 3814261555255109445, guid: 0b0eed48bf8f3470abb49d16fb11ace6, type: 3}

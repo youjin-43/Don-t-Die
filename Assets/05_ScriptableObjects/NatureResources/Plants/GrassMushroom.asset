@@ -18,4 +18,7 @@ MonoBehaviour:
   width: 1
   height: 1
   maxHealth: 0
-  isDestroyedOnHarvest: 1
+  dropItems:
+  - data: {fileID: 0}
+    minAmount: 0
+    maxAmount: 0
