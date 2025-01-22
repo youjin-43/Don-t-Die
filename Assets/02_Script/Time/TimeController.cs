@@ -23,7 +23,7 @@ public class TimeController : MonoBehaviour
 
     Season currentSeason;
     int days;
-    float time;
+    float timer;
 
     float growTimer;
     float growthInterval = 60f; // 게임 시간 기준으로 1분
@@ -42,27 +42,41 @@ public class TimeController : MonoBehaviour
     {
         currentSeason = Season.Fall;
         growTimer = 0;
-        time = startAtTime;
+        timer = startAtTime;
     }
 
-    float Hours
+    public Season CurrentSeason 
     {
-        get { return time / 3600f; }
+        get { return currentSeason; } 
+    }
+    public int Days
+    {
+        get { return days; }
     }
 
-    float Minutes
+    public float Timer
     {
-        get { return time % 3600f / 60f; }
+        get { return timer; }
+    }
+
+    public float Hours
+    {
+        get { return timer / 3600f; }
+    }
+
+    public float Minutes
+    {
+        get { return timer % 3600f / 60f; }
     }
 
     void Update()
     {
-        time += Time.deltaTime * timeScale;
+        timer += Time.deltaTime * timeScale;
         growTimer += Time.deltaTime * timeScale;
         DisplayTime();
         ControlLight();
 
-        if (time > secondsInDay)
+        if (timer > secondsInDay)
         {
             NextDay();
         }
@@ -123,7 +137,7 @@ public class TimeController : MonoBehaviour
 
     void NextDay()
     {
-        time = 0;
+        timer = 0;
         days++;
 
         if (days >= daysPerSeason[(int)currentSeason])
@@ -136,5 +150,6 @@ public class TimeController : MonoBehaviour
     {
         days = 0;
         currentSeason = (Season)((int)((currentSeason + 1)) % System.Enum.GetValues(typeof(Season)).Length);
+        EnvironmentManager.Instance.UpdateTilesBySeason();
     }
 }

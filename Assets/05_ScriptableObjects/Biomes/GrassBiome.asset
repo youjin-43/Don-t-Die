@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b51cbd76c723f647b863c5973c97825, type: 3}
   m_Name: GrassBiome
   m_EditorClassIdentifier: 
-  tile: {fileID: 11400000, guid: 0556f6725e259864e87beafb38a8fd7d, type: 2}
+  tiles:
+  - {fileID: 11400000, guid: 0556f6725e259864e87beafb38a8fd7d, type: 2}
+  - {fileID: 11400000, guid: ea59d7aa99a1fa048823f1cc7b3f16c5, type: 2}
   biomeType: 1
   trees:
   - {fileID: 11400000, guid: 027a74d0f2ed26c40a4877f3882e8cb6, type: 2}

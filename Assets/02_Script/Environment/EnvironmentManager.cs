@@ -10,6 +10,7 @@ public class EnvironmentManager : MonoBehaviour
     public BiomeMap biomeMap;
     public ObjectMap objectMap;
     VoronoiMapGenerator voronoiMapGenerator;
+    TimeController timeController;
     public SerializedDictionary<Vector3, ResourceObject> natureResources = new SerializedDictionary<Vector3, ResourceObject>();
     public SerializedDictionary<BiomeType, List<Vector3>> seedPoints = new SerializedDictionary<BiomeType, List<Vector3>>();
 
@@ -24,6 +25,10 @@ public class EnvironmentManager : MonoBehaviour
             return voronoiMapGenerator;
         }
     }
+    public TimeController Time 
+    {
+        get {  return timeController; } 
+    }  
 
     private static EnvironmentManager instance;
     public static EnvironmentManager Instance
@@ -40,6 +45,7 @@ public class EnvironmentManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this);
+            timeController = GetComponent<TimeController>();
         }
         else
         {
@@ -132,5 +138,10 @@ public class EnvironmentManager : MonoBehaviour
 
         DebugController.Log($"Load Map Failed.");
         return false;
+    }
+
+    public void UpdateTilesBySeason()
+    {
+        voronoiMapGenerator.UpdateTilesBySeason(timeController.CurrentSeason);
     }
 }

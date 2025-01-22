@@ -345,7 +345,7 @@ MonoBehaviour:
   timeScale: 180
   startAtTime: 28800
   globalLight: {fileID: 1563453927}
-  daysPerSeason: 1900000019000000
+  daysPerSeason: 0100000001000000
   timeDisplayer: {fileID: 1689121713}
 --- !u!114 &43819986
 MonoBehaviour:
