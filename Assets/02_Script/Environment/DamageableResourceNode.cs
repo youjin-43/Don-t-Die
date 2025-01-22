@@ -21,6 +21,11 @@ public class DamageableResourceNode : ResourceNode
         }
     }
 
+    private void OnEnable()
+    {
+        
+    }
+
     private void Start()
     {
         Init();

@@ -10,7 +10,7 @@ public class PoolManager : MonoBehaviour
         public Transform Root;
         Stack<GameObject> poolStack = new Stack<GameObject>();
 
-        public void Init(GameObject original, int count = 10, Transform rootParent = null)
+        public void Init(GameObject original, int count = 5, Transform rootParent = null)
         {
             this.original = original;
             Root = new GameObject().transform;
@@ -55,7 +55,7 @@ public class PoolManager : MonoBehaviour
         /// GameObject를 count만큼 생성하고 Pool에 넣는다.
         /// </summary>
         /// <param name="count"></param>
-        public void CreateAndPush(int count = 10)
+        public void CreateAndPush(int count = 5)
         {
             for (int i = 0; i < count; i++)
             {
@@ -129,7 +129,7 @@ public class PoolManager : MonoBehaviour
     /// </summary>
     /// <param name="original"></param>
     /// <param name="count"></param>
-    public void TryCreatePool(GameObject original, int count = 10, Transform rootParent = null)
+    public void TryCreatePool(GameObject original, int count = 5, Transform rootParent = null)
     {
         if (pools.ContainsKey(original.name))
         {
@@ -145,7 +145,7 @@ public class PoolManager : MonoBehaviour
     /// </summary>
     /// <param name="original"></param>
     /// <param name="count"></param>
-    public void CreatePool(GameObject original, int count = 10, Transform rootParent = null)
+    public void CreatePool(GameObject original, int count = 5, Transform rootParent = null)
     {
         Pool pool = new Pool();
         pool.Init(original, count, rootParent);

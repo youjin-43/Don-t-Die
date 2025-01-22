@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   natureResourceData: {fileID: 11400000, guid: e35807bd3f0d9c24eacf0b014d65756d, type: 2}
+  hitEffect: {fileID: 0}
 --- !u!1 &7309764037099417255
 GameObject:
   m_ObjectHideFlags: 0

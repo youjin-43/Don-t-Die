@@ -8,18 +8,28 @@ public class ResourceNode : MonoBehaviour
 
     protected virtual void Init()
     {
-
+        
     }
 
-    public virtual void Harvest()
+    public virtual void Harvest()   // 기본 로직은 맵에서 사라지고 아이템을 드랍하는 것이다.
     {
-        // 수확이 되면 objectMap에서 정보를 지우고 비활성화한다. 
-        // Object Pooling을 써서 비활성화/활성화할지 아예 destroy instantiate를 해버릴지 고민중 ㄱ-
+        RemoveFromMap();
+        SpreadItems();
+    }
+
+    /// <summary>
+    /// Map 위에서 오브젝트를 없앤 후 풀에 반환한다.
+    /// </summary>
+    protected void RemoveFromMap()
+    {
         EnvironmentManager.Instance.objectMap.ClearTiles(new Vector2Int((int)transform.position.x, (int)transform.position.y), natureResourceData.Width, natureResourceData.Height);
         EnvironmentManager.Instance.natureResources.Remove(transform.position);
         PoolManager.Instance.Push(gameObject);
+    }
 
-        foreach(var item in natureResourceData.dropItems)
+    protected void SpreadItems()
+    {
+        foreach (var item in natureResourceData.dropItems)
         {
             // spread Items
         }
