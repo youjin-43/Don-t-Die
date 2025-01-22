@@ -18,4 +18,3 @@ MonoBehaviour:
   width: 2
   height: 2
   maxHealth: 100
-  isDestroyedOnHarvest: 1

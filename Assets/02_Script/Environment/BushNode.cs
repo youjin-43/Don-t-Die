@@ -6,6 +6,7 @@ public class BushNode : ResourceNode
     {
         if (!GetComponent<Growable>().canBeHarvested)
         {
+            DebugController.Log("수확할 수 없습니다.");
             return;
         }
         SpreadItems();

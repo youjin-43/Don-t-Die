@@ -90,6 +90,15 @@ public class PoolManager : MonoBehaviour
 
             return go;
         }
+
+        public void Clear()
+        {
+            while (poolStack.Count > 0)
+            {
+                GameObject go = poolStack.Pop();
+                Destroy(go);
+            }
+        }
     }
 
     #region MonoBehaviour
@@ -153,6 +162,18 @@ public class PoolManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 풀을 삭제한다.
+    /// </summary>
+    /// <param name="name"></param>
+    public void DestroyPool(string name)
+    {
+        if (pools.ContainsKey(name))
+        {
+            pools[name].Clear();
+        }
+    }
+
+    /// <summary>
     /// 풀에 오브젝트를 반환한다.
     /// </summary>
     /// <param name="go"></param>
@@ -208,7 +229,7 @@ public class PoolManager : MonoBehaviour
         return Pop(obj, parent, rootParent);
     }
 
-    public bool hasPool (string name)
+    public bool HasPool(string name)
     {
         return pools.ContainsKey(name);
     }

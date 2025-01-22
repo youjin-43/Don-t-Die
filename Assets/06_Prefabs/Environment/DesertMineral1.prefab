@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6879570360646789951}
   - component: {fileID: -743625626341855466}
   - component: {fileID: 7124545216515306765}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DesertMineral1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

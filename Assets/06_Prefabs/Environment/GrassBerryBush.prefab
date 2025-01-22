@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -7709942246521553751}
   - component: {fileID: 8034937794561293441}
   - component: {fileID: 9130814216565769985}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GrassBerryBush
   m_TagString: Untagged
   m_Icon: {fileID: 0}

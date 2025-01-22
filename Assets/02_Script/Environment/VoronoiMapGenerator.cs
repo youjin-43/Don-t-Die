@@ -52,6 +52,7 @@ public class VoronoiMapGenerator : MonoBehaviour
 
     private void Update()
     {
+        #region Debug용
         // --- 타일이 바이옴 정보와 오브젝트 정보를 잘 가지고 있는지 디버깅 하는 부분!! -- 나중에 지우셈
         if (Input.GetMouseButtonDown(0))
         {
@@ -81,6 +82,7 @@ public class VoronoiMapGenerator : MonoBehaviour
                 hit.transform.GetComponent<ResourceNode>().Harvest();
             }
         }
+        #endregion
     }
 
     /// <summary>
@@ -91,14 +93,14 @@ public class VoronoiMapGenerator : MonoBehaviour
         landTilemap.ClearAllTiles();
         waterTilemap.ClearAllTiles();
 
-        if (objectParent != null)
+        if (objectParent != null)   // 자원들은 풀 오브젝트이므로 풀에 반환.
         {
             Transform[] children = objectParent.GetComponentsInChildren<Transform>();
 
             foreach(Transform child in children)
             {
                 if (child.name == objectParent.name) { continue; }  // 자기 자신은 무시
-                if (!PoolManager.Instance.hasPool(child.name)) { continue; }
+                if (!PoolManager.Instance.HasPool(child.name)) { continue; }
                 PoolManager.Instance.Push(child.gameObject);
             }
         }
@@ -300,6 +302,9 @@ public class VoronoiMapGenerator : MonoBehaviour
 
     void GenerateLakes()
     {
+        // 점을 생성한 후 그 점을 중심으로 하는 원형 연못을 생성한다.
+        // 노이즈를 추가해서 가장자리에 변칙성을 준다.
+
         List<SeedPoint> points = GenerateSeedPoints(lakeCount);
         foreach (SeedPoint center in points)
         {

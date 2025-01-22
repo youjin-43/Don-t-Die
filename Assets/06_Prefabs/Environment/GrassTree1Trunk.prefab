@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 531359245001078103}
   - component: {fileID: -3008029215423800994}
   - component: {fileID: 9172226078162729447}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GrassTree1Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -39,6 +39,15 @@ public class Growable : TimeAgent
         UpdateSprite();
     }
 
+    private void OnEnable()
+    {
+        if (EnvironmentManager.Instance.TryGetComponent(out TimeController timeController))
+        {
+            timeController.Subscribe(this);
+        }
+        ResetTimer();
+    }
+
     private void OnDisable()
     {
         if (isQuitting) { return; }

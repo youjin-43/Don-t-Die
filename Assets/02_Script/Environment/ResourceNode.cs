@@ -11,8 +11,9 @@ public class ResourceNode : MonoBehaviour
         
     }
 
-    public virtual void Harvest()   // 기본 로직은 맵에서 사라지고 아이템을 드랍하는 것이다.
+    public virtual void Harvest()   
     {
+        // 기본 로직은 맵에서 사라지고 아이템을 드랍하는 것이다.
         RemoveFromMap();
         SpreadItems();
     }

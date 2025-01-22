@@ -13,7 +13,6 @@ public class DamageableResourceNode : ResourceNode
 
     protected override void Init()
     {
-        base.Init();
         maxHealth = natureResourceData.MaxHealth;
         if (currentHealth == 0)
         {
@@ -23,7 +22,7 @@ public class DamageableResourceNode : ResourceNode
 
     private void OnEnable()
     {
-        
+        currentHealth = maxHealth;
     }
 
     private void Start()
