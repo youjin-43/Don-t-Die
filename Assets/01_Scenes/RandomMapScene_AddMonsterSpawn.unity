@@ -399,9 +399,8 @@ MonoBehaviour:
   waterEdgeSize: 0.4
   edgeNoiseScale: 0.1
   edgeNoiseStrength: 0.1
-  objectMap:
-    width: 0
-    height: 0
+  riverCount: 3
+  lakeCount: 10
 --- !u!4 &78947587
 Transform:
   m_ObjectHideFlags: 0

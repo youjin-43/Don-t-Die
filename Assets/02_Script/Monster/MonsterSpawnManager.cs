@@ -56,7 +56,23 @@ public class MonsterSpawnManager : MonoBehaviour
     public SerializedDictionary<BiomeType, List<GameObject>> MonsterPrefab;
     public SerializedDictionary<BiomeType, List<GameObject>> SpawnedMonster;
 
+<<<<<<< Updated upstream
     
+=======
+    //private void OnDrawGizmos()
+    //{
+    //    foreach (var kvp in seedPoints)
+    //    {
+    //        BiomeType biome = kvp.Key;        // 현재 키 (BiomeType)
+    //        List<Vector3> points = kvp.Value; // 현재 값 (List<Vector3>)
+
+    //        foreach (var pos in points)
+    //        {
+    //            Gizmos.DrawSphere(pos, 5f);
+    //        }
+    //    }
+    //}
+>>>>>>> Stashed changes
 
     public void InitializeBiomeMonsters()
     {
