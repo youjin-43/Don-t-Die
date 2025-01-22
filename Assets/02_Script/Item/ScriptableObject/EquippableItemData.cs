@@ -11,6 +11,7 @@ public enum EquipmentSlot
 public class EquippableItemData : ItemData
 {
     [SerializeField] EquipmentSlot equipSlot;
+    [SerializeField] float maxDurability;
 
     public EquipmentSlot EquipSlot { get { return equipSlot; } }
 }
