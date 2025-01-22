@@ -16,6 +16,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
 
     // 슬롯 데이터
     private Image           _itemImage;
+    private Image           _itemSelectImage;
     private TextMeshProUGUI _itemCountText;
     private int             _maxItemCount  = 10;
 
@@ -24,9 +25,10 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
 
     private void Awake()
     {
-        _itemImage     = transform.GetChild(0).GetComponent<Image>();
-        _itemCountText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-
+        _itemImage           = transform.GetChild(0).GetComponent<Image>();
+        _itemSelectImage     = transform.GetChild(1).GetComponent<Image>();
+        _itemCountText       = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        
         _itemCountText.gameObject.SetActive(false);
     }
 
@@ -107,7 +109,37 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void UseItem()
     {
-        DebugController.Log("아이템 사용");
+        // 데이터가 ToolItemData 일 경우
+        {
+            var itemData = _itemSlotData.ItemData as ToolItemData;
+
+            if(itemData != null)
+            {
+                ItemData equippedItemData = UI_Inventory.Instance.EquipItem(itemData, itemData.EquipSlot);
+
+                // 이미 장비하고 있음
+                if(equippedItemData != null)
+                {
+                    
+                }
+                else
+                {
+                    //_itemSlotData.ItemData = equippedItemData;
+
+                    ClearItemSlotData();
+                }
+            }
+        }
+        // 데이터가 _____________ 일 경우
+        {
+
+        
+        }
+        // 데이터가 _____________ 일 경우
+        {
+
+        }
+        // ......
     }
 
     public bool IsEmpty()
@@ -168,7 +200,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
             _itemCountText.gameObject.SetActive(false);
         }
     }
-
+    
     /// <summary>
     /// 인벤토리 드래깅용
     /// </summary>
