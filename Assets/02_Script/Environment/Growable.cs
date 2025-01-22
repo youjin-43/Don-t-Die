@@ -79,6 +79,10 @@ public class Growable : TimeAgent
 
     void UpdateSprite()
     {
+        if (spriteRenderer == null)
+        {
+            return;
+        }
         spriteRenderer.sprite = data.Sprites[growStage];
     }
 
