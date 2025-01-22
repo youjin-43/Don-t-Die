@@ -15,10 +15,5 @@ public class SpawnEditer : Editor
             generator.InitializeBiomeMonsters();
         }
 
-        if (GUILayout.Button("Clear"))
-        {
-            generator.ClearSpawnedMonsters();
-        }
-
     }
 }
