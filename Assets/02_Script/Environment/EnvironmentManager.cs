@@ -10,7 +10,7 @@ public class EnvironmentManager : MonoBehaviour
     public BiomeMap biomeMap;
     public ObjectMap objectMap;
     VoronoiMapGenerator voronoiMapGenerator;
-    public Dictionary<Vector3, ResourceObject> natureResources = new Dictionary<Vector3, ResourceObject>();
+    public SerializedDictionary<Vector3, ResourceObject> natureResources = new SerializedDictionary<Vector3, ResourceObject>();
     public SerializedDictionary<BiomeType, List<Vector3>> seedPoints = new SerializedDictionary<BiomeType, List<Vector3>>();
 
     public VoronoiMapGenerator VoronoiMapGenerator

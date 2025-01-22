@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4301608c9d3b4e44d88695669be00389, type: 3}
-  m_Name: DesertMineral1
+  m_Script: {fileID: 11500000, guid: 1303619f4b9d5aa4794d8d87c0d709a7, type: 3}
+  m_Name: StoneAxe
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5807532766185679856, guid: a167c31ce70d04447b44263a9eade3d7, type: 3}
-  biomeType: 2
-  objectType: 4
-  width: 2
-  height: 2
-  maxHealth: 100
+  Name: StoneAxe
+  Prefab: {fileID: 0}
+  Image: {fileID: 0}
+  equipSlot: 2
+  availableTypes: 02000000
+  atk: 12.5
+  maxDurability: 45

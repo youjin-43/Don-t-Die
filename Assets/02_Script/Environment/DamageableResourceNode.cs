@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DamageableResourceNode : ResourceNode
 {
+    [SerializeField] GameObject hitEffect;
     float maxHealth;
     float currentHealth;
     public float CurrentHealth
@@ -12,12 +13,16 @@ public class DamageableResourceNode : ResourceNode
 
     protected override void Init()
     {
-        base.Init();
         maxHealth = natureResourceData.MaxHealth;
         if (currentHealth == 0)
         {
             currentHealth = maxHealth;
         }
+    }
+
+    private void OnEnable()
+    {
+        currentHealth = maxHealth;
     }
 
     private void Start()
@@ -27,8 +32,12 @@ public class DamageableResourceNode : ResourceNode
 
     public void Hit(int damage)     // 도구로 자원을 캐는 과정
     {
-        DebugController.Log($"Hit {gameObject.name}. Damage : {damage} CurrentHealth : {currentHealth}");
+        if (hitEffect != null)
+        {
+            hitEffect.GetComponent<Animator>().Play("Hit", -1, 0f);
+        }
         currentHealth = Mathf.Max(0, currentHealth - damage);
+        DebugController.Log($"Hit {gameObject.name}. Damage : {damage} CurrentHealth : {currentHealth}");
 
         if (currentHealth < float.Epsilon)
         {

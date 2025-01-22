@@ -4,23 +4,35 @@ using UnityEngine;
 public class ResourceNode : MonoBehaviour
 {
     [SerializeField] protected NatureResourceData natureResourceData;
+    public NatureResourceData Data {  get { return natureResourceData; } }
 
     protected virtual void Init()
     {
-
+        
     }
 
-    private void Start()
+    public virtual void Harvest()   
     {
-        Init();
+        // 기본 로직은 맵에서 사라지고 아이템을 드랍하는 것이다.
+        RemoveFromMap();
+        SpreadItems();
     }
 
-    public void Harvest()
+    /// <summary>
+    /// Map 위에서 오브젝트를 없앤 후 풀에 반환한다.
+    /// </summary>
+    protected void RemoveFromMap()
     {
-        // 수확이 되면 objectMap에서 정보를 지우고 비활성화한다. 
-        // Object Pooling을 써서 비활성화/활성화할지 아예 destroy instantiate를 해버릴지 고민중 ㄱ-
         EnvironmentManager.Instance.objectMap.ClearTiles(new Vector2Int((int)transform.position.x, (int)transform.position.y), natureResourceData.Width, natureResourceData.Height);
         EnvironmentManager.Instance.natureResources.Remove(transform.position);
-        gameObject.SetActive(false);
+        PoolManager.Instance.Push(gameObject);
+    }
+
+    protected void SpreadItems()
+    {
+        foreach (var item in natureResourceData.dropItems)
+        {
+            // spread Items
+        }
     }
 }

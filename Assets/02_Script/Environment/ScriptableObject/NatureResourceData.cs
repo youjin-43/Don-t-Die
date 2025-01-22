@@ -10,6 +10,7 @@ public class NatureResourceData : ScriptableObject
     [SerializeField] int width;
     [SerializeField] int height;
     [SerializeField] int maxHealth;
+
     public struct DropItem
     {
         // TODO: Item 정보 넣기

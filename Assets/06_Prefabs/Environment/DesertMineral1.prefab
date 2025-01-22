@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6879570360646789951}
   - component: {fileID: -743625626341855466}
   - component: {fileID: 7124545216515306765}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DesertMineral1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   natureResourceData: {fileID: 11400000, guid: 0e2417fa2ff442f43bcfc887038bbfbf, type: 2}
+  hitEffect: {fileID: 0}
 --- !u!61 &7124545216515306765
 BoxCollider2D:
   m_ObjectHideFlags: 0

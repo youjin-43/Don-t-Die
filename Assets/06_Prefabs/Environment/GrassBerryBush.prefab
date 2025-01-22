@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4017330590131892786}
   - component: {fileID: 1727990596891207678}
   - component: {fileID: -7709942246521553751}
-  - component: {fileID: -5052230185434870080}
   - component: {fileID: 8034937794561293441}
-  m_Layer: 0
+  - component: {fileID: 9130814216565769985}
+  m_Layer: 3
   m_Name: GrassBerryBush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,19 +103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: b17534cb61e5eb4439e7ca492a2128a1, type: 2}
---- !u!114 &-5052230185434870080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6240440303929170768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6b91246de854c4a9c9a70bcb5ec994, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  natureResourceData: {fileID: 11400000, guid: b17534cb61e5eb4439e7ca492a2128a1, type: 2}
 --- !u!61 &8034937794561293441
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -162,3 +149,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &9130814216565769985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6240440303929170768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9967c15ff8dba624cb5a489f7d401647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  natureResourceData: {fileID: 11400000, guid: b17534cb61e5eb4439e7ca492a2128a1, type: 2}

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4301608c9d3b4e44d88695669be00389, type: 3}
-  m_Name: DesertMineral1
+  m_Name: GrassTree1Trunk
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5807532766185679856, guid: a167c31ce70d04447b44263a9eade3d7, type: 3}
-  biomeType: 2
-  objectType: 4
+  prefab: {fileID: 6102608454118721424, guid: 79191dad376deb940aa45c551d6c4aea, type: 3}
+  biomeType: 1
+  objectType: 2
   width: 2
   height: 2
-  maxHealth: 100
+  maxHealth: 50

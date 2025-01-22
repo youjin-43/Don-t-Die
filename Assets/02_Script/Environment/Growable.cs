@@ -26,6 +26,11 @@ public class Growable : TimeAgent
         }
     }
 
+    /// <summary>
+    /// 수확할 수 있을 만큼 자랐는지 확인
+    /// </summary>
+    public bool canBeHarvested => timer >= data.MinTimeToHarvest;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -34,20 +39,29 @@ public class Growable : TimeAgent
         UpdateSprite();
     }
 
-    // 게임뷰에서 씬뷰로 넘어올 때 에러 방지
-    bool isQuitting = false;
-    private void OnApplicationQuit()
+    private void OnEnable()
     {
-        isQuitting = true;
+        if (EnvironmentManager.Instance.TryGetComponent(out TimeController timeController))
+        {
+            timeController.Subscribe(this);
+        }
+        ResetTimer();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         if (isQuitting) { return; }
         if (EnvironmentManager.Instance.TryGetComponent(out TimeController timeController))
         {
             timeController.Unsubscribe(this);
         }
+    }
+
+    // 게임뷰에서 씬뷰로 넘어올 때 에러 방지
+    bool isQuitting = false;
+    private void OnApplicationQuit()
+    {
+        isQuitting = true;
     }
 
     public override void UpdateTimer()
@@ -66,5 +80,12 @@ public class Growable : TimeAgent
     void UpdateSprite()
     {
         spriteRenderer.sprite = data.Sprites[growStage];
+    }
+
+    public void ResetTimer()
+    {
+        growStage = 0;
+        timer = 0;
+        UpdateSprite();
     }
 }
