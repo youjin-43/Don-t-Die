@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UI_ItemSlot;
+using static InventoryItemSlot;
 
-public class UI_Equipment : MonoBehaviour
+public class EquipmentManager : MonoBehaviour
 {
     #region SINGLETON
-    private static UI_Equipment instance;
-    public  static UI_Equipment Instance
+    private static EquipmentManager instance;
+    public  static EquipmentManager Instance
     {
         get
         {
@@ -35,7 +35,7 @@ public class UI_Equipment : MonoBehaviour
     int _initialEquipmentSize = 3;
 
     // 장비 슬롯을 담아놓을 컨테이너
-    Dictionary<string, UI_EquipmentSlot> _equipmentSlot = new Dictionary<string, UI_EquipmentSlot>();
+    Dictionary<string, EquipmentItemSlot> _equipmentSlot = new Dictionary<string, EquipmentItemSlot>();
 
     private void Awake()
     {
@@ -48,19 +48,19 @@ public class UI_Equipment : MonoBehaviour
         {
             GameObject go = Instantiate(EquipmentSlotPrefab, transform);
 
-            _equipmentSlot.Add("Hand", go.GetComponent<UI_EquipmentSlot>());
+            _equipmentSlot.Add("Hand", go.GetComponent<EquipmentItemSlot>());
         }
         // 갑옷 슬롯
         {
             GameObject go = Instantiate(EquipmentSlotPrefab, transform);
 
-            _equipmentSlot.Add("Chest", go.GetComponent<UI_EquipmentSlot>());
+            _equipmentSlot.Add("Chest", go.GetComponent<EquipmentItemSlot>());
         }
         // 투구 슬롯
         {
             GameObject go = Instantiate(EquipmentSlotPrefab, transform);
 
-            _equipmentSlot.Add("Head", go.GetComponent<UI_EquipmentSlot>());
+            _equipmentSlot.Add("Head", go.GetComponent<EquipmentItemSlot>());
         }
     }
 
@@ -68,11 +68,11 @@ public class UI_Equipment : MonoBehaviour
     /// 장비창에 있는 장비를 가져오는 함수
     /// </summary>
     /// <param name="parts">Head, Hand, Chest</param>
-    public ItemData GetCurrentEquipment(string parts)
+    public ToolItemData GetCurrentTool(string parts)
     {
         if(_equipmentSlot[parts] != null)
         {
-            return _equipmentSlot[parts].GetItemData();
+            return _equipmentSlot[parts].GetItemData() as ToolItemData;
         }
 
         return null;

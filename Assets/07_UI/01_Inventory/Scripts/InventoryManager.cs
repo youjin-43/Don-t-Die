@@ -2,14 +2,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UI_ItemSlot;
+using static InventoryItemSlot;
 
 // 인벤토리 UI
-public class UI_Inventory : MonoBehaviour
+public class InventoryManager : MonoBehaviour
 {
     #region SINGLETON
-    private static UI_Inventory instance;
-    public  static UI_Inventory Instance
+    private static InventoryManager instance;
+    public  static InventoryManager Instance
     {
         get
         {
@@ -31,16 +31,14 @@ public class UI_Inventory : MonoBehaviour
     }
     #endregion
 
-
-
     // 인벤토리가 들고 있을 아이템 슬롯 프리팹
     [SerializeField] GameObject ItemSlotPrefab;
 
     // 아이템 슬롯 최대 갯수
-    int _initialInventorySize = 15;
+    private int _maxInventorySize = 15;
 
     // 아이템 슬롯을 담아놓을 컨테이너
-    List<UI_ItemSlot> _inventorySlot = new List<UI_ItemSlot>();
+    private List<InventoryItemSlot> _inventorySlot = new List<InventoryItemSlot>();
 
     // 슬롯에 뭐가 들어가 있는지 확인하기 위한 컨테이너
     private Dictionary<string, int> _inventoryDict = new Dictionary<string, int>();
@@ -50,17 +48,22 @@ public class UI_Inventory : MonoBehaviour
     // 드래깅용 변수
     [SerializeField] RectTransform _dragUI;
 
-    private UI_ItemSlot  _startSlot;
+    private InventoryItemSlot  _startSlot;
     private ItemSlotData _startSlotItemData;
+    private bool         _isDragging = false;
 
-    private bool _isDragging = false;
 
+
+    // 스크롤용 변수
+    private int  _focussedIndex = 0;
+    private bool _scrollable    = true;
 
     // 플레이어 트랜스폼 캐싱
     private Transform _playerTransform;
 
 
-    private void Awake()
+
+    void Awake()
     {
         SingletonInitialize();
     }
@@ -68,11 +71,16 @@ public class UI_Inventory : MonoBehaviour
     void Start()
     {
         // 자식으로 아이템 슬롯을 생성
-        for(int i = 0; i < _initialInventorySize; ++i)
+        for(int i = 0; i < _maxInventorySize; ++i)
         {
             GameObject go = Instantiate(ItemSlotPrefab, transform);
 
-            _inventorySlot.Add(go.GetComponent<UI_ItemSlot>());
+            _inventorySlot.Add(go.GetComponent<InventoryItemSlot>());
+
+            if(i == 0)
+            {
+                go.GetComponent<InventoryItemSlot>().Select();
+            }
         }
 
         _dragUI.gameObject.SetActive(false);
@@ -80,6 +88,12 @@ public class UI_Inventory : MonoBehaviour
     }
 
     void Update()
+    {
+        DragAndDropItem();
+        InventoryScroll();
+    }
+
+    private void DragAndDropItem()
     {
         // 드래그 중 이라면
         if (_isDragging == true)
@@ -97,6 +111,50 @@ public class UI_Inventory : MonoBehaviour
         }
     }
 
+    private void InventoryScroll()
+    {
+        if(_scrollable == true)
+        {
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+
+            if (scroll != 0)
+            {
+                _focussedIndex -= (int)Mathf.Clamp(scroll * 10, -1f, 1f);
+
+                if (_focussedIndex < 0)
+                {
+                    _focussedIndex = _maxInventorySize - 1;
+                }
+                else if (_focussedIndex >= _maxInventorySize)
+                {
+                    _focussedIndex = 0;
+                }
+
+                for (int i = 0; i < _maxInventorySize; ++i)
+                {
+                    if (i == _focussedIndex)
+                    {
+                        _inventorySlot[i].Select();
+                    }
+                    else
+                    {
+                        _inventorySlot[i].Unselect();
+                    }
+                }
+            }
+        }
+    }
+
+    public void UseSelectedItem()
+    {
+        _inventorySlot[_focussedIndex].UseItem();
+    }
+
+    public void DisableScrollToggle()
+    {
+        _scrollable = !_scrollable;
+    }
+
     public void CachingPlayerTransform(Transform playerTransform)
     {
         _playerTransform = playerTransform;
@@ -104,46 +162,31 @@ public class UI_Inventory : MonoBehaviour
 
     public bool AddItem(ItemData itemData)
     {
-        for (int i = 0; i < _initialInventorySize; ++i)
+        if(itemData as ToolItemData)
         {
-            // 슬롯이 비어있다면
-            if(_inventorySlot[i].IsEmpty() == true)
+            for (int i = 0; i < _maxInventorySize; ++i)
             {
-                // 다른 슬롯에 같은 아이템이 있는가
-                if(_inventoryDict.TryGetValue(itemData.Name, out int count) && count != 0)
+                // 슬롯이 비어있다면
+                if (_inventorySlot[i].IsEmpty() == true)
                 {
-                    // 있으면 그 슬롯까지 계속 감
-                    continue;
-                }
-                else
-                {
-                    // 아이템 추가
                     AddItemToSlot(itemData, i);
-
                     return true;
                 }
             }
-            // 슬롯이 비어있지 않다면
-            else
+            return false;
+        }
+        else
+        {
+            for (int i = 0; i < _maxInventorySize; ++i)
             {
-                // 같은 아이템인가
-                if (_inventorySlot[i].GetItemName() == itemData.Name)
+                // 슬롯이 비어있다면
+                if (_inventorySlot[i].IsEmpty() == true)
                 {
-                    // 같은 아이템이지만 꽉 차있는가?
-                    if (_inventorySlot[i].IsFull() == true)
+                    // 다른 슬롯에 같은 아이템이 있는가
+                    if (_inventoryDict.TryGetValue(itemData.Name, out int count) && count != 0)
                     {
-                        // 처음부터 다시 돌아서 빈 칸에 추가함
-                        if(SearchFromFirstSlot(itemData, out int slot) == true && slot >= 0)
-                        {
-                            AddItemToSlot(itemData, slot);
-
-                            return true;
-                        }
-                        // 다 돌았는데도 슬롯이 없음 = 꽉참
-                        else
-                        {
-                            break;
-                        }
+                        // 있으면 그 슬롯까지 계속 감
+                        continue;
                     }
                     else
                     {
@@ -153,22 +196,53 @@ public class UI_Inventory : MonoBehaviour
                         return true;
                     }
                 }
-                // 다른 아이템인가
+                // 슬롯이 비어있지 않다면
                 else
                 {
-                    // 다음 슬롯으로
-                    continue;
+                    // 같은 아이템인가
+                    if (_inventorySlot[i].GetItemName() == itemData.Name)
+                    {
+                        // 같은 아이템이지만 꽉 차있는가?
+                        if (_inventorySlot[i].IsFull() == true)
+                        {
+                            // 처음부터 다시 돌아서 빈 칸에 추가함
+                            if (SearchFromFirstSlot(itemData, out int slot) == true && slot >= 0)
+                            {
+                                AddItemToSlot(itemData, slot);
+
+                                return true;
+                            }
+                            // 다 돌았는데도 슬롯이 없음 = 꽉참
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            // 아이템 추가
+                            AddItemToSlot(itemData, i);
+
+                            return true;
+                        }
+                    }
+                    // 다른 아이템인가
+                    else
+                    {
+                        // 다음 슬롯으로
+                        continue;
+                    }
                 }
             }
-        }
 
-        // 꽉 참
-        return false;
+            // 꽉 참
+            return false;
+        }
     }
 
     private bool SearchFromFirstSlot(ItemData itemData, out int value)
     {
-        for(int i = 0; i < _initialInventorySize; ++i)
+        for(int i = 0; i < _maxInventorySize; ++i)
         {
             if (_inventorySlot[i].IsEmpty() == true)
             {
@@ -200,7 +274,7 @@ public class UI_Inventory : MonoBehaviour
         return _isDragging;
     }
 
-    public void BeginDragData(UI_ItemSlot startSlot)
+    public void BeginDragData(InventoryItemSlot startSlot)
     {
         // 빈 슬롯을 클릭했다면
         if (startSlot.IsEmpty() == true)
@@ -227,7 +301,7 @@ public class UI_Inventory : MonoBehaviour
         }
     }
 
-    public void EndDragData(UI_ItemSlot endSlot)
+    public void EndDragData(InventoryItemSlot endSlot)
     {
         // 비어 있어야
         if (endSlot.IsEmpty() == true)
@@ -305,7 +379,7 @@ public class UI_Inventory : MonoBehaviour
             _inventoryDict[itemData.Name] -= 1;
         }
 
-        return UI_Equipment.Instance.EquipItem(itemData, slot);
+        return EquipmentManager.Instance.EquipItem(itemData, slot);
     }
 
     public ItemData ExchangeEquipItem(ItemData itemData, EquipmentSlot slot)
@@ -313,7 +387,7 @@ public class UI_Inventory : MonoBehaviour
         _inventoryDict[itemData.Name] -= 1;
 
         // 받아 온 장비를 장착하고 장착하고 있던 장비는 가져옴
-        ItemData equipedItemData = UI_Equipment.Instance.EquipItem(itemData, slot);
+        ItemData equipedItemData = EquipmentManager.Instance.EquipItem(itemData, slot);
 
         // 장착하고 있던 장비가 없었다면
         if (equipedItemData == null) 

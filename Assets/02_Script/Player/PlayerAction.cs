@@ -38,7 +38,7 @@ public class PlayerAction : MonoBehaviour
 
         // ㅇㅎㅈ 추가
         // 인벤토리에 플레이어 트랜스폼 캐싱
-        UI_Inventory.Instance.CachingPlayerTransform(transform);
+        InventoryManager.Instance.CachingPlayerTransform(transform);
     }
 
     void Update()
@@ -51,7 +51,13 @@ public class PlayerAction : MonoBehaviour
         // 조합창 토글
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            UI_Craft.Instance.ToggleCraftingUI();
+            CraftManager.Instance.ToggleCraftingUI();
+            InventoryManager.Instance.DisableScrollToggle();
+        }
+        // 인벤토리에서 선택된 아이템 사용
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            InventoryManager.Instance.UseSelectedItem();
         }
     }
 
@@ -182,7 +188,7 @@ public class PlayerAction : MonoBehaviour
         if (gotItem != null)
         {
             // 필드의 아이템을 인벤토리에 추가했다면
-            if (UI_Inventory.Instance.AddItem(gotItem.ItemData))
+            if (InventoryManager.Instance.AddItem(gotItem.ItemData))
             {
                 // 필드의 아이템은 지움
                 Destroy(autoInteractTargetTransform.gameObject);

@@ -3,11 +3,11 @@ using UnityEngine.UI;
 using VInspector;
 
 // 조합 UI
-public class UI_Craft : MonoBehaviour
+public class CraftManager : MonoBehaviour
 {
     #region SINGLETON
-    private static UI_Craft instance;
-    public  static UI_Craft Instance
+    private static CraftManager instance;
+    public  static CraftManager Instance
     {
         get
         {
@@ -30,7 +30,7 @@ public class UI_Craft : MonoBehaviour
     #endregion
 
     // 조합 UI 상단 탭의 카테고리들 담아 둘 컨테이너
-    public SerializedDictionary<string, UI_CraftCategory> Categories = new SerializedDictionary<string, UI_CraftCategory>();
+    public SerializedDictionary<string, CraftCategory> Categories = new SerializedDictionary<string, CraftCategory>();
 
     // 조합 UI 중앙부 스크롤뷰에 넣을 조합식 프리팹
     [SerializeField] GameObject CraftListPrefab;
@@ -49,7 +49,7 @@ public class UI_Craft : MonoBehaviour
         foreach (var data in DataManager.Instance.CraftingData)
         {
             // 카테고리에 맞는 데이터들을
-            if(Categories.TryGetValue(data.Value.Category, out UI_CraftCategory category))
+            if(Categories.TryGetValue(data.Value.Category, out CraftCategory category))
             {
                 // 카테고리에 추가해줌
                 category.AddData(data.Value);

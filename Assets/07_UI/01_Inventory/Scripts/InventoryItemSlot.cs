@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
                                           
-public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
+public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
 {
     // 아이템 데이터
     public struct ItemSlotData
@@ -28,8 +28,10 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
         _itemImage           = transform.GetChild(0).GetComponent<Image>();
         _itemSelectImage     = transform.GetChild(1).GetComponent<Image>();
         _itemCountText       = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-        
+
+        _itemImage.color = new Color(1, 1, 1, 0);
         _itemCountText.gameObject.SetActive(false);
+        _itemSelectImage.gameObject.SetActive(false);
     }
 
     // IPointerClickHandler 인터페이스
@@ -39,19 +41,19 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             // 오작동 방지
-            if (IsEmpty() == true && UI_Inventory.Instance.IsDragging() == false)
+            if (IsEmpty() == true && InventoryManager.Instance.IsDragging() == false)
             {
                 return;
             }
 
             // 아이템 인벤토리 상에서의 이동
-            if (UI_Inventory.Instance.IsDragging() == false)
+            if (InventoryManager.Instance.IsDragging() == false)
             {
-                UI_Inventory.Instance.BeginDragData(this);
+                InventoryManager.Instance.BeginDragData(this);
             }
             else
             {
-                UI_Inventory.Instance.EndDragData(this);
+                InventoryManager.Instance.EndDragData(this);
             }
         }
         // 우클릭 이벤트 (아이템 사용)
@@ -74,6 +76,16 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    public void Select()
+    {
+        _itemSelectImage.gameObject.SetActive(true);
+    }
+
+    public void Unselect()
+    {
+        _itemSelectImage.gameObject.SetActive(false);
+    }
+
     public bool AddItemData(ItemData itemData)
     {
         if(itemData as ToolItemData != null)
@@ -90,6 +102,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
         if(_itemSlotData.ItemData == null)
         {
             _itemImage.sprite = itemData.Image;
+            _itemImage.color  = new Color(1, 1, 1, 1);
             _itemCountText.gameObject.SetActive(true);
         }
         // 아이템 추가
@@ -125,7 +138,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
 
             if(itemData != null)
             {
-                ItemData equippedItemData = UI_Inventory.Instance.ExchangeEquipItem(itemData, itemData.EquipSlot);
+                ItemData equippedItemData = InventoryManager.Instance.ExchangeEquipItem(itemData, itemData.EquipSlot);
 
                 // 장비창이 비어있었다면
                 if (equippedItemData == null)
@@ -186,6 +199,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
         // 이미지 초기화
         {
             _itemImage.sprite = itemSlotData.ItemData.Image;
+            _itemImage.color  = new Color(1, 1, 1, 1);
         }
         // 카운트 초기화
         {
@@ -207,7 +221,8 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
         // 슬롯 데이터 초기화
         {
             _itemImage.sprite = null;
-            _maxItemCount     = 9;
+            _itemImage.color  = new Color(1, 1, 1, 0);
+            _maxItemCount = 9;
         }
         // 카운트 초기화
         {
@@ -223,4 +238,6 @@ public class UI_ItemSlot : MonoBehaviour, IPointerClickHandler
     {
         _isDragging = false;
     }
+
+    
 }

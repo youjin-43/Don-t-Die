@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_EquipmentSlot : MonoBehaviour, IPointerClickHandler
+public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
 {
     // 아이템 데이터
     private ItemData _itemData;
@@ -13,6 +13,8 @@ public class UI_EquipmentSlot : MonoBehaviour, IPointerClickHandler
     private void Awake()
     {
         _itemImage = transform.GetChild(0).GetComponent<Image>();
+
+        _itemImage.color = new Color(1, 1, 1, 0);
     }
 
     // IPointerClickHandler 인터페이스
@@ -36,6 +38,7 @@ public class UI_EquipmentSlot : MonoBehaviour, IPointerClickHandler
     {
         _itemData         = itemData;
         _itemImage.sprite = itemData.Image;
+        _itemImage.color  = new Color(1, 1, 1, 1);
 
         return true;
     }
@@ -52,10 +55,11 @@ public class UI_EquipmentSlot : MonoBehaviour, IPointerClickHandler
 
     public void ClearEquipment()
     {
-        UI_Inventory.Instance.AddItem(_itemData);
+        InventoryManager.Instance.AddItem(_itemData);
 
         _itemData         = null;
         _itemImage.sprite = null;
+        _itemImage.color  = new Color(1, 1, 1, 0);
     }
 
     public bool IsEmpty()

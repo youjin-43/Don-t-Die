@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class UI_CraftList : MonoBehaviour
+public class CraftList : MonoBehaviour
 {
     // 아이템 슬롯 담아놓을 컨테이너
-    private List<UI_CraftListItemSlot> _craftItemSlotList = new List<UI_CraftListItemSlot>();
+    private List<CraftListItemSlot> _craftItemSlotList = new List<CraftListItemSlot>();
 
     private CraftingData _data;
     private Dictionary<string, int> _recipe = new Dictionary<string, int>();
@@ -19,23 +19,23 @@ public class UI_CraftList : MonoBehaviour
 
         for (int j = 0; j < count; ++j)
         {
-            UI_CraftListItemSlot slot = Instantiate(craftItemSlotPrefab, parent).GetComponent<UI_CraftListItemSlot>();
+            CraftListItemSlot slot = Instantiate(craftItemSlotPrefab, parent).GetComponent<CraftListItemSlot>();
 
             if(j == count - 1)
             {
-                slot.SetType(UI_CraftListItemSlot.Type.ItemSlot, _data.Name);
+                slot.SetType(CraftListItemSlot.Type.ItemSlot, _data.Name);
             }
             else if (j == count - 2)
             {
-                slot.SetType(UI_CraftListItemSlot.Type.Image_Equal, "Equal");
+                slot.SetType(CraftListItemSlot.Type.Image_Equal, "Equal");
             }
             else if (j % 2 == 1)
             {
-                slot.SetType(UI_CraftListItemSlot.Type.Image_Plus, "Plus");
+                slot.SetType(CraftListItemSlot.Type.Image_Plus, "Plus");
             }
             else
             {
-                slot.SetType(UI_CraftListItemSlot.Type.ItemSlot, queue.Dequeue());
+                slot.SetType(CraftListItemSlot.Type.ItemSlot, queue.Dequeue());
             }
 
             _craftItemSlotList.Add(slot);

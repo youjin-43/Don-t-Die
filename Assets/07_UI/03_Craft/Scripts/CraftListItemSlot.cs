@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_CraftListItemSlot : MonoBehaviour
+public class CraftListItemSlot : MonoBehaviour
 {
     // 아이템을 그릴 슬롯인지, +, = 모양을 그릴 슬롯인지
     public enum Type
