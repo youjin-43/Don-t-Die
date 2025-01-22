@@ -9,19 +9,18 @@ enum BearState
 
 public class Bear : MonsterBase
 {
-    private void OnValidate()
-    {
-        DebugController.Log($"{moveInterval} is updated");
-    }
+    //private void OnValidate()
+    //{
+    //}
 
     [Header("Bear Attributes")]
     [SerializeField] BearState bearState = BearState.Idle;
-    [SerializeField] float moveInterval = 5f;
     [SerializeField] float moveRange = 3f; 
 
     void Start()
     {
-        SetData(); //몬스터 기본 데이터 셋팅
+        SetData(); // 몬스터 기본 데이터 셋팅
+        SetCompoenets(); // 기본 컴포넌트들 셋팅
         StartCoroutine(MoveRoutine());
     }
     
@@ -38,21 +37,28 @@ public class Bear : MonsterBase
         {
             Vector3 targetPosition = GetRandomPosition();
             BiomeType nextPosbiome = GetBiomeInfo(targetPosition);
+            Vector3 dir = targetPosition - transform.position;
 
             if (nextPosbiome == MybiomeType) // 이동할 위치가 내 바이옴과 위치한다면 그쪽으로 이동 
             {
-                while(Vector3.Distance(transform.position, targetPosition) > 0.1f)
+                monsterAnimator.SetBool("IsMoving", true);
+                monsterAnimator.SetFloat("dirX", dir.x);
+                monsterAnimator.SetFloat("dirY", dir.y);
+
+                while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, targetPosition, MoveSpeed * Time.deltaTime);
                     yield return null;
                 }
+
+                monsterAnimator.SetBool("IsMoving", false);
                 Debug.Log($"Moved to {targetPosition}");
             }
             else
             {
                 Debug.Log("Invalid tile. Skipping move.");
             }
-            yield return new WaitForSeconds(Random.Range(0, moveInterval)); // 타겟 위치로 이동 후 랜덤 시간만큼 대기 
+            yield return new WaitForSeconds(Random.Range(0, MoveInterval)); // 타겟 위치로 이동 후 랜덤 시간만큼 대기 
         }
 
     }
