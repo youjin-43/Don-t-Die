@@ -47,6 +47,9 @@ MonoBehaviour:
   spawnRadius: 20
   MinSpawnCnt: 3
   MaxSpawnCnt: 20
+  seedPoints:
+    serializedKvps: []
+    dividerPos: 0.33
   MonsterPrefab:
     serializedKvps:
     - Key: 1
@@ -76,8 +79,25 @@ MonoBehaviour:
       isKeyNull: 0
     dividerPos: 0.33
   SpawnedMonster:
-    serializedKvps: []
-    dividerPos: 0.33
-  seedPoints:
-    serializedKvps: []
+    serializedKvps:
+    - Key: 1
+      Value: []
+      index: 0
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 2
+      Value: []
+      index: 1
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 3
+      Value: []
+      index: 2
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 4
+      Value: []
+      index: 3
+      isKeyRepeated: 0
+      isKeyNull: 0
     dividerPos: 0.33

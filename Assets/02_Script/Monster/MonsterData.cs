@@ -7,5 +7,7 @@ public class MonsterData : ScriptableObject
     [SerializeField]  public float MaxHP;
     [SerializeField]  public float MoveSpeed;
     [SerializeField]  public float AttackDamage;
+    public BiomeType biomeType;
+
     //TODO : dropItems 추가 
 }
