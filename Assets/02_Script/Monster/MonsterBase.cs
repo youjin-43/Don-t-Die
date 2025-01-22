@@ -7,6 +7,10 @@ public abstract class MonsterBase : MonoBehaviour
     public MonsterData monsterData;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    [Header("Monster Base Attributes")]
+>>>>>>> Stashed changes
 =======
     [Header("Monster Base Attributes")]
 >>>>>>> Stashed changes
@@ -15,12 +19,15 @@ public abstract class MonsterBase : MonoBehaviour
     public float MoveSpeed;
     public float AttackDamage;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     //TODO : dropItems 추가 
 
     public abstract void Move(Vector3 targetPosition);
 
     public abstract void Attack(GameObject target); // 공격 로직 (구체적 동작은 각 몬스터가 구현)
 =======
+=======
+>>>>>>> Stashed changes
     public BiomeType MybiomeType;
     
 
@@ -36,6 +43,9 @@ public abstract class MonsterBase : MonoBehaviour
     }
 
     public abstract void Move();
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
     public virtual void TakeDamage(float damage)
