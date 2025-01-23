@@ -345,7 +345,7 @@ MonoBehaviour:
   timeScale: 180
   startAtTime: 28800
   globalLight: {fileID: 1563453927}
-  daysPerSeason: 0100000001000000
+  daysPerSeason: 1900000019000000
   timeDisplayer: {fileID: 1689121713}
 --- !u!114 &43819986
 MonoBehaviour:
@@ -6244,6 +6244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73c1d14237512844afd1956dfb1e3f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 3746515995462291704, guid: 7f62210854361ad4b8f9fd9c581280a9, type: 3}
 --- !u!4 &2112550189
 Transform:
   m_ObjectHideFlags: 0

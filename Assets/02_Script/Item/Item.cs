@@ -6,7 +6,7 @@ public class Item : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -17,5 +17,11 @@ public class Item : MonoBehaviour
     public void SetItemData(ItemData itemData)
     {
         ItemData = itemData;
+        if (ItemData.Image == null)
+        {
+            DebugController.Log($"{itemData.name}의 이미지가 설정되지 않았습니다.");
+            return;
+        }
+        GetComponent<SpriteRenderer>().sprite = itemData.Image;
     }
 }
