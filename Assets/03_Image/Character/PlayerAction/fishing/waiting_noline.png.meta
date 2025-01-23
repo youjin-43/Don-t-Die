@@ -1,40 +1,34 @@
 fileFormatVersion: 2
-guid: 6e91f5b77abe1496abde23ced7efc383
+guid: c73f4cbcd2b189b46a2c908e8021d64c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -651018947144443136
-    second: spr_caught_strip10_0
+      213: -862346994167193955
+    second: waiting_noline_0
   - first:
-      213: -5248881438388557642
-    second: spr_caught_strip10_1
+      213: -6179106951995354697
+    second: waiting_noline_1
   - first:
-      213: -311976176842195256
-    second: spr_caught_strip10_2
+      213: 8712424466928505152
+    second: waiting_noline_2
   - first:
-      213: -3553146468520957806
-    second: spr_caught_strip10_3
+      213: -6843520471228221223
+    second: waiting_noline_3
   - first:
-      213: 1920313662044513391
-    second: spr_caught_strip10_4
+      213: 2823423975031590865
+    second: waiting_noline_4
   - first:
-      213: 7971539546172305769
-    second: spr_caught_strip10_5
+      213: 5675316392413886452
+    second: waiting_noline_5
   - first:
-      213: -2919002880173796762
-    second: spr_caught_strip10_6
+      213: 1255824831397836898
+    second: waiting_noline_6
   - first:
-      213: 7474787056414608492
-    second: spr_caught_strip10_7
+      213: 3377218495617536406
+    second: waiting_noline_7
   - first:
-      213: 5333696946383796187
-    second: spr_caught_strip10_8
-  - first:
-      213: 3512648174784418813
-    second: spr_caught_strip10_9
-  - first:
-      213: -7762960470274183542
-    second: spr_caught_strip10_10
+      213: -3523390373166363717
+    second: waiting_noline_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -114,45 +108,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Win64
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -178,17 +133,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spr_caught_strip10_0
+      name: waiting_noline_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 2
-        width: 40
-        height: 42
+        x: 0
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 00b186187bd17f6f0800000000000000
-      internalID: -651018947144443136
+      spriteID: d9ed98b4af35804f0800000000000000
+      internalID: -862346994167193955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_caught_strip10_1
+      name: waiting_noline_1
       rect:
         serializedVersion: 2
-        x: 136
-        y: 2
-        width: 40
-        height: 42
+        x: 96
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6b865bc342a3827b0800000000000000
-      internalID: -5248881438388557642
+      spriteID: 7b19b2927f66f3aa0800000000000000
+      internalID: -6179106951995354697
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_caught_strip10_2
+      name: waiting_noline_2
       rect:
         serializedVersion: 2
-        x: 231
-        y: 2
-        width: 41
-        height: 42
+        x: 192
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,20 +209,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8cebfe0f153ababf0800000000000000
-      internalID: -311976176842195256
+      spriteID: 04112bb64efb8e870800000000000000
+      internalID: 8712424466928505152
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_caught_strip10_3
+      name: waiting_noline_3
       rect:
         serializedVersion: 2
-        x: 325
-        y: 2
-        width: 43
-        height: 44
+        x: 288
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +231,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 298efdcbc10b0bec0800000000000000
-      internalID: -3553146468520957806
+      spriteID: 9d8f353d36ee601a0800000000000000
+      internalID: -6843520471228221223
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_caught_strip10_4
+      name: waiting_noline_4
       rect:
         serializedVersion: 2
-        x: 419
-        y: 20
-        width: 35
-        height: 29
+        x: 384
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -285,20 +253,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f642e73f91356aa10800000000000000
-      internalID: 1920313662044513391
+      spriteID: 1df441a6521de2720800000000000000
+      internalID: 2823423975031590865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_caught_strip10_5
+      name: waiting_noline_5
       rect:
         serializedVersion: 2
-        x: 455
-        y: 3
-        width: 12
-        height: 8
+        x: 480
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,20 +275,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 96134927bf890ae60800000000000000
-      internalID: 7971539546172305769
+      spriteID: 4f7f7c59036c2ce40800000000000000
+      internalID: 5675316392413886452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_caught_strip10_6
+      name: waiting_noline_6
       rect:
         serializedVersion: 2
-        x: 512
-        y: 6
-        width: 53
-        height: 44
+        x: 576
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -329,20 +297,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 66216e4985e9d77d0800000000000000
-      internalID: -2919002880173796762
+      spriteID: 268359fc7069d6110800000000000000
+      internalID: 1255824831397836898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_caught_strip10_7
+      name: waiting_noline_7
       rect:
         serializedVersion: 2
-        x: 607
-        y: 7
-        width: 56
-        height: 45
+        x: 672
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -351,20 +319,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c6cc7458937cbb760800000000000000
-      internalID: 7474787056414608492
+      spriteID: 6919928145a4ede20800000000000000
+      internalID: 3377218495617536406
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_caught_strip10_8
+      name: waiting_noline_8
       rect:
         serializedVersion: 2
-        x: 707
-        y: 5
-        width: 53
-        height: 48
+        x: 768
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,52 +341,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bd7bac41d19150a40800000000000000
-      internalID: 5333696946383796187
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_caught_strip10_9
-      rect:
-        serializedVersion: 2
-        x: 807
-        y: 4
-        width: 50
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: df313f677ee6fb030800000000000000
-      internalID: 3512648174784418813
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_caught_strip10_10
-      rect:
-        serializedVersion: 2
-        x: 905
-        y: 23
-        width: 29
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a8e68eb059c644490800000000000000
-      internalID: -7762960470274183542
+      spriteID: bbb43629f176a1fc0800000000000000
+      internalID: -3523390373166363717
       vertices: []
       indices: 
       edges: []
@@ -427,7 +351,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 91efff2011633be499ca490b1dcb826a
     internalID: 0
     vertices: []
     indices: 
@@ -437,17 +361,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      spr_caught_strip10_0: -651018947144443136
-      spr_caught_strip10_1: -5248881438388557642
-      spr_caught_strip10_10: -7762960470274183542
-      spr_caught_strip10_2: -311976176842195256
-      spr_caught_strip10_3: -3553146468520957806
-      spr_caught_strip10_4: 1920313662044513391
-      spr_caught_strip10_5: 7971539546172305769
-      spr_caught_strip10_6: -2919002880173796762
-      spr_caught_strip10_7: 7474787056414608492
-      spr_caught_strip10_8: 5333696946383796187
-      spr_caught_strip10_9: 3512648174784418813
+      waiting_noline_0: -862346994167193955
+      waiting_noline_1: -6179106951995354697
+      waiting_noline_2: 8712424466928505152
+      waiting_noline_3: -6843520471228221223
+      waiting_noline_4: 2823423975031590865
+      waiting_noline_5: 5675316392413886452
+      waiting_noline_6: 1255824831397836898
+      waiting_noline_7: 3377218495617536406
+      waiting_noline_8: -3523390373166363717
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
