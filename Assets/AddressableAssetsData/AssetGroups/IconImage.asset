@@ -45,12 +45,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1c55b97f1b22b9044b4cf559310f0a3e
-    m_Address: Pointer
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1c8a0536b47febc41877cf4faf6a1bfe
     m_Address: StoneHelmet
     m_ReadOnly: 0
