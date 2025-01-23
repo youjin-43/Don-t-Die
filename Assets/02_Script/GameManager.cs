@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
 
     public Transform PlayerTransform; //인스펙터에서 할당해야함
     public Vector3 GetPlayerPos()
-
     {
         return PlayerTransform.position;
     }
