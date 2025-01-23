@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MonsterName: Bear
   MaxHP: 200
-  MoveSpeed: 4
+  MoveSpeed: 2
+  moveInterval: 10
   AttackDamage: 30
   biomeType: 1

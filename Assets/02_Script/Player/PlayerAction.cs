@@ -11,7 +11,7 @@ public class PlayerAction : MonoBehaviour
     }
 
     #region components
-    Transform plyerTransform;
+    //Transform plyerTransform;
     Animator animator;
     SpriteRenderer spriteRenderer;
     #endregion
@@ -32,7 +32,7 @@ public class PlayerAction : MonoBehaviour
 
     private void Start()
     {
-        plyerTransform = GetComponent<Transform>();
+        //plyerTransform = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -67,7 +67,7 @@ public class PlayerAction : MonoBehaviour
         dir.y = Input.GetAxisRaw("Vertical");
         //DebugController.Log(dir.x + "," + dir.y);
 
-        plyerTransform.position += new Vector3(dir.x, dir.y, 0).normalized * moveSpeed * Time.deltaTime;
+        transform.position += new Vector3(dir.x, dir.y, 0).normalized * moveSpeed * Time.deltaTime;
     }
 
     void HandleMoveAnimation()

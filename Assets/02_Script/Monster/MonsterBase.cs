@@ -5,19 +5,29 @@ public abstract class MonsterBase : MonoBehaviour
 {
     
     public MonsterData monsterData;
+
     [Header("Monster Base Attributes")]
     public string MonsterName;
     public float CurrentHp;
     public float MoveSpeed;
+    public float MoveInterval;
     public float AttackDamage;
     public BiomeType MybiomeType;
-    //TODO : dropItems 추가 
+    //TODO : dropItems 추가
+
+    protected Animator monsterAnimator;
+
+    protected void SetCompoenets()
+    {
+        monsterAnimator = GetComponent<Animator>();
+    }
 
     protected void SetData()
     {
         MonsterName = monsterData.MonsterName;
         CurrentHp = monsterData.MaxHP;
         MoveSpeed = monsterData.MoveSpeed;
+        MoveInterval = monsterData.moveInterval;
         AttackDamage = monsterData.AttackDamage;
         MybiomeType = monsterData.biomeType;
     }
