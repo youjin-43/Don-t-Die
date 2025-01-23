@@ -18,3 +18,7 @@ MonoBehaviour:
   width: 2
   height: 2
   maxHealth: 100
+  dropItems:
+  - data: {fileID: 11400000, guid: db0e0df8f1f0e5d44a086f4e898351ed, type: 2}
+    minAmount: 3
+    maxAmount: 5

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,14 +12,15 @@ public class NatureResourceData : ScriptableObject
     [SerializeField] int height;
     [SerializeField] int maxHealth;
 
-    public struct DropItem
+    [Serializable]
+    public class DropItem
     {
-        // TODO: Item 정보 넣기
+        public ItemData data;
         public int minAmount;   // 드랍되는 최소 수량
         public int maxAmount;   // 드랍되는 최대 수량
     }
 
-    public List<DropItem> dropItems = new List<DropItem>();
+    public List<DropItem> dropItems;
 
     public GameObject Prefab { get { return prefab; } }
     public BiomeType BiomeType { get { return biomeType; } }

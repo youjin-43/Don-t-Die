@@ -262,14 +262,15 @@ public class VoronoiMapGenerator : MonoBehaviour
                 float edgeNoise = Mathf.PerlinNoise(x * edgeNoiseScale, y * edgeNoiseScale) * edgeNoiseStrength;
                 float adjustedThreshold = (1 - waterEdgeSize) + edgeNoise;
 
+                int seasonIdx = (int)EnvironmentManager.Instance.Time.CurrentSeason;
                 if (distanceFromCenter > adjustedThreshold)
                 {
-                    waterTilemap.SetTile(new Vector3Int(x, y, 0), waterBiome.Tile);  // 바다
+                    waterTilemap.SetTile(new Vector3Int(x, y, 0), waterBiome.Tiles[seasonIdx]);  // 바다
                     EnvironmentManager.Instance.biomeMap.MarkTile(x, y, waterBiome.BiomeType);
                 }
                 else
                 {
-                    landTilemap.SetTile(new Vector3Int(x, y, 0), selectedBiome.Tile);  // 육지
+                    landTilemap.SetTile(new Vector3Int(x, y, 0), selectedBiome.Tiles[seasonIdx]);  // 육지
                     EnvironmentManager.Instance.biomeMap.MarkTile(x, y, selectedBiome.BiomeType);
                 }
             }
@@ -278,11 +279,12 @@ public class VoronoiMapGenerator : MonoBehaviour
 
     void GenerateVoronoiMap(BiomeMap biomeMap)
     {
+        int seasonIdx = (int)EnvironmentManager.Instance.Time.CurrentSeason;
         for (int x = 0; x < biomeMap.width; x++)
         {
             for (int y = 0; y < biomeMap.height; y++)
             {
-                TileBase tile = DataManager.Instance.BiomeDatas[biomeMap.map[y][x].ToString()].Tile;
+                TileBase tile = DataManager.Instance.BiomeDatas[biomeMap.map[y][x].ToString()].Tiles[seasonIdx];
                 if (biomeMap.map[y][x] == BiomeType.WaterBiome)
                 {
                     waterTilemap.SetTile(new Vector3Int(x, y, 0), tile);
@@ -304,7 +306,7 @@ public class VoronoiMapGenerator : MonoBehaviour
     {
         // 점을 생성한 후 그 점을 중심으로 하는 원형 연못을 생성한다.
         // 노이즈를 추가해서 가장자리에 변칙성을 준다.
-
+        int seasonIdx = (int)EnvironmentManager.Instance.Time.CurrentSeason;
         List<SeedPoint> points = GenerateSeedPoints(lakeCount);
         foreach (SeedPoint center in points)
         {
@@ -323,9 +325,27 @@ public class VoronoiMapGenerator : MonoBehaviour
                     if (distance <= adjustedRadius && isValidPosition(pos))
                     {
                         landTilemap.SetTile(new Vector3Int(pos.y, pos.x, 0), null);
-                        waterTilemap.SetTile(new Vector3Int(pos.y, pos.x, 0), waterBiome.Tile);
+                        waterTilemap.SetTile(new Vector3Int(pos.y, pos.x, 0), waterBiome.Tiles[seasonIdx]);
                         EnvironmentManager.Instance.biomeMap.MarkTile(pos.y, pos.x, BiomeType.WaterBiome);
                     }
+                }
+            }
+        }
+    }
+
+    public void UpdateTilesBySeason(Season season)
+    {
+        DebugController.Log("UpdateTilesBySeason");
+        int seasonIdx = (int)EnvironmentManager.Instance.Time.CurrentSeason;
+        for (int x = 0; x < mapWidth; x++)
+        {
+            for (int y = 0; y < mapHeight; y++)
+            {
+                string currentBiome = EnvironmentManager.Instance.biomeMap.GetTileBiome(new Vector2Int(x, y)).ToString();
+                TileBase tile = DataManager.Instance.BiomeDatas[currentBiome].Tiles[seasonIdx];
+                if (tile != null)
+                {
+                    landTilemap.SetTile(new Vector3Int(x, y, 0), tile);
                 }
             }
         }

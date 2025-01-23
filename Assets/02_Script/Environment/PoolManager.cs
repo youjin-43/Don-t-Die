@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using VInspector;
 
@@ -132,6 +133,7 @@ public class PoolManager : MonoBehaviour
     #endregion
 
     SerializedDictionary<string, Pool> pools = new SerializedDictionary<string, Pool>();
+    [SerializeField] GameObject itemPrefab;
 
     /// <summary>
     /// 풀 생성을 시도한다
@@ -227,6 +229,16 @@ public class PoolManager : MonoBehaviour
         if (obj == null) { return null; }
 
         return Pop(obj, parent, rootParent);
+    }
+
+    public Item InstantiateItem(ItemData data)
+    {
+        if (data == null) { return null; }
+
+        Item go = Pop(itemPrefab).GetOrAddComponent<Item>();
+        go.SetItemData(data);
+
+        return go;
     }
 
     public bool HasPool(string name)

@@ -6,5 +6,4 @@ public class ToolItemData : EquippableItemData
 {
     [SerializeField] List<ObjectType> availableTypes;
     [SerializeField] float atk;
-    [SerializeField] float maxDurability;
 }
