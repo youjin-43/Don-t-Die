@@ -44,7 +44,7 @@ public class CraftCategory : MonoBehaviour
         {
             CraftList craftList = Instantiate(craftListPrefab, craftListParent).GetComponent<CraftList>();
 
-            craftList.AddCraftItemSlot(craftList.transform, craftItemSlotPrefab, _craftingDataList[i]);
+            craftList.AddCraftItemSlot(craftList.transform.GetChild(0).transform, craftItemSlotPrefab, _craftingDataList[i]);
 
             _craftLists.Add(craftList);
         }

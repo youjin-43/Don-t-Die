@@ -25,7 +25,7 @@ public class CraftListItemSlot : MonoBehaviour
 
         if (_type != Type.ItemSlot)
         {
-            transform.Find("Shade").gameObject.SetActive(false);
+            transform.GetChild(0).gameObject.SetActive(false);
         }
 
         if (DataManager.Instance.IconImageData.TryGetValue(_imageName, out Sprite sprite))
