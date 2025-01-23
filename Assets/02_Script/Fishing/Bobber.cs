@@ -5,30 +5,18 @@ using UnityEngine;
 public class Bobber : MonoBehaviour
 {
     [SerializeField] AnimationCurve curve;
-    LineRenderer lineRenderer;
 
-    private void Awake()
+    public void Throw(Vector3 start, Vector3 target, bool deactivate = false)
     {
-        lineRenderer = GetComponent<LineRenderer>();
+        StartCoroutine(ThrowRoutine(start, target, deactivate));
     }
 
-    public void SetLineRenderer(Vector3 tipPosition)
-    {
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, tipPosition);
-    }
-
-    public void Throw(Vector3 start, Vector3 target)
-    {
-        StartCoroutine(ThrowRoutine(start, target));
-    }
-
-    IEnumerator ThrowRoutine(Vector2 start, Vector2 target, float duration = 0.5f)
+    IEnumerator ThrowRoutine(Vector2 start, Vector2 target, bool deactivate = false, float duration = 0.5f)
     {
         float timer = 0f;
         float maxHeight = Random.Range(0.5f, 0.8f);
 
-        while (timer < 1f)
+        while (timer < duration)
         {
             timer += Time.deltaTime;
 
@@ -41,5 +29,6 @@ public class Bobber : MonoBehaviour
 
             yield return null;
         }
+        gameObject.SetActive(!deactivate);
     }
 }

@@ -8,6 +8,7 @@ public class PlayerFishingAction : MonoBehaviour
     [SerializeField] Transform fishingTip;      // 낚싯대 끝부분
     [SerializeField] GameObject bobberPrefab;   // 찌 원본 프리팹
     Bobber bobber;                          // 지금 던져진 찌
+    LineRenderer lineRenderer;              // 낚시줄
 
     bool isPressed;     // 낚시 버튼 누르고 있는지
     bool isBobberThrown;   // 찌를 던졌는지
@@ -22,13 +23,19 @@ public class PlayerFishingAction : MonoBehaviour
 
     float castingTimer;             // 낚시 버튼을 누르고 얼마나 흘렀는지 ( 찌를 얼마나 멀리 보낼지 체크 )
     float maxCastingTimer = 2f;
-    float maxBobberDistance = 8f;   // 찌와 플레이어 사이의 최대 거리
+    float maxBobberDistance = 10f;   // 찌와 플레이어 사이의 최대 거리
 
     Animator animator;
+
+    const string TRIGGER_CAST = "Fish_Cast";
+    const string TRIGGER_WAIT = "Fish_Wait";
+    const string TRIGGER_PULL = "Fish_Pull";
+    const string TRIGGER_CATCH = "Fish_Catch";
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        lineRenderer = fishingTip.GetComponent<LineRenderer>();
         isBobberThrown = false;
         watingTimer = 0;
         targetWaitingTime = Random.Range(5f, 10f);
@@ -70,18 +77,15 @@ public class PlayerFishingAction : MonoBehaviour
         {
             watingTimer += Time.deltaTime;
 
-            bobber.SetLineRenderer(fishingTip.position);
-
             if (Input.GetMouseButtonDown(0))
             {
-                bobber.gameObject.SetActive(false);
-                isBobberThrown = false;
-                watingTimer = 0;
-                targetWaitingTime = Random.Range(5f, 10f);
+                DebugController.Log("낚시 취소");
+                CatchBobber();
             }
 
             if (watingTimer >= targetWaitingTime)
             {
+                animator.SetTrigger(TRIGGER_PULL);
                 isBobberThrown = false;
                 isPulling = true;
                 watingTimer = 0;
@@ -93,33 +97,48 @@ public class PlayerFishingAction : MonoBehaviour
         {
             pullingTimer += Time.deltaTime;
 
-            bobber.SetLineRenderer(fishingTip.position);
-
             if (Input.GetMouseButtonDown(0))
             {
-                isPulling = false;
-                pullingTimer = 0;
-                bobber.gameObject.SetActive(false);
                 DebugController.Log("물고기를 획득했습니다.");
+                CatchBobber();
             }
 
             if (pullingTimer >= maxPullingTime)
             {
-                isPulling = false;
-                pullingTimer = 0;
-                bobber.gameObject.SetActive(false);
                 DebugController.Log("물고기를 놓쳤습니다.");
+                CatchBobber();
             }
         }
+
+        if (bobber != null && bobber.gameObject.activeSelf)
+        {
+            SetFishingLine();
+        }
+    }
+
+    /// <summary>
+    /// 낚싯대 끝과 찌를 연결하는 line을 렌더링한다.
+    /// </summary>
+    void SetFishingLine()
+    {
+        lineRenderer.SetPosition(0, fishingTip.position);
+        lineRenderer.SetPosition(1, bobber.transform.position);
     }
 
     void ThrowBobber()
     {
+        lineRenderer.enabled = true;
+
+        // 현재 생성된 찌가 없으면 만듦
         if (bobber == null)
         {
             bobber = Instantiate(bobberPrefab).GetOrAddComponent<Bobber>();
         }
 
+        // 던지는 애니메이션
+        animator.SetTrigger(TRIGGER_CAST);
+
+        // 찌 던질 위치를 정하고 그곳으로 던진다
         bobber.gameObject.SetActive(true);
         bobber.transform.position = transform.position;
 
@@ -132,5 +151,29 @@ public class PlayerFishingAction : MonoBehaviour
         isPressed = false;
         castingTimer = 0f;
         isBobberThrown = true;
+    }
+
+    public void WaitingAnimation()
+    {   // 낚싯대 던지는 애니메이션이 끝나면 대기하는 애니메이션으로 전환하려고 만든 함수.
+        animator.SetTrigger(TRIGGER_WAIT);
+    }
+
+    public void DeactivateLineRenderer()
+    {
+        lineRenderer.enabled = false;
+    }
+
+    /// <summary>
+    /// 찌를 뺀다.
+    /// </summary>
+    void CatchBobber()
+    {
+        isBobberThrown = false;
+        isPulling = false;
+        pullingTimer = 0;
+        watingTimer = 0;
+        targetWaitingTime = Random.Range(5f, 10f);
+        animator.SetTrigger(TRIGGER_CATCH);
+        bobber.Throw(fishingPoint, transform.position, true);
     }
 }

@@ -137,4 +137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdbe7d44ec9f0af4eb192b398c9c8a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   ItemData: {fileID: 11400000, guid: 4f1dfe3c1158a8748a54e2cf2413bbdb, type: 2}
