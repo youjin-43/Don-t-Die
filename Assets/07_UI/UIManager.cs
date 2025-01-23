@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     {
         get
         {
+            
             return instance;
         }
     }
@@ -27,24 +28,15 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
-    // 에디터 상에서 조합 UI가 켜있는게 보기 싫어서...
     [SerializeField] GameObject _craftUI;
+    [SerializeField] GameObject _statusUI;
 
     private void Awake()
     {
         SingletonInitialize();
         
-        
         _craftUI.SetActive(true);
+        _statusUI.SetActive(true);
     }
 
-    public void Update()
-    {
-        //Vector3 point = Camera.main.ScreenToWorldPoint
-        //    (
-        //        new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Input.mousePosition.z)
-        //    );
-
-        //Debug.Log(point.ToString());
-    }
 }

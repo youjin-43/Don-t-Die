@@ -16,7 +16,7 @@ public enum BiomeType
 [CreateAssetMenu(menuName = "Environment/Map/Biome")]
 public class Biome : ScriptableObject
 {
-    [SerializeField] TileBase tile;
+    [SerializeField] List<TileBase> tiles;
     [SerializeField] BiomeType biomeType;
     [SerializeField] List<NatureResourceData> trees;
     [SerializeField]
@@ -30,7 +30,7 @@ public class Biome : ScriptableObject
     Dictionary<ObjectType, List<NatureResourceData>> natureResources;
     Dictionary<ObjectType, float> intensities;
 
-    public TileBase Tile { get { return tile; } }
+    public List<TileBase> Tiles { get { return tiles; } }
     public BiomeType BiomeType { get { return biomeType; } }
     public List<NatureResourceData> Trees { get { return trees; } }
     public float TreesIntensity { get { return treesIntensity; } }

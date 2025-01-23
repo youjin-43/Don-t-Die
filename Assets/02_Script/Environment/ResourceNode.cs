@@ -32,7 +32,14 @@ public class ResourceNode : MonoBehaviour
     {
         foreach (var item in natureResourceData.dropItems)
         {
-            // spread Items
+            int count = UnityEngine.Random.Range(item.minAmount, item.maxAmount + 1);
+
+            while (count > 0)
+            {
+                Item go = PoolManager.Instance.InstantiateItem(item.data);
+                go.transform.position = transform.position + new Vector3(UnityEngine.Random.Range(0, UnityEngine.Random.value), UnityEngine.Random.Range(0, UnityEngine.Random.value));
+                count--;
+            }
         }
     }
 }

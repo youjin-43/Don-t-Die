@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BoneAxe
   m_EditorClassIdentifier: 
   Name: BoneAxe
-  Prefab: {fileID: 0}
-  Image: {fileID: 0}
+  Prefab: {fileID: 4232268840720025113, guid: 52d137de3047bfa40a8101bf44d8b7c4, type: 3}
+  Image: {fileID: 21300000, guid: cb199a04643bb5a4cb829d05b12342ad, type: 3}
   equipSlot: 2
   availableTypes: 02000000
   atk: 17
