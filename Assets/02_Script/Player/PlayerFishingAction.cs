@@ -8,13 +8,16 @@ public class PlayerFishingAction : MonoBehaviour
     [SerializeField] Transform fishingTip;      // 낚싯대 끝부분
     [SerializeField] GameObject bobberPrefab;   // 찌 원본 프리팹
     Bobber bobber;                          // 지금 던져진 찌
+
     LineRenderer lineRenderer;              // 낚시줄
+    Animator animator;
+
+    Vector3 fishingPoint;                   // 찌가 던져질 위치
 
     bool isPressed;     // 낚시 버튼 누르고 있는지
     bool isBobberThrown;   // 찌를 던졌는지
     bool isPulling;     // 물고기가 물었는지
 
-    Vector3 fishingPoint;
     float watingTimer;          // 찌를 던지고 나서 흐른 시간
     float targetWaitingTime;    // 찌를 던지고 얼마가 지나야 물고기가 찌를 무는지
 
@@ -24,8 +27,6 @@ public class PlayerFishingAction : MonoBehaviour
     float castingTimer;             // 낚시 버튼을 누르고 얼마나 흘렀는지 ( 찌를 얼마나 멀리 보낼지 체크 )
     float maxCastingTimer = 2f;
     float maxBobberDistance = 10f;   // 찌와 플레이어 사이의 최대 거리
-
-    Animator animator;
 
     const string TRIGGER_CAST = "Fish_Cast";
     const string TRIGGER_WAIT = "Fish_Wait";
@@ -52,15 +53,6 @@ public class PlayerFishingAction : MonoBehaviour
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector3 playerPos = GameManager.Instance.GetPlayerPos();
                 fishingPoint = (mousePos - playerPos).normalized;
-
-                if (Mathf.Abs(fishingPoint.x) > Mathf.Abs(fishingPoint.y))    // 찌 좌우로 던지기
-                {
-                    fishingPoint.y = 0;
-                }
-                else                                        // 찌 상하로 던지기
-                {
-                    fishingPoint.x = 0;
-                }
             }
             else if (isPressed && Input.GetMouseButtonUp(0))
             {
@@ -101,6 +93,7 @@ public class PlayerFishingAction : MonoBehaviour
             {
                 DebugController.Log("물고기를 획득했습니다.");
                 CatchBobber();
+                GetFish();
             }
 
             if (pullingTimer >= maxPullingTime)
@@ -127,12 +120,14 @@ public class PlayerFishingAction : MonoBehaviour
 
     void ThrowBobber()
     {
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f) { return; }
         lineRenderer.enabled = true;
 
         // 현재 생성된 찌가 없으면 만듦
         if (bobber == null)
         {
             bobber = Instantiate(bobberPrefab).GetOrAddComponent<Bobber>();
+            bobber.player = this;
         }
 
         // 던지는 애니메이션
@@ -142,7 +137,7 @@ public class PlayerFishingAction : MonoBehaviour
         bobber.gameObject.SetActive(true);
         bobber.transform.position = transform.position;
 
-        float distMultiflier = maxBobberDistance * (castingTimer / maxCastingTimer);
+        float distMultiflier = Mathf.Max(3f, maxBobberDistance * (castingTimer / maxCastingTimer));
         fishingPoint *= distMultiflier;
         fishingPoint += transform.position;
 
@@ -166,7 +161,7 @@ public class PlayerFishingAction : MonoBehaviour
     /// <summary>
     /// 찌를 뺀다.
     /// </summary>
-    void CatchBobber()
+    public void CatchBobber()
     {
         isBobberThrown = false;
         isPulling = false;
@@ -175,5 +170,10 @@ public class PlayerFishingAction : MonoBehaviour
         targetWaitingTime = Random.Range(5f, 10f);
         animator.SetTrigger(TRIGGER_CATCH);
         bobber.Throw(fishingPoint, transform.position, true);
+    }
+
+    void GetFish()
+    {
+
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bobber : MonoBehaviour
 {
     [SerializeField] AnimationCurve curve;
+    public PlayerFishingAction player;
 
     public void Throw(Vector3 start, Vector3 target, bool deactivate = false)
     {
@@ -29,6 +30,13 @@ public class Bobber : MonoBehaviour
 
             yield return null;
         }
+
+        //Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f, LayerMask.GetMask("Water"));
+        //if (colliders.Length == 0)
+        //{
+        //    player.CatchBobber();
+        //}
+
         gameObject.SetActive(!deactivate);
     }
 }
