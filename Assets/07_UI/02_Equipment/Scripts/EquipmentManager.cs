@@ -50,17 +50,17 @@ public class EquipmentManager : MonoBehaviour
 
             _equipmentSlot.Add("Hand", go.GetComponent<EquipmentItemSlot>());
         }
-        // 갑옷 슬롯
-        {
-            GameObject go = Instantiate(EquipmentSlotPrefab, transform);
-
-            _equipmentSlot.Add("Chest", go.GetComponent<EquipmentItemSlot>());
-        }
         // 투구 슬롯
         {
             GameObject go = Instantiate(EquipmentSlotPrefab, transform);
 
             _equipmentSlot.Add("Head", go.GetComponent<EquipmentItemSlot>());
+        }
+        // 갑옷 슬롯
+        {
+            GameObject go = Instantiate(EquipmentSlotPrefab, transform);
+
+            _equipmentSlot.Add("Chest", go.GetComponent<EquipmentItemSlot>());
         }
     }
 
@@ -88,12 +88,12 @@ public class EquipmentManager : MonoBehaviour
                 key = "Hand";
                 break;
 
-            case EquipmentSlot.Chest:
-                key = "Chest";
-                break;
-
             case EquipmentSlot.Head:
                 key = "Head";
+                break;
+
+            case EquipmentSlot.Chest:
+                key = "Chest";
                 break;
         }
 

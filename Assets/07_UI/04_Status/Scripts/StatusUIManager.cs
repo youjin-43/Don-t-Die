@@ -32,10 +32,21 @@ public class StatusManager : MonoBehaviour
     private Image _thirstyGauge;
     private Image _temperatureGauge;
 
-    private float _maxHealthPoint;
-    private float _maxHungryPoint;
-    private float _maxThirstyPoint;
+    private float _maxHealthPoint  = 150f;
+    private float _maxHungryPoint  = 150f;
+    private float _maxThirstyPoint = 150f;
     private float _maxTemperture;
+
+    private float _currentHealthPoint  = 75f;
+    private float _currentHungryPoint  = 75f;
+    private float _currentThirstyPoint = 75f;
+    private float _currentTemperture;
+
+
+    [Range(0f, 1f)]
+    public float Temperature = 1f;
+
+    public Gradient Gradient;
 
     void Awake()
     {
@@ -47,40 +58,36 @@ public class StatusManager : MonoBehaviour
         _temperatureGauge = transform.GetChild(3).GetChild(0).GetComponent<Image>();
     }
 
-    public void SetHealth(float currentHealth)
+    private void Update()
     {
-        _healthGauge.fillAmount = currentHealth / _maxHealthPoint;
+        // 디버그용
+        SetTemperature(Temperature);
+    }
+
+    public void AddHealth(float healthPoint)
+    {
+        _currentHealthPoint = Mathf.Clamp(_currentHealthPoint + healthPoint, 0f, _maxHealthPoint);
+
+        _healthGauge.fillAmount = _currentHealthPoint / _maxHealthPoint;
     }
     
-    public void SetHungry(float currentHungry)
+    public void AddHungry(float hungryPoint)
     {
-        _hungryGauge.fillAmount = currentHungry / _maxHungryPoint;
+        _currentHungryPoint = Mathf.Clamp(_currentHungryPoint + hungryPoint, 0f, _maxHungryPoint);
+        
+        _hungryGauge.fillAmount = _currentHungryPoint / _maxHungryPoint;
     }
 
-    public void SetThirsty(float currentThirsty)
+    public void AddThirsty(float thirstyPoint)
     {
-        _thirstyGauge.fillAmount = currentThirsty / _maxThirstyPoint;
+        _currentThirstyPoint = Mathf.Clamp(_currentThirstyPoint + thirstyPoint, 0f, _maxThirstyPoint);
+        
+        _thirstyGauge.fillAmount = _currentThirstyPoint / _maxThirstyPoint;
     }
-
-    [Range(0f, 1f)]
-    public float a = 1f;
-
-    [Range(-10f, 10f)]
-    public float b = 1f;
-    Color red  = Color.red;
-    Color blue = Color.blue;
-
-    public Gradient grad;
 
     public void SetTemperature(float currentTemperature)
     {
-        //_temperatureGauge.fillAmount = Mathf.Clamp(currentTemperature / _maxTemperture, 0.3f, 0.8f);
         _temperatureGauge.fillAmount = Mathf.Clamp(currentTemperature, 0.3f, 0.9f);
-        _temperatureGauge.color = grad.Evaluate(_temperatureGauge.fillAmount);
-    }
-
-    private void Update()
-    {
-        SetTemperature(a);
+        _temperatureGauge.color = Gradient.Evaluate(_temperatureGauge.fillAmount);
     }
 }

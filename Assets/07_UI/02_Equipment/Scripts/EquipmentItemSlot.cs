@@ -8,16 +8,18 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
     private ItemData _itemData;
 
     // 슬롯 데이터
-    private Image _itemImage;
-    private Image _itemDurabilityGauge;
+    private Image     _itemImage;
+    private Transform _itemDurability;
+    private Image     _itemDurabilityGauge;
 
     private void Awake()
     {
         _itemImage           = transform.GetChild(0).GetComponent<Image>();
-        _itemDurabilityGauge = transform.GetChild(1).GetChild(1).GetComponent<Image>();
+        _itemDurability      = transform.GetChild(1);
+        _itemDurabilityGauge = _itemDurability.GetChild(1).GetComponent<Image>();
 
         _itemImage.color = new Color(1, 1, 1, 0);
-        _itemDurabilityGauge.gameObject.SetActive(false);
+        _itemDurability.gameObject.SetActive(false);
     }
 
     // IPointerClickHandler 인터페이스
@@ -42,14 +44,15 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
         _itemData         = itemData;
         _itemImage.sprite = itemData.Image;
         _itemImage.color  = new Color(1, 1, 1, 1);
-        _itemDurabilityGauge.gameObject.SetActive(true);
+        _itemDurability.gameObject.SetActive(true);
 
 
-        //ToolItemData toolItemData = itemData as ToolItemData;
-        //
-        //_itemDurabilityGauge.fillAmount = toolItemData.currentDurability / toolItemData.maxDurability;
-        //
-        //_itemDurabilityGauge.color = Color.HSVToRGB(_itemDurabilityGauge.fillAmount / 3, 1.0f, 1.0f);
+        EquippableItemData equippableItemData = itemData as EquippableItemData; ;
+
+        float fillAmount = equippableItemData.currentDurability / equippableItemData.maxDurability;
+
+        _itemDurabilityGauge.fillAmount = fillAmount;
+        _itemDurabilityGauge.color = Color.HSVToRGB(fillAmount / 3, 1.0f, 1.0f);
 
         return true;
     }
@@ -71,7 +74,7 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
         _itemData         = null;
         _itemImage.sprite = null;
         _itemImage.color  = new Color(1, 1, 1, 0);
-        _itemDurabilityGauge.gameObject.SetActive(false);
+        _itemDurability.gameObject.SetActive(false);
     }
 
     public bool IsEmpty()
