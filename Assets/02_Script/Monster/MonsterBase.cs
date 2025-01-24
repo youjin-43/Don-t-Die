@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 // 몬스터들의 공통 속성 및 동작 정의
 public abstract class MonsterBase : MonoBehaviour, IDamageable
 {
-    
+
     public MonsterData monsterData;
 
     [Header("Monster Base Attributes")]
@@ -13,7 +14,10 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable
     public float MoveInterval;
     public float AttackDamage;
     public BiomeType MybiomeType;
-    //TODO : dropItems 추가
+
+    //public List<ItemData> dropItems;
+    //public int MaxDrops;
+    //public int MinDrops;
 
     protected Animator monsterAnimator;
 
@@ -30,6 +34,11 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable
         MoveInterval = monsterData.moveInterval;
         AttackDamage = monsterData.AttackDamage;
         MybiomeType = monsterData.biomeType;
+
+        //dropItems = monsterData.dropItems;
+        //MaxDrops = monsterData.MaxDrops;
+        //MinDrops = monsterData.MinDrops;
+
     }
 
     public abstract void Move();
@@ -43,6 +52,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable
         if (CurrentHp <= 0)
         {
             Die();
+            //아이템 스폰 
             monsterAnimator.SetTrigger("Die");
         }
     }
@@ -50,8 +60,28 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable
     protected virtual void Die()
     {
         DebugController.Log($"{transform.name} has died!");
-        Destroy(gameObject,3f); // TODO : 오브젝트 풀로 변경 
+        Destroy(gameObject, 3f); // TODO : 오브젝트 풀로 변경 
     }
 
+    protected virtual void SpreadItems()
+    {
+        foreach (var item in monsterData.dropItems)
+        {
+            int count = UnityEngine.Random.Range(monsterData.MinDrops, monsterData.MaxDrops+ 1);
+
+            while (count > 0)
+            {
+                Item go = PoolManager.Instance.InstantiateItem(item);
+
+                // 긴데 별거 없습니다.. 플레이어 반대 방향으로 뿌리겠다는 뜻
+                Vector3 dir = transform.position +
+                    (transform.position - GameManager.Instance.GetPlayerPos()
+                    + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)));
+
+                go.Spread(transform.position, dir, UnityEngine.Random.Range(0.5f, 0.8f));
+                count--;
+            }
+        }
+    }
 
 }

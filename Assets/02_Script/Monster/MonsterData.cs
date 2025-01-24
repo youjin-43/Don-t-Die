@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MonsterData", menuName = "Scriptable Objects/MonsterData")]
@@ -10,5 +11,7 @@ public class MonsterData : ScriptableObject
     public float AttackDamage;
     public BiomeType biomeType;
 
-    //TODO : dropItems 추가 
+    public List<ItemData> dropItems;
+    public int MaxDrops;
+    public int MinDrops;
 }
