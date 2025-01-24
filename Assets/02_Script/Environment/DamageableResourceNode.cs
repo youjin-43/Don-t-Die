@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DamageableResourceNode : ResourceNode
+public class DamageableResourceNode : ResourceNode,IDamageable
 {
     [SerializeField] GameObject hitEffect;
     float maxHealth;
@@ -43,5 +43,18 @@ public class DamageableResourceNode : ResourceNode
         {
             Harvest();
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (hitEffect != null)
+        {
+            hitEffect.GetComponent<Animator>().Play("Hit", -1, 0f);
+        }
+        currentHealth = Mathf.Max(0, currentHealth - damage);
+        DebugController.Log($"Hit {gameObject.name}. Damage : {damage} CurrentHealth : {currentHealth}");
+
+        if (currentHealth <= 0) Harvest();
+
     }
 }
