@@ -15,3 +15,5 @@ MonoBehaviour:
   Name: Wood
   Prefab: {fileID: 2235368862984631620, guid: 7c81f6f6d78e3ab43ad5bfa51a3ddaa1, type: 3}
   Image: {fileID: 21300000, guid: 9698ca0bff4322244b7b493a170e78e4, type: 3}
+  IsStackable: 1
+  MaxStackSize: 9

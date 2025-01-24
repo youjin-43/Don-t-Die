@@ -244,10 +244,20 @@ public class InventoryManager : MonoBehaviour
     {
         for(int i = 0; i < _maxInventorySize; ++i)
         {
+            // 슬롯이 비어있다면
             if (_inventorySlot[i].IsEmpty() == true)
             {
                 value = i;
                 return true;
+            }
+            // 비어있지는 않은데
+            else
+            {
+                if (_inventorySlot[i].IsFull() == false && _inventorySlot[i].GetItemData() == itemData)
+                {
+                    value = i;
+                    return true;
+                }
             }
         }
 

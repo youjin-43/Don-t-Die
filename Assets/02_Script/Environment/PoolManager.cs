@@ -224,6 +224,13 @@ public class PoolManager : MonoBehaviour
         return pools[name].original;
     }
 
+    /// <summary>
+    /// 풀링이 적용된 오브젝트를 반환한다.
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <param name="parent"></param>
+    /// <param name="rootParent"></param>
+    /// <returns></returns>
     public GameObject InstantiatePoolObject(GameObject obj, Transform parent = null, Transform rootParent = null)
     {
         if (obj == null) { return null; }
