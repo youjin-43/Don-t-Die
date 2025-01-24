@@ -1,52 +1,52 @@
 fileFormatVersion: 2
-guid: b6157701f72cb4cf49ea8a63545a62da
+guid: 89b18fde65e72c04bb56c06ed4d222a6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3707983647240972666
-    second: spr_casting_strip15_0
+      213: -8713191014943657988
+    second: casting_noline_0
   - first:
-      213: -8970096415385584944
-    second: spr_casting_strip15_1
+      213: -366518255783896704
+    second: casting_noline_1
   - first:
-      213: 1326729079938648537
-    second: spr_casting_strip15_2
+      213: -296279588529813955
+    second: casting_noline_2
   - first:
-      213: -2134220888872716642
-    second: spr_casting_strip15_3
+      213: -8818593266069794164
+    second: casting_noline_3
   - first:
-      213: -2064135576687243452
-    second: spr_casting_strip15_4
+      213: 3358183440681756868
+    second: casting_noline_4
   - first:
-      213: 199842736606710996
-    second: spr_casting_strip15_5
+      213: -488237990160257086
+    second: casting_noline_5
   - first:
-      213: -6771481092339277276
-    second: spr_casting_strip15_6
+      213: -6142028143220753368
+    second: casting_noline_6
   - first:
-      213: -8872102524032914033
-    second: spr_casting_strip15_7
+      213: -5186863671603163169
+    second: casting_noline_7
   - first:
-      213: 8947870128096631724
-    second: spr_casting_strip15_8
+      213: -1680420723643190809
+    second: casting_noline_8
   - first:
-      213: 1697858792029692928
-    second: spr_casting_strip15_9
+      213: 8992693176891758639
+    second: casting_noline_9
   - first:
-      213: -2386201232228027450
-    second: spr_casting_strip15_10
+      213: 862308808038248060
+    second: casting_noline_10
   - first:
-      213: -4938313781223123172
-    second: spr_casting_strip15_11
+      213: 8077172177044049131
+    second: casting_noline_11
   - first:
-      213: 8979395410380915340
-    second: spr_casting_strip15_12
+      213: -8274154207395032600
+    second: casting_noline_12
   - first:
-      213: -5231811106287250174
-    second: spr_casting_strip15_13
+      213: 8186862561650953127
+    second: casting_noline_13
   - first:
-      213: 1996236899907370851
-    second: spr_casting_strip15_14
+      213: 7842633332830349950
+    second: casting_noline_14
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,45 +126,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Win64
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -190,357 +151,348 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spr_casting_strip15_0
+      name: casting_noline_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 22
-        width: 27
-        height: 22
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6869e31c4889a8cc0800000000000000
-      internalID: -3707983647240972666
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_1
-      rect:
-        serializedVersion: 2
-        x: 135
-        y: 23
-        width: 22
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0daffe7f5d0d38380800000000000000
-      internalID: -8970096415385584944
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_2
-      rect:
-        serializedVersion: 2
-        x: 227
-        y: 23
-        width: 19
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9d98ce2a11d796210800000000000000
-      internalID: 1326729079938648537
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_3
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 24
-        width: 22
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e96f58eb869b162e0800000000000000
-      internalID: -2134220888872716642
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_4
-      rect:
-        serializedVersion: 2
-        x: 413
-        y: 24
-        width: 25
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 44f8f4711a7ba53e0800000000000000
-      internalID: -2064135576687243452
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_5
-      rect:
-        serializedVersion: 2
-        x: 515
-        y: 24
-        width: 23
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4dc826ef8ebf5c200800000000000000
-      internalID: 199842736606710996
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_6
-      rect:
-        serializedVersion: 2
-        x: 617
-        y: 24
-        width: 29
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 422e7d7c2ddd602a0800000000000000
-      internalID: -6771481092339277276
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_7
-      rect:
-        serializedVersion: 2
-        x: 714
-        y: 22
-        width: 37
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f8deb24c2c5ffd480800000000000000
-      internalID: -8872102524032914033
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_8
-      rect:
-        serializedVersion: 2
-        x: 809
-        y: 16
-        width: 41
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cab578149783d2c70800000000000000
-      internalID: 8947870128096631724
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_9
-      rect:
-        serializedVersion: 2
-        x: 905
-        y: 5
-        width: 40
-        height: 39
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 00424b16391009710800000000000000
-      internalID: 1697858792029692928
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_10
-      rect:
-        serializedVersion: 2
-        x: 1001
-        y: 2
-        width: 42
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6c3f2763f9282eed0800000000000000
-      internalID: -2386201232228027450
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_11
-      rect:
-        serializedVersion: 2
-        x: 1097
-        y: 2
-        width: 44
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c1797c0c7c5977bb0800000000000000
-      internalID: -4938313781223123172
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_12
-      rect:
-        serializedVersion: 2
-        x: 1193
-        y: 1
-        width: 46
-        height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c8207850d883d9c70800000000000000
-      internalID: 8979395410380915340
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_13
-      rect:
-        serializedVersion: 2
-        x: 1289
-        y: 1
-        width: 47
-        height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2051ec5a48fd467b0800000000000000
-      internalID: -5231811106287250174
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_14
-      rect:
-        serializedVersion: 2
-        x: 1385
-        y: 2
-        width: 48
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 36f718a42ee04bb10800000000000000
-      internalID: 1996236899907370851
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spr_casting_strip15_15
-      rect:
-        serializedVersion: 2
-        x: 843
-        y: 27
-        width: 4
-        height: 4
+        x: 0
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b0512fdf2a63c3649a36442965a90aa7
-      internalID: 1171957814
+      spriteID: cff6826bfe6841780800000000000000
+      internalID: -8713191014943657988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: casting_noline_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0891e48969dd9eaf0800000000000000
+      internalID: -366518255783896704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: casting_noline_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d364b73b84763ebf0800000000000000
+      internalID: -296279588529813955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: casting_noline_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c82124db5201e9580800000000000000
+      internalID: -8818593266069794164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: casting_noline_4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c86f600c0aaa9e20800000000000000
+      internalID: 3358183440681756868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: casting_noline_5
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cfa5ae722e6939f0800000000000000
+      internalID: -488237990160257086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: casting_noline_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82cffd212f123caa0800000000000000
+      internalID: -6142028143220753368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: casting_noline_7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdf07bbc8fe8408b0800000000000000
+      internalID: -5186863671603163169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: casting_noline_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e1fa0e4142fda8e0800000000000000
+      internalID: -1680420723643190809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: casting_noline_9
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2856be8cc67ccc70800000000000000
+      internalID: 8992693176891758639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: casting_noline_10
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7e6fcdca4987fb00800000000000000
+      internalID: 862308808038248060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: casting_noline_11
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bec0162ec41e71070800000000000000
+      internalID: 8077172177044049131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: casting_noline_12
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e15a63369c4c2d80800000000000000
+      internalID: -8274154207395032600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: casting_noline_13
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ab462cbf149d9170800000000000000
+      internalID: 8186862561650953127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: casting_noline_14
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7aadf2d671a6dc60800000000000000
+      internalID: 7842633332830349950
       vertices: []
       indices: 
       edges: []
@@ -549,7 +501,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1135a9ead1c29c0418c1f550d5ee045a
+    spriteID: 91be866f3d1f5ff4fa140162643f3dab
     internalID: 0
     vertices: []
     indices: 
@@ -559,22 +511,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      spr_casting_strip15_0: -3707983647240972666
-      spr_casting_strip15_1: -8970096415385584944
-      spr_casting_strip15_10: -2386201232228027450
-      spr_casting_strip15_11: -4938313781223123172
-      spr_casting_strip15_12: 8979395410380915340
-      spr_casting_strip15_13: -5231811106287250174
-      spr_casting_strip15_14: 1996236899907370851
-      spr_casting_strip15_15: 1171957814
-      spr_casting_strip15_2: 1326729079938648537
-      spr_casting_strip15_3: -2134220888872716642
-      spr_casting_strip15_4: -2064135576687243452
-      spr_casting_strip15_5: 199842736606710996
-      spr_casting_strip15_6: -6771481092339277276
-      spr_casting_strip15_7: -8872102524032914033
-      spr_casting_strip15_8: 8947870128096631724
-      spr_casting_strip15_9: 1697858792029692928
+      casting_noline_0: -8713191014943657988
+      casting_noline_1: -366518255783896704
+      casting_noline_10: 862308808038248060
+      casting_noline_11: 8077172177044049131
+      casting_noline_12: -8274154207395032600
+      casting_noline_13: 8186862561650953127
+      casting_noline_14: 7842633332830349950
+      casting_noline_2: -296279588529813955
+      casting_noline_3: -8818593266069794164
+      casting_noline_4: 3358183440681756868
+      casting_noline_5: -488237990160257086
+      casting_noline_6: -6142028143220753368
+      casting_noline_7: -5186863671603163169
+      casting_noline_8: -1680420723643190809
+      casting_noline_9: 8992693176891758639
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

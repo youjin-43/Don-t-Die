@@ -37,7 +37,13 @@ public class ResourceNode : MonoBehaviour
             while (count > 0)
             {
                 Item go = PoolManager.Instance.InstantiateItem(item.data);
-                go.transform.position = transform.position + new Vector3(UnityEngine.Random.Range(0, UnityEngine.Random.value), UnityEngine.Random.Range(0, UnityEngine.Random.value));
+
+                // 긴데 별거 없습니다.. 플레이어 반대 방향으로 뿌리겠다는 뜻
+                Vector3 dir = transform.position + 
+                    (transform.position - GameManager.Instance.GetPlayerPos() 
+                    + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)));
+                
+                go.Spread(transform.position, dir, UnityEngine.Random.Range(0.5f, 0.8f));
                 count--;
             }
         }
