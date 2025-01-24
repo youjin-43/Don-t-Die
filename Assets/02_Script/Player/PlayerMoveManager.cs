@@ -4,7 +4,7 @@ enum PlayerState
 {
     Idle,
     Walk,
-    Attak
+    Attack
 }
 
 public class PlayerMoveManager : MonoBehaviour
@@ -27,14 +27,12 @@ public class PlayerMoveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerState != PlayerState.Attak)
+        if(playerState != PlayerState.Attack) //공격중에는 이동 및 공격 못하도록 
         {
             playerMove.HandleMovement(); // 상하좌우 입력 관리 
             playerAutoInteract.AutoInteract(); //자동 상호작용
             if (Input.GetKeyDown(KeyCode.F)) playerAttack.Attack(); //공격 
         }
-
-
 
         // 조합창 토글
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -50,20 +48,9 @@ public class PlayerMoveManager : MonoBehaviour
         }
     }
 
-    #region ChangeState
-    public void ChangeToIdleState()
-    {
-        playerState = PlayerState.Idle;
-    }
-
-    public void ChangeToWalkState()
-    {
-        playerState = PlayerState.Walk;
-    }
-
-    public void ChangeToAttackState()
-    {
-        playerState = PlayerState.Attak;
-    }
+    #region ChangeStateFunc
+    public void ChangeToIdleState(){ playerState = PlayerState.Idle; }
+    public void ChangeToWalkState(){ playerState = PlayerState.Walk; }
+    public void ChangeToAttackState(){ playerState = PlayerState.Attack; }
     #endregion
 }

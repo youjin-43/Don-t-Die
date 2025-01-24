@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Collider2D AttackCollider; // 인스펙터에서 할당 
     [SerializeField] MonsterBase targetMonster;
 
+
     private void Start()
     {
         playerAnimator = GetComponent<PlayerAnimator>();
@@ -22,10 +23,5 @@ public class PlayerAttack : MonoBehaviour
     public void Attack()
     {
         playerAnimator.TriggerAttackAnimation();
-        //if (targetMonster != null)
-        //{
-        //    targetMonster.TakeDamage(10);
-        //    targetMonster = null;
-        //}
     }
 }
