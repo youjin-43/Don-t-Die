@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
                                           
 public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
 {
@@ -14,11 +16,22 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
     }
     private ItemSlotData _itemSlotData;
 
+
+    // 아이템 데이터
+    private ItemData _itemData;
+
     // 슬롯 데이터
-    private Image           _itemImage;
-    private Image           _itemSelectImage;
-    private TextMeshProUGUI _itemCountText;
-    private int             _maxItemCount  = 9;
+    [SerializeField] 
+    private List<Sprite> _itemCountImages = new List<Sprite>();
+
+    private Image _itemImage;
+    private Image _itemCountImage;
+    private Image _itemDurabilityGuage;
+    private Image _itemSelectImage;
+
+    private int _currentItemStack;
+    private int _maxItemStack  = 9;
+
 
     // 드래깅 데이터
     static bool             _isDragging    = false;
@@ -26,12 +39,14 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
     private void Awake()
     {
         _itemImage           = transform.GetChild(0).GetComponent<Image>();
-        _itemSelectImage     = transform.GetChild(1).GetComponent<Image>();
-        _itemCountText       = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-
+        _itemCountImage      = transform.GetChild(1).GetComponent<Image>();
+        _itemDurabilityGuage = transform.GetChild(2).GetComponent<Image>();
+        _itemSelectImage     = transform.GetChild(3).GetComponent<Image>();
+        
         _itemImage.color = new Color(1, 1, 1, 0);
-        _itemCountText.gameObject.SetActive(false);
-        _itemSelectImage.gameObject.SetActive(false);
+        _itemCountImage.     gameObject.SetActive(false);
+        _itemDurabilityGuage.gameObject.SetActive(false);
+        _itemSelectImage.    gameObject.SetActive(false);
     }
 
     // IPointerClickHandler 인터페이스
@@ -59,17 +74,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
         // 우클릭 이벤트 (아이템 사용)
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            // 오작동 방지
-            if (IsEmpty() == true)
-            {
-                return;
-            }
-
-            if (_itemSlotData.ItemData == null)
-            {
-                DebugController.Log("아이템이 없어요");
-            }
-            else
+            if (IsEmpty() == false)
             {
                 UseItem();
             }
@@ -88,40 +93,101 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
 
     public bool AddItemData(ItemData itemData)
     {
-        if(itemData as ToolItemData != null)
-        {
-            // 들어온 아이템은 장비임
-            _maxItemCount = 1;
-        }
-        else
-        {
-            // 들어온 아이템은 재료임
-        }
-
         // 슬롯에 최초로 아이템이 들어 온 경우
         if(_itemSlotData.ItemData == null)
         {
             _itemImage.sprite = itemData.Image;
-            _itemImage.color  = new Color(1, 1, 1, 1);
-            _itemCountText.gameObject.SetActive(true);
+            _itemImage.color  = new Color(1, 1, 1, 1); 
         }
         // 아이템 추가
         {
             _itemSlotData.ItemData   = itemData;
             _itemSlotData.ItemCount += 1;
         }
-        // 아이템 갯수 UI 업데이트
+        // UI 업데이트
+        // 도구 아이템이 들어왔다면
+
+        ToolItemData tooliTemData = itemData as ToolItemData;
+
+        //ToolItemData toolItem = WhatType<ToolItemData>(itemData);
+
+
+        if (tooliTemData != null)
         {
-            _itemCountText.text = _itemSlotData.ItemCount.ToString();
+            _itemDurabilityGuage.gameObject.SetActive(true);
+            _maxItemStack = 1;
+
+            //_itemDurabilityGuage.fillAmount = tooliTemData.currentDurability / tooliTemData.maxDurability;
+        }
+        // 그 이외의 아이템이 들어왔다면
+        else
+        {
+            _itemCountImage.gameObject.SetActive(true);
+            _itemCountImage.sprite = _itemCountImages[_itemSlotData.ItemCount];
+        }
+
+
+        return true;
+
+        ///////////////////////////////
+        // NEW ////////////////////////
+        ///////////////////////////////
+        
+        // 종류와 상관없는 공동 작업
+        {
+            // 1. 최초로 들어왔을 경우 아이템 이미지 ON
+            _itemImage.sprite = itemData.Image;
+            _itemImage.color  = new Color(1, 1, 1, 1);
+        }
+        // 아이템 종류에 따른 개별 작업
+        switch (itemData.ItemType)
+        {
+            case ItemType.Resource:
+                AddResourceItem(itemData as ToolItemData);
+                break;
+
+            case ItemType.Equippable:
+                AddEquippableItem(itemData as EquippableItemData);
+                break;
+
+            case ItemType.Edible:
+                AddEdibleItem(itemData as EdibleItemData);
+                break;
         }
 
         return true;
     }
 
+    public void AddResourceItem(ToolItemData toolItemData)
+    {
+        _itemData     = toolItemData;
+        _maxItemStack = toolItemData.MaxStackSize;
+
+    }
+
+    public void AddEquippableItem(EquippableItemData equippableItemData)
+    {
+        switch (equippableItemData.EquipSlot)
+        {
+            case EquipmentSlot.Hand:
+                _itemData = equippableItemData as ToolItemData;
+                break;
+
+            case EquipmentSlot.Head:
+                break;
+
+            case EquipmentSlot.Chest:
+                break;
+        }
+    }
+
+    public void AddEdibleItem(EdibleItemData edibleItemData)
+    {
+
+    }
+
     public ItemData GetItemData()
     {
-        _itemSlotData.ItemCount -= 1;
-
         return _itemSlotData.ItemData;
     }
 
@@ -176,7 +242,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
 
     public bool IsFull()
     {
-        return _itemSlotData.ItemCount == _maxItemCount;
+        return _itemSlotData.ItemCount == _maxItemStack;
     }
 
     /// <summary>
@@ -201,10 +267,18 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
             _itemImage.sprite = itemSlotData.ItemData.Image;
             _itemImage.color  = new Color(1, 1, 1, 1);
         }
-        // 카운트 초기화
+        
+        // 아이템 종류에 따른 처리
+
+
+        if(itemSlotData.ItemData as ToolItemData != null)
         {
-            _itemCountText.text = itemSlotData.ItemCount.ToString();
-            _itemCountText.gameObject.SetActive(true);
+            _itemDurabilityGuage.gameObject.SetActive(true);
+        }
+        else
+        {
+            _itemCountImage.sprite = _itemCountImages[itemSlotData.ItemCount];
+            _itemCountImage.gameObject.SetActive(true);
         }
     }
 
@@ -222,12 +296,13 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
         {
             _itemImage.sprite = null;
             _itemImage.color  = new Color(1, 1, 1, 0);
-            _maxItemCount = 9;
+            _maxItemStack = 9;
         }
         // 카운트 초기화
         {
-            _itemCountText.text = "0";
-            _itemCountText.gameObject.SetActive(false);
+            //_itemCountText.text = "0";
+            _itemDurabilityGuage.gameObject.SetActive(false);
+            _itemCountImage.gameObject.SetActive(false);
         }
     }
     
@@ -239,5 +314,21 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
         _isDragging = false;
     }
 
-    
+    public T WhatType<T>(ItemData itemData) where T : ItemData
+    {
+        if (itemData is T resourceItemData)
+        {
+            return resourceItemData;
+        }
+        else if(itemData is T toolItemData)
+        {
+            return toolItemData;
+        }
+        else if(itemData is T edibleItemData)
+        {
+            return edibleItemData; 
+        }
+
+        throw new InvalidCastException();
+    }
 }

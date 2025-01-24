@@ -11,8 +11,11 @@ public enum EquipmentSlot
 [CreateAssetMenu(menuName = "Item/EquippableItemData")]
 public class EquippableItemData : ItemData
 {
+    [Header("EquipmentItemData")]
     [SerializeField] EquipmentSlot equipSlot;
-    [SerializeField] float maxDurability;
+
+    [SerializeField] public float maxDurability;
+    [SerializeField] public float currentDurability;
 
     public EquipmentSlot EquipSlot { get { return equipSlot; } }
 }

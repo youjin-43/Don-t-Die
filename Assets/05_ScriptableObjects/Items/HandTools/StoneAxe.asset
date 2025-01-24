@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: StoneAxe
   Prefab: {fileID: 0}
   Image: {fileID: 0}
+  IsStackable: 0
+  MaxStackSize: 1
   equipSlot: 2
   availableTypes: 02000000
   atk: 12.5
-  maxDurability: 45

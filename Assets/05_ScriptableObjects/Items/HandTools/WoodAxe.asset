@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1303619f4b9d5aa4794d8d87c0d709a7, type: 3}
   m_Name: WoodAxe
   m_EditorClassIdentifier: 
+  ItemType: 1
   Name: WoodAxe
   Prefab: {fileID: 6112097284534987143, guid: 3980228e6b892da40b15916e528e6e32, type: 3}
   Image: {fileID: 21300000, guid: 1c462c3c596daf2488544c0b736a73db, type: 3}
+  IsStackable: 0
+  MaxStackSize: 1
   equipSlot: 2
+  maxDurability: 10
+  currentDurability: 10
   availableTypes: 02000000
   atk: 10
-  maxDurability: 30
