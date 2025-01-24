@@ -43,7 +43,7 @@ public class ResourceNode : MonoBehaviour
                     (transform.position - GameManager.Instance.GetPlayerPos() 
                     + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)));
                 
-                go.Spread(transform.position, dir, UnityEngine.Random.Range(0.5f, 0.8f));
+                go.Spread(transform.position, dir, UnityEngine.Random.Range(2.5f, 3f));
                 count--;
             }
         }

@@ -75,7 +75,7 @@ public class VoronoiMapGenerator : MonoBehaviour
 
             if (hit && hit.transform.GetComponent<DamageableResourceNode>() != null)
             {
-                hit.transform.GetComponent<DamageableResourceNode>().Hit(10);
+                hit.transform.GetComponent<DamageableResourceNode>().TakeDamage(10);
             }
             else if (hit && hit.transform.GetComponent<ResourceNode>() != null)
             {
