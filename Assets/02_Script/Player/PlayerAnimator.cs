@@ -4,6 +4,7 @@ public class PlayerAnimator : MonoBehaviour
 {
     Animator playerAnimator;
     SpriteRenderer spriteRenderer;
+    [SerializeField] Transform AttackCollider; //인스펙터에서 할당 
 
     void Start()
     {
@@ -28,11 +29,15 @@ public class PlayerAnimator : MonoBehaviour
 
     public void LookRight()
     {
-        spriteRenderer.flipX = true;
+        //spriteRenderer.flipX = true;
+        transform.localScale = new Vector3(-1, 1, 1);
     }
 
     public void LookLeft()
     {
-        spriteRenderer.flipX = false;
+        //spriteRenderer.flipX = false;
+        transform.localScale = new Vector3(1, 1, 1);
     }
+
+
 }
