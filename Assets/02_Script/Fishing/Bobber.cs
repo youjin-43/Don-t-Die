@@ -9,6 +9,7 @@ public class Bobber : MonoBehaviour
 
     public void Throw(Vector3 start, Vector3 target, bool deactivate = false)
     {
+        StopAllCoroutines();
         StartCoroutine(ThrowRoutine(start, target, deactivate));
     }
 
