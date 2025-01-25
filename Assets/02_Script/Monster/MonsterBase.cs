@@ -20,14 +20,15 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     protected MonsterStateMachine monsterStateMachine;
 
     // 스테이트 머신 디버그용
-    [SerializeField] public MonsterState currentState;
-    void ChangeState(MonsterState newState) => currentState = newState;
+    [SerializeField] public MonsterState CurrentState;
+    void ChangeState(MonsterState newState) => CurrentState = newState;
 
     [Header("Monster Data")]
-    [HideInInspector] public Animator monsterAnimator; //StateMachine에서 호출되는 속성들 
-    public BiomeType biomeType; 
-    public float moveSpeed;
-    public float moveInterval;
+    [HideInInspector] public Animator MonsterAnimator; //StateMachine에서 호출되는 속성들 
+    public BiomeType BiomeType; 
+    public float MoveSpeed;
+    public float MoveInterval;
+    public float ChaseSpeed;
 
     [SerializeField] protected MonsterData monsterData; 
     [SerializeField] protected float moveRange = 3f;
@@ -36,11 +37,11 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     #region OnHitEvent
     public delegate void OnHitEventHandler(Transform attacker);
     public event OnHitEventHandler OnHitEvent;
-    public Transform target; // 공격 or 도망 대상
+    public Transform Target; // 공격 or 도망 대상
 
     public void OnHit(Transform attacker)
     {
-        target = attacker;
+        Target = attacker;
         OnHitEvent?.Invoke(attacker); // 공격 이벤트 발생
     }
 
@@ -49,11 +50,12 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     protected void SetData()
     {
-        monsterAnimator = GetComponent<Animator>();
-        biomeType = monsterData.biomeType;
+        MonsterAnimator = GetComponent<Animator>();
+        BiomeType = monsterData.MyBiomeType;
         CurrentHp = monsterData.MaxHP;
-        moveSpeed = monsterData.MoveSpeed;
-        moveInterval = monsterData.moveInterval;
+        MoveSpeed = monsterData.MoveSpeed;
+        MoveInterval = monsterData.MoveInterval;
+        ChaseSpeed = monsterData.ChaseSpeed;
 
         monsterStateMachine = new MonsterStateMachine(this);
     }
@@ -62,7 +64,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     {
         SetData(); // 몬스터 기본 데이터 셋팅
         monsterStateMachine.Initialize(monsterStateMachine.idleMonsterState);
-        currentState = MonsterState.Idle; // 디버그용
+        CurrentState = MonsterState.Idle; // 디버그용
                                           
         OnHitEvent += HandleMonsterHit; // 몬스터의 OnHitEvent를 구독
     }
@@ -104,22 +106,19 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     public virtual void TakeDamage(int damage) //TODO : 선택된 도구의 공경력을 받아오도록 
     {
         DebugController.Log($"{transform.name} took {damage} damage -> Current HP : {CurrentHp}");
-
-        monsterAnimator.SetTrigger("TakeDamage"); //TODO : 피격 이미지 박쥐 참고해서 좀 수정하면 좋을것 같음 
+        OnHit(transform); // 이벤트 발생 
+        MonsterAnimator.SetTrigger("TakeDamage"); //TODO : 피격 이미지 박쥐 참고해서 좀 수정하면 좋을것 같음 
         CurrentHp -= damage;
 
-        if (CurrentHp <= 0)
-        {
-            Die();
-            monsterAnimator.SetTrigger("Die");
-        }
+        if (CurrentHp <= 0) OnDie();
+        
     }
     #endregion
 
     #region IItemDroppable
     public void DropItems()
     {
-        foreach (var item in monsterData.dropItems)
+        foreach (var item in monsterData.DropItems)
         {
             int count = UnityEngine.Random.Range(item.minAmount, item.maxAmount + 1);
 
@@ -158,23 +157,11 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     //#endregion
 
-    #region Die State
-    protected virtual void Die()
-    {
-        DebugController.Log($"{transform.name} has died!");
-        DropItems(); //아이템 스폰 
-        Destroy(gameObject, 3f); // TODO : 오브젝트 풀로 변경 
-    }
-    #endregion
-
-
     #region Utility
 
     /// <summary>
     /// pos의 바이옴 정보를 리턴 
     /// </summary>
-    /// <param name="pos"></param>
-    /// <returns>BiomeType</returns>
     public BiomeType GetBiomeInfo(Vector3 pos)
     {
         return EnvironmentManager.Instance.biomeMap.GetTileBiome(new Vector2Int((int)pos.x, (int)pos.y));

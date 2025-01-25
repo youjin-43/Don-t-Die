@@ -31,9 +31,12 @@ public class MonsterStateMachine
 
     public void TransitionTo(IMonsterState newState)
     {
-        CurrentState.ExitState();
-        CurrentState = newState;
-        CurrentState.EnterState();
+        if(CurrentState != newState)
+        {
+            CurrentState.ExitState();
+            CurrentState = newState;
+            CurrentState.EnterState();
+        }
     }
 
     public void Execute()

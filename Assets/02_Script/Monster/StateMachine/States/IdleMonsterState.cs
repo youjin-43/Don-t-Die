@@ -19,10 +19,10 @@ public class IdleMonsterState : IMonsterState
     public IdleMonsterState(MonsterBase monster)
     {
         this.monster = monster;
-        monsterAnimator = monster.monsterAnimator;
-        biomeType = monster.biomeType;
-        moveSpeed = monster.moveSpeed;
-        moveInterval = monster.moveInterval;
+        monsterAnimator = monster.MonsterAnimator;
+        biomeType = monster.BiomeType;
+        moveSpeed = monster.MoveSpeed;
+        moveInterval = monster.MoveInterval;
     }
 
     public void EnterState()

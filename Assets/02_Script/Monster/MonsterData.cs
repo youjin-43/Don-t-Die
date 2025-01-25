@@ -5,14 +5,15 @@ using UnityEngine;
 public class MonsterData : ScriptableObject
 {
     public string MonsterName;
-    public BiomeType biomeType;
+    public BiomeType MyBiomeType;
     [Space(10f)]
 
     public float MoveSpeed;
-    public float moveInterval;
-    public float MaxHP;    
+    public float MoveInterval;
+    public float MaxHP;
+    public float ChaseSpeed;
     public float AttackDamage;
     [Space(10f)]
 
-    public List<DropItem> dropItems;
+    public List<DropItem> DropItems;
 }
