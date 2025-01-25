@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8641952a0d900434d9db6d8890e38738, type: 3}
+  m_Script: {fileID: 11500000, guid: b50545d671e7e53469ea47ebd4c07f95, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
   ItemType: 0
-  Name: 
-  Prefab: {fileID: 0}
-  Image: {fileID: 0}
+  Name: Stone
+  Prefab: {fileID: 8979981604408090299, guid: 93c47dea5b6bedb43ac59ab3e8424898, type: 3}
+  Image: {fileID: 21300000, guid: 9b2e138ccf9d482439dbbeed0d3b357f, type: 3}
   IsCountable: 1
   MaxCountSize: 9
+  TestData: 0

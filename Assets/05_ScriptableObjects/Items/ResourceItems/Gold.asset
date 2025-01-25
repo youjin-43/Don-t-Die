@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8641952a0d900434d9db6d8890e38738, type: 3}
+  m_Script: {fileID: 11500000, guid: b50545d671e7e53469ea47ebd4c07f95, type: 3}
   m_Name: Gold
   m_EditorClassIdentifier: 
   ItemType: 0
@@ -18,3 +18,4 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: 5dcd4cf57dcf1494dbfa8827373af932, type: 3}
   IsCountable: 1
   MaxCountSize: 9
+  TestData: 0
