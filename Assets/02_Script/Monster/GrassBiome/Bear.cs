@@ -1,28 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-enum BearState
+public class Bear : MonsterBase
 {
-    Idle,
-    Chase
-}
-
-public class Bear : MonsterBase, IAttackMonsterPattern
-{
-    //private void OnValidate()
-    //{
-    //}
-
-    [Header("Bear Attributes")]
-    [SerializeField] BearState bearState;
-    [SerializeField] float moveRange = 3f; 
-
     void Start()
     {
         SetData(); // 몬스터 기본 데이터 셋팅
         SetCompoenets(); // 기본 컴포넌트들 셋팅
-
-        bearState = BearState.Idle; //Idle로 시작 
         StartCoroutine(IdleMoveRoutine()); // 움직이기 시작! 
     }
     
@@ -35,13 +19,15 @@ public class Bear : MonsterBase, IAttackMonsterPattern
     #region IdleAction
     private IEnumerator IdleMoveRoutine()
     {
-        while (bearState == BearState.Idle) 
+        while (currnetState == MonsterState.Idle) 
         {
+            //Debug.Log($"{monsterData.name} 에서 코루틴 실행 중 ");
+
             Vector3 targetPosition = GetRandomPosition();  
             BiomeType nextPosbiome = GetBiomeInfo(targetPosition); 
             Vector3 dir = targetPosition - transform.position; // for 애니메이션
 
-            if (nextPosbiome == MybiomeType) // 이동할 타일 위치가 내 바이옴과 알치한다면 그쪽으로 이동 
+            if (nextPosbiome == monsterData.biomeType) // 이동할 타일 위치가 내 바이옴과 알치한다면 그쪽으로 이동 
             {
                 // 애니메이션 셋팅 
                 monsterAnimator.SetBool("IsMoving", true);
@@ -50,13 +36,13 @@ public class Bear : MonsterBase, IAttackMonsterPattern
 
                 while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, targetPosition, MoveSpeed * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, targetPosition, monsterData.MoveSpeed * Time.deltaTime);
                     yield return null;
                 }
 
                 monsterAnimator.SetBool("IsMoving", false);
             }
-            yield return new WaitForSeconds(Random.Range(0, MoveInterval)); // 타겟 위치로 이동 후 랜덤 시간만큼 대기 
+            yield return new WaitForSeconds(Random.Range(0, monsterData.moveInterval)); // 타겟 위치로 이동 후 랜덤 시간만큼 대기 
         }
 
     }
@@ -78,11 +64,4 @@ public class Bear : MonsterBase, IAttackMonsterPattern
         return EnvironmentManager.Instance.biomeMap.GetTileBiome(new Vector2Int((int)pos.x, (int)pos.y));
     }
     #endregion
-
-
-
-    public void Attack(Transform playerTransform)
-    {
-        
-    }
 }
