@@ -14,10 +14,11 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Monster"))
+        MonsterBase monsterBase = collision.GetComponent<MonsterBase>();
+        if (monsterBase != null)
         {
-            collision.GetComponent<MonsterBase>().TakeDamage(10); //TODO : 현재 착용중인 도구의 데이터를 가져오도록
-            collision.GetComponent<MonsterBase>().OnHit(transform); // 이벤트 발생 
+            monsterBase.TakeDamage(10); //TODO : 현재 착용중인 도구의 데이터를 가져오도록
+            monsterBase.OnHit(transform); // 이벤트 발생 
         }
     }
 

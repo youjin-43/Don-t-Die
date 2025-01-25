@@ -22,7 +22,7 @@ public class ChaseMonsterState : IMonsterState
 
     public void UpdateState()
     {
-        Debug.Log("");
+        Debug.Log("Chase중!! ");
         //if (Vector3.Distance(transform.position, playerTransform.position) <= monsterData.AttackRange)
         //{
         //    //ChangeState(MonsterState.Attack);

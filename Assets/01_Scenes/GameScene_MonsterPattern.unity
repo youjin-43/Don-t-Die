@@ -10990,6 +10990,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bear
       objectReference: {fileID: 0}
+    - target: {fileID: 1335718765820641574, guid: f01a9f706052f47628c40506d2d6d74e, type: 3}
+      propertyPath: m_TagString
+      value: Damageable
+      objectReference: {fileID: 0}
     - target: {fileID: 3556160640930698834, guid: f01a9f706052f47628c40506d2d6d74e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 101.7
