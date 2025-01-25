@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Monster
   - Item
+  - Damageable
+  - Harvestable
   layers:
   - Default
   - TransparentFX

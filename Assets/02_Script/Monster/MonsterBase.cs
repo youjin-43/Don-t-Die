@@ -72,32 +72,11 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
                     (transform.position - GameManager.Instance.GetPlayerPos()
                     + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)));
 
-                go.Spread(transform.position, dir, UnityEngine.Random.Range(0.5f, 0.8f));
+                go.Spread(transform.position, dir, UnityEngine.Random.Range(2f, 2.5f));
                 count--;
             }
         }
     }
-
-    //protected virtual void SpreadItems()
-    //{
-    //    foreach (var item in monsterData.dropItems)
-    //    {
-    //        int count = UnityEngine.Random.Range(monsterData.MinDrops, monsterData.MaxDrops+ 1);
-
-    //        while (count > 0)
-    //        {
-    //            Item go = PoolManager.Instance.InstantiateItem(item);
-
-    //            // 긴데 별거 없습니다.. 플레이어 반대 방향으로 뿌리겠다는 뜻
-    //            Vector3 dir = transform.position +
-    //                (transform.position - GameManager.Instance.GetPlayerPos()
-    //                + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)));
-
-    //            go.Spread(transform.position, dir, UnityEngine.Random.Range(0.5f, 0.8f));
-    //            count--;
-    //        }
-    //    }
-    //}
 
     #region ChangeStateFunc
     public void ChangeToIdleState(){ currnetState = MonsterState.Idle; }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 607829339360581538}
   m_Layer: 3
   m_Name: Bear
-  m_TagString: Monster
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,11 +171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterData: {fileID: 11400000, guid: 266d885b4ebe54707ae738460623c6f9, type: 2}
-  MonsterName: 
-  CurrentHp: 0
-  MoveSpeed: 0
-  MoveInterval: 0
-  AttackDamage: 0
-  MybiomeType: 0
-  bearState: 0
+  currnetState: 0
   moveRange: 2
+  CurrentHp: 0
