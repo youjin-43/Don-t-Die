@@ -120,7 +120,8 @@ public class PlayerFishingAction : MonoBehaviour
 
     void ThrowBobber()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f) { return; }
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Casting")
+            && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f) { return; }
         lineRenderer.enabled = true;
 
         // 현재 생성된 찌가 없으면 만듦
@@ -156,6 +157,11 @@ public class PlayerFishingAction : MonoBehaviour
     public void DeactivateLineRenderer()
     {
         lineRenderer.enabled = false;
+    }
+
+    public void ResetCatchTrigger()
+    {
+        animator.ResetTrigger(TRIGGER_CATCH);
     }
 
     /// <summary>
