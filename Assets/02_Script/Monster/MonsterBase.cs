@@ -9,7 +9,7 @@ public enum MonsterState
 }
 
 // 몬스터들의 공통 속성 및 동작 정의
-public abstract class MonsterBase : MonoBehaviour, IDamageable
+public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 {
     [Header("Monster Base Attributes")]
     [SerializeField] protected MonsterData monsterData;
@@ -51,16 +51,17 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable
     protected virtual void Die()
     {
         DebugController.Log($"{transform.name} has died!");
-        SpreadItems(); //아이템 스폰 
+        DropItems(); //아이템 스폰 
         ChangeToDieState();
         Destroy(gameObject, 3f); // TODO : 오브젝트 풀로 변경 
     }
 
-    protected virtual void SpreadItems()
+
+    public void DropItems()
     {
         foreach (var item in monsterData.dropItems)
         {
-            int count = UnityEngine.Random.Range(monsterData.MinDrops, monsterData.MaxDrops+ 1);
+            int count = UnityEngine.Random.Range(monsterData.MinDrops, monsterData.MaxDrops + 1);
 
             while (count > 0)
             {
@@ -76,6 +77,27 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable
             }
         }
     }
+
+    //protected virtual void SpreadItems()
+    //{
+    //    foreach (var item in monsterData.dropItems)
+    //    {
+    //        int count = UnityEngine.Random.Range(monsterData.MinDrops, monsterData.MaxDrops+ 1);
+
+    //        while (count > 0)
+    //        {
+    //            Item go = PoolManager.Instance.InstantiateItem(item);
+
+    //            // 긴데 별거 없습니다.. 플레이어 반대 방향으로 뿌리겠다는 뜻
+    //            Vector3 dir = transform.position +
+    //                (transform.position - GameManager.Instance.GetPlayerPos()
+    //                + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)));
+
+    //            go.Spread(transform.position, dir, UnityEngine.Random.Range(0.5f, 0.8f));
+    //            count--;
+    //        }
+    //    }
+    //}
 
     #region ChangeStateFunc
     public void ChangeToIdleState(){ currnetState = MonsterState.Idle; }

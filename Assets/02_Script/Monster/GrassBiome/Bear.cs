@@ -16,6 +16,7 @@ public class Bear : MonsterBase
         //주변으로 이동하는데 이동할 타일이 grass라면 이동     
     }
 
+
     #region IdleAction
     private IEnumerator IdleMoveRoutine()
     {
@@ -63,5 +64,8 @@ public class Bear : MonsterBase
     {
         return EnvironmentManager.Instance.biomeMap.GetTileBiome(new Vector2Int((int)pos.x, (int)pos.y));
     }
+
+
+
     #endregion
 }
