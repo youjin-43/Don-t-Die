@@ -1,9 +1,15 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 디버그용 enum MonsterState
+/// </summary>
 public enum MonsterState
 {
     Idle,
+    Flee,
+    Chase,
     Attack,
     Die
 }
@@ -11,28 +17,90 @@ public enum MonsterState
 // 몬스터들의 공통 속성 및 동작 정의
 public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 {
-    [Header("Monster Base Attributes")]
-    [SerializeField] protected MonsterData monsterData;
-    [SerializeField] protected MonsterState currnetState;
+    protected MonsterStateMachine monsterStateMachine;
+
+    // 스테이트 머신 디버그용
+    [SerializeField] public MonsterState currentState;
+    void ChangeState(MonsterState newState) => currentState = newState;
+
+    [Header("Monster Data")]
+    [HideInInspector] public Animator monsterAnimator; //StateMachine에서 호출되는 속성들 
+    public BiomeType biomeType; 
+    public float moveSpeed;
+    public float moveInterval;
+
+    [SerializeField] protected MonsterData monsterData; 
     [SerializeField] protected float moveRange = 3f;
-    [SerializeField] float CurrentHp;
+    [SerializeField] protected float CurrentHp;
 
-    protected Animator monsterAnimator;
+    #region OnHitEvent
+    public delegate void OnHitEventHandler(Transform attacker);
+    public event OnHitEventHandler OnHitEvent;
+    public Transform target; // 공격 or 도망 대상
 
-    protected void SetCompoenets()
+    public void OnHit(Transform attacker)
     {
-        monsterAnimator = GetComponent<Animator>();
+        target = attacker;
+        OnHitEvent?.Invoke(attacker); // 공격 이벤트 발생
     }
+
+    protected abstract void HandleMonsterHit(Transform attacker);
+    #endregion
 
     protected void SetData()
     {
+        monsterAnimator = GetComponent<Animator>();
+        biomeType = monsterData.biomeType;
         CurrentHp = monsterData.MaxHP;
-        currnetState = MonsterState.Idle; //Idle로 시작 
+        moveSpeed = monsterData.MoveSpeed;
+        moveInterval = monsterData.moveInterval;
+
+        monsterStateMachine = new MonsterStateMachine(this);
     }
 
-    public abstract void Move();
-    //public abstract void Attack(GameObject target); // 공격 로직 (구체적 동작은 각 몬스터가 구현) // TODO : 공격가능한 애들도 인터페이스로? 
+    private void Start()
+    {
+        SetData(); // 몬스터 기본 데이터 셋팅
+        monsterStateMachine.Initialize(monsterStateMachine.idleMonsterState);
+        currentState = MonsterState.Idle; // 디버그용
+                                          
+        OnHitEvent += HandleMonsterHit; // 몬스터의 OnHitEvent를 구독
+    }
 
+    private void Update()
+    {
+        monsterStateMachine.Execute();
+    }
+
+    #region OnState
+    public void OnIdle()
+    {
+        monsterStateMachine.TransitionTo(monsterStateMachine.idleMonsterState);
+        ChangeState(MonsterState.Idle);
+    }
+    public void OnFlee()
+    {
+        monsterStateMachine.TransitionTo(monsterStateMachine.fleeMonsterState);
+        ChangeState(MonsterState.Flee);
+    }
+    public void OnChase(){
+        monsterStateMachine.TransitionTo(monsterStateMachine.chaseMonsterState);
+        ChangeState(MonsterState.Chase);
+    }
+
+    public void OnAttack()
+    {
+        monsterStateMachine.TransitionTo(monsterStateMachine.attackMonsterState);
+        ChangeState(MonsterState.Attack);
+    }
+    public void OnDie()
+    {
+        monsterStateMachine.TransitionTo(monsterStateMachine.dieMonsterState);
+        ChangeState(MonsterState.Die);
+    }
+    #endregion
+
+    #region IDamageable
     public virtual void TakeDamage(int damage) //TODO : 선택된 도구의 공경력을 받아오도록 
     {
         DebugController.Log($"{transform.name} took {damage} damage -> Current HP : {CurrentHp}");
@@ -43,45 +111,85 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         if (CurrentHp <= 0)
         {
             Die();
-            
             monsterAnimator.SetTrigger("Die");
         }
     }
+    #endregion
 
-    protected virtual void Die()
-    {
-        DebugController.Log($"{transform.name} has died!");
-        DropItems(); //아이템 스폰 
-        ChangeToDieState();
-        Destroy(gameObject, 3f); // TODO : 오브젝트 풀로 변경 
-    }
-
-
+    #region IItemDroppable
     public void DropItems()
     {
         foreach (var item in monsterData.dropItems)
         {
-            int count = UnityEngine.Random.Range(monsterData.MinDrops, monsterData.MaxDrops + 1);
+            int count = UnityEngine.Random.Range(item.minAmount, item.maxAmount + 1);
 
             while (count > 0)
             {
-                Item go = PoolManager.Instance.InstantiateItem(item);
+                Item go = PoolManager.Instance.InstantiateItem(item.data);
 
-                // 긴데 별거 없습니다.. 플레이어 반대 방향으로 뿌리겠다는 뜻
-                Vector3 dir = transform.position +
-                    (transform.position - GameManager.Instance.GetPlayerPos()
-                    + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)));
-
+                //플레이어 방향 반대쪽으로 흩뿌려지도록 
+                Vector3 dir = transform.position * 2 + GameManager.Instance.GetPlayerPos() + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
                 go.Spread(transform.position, dir, UnityEngine.Random.Range(2f, 2.5f));
                 count--;
             }
         }
     }
-
-    #region ChangeStateFunc
-    public void ChangeToIdleState(){ currnetState = MonsterState.Idle; }
-    public void ChangeToDieState(){ currnetState = MonsterState.Die; }
-    public void ChangeToAttackState(){ currnetState = MonsterState.Attack; }
     #endregion
 
+    //#region Flee State
+
+    //protected virtual void FleeBehavior(Transform playerTransform)
+    //{
+    //    Vector3 direction = (transform.position - playerTransform.position).normalized;
+
+    //    // 애니메이션 설정
+    //    monsterAnimator.SetBool("IsMoving", true);
+    //    monsterAnimator.SetFloat("dirX", direction.x);
+    //    monsterAnimator.SetFloat("dirY", direction.y);
+
+    //    // 플레이어 반대 방향으로 이동
+    //    transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, monsterData.MoveSpeed * Time.deltaTime);
+
+    //    if (Vector3.Distance(transform.position, playerTransform.position) > moveRange * 2)
+    //    {
+    //        ChangeState(MonsterState.Idle);
+    //    }
+    //}
+
+    //#endregion
+
+    #region Die State
+    protected virtual void Die()
+    {
+        DebugController.Log($"{transform.name} has died!");
+        DropItems(); //아이템 스폰 
+        Destroy(gameObject, 3f); // TODO : 오브젝트 풀로 변경 
+    }
+    #endregion
+
+
+    #region Utility
+
+    /// <summary>
+    /// pos의 바이옴 정보를 리턴 
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns>BiomeType</returns>
+    public BiomeType GetBiomeInfo(Vector3 pos)
+    {
+        return EnvironmentManager.Instance.biomeMap.GetTileBiome(new Vector2Int((int)pos.x, (int)pos.y));
+    }
+
+    /// <summary>
+    /// 현재 위치 기준으로 무작위 위치 계산
+    /// </summary>
+    public Vector3 GetRandomPosition()
+    {
+        float randomX = Random.Range(-moveRange, moveRange);
+        float randomY = Random.Range(-moveRange, moveRange);
+
+        Vector3 currentPos = transform.position;
+        return new Vector3(currentPos.x + randomX, currentPos.y + randomY, currentPos.z);
+    }
+    #endregion
 }

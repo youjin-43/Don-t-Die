@@ -16,7 +16,8 @@ public class PlayerAttack : MonoBehaviour
     {
         if (collision.CompareTag("Monster"))
         {
-            collision.GetComponent<MonsterBase>().TakeDamage(10);
+            collision.GetComponent<MonsterBase>().TakeDamage(10); //TODO : 현재 착용중인 도구의 데이터를 가져오도록
+            collision.GetComponent<MonsterBase>().OnHit(transform); // 이벤트 발생 
         }
     }
 

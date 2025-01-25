@@ -31,7 +31,7 @@ public class PlayerMoveManager : MonoBehaviour
         {
             playerMove.HandleMovement(); // 상하좌우 입력 관리 
             playerAutoInteract.AutoInteract(); //자동 상호작용
-            if (Input.GetKeyDown(KeyCode.F)) playerAttack.Attack(); //공격 
+            if (Input.GetKeyDown(KeyCode.F)) playerAttack.Attack(); //공격 //TODO : 현재 장착중인 장비 확인 하고 상호작용 하도록
         }
 
         // 조합창 토글

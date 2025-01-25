@@ -15,10 +15,10 @@ MonoBehaviour:
   MonsterName: Bear
   biomeType: 1
   MoveSpeed: 2
-  moveInterval: 10
+  moveInterval: 7
   MaxHP: 30
   AttackDamage: 30
   dropItems:
-  - {fileID: 11400000, guid: 23abf2565d772b346a31f5431cc011da, type: 2}
-  MaxDrops: 3
-  MinDrops: 1
+  - data: {fileID: 0}
+    minAmount: 0
+    maxAmount: 0
