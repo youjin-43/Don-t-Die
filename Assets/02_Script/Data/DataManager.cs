@@ -29,7 +29,6 @@ public class DataManager : MonoBehaviour
     public Dictionary<string, CraftingData> CraftingData { get; private set; } = new Dictionary<string, CraftingData>();
 
     public Dictionary<string, Sprite>             IconImageData   = new Dictionary<string, Sprite>();
-    public Dictionary<string, ItemData>           ItemData        = new Dictionary<string, ItemData>();
     public Dictionary<string, NatureResourceData> NatureResources = new Dictionary<string, NatureResourceData>();
     public Dictionary<string, Biome>              BiomeDatas      = new Dictionary<string, Biome>();
 
@@ -46,11 +45,9 @@ public class DataManager : MonoBehaviour
         }
 
         // Addressable
-        var asyncOperation_1 = Addressables.LoadAssetsAsync<Sprite>("IconImage", OnImageLoaded);
-        var asyncOperation_2 = Addressables.LoadAssetsAsync<ItemData>("ItemData", OnItemDataLoaded);
+        var asyncOperation = Addressables.LoadAssetsAsync<Sprite>("IconImage", OnImageLoaded);
 
-        asyncOperation_1.WaitForCompletion();
-        asyncOperation_2.WaitForCompletion();
+        asyncOperation.WaitForCompletion();
 
         var natureResourceHandle = Addressables.LoadAssetsAsync<NatureResourceData>("NatureResources");
         natureResourceHandle.Completed += handle =>
@@ -108,11 +105,5 @@ public class DataManager : MonoBehaviour
     void OnImageLoaded(Sprite sprite)
     {
         IconImageData.Add(sprite.name, sprite);
-    }
-
-    // Addressable
-    void OnItemDataLoaded(ItemData data)
-    {
-        ItemData.Add(data.Name, data);
     }
 }

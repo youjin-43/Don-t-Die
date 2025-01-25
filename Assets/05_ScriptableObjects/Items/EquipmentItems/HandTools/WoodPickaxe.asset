@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1303619f4b9d5aa4794d8d87c0d709a7, type: 3}
+  m_Name: WoodPickaxe
+  m_EditorClassIdentifier: 
+  ItemType: 1
+  Name: WoodPickaxe
+  Prefab: {fileID: 7550815638160485263, guid: 4b7bbe1983ed1c645aa26d90a233ee71, type: 3}
+  Image: {fileID: 21300000, guid: 0e0b6c87637acb0409043f1fd4e92658, type: 3}
+  IsCountable: 0
+  MaxCountSize: 1
+  equipSlot: 2
+  maxDurability: 30
+  currentDurability: 15
+  availableTypes: 04000000
+  atk: 10
