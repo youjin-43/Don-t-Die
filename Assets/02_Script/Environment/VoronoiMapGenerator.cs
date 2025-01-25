@@ -52,7 +52,6 @@ public class VoronoiMapGenerator : MonoBehaviour
 
     private void Update()
     {
-        /*
         #region Debug용
         // --- 타일이 바이옴 정보와 오브젝트 정보를 잘 가지고 있는지 디버깅 하는 부분!! -- 나중에 지우셈
         if (Input.GetMouseButtonDown(0))
@@ -76,7 +75,7 @@ public class VoronoiMapGenerator : MonoBehaviour
 
             if (hit && hit.transform.GetComponent<DamageableResourceNode>() != null)
             {
-                hit.transform.GetComponent<DamageableResourceNode>().Hit(10);
+                hit.transform.GetComponent<DamageableResourceNode>().TakeDamage(10);
             }
             else if (hit && hit.transform.GetComponent<ResourceNode>() != null)
             {
@@ -84,7 +83,6 @@ public class VoronoiMapGenerator : MonoBehaviour
             }
         }
         #endregion
-        */
     }
 
     /// <summary>

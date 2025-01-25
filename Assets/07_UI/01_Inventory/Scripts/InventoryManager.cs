@@ -47,20 +47,19 @@ public class InventoryManager : MonoBehaviour
 
     // 드래깅용 변수
     [SerializeField] RectTransform _dragUI;
-
-    private InventoryItemSlot  _startSlot;
-    private ItemSlotData _startSlotItemData;
-    private bool         _isDragging = false;
-
+    private InventoryItemSlot      _startSlot;
+    private ItemData               _startSlotItemData;
+    private int                    _startSlotItemCount;
+    private bool                   _isDragging = false;
 
 
     // 스크롤용 변수
     private int  _focussedIndex = 0;
     private bool _scrollable    = true;
 
+
     // 플레이어 트랜스폼 캐싱
     private Transform _playerTransform;
-
 
 
     void Awake()
@@ -253,7 +252,7 @@ public class InventoryManager : MonoBehaviour
             // 비어있지는 않은데
             else
             {
-                if (_inventorySlot[i].IsFull() == false && _inventorySlot[i].GetItemData() == itemData)
+                if (_inventorySlot[i].IsFull() == false && _inventorySlot[i].GetItemData(out int itemCount) == itemData)
                 {
                     value = i;
                     return true;
@@ -297,17 +296,18 @@ public class InventoryManager : MonoBehaviour
         }
         // 출발지점, 데이터 캐싱
         {
-            _startSlot = startSlot;
-            _startSlotItemData = startSlot.GetItemSlotData();
+            _startSlot          = startSlot;
+            _startSlotItemData  = startSlot.GetItemData(out int itemCount);
+            _startSlotItemCount = itemCount;
         }
         // 드래그 UI 활성화
         {
             _dragUI.gameObject.SetActive(true);
-            _dragUI.GetComponent<Image>().sprite = _startSlotItemData.ItemData.Image;
+            _dragUI.GetComponent<Image>().sprite = _startSlotItemData.Image;
         }
         // 슬롯 초기화
         {
-            startSlot.ClearItemSlotData();
+            _startSlot.ClearItemSlot();
         }
     }
 
@@ -316,17 +316,18 @@ public class InventoryManager : MonoBehaviour
         // 비어 있어야
         if (endSlot.IsEmpty() == true)
         {
-            endSlot.SetItemSlotData(_startSlotItemData);
+            endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
         }
         // 비어있지 않다면
         else
         {
             // 데이터 스왑
-            ItemSlotData endSlotItemData = endSlot.GetItemSlotData();
+            ItemData endSlotItemData = endSlot.GetItemData(out int itemCount);
+            endSlot.ClearItemSlot();
 
-            endSlot.SetItemSlotData(_startSlotItemData);
+            endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
 
-            _startSlot.SetItemSlotData(endSlotItemData);
+            _startSlot.AddItemData(endSlotItemData, itemCount);
         }
         // 드래그 UI 비활성화
         {
@@ -342,13 +343,13 @@ public class InventoryManager : MonoBehaviour
     {
         // 아이템 생성, 데이터 이전
         {
-            for(int i = 0; i < _startSlotItemData.ItemCount; ++i)
+            for(int i = 0; i < _startSlotItemCount; ++i)
             {
                 Vector3 position = adjustDropItemDistance();
 
-                GameObject go = Instantiate(_startSlotItemData.ItemData.Prefab, position, Quaternion.identity);
+                GameObject go = Instantiate(_startSlotItemData.Prefab, position, Quaternion.identity);
 
-                go.GetComponent<Item>().SetItemData(_startSlotItemData.ItemData);
+                go.GetComponent<Item>().SetItemData(_startSlotItemData);
             }
         }
         // 드래그 UI 비활성화
@@ -357,11 +358,11 @@ public class InventoryManager : MonoBehaviour
         }
         // 캐시데이터, 출발지점, 데이터  초기화
         {
-            _inventoryDict[_startSlotItemData.ItemData.Name] -= _startSlotItemData.ItemCount;
+            _inventoryDict[_startSlotItemData.Name] -= _startSlotItemCount;
 
-            _startSlot = null;
-            _startSlotItemData.ItemData  = null;
-            _startSlotItemData.ItemCount = 0;
+            _startSlot          = null;
+            _startSlotItemData  = null;
+            _startSlotItemCount = 0;
         }
         // 드래그 플래그
         {
@@ -379,17 +380,6 @@ public class InventoryManager : MonoBehaviour
         }
 
         return randomPos;
-    }
-
-    public ItemData EquipItem(ItemData itemData, EquipmentSlot slot)
-    {
-        
-        if(_inventoryDict.TryGetValue(itemData.Name, out int count) && count > 0)
-        {
-            _inventoryDict[itemData.Name] -= 1;
-        }
-
-        return EquipmentManager.Instance.EquipItem(itemData, slot);
     }
 
     public ItemData ExchangeEquipItem(ItemData itemData, EquipmentSlot slot)
@@ -411,5 +401,12 @@ public class InventoryManager : MonoBehaviour
 
             return equipedItemData;
         }
+    }
+
+    public void EatItem(EdibleItemData edibleItemData)
+    {
+        _inventoryDict[edibleItemData.Name] -= 1;
+
+        edibleItemData.Execute();
     }
 }

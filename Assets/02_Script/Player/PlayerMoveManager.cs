@@ -42,7 +42,7 @@ public class PlayerMoveManager : MonoBehaviour
         }
 
         // 인벤토리에서 선택된 아이템 사용
-        if (Input.GetKeyDown(KeyCode.U))
+        if(Input.GetKeyDown(KeyCode.U))
         {
             InventoryManager.Instance.UseSelectedItem();
         }
