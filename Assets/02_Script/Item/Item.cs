@@ -27,21 +27,21 @@ public class Item : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = itemData.Image;
     }
 
-    public void Spread(Vector2 start, Vector2 target, float duration = 0.5f)
+    public void Spread(Vector2 start, Vector2 target, float speedMultiflier = 2f)
     {
-        StartCoroutine(SpreadRoutine(start, target, duration));
+        StartCoroutine(SpreadRoutine(start, target, speedMultiflier));
     }
 
-    IEnumerator SpreadRoutine(Vector2 start, Vector2 target, float duration = 0.5f)
+    IEnumerator SpreadRoutine(Vector2 start, Vector2 target, float speedMultiflier = 2f)
     {
         float timer = 0f;
         float maxHeight = Random.Range(0.5f, 0.8f);
 
         while (timer < 1f)
         {
-            timer += Time.deltaTime;
+            timer += Time.deltaTime * speedMultiflier;
 
-            float curveTime = timer / duration;
+            float curveTime = timer / 1f;
             float height = curve.Evaluate(curveTime);
 
             height = Mathf.Lerp(0f, maxHeight, height);

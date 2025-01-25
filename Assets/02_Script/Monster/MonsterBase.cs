@@ -78,7 +78,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable
                     (transform.position - GameManager.Instance.GetPlayerPos()
                     + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)));
 
-                go.Spread(transform.position, dir, UnityEngine.Random.Range(0.5f, 0.8f));
+                go.Spread(transform.position, dir, Random.Range(2f, 2.5f));
                 count--;
             }
         }

@@ -31,11 +31,11 @@ public class Bobber : MonoBehaviour
             yield return null;
         }
 
-        //Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f, LayerMask.GetMask("Water"));
-        //if (colliders.Length == 0)
-        //{
-        //    player.CatchBobber();
-        //}
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f, LayerMask.GetMask("Water"));
+        if (colliders.Length == 0)
+        {
+            player.CatchBobber();
+        }
 
         gameObject.SetActive(!deactivate);
     }

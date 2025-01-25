@@ -126,11 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  detectionRange: 3
-  InteractionRange: 1
-  autoInteractTargetTransform: {fileID: 0}
-  isAutoInteracting: 0
-  colliders: []
 --- !u!1 &6807982173079818659
 GameObject:
   m_ObjectHideFlags: 0
