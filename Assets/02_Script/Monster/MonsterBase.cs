@@ -34,6 +34,10 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     [SerializeField] protected float moveRange = 3f;
     [SerializeField] protected float CurrentHp;
 
+    [SerializeField] float knockbackForce;
+    [SerializeField] float knockbackDuration;
+    Rigidbody2D monsterRigidbody;
+
 
     // 옵저버 패턴을 이용해서 몬스터가 공격받는 순간 특정 State로 transition하도록 구현
     #region OnHitEvent
@@ -44,10 +48,11 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     protected abstract void HandleMonsterHit(Transform attacker); //abstract로 선언해서 MonsterBase를 상속한 몬스터가 공격받았을때의 행동패턴을 각각 정의하도록 함. 
 
     // monster.OnHitEvent += HandleMonsterHit; 이런식으로 구독해놓고 OnHit()을 호출하여 HandleMonsterHit 함수 Invoke
-    public void OnHit(Transform attacker)
+    public void OnHit(Transform attacker, int damage)
     {
         Target = attacker;
-        OnHitEvent?.Invoke(attacker); // 공격 이벤트 발생
+        OnHitEvent?.Invoke(attacker); // 이벤트 발생
+        TakeDamage(damage);
     }
 
     #endregion
@@ -55,11 +60,14 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     protected void SetData()
     {
         MonsterAnimator = GetComponent<Animator>();
+        monsterRigidbody = GetComponent<Rigidbody2D>();
         BiomeType = monsterData.MyBiomeType;
         CurrentHp = monsterData.MaxHP;
         MoveSpeed = monsterData.MoveSpeed;
         MoveInterval = monsterData.MoveInterval;
         ChaseSpeed = monsterData.ChaseSpeed;
+        knockbackForce = monsterData.KnockbackForce;
+        knockbackDuration = monsterData.KnockbackDuration;
 
         monsterStateMachine = new MonsterStateMachine(this);
     }
@@ -125,23 +133,45 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     #endregion
 
     #region IDamageable
-    public virtual void TakeDamage(int damage) //TODO : 선택된 도구의 공경력을 받아오도록 
+    public virtual void TakeDamage(int damage) // TODO : 선택된 도구의 공격력을 받아오도록 
     {
-        DebugController.Log($"{transform.name} took {damage} damage -> Current HP : {CurrentHp}");
+        if(monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState)
+        {
+            
+            MonsterAnimator.SetTrigger("TakeDamage"); // TODO : 피격 이미지 박쥐 참고해서 좀 수정하면 좋을것 같음
+                                      
+            ApplyKnockback(); // 넉백 적용
 
-        OnHit(transform); // OnHit 이벤트 발생 
-        MonsterAnimator.SetTrigger("TakeDamage"); //TODO : 피격 이미지 박쥐 참고해서 좀 수정하면 좋을것 같음
-        // TODO : 넉백
-
-        CurrentHp -= damage;
-        if (CurrentHp <= 0) OnDie();
-        
+            CurrentHp -= damage;
+            Debug.Log($"{transform.name} took {damage} damage -> Current HP : {CurrentHp}");
+            if (CurrentHp <= 0) OnDie();
+        }    
     }
+
+    private void ApplyKnockback()
+    {
+        if (monsterRigidbody == null) return; // Rigidbody2D가 없으면 넉백을 적용하지 않음
+
+        //Debug.Log("ApplyKnockback 호출됨 ");
+        Vector2 knockbackDirection = (transform.position - Target.position).normalized; // 공격 방향 계산 (몬스터의 위치에서 공격자의 위치를 뺀 방향 벡터)
+
+        // 힘을 추가 (Impulse는 즉각적인 힘)
+        monsterRigidbody.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        StartCoroutine(ResetVelocity());  // 일정 시간 후에 제어 복원
+    }
+
+    private IEnumerator ResetVelocity()
+    {
+        yield return new WaitForSeconds(knockbackDuration); // 넉백 지속 시간
+        monsterRigidbody.linearVelocity = Vector2.zero; // Rigidbody의 속도를 초기화
+    }
+
     #endregion
 
     #region IItemDroppable
     public void DropItems()
     {
+        Debug.Log("DropItems 호출됨 "); // TODO : 아 왜 드랍아이템 안돼!!
         foreach (var item in monsterData.DropItems)
         {
             int count = UnityEngine.Random.Range(item.minAmount, item.maxAmount + 1);

@@ -10,9 +10,9 @@ public class MonsterSpawnManager : MonoBehaviour
     private void OnValidate()
     {
         // 변경된 값 확인 
-        DebugController.Log("OnValidate called, spawnRadius: " + spawnRadius);
-        DebugController.Log("OnValidate called, MinSpawnCnt: " + MinSpawnCnt);
-        DebugController.Log("OnValidate called, MaxSpawnCnt: " + MaxSpawnCnt);
+        DebugController.Log("OnValidate called, spawnRadius: " + spawnRadius + "called in MonsterSpawnManager");
+        DebugController.Log("OnValidate called, MinSpawnCnt: " + MinSpawnCnt + "called in MonsterSpawnManager");
+        DebugController.Log("OnValidate called, MaxSpawnCnt: " + MaxSpawnCnt + "called in MonsterSpawnManager");
     }
 
     private static MonsterSpawnManager instance;

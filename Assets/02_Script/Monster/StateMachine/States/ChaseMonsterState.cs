@@ -36,7 +36,11 @@ public class ChaseMonsterState : IMonsterState
 
     void ChaseTarget()
     {
-        if (target != null) monster.transform.position = Vector3.MoveTowards(monster.transform.position, target.position, chaseSpeed * Time.deltaTime);
+        if (target != null)
+        {
+            //Debug.Log($"내 위치 : {monster.transform.position}, 타겟 위치 : {target.position}");
+            monster.transform.position = Vector3.MoveTowards(monster.transform.position, target.position, chaseSpeed * Time.deltaTime);
+        }
     }
 
     void HandleAnimation()

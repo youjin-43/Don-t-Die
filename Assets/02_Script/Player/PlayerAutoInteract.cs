@@ -7,7 +7,7 @@ public class PlayerAutoInteract : MonoBehaviour
     private void OnValidate()
     {
         // 변경된 값 확인 
-        DebugController.Log("OnValidate called, detectionRange: " + detectionRange);
+        DebugController.Log("OnValidate called, detectionRange: " + detectionRange + "called in PlayerAutoInteract");
     }
 
     public PlayerAnimator playerAnimator;
@@ -123,7 +123,7 @@ public class PlayerAutoInteract : MonoBehaviour
 
     void StopAutoInteraction()
     {
-        DebugController.Log("StopAutoInteraction");
+        DebugController.Log("StopAutoInteraction : called in PlayerAutoInteract");
         isAutoInteracting = false;
         playerAnimator.SetIdleAnimaion();
         autoInteractTargetTransform = null;
