@@ -135,6 +135,11 @@ public class TimeController : MonoBehaviour
         globalLight.intensity = v;
     }
 
+    void ControlPlayerStatus()
+    {
+        // StatusManager에 함수 추가하기.
+    }
+
     void NextDay()
     {
         timer = 0;
