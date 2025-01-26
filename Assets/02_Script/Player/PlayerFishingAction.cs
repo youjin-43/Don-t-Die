@@ -1,5 +1,4 @@
-using System.Collections;
-using System.IO;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -93,7 +92,9 @@ public class PlayerFishingAction : MonoBehaviour
             {
                 DebugController.Log("물고기를 획득했습니다.");
                 CatchBobber();
-                GetFish();
+
+                //GetFish 또는 몬스터 스폰 중 랜덤하게 함수를 호출. 추후 수정
+                CatchBobber(true);
             }
 
             if (pullingTimer >= maxPullingTime)
@@ -167,7 +168,7 @@ public class PlayerFishingAction : MonoBehaviour
     /// <summary>
     /// 찌를 뺀다.
     /// </summary>
-    public void CatchBobber()
+    public void CatchBobber(bool success = false)
     {
         isBobberThrown = false;
         isPulling = false;
@@ -175,11 +176,6 @@ public class PlayerFishingAction : MonoBehaviour
         watingTimer = 0;
         targetWaitingTime = Random.Range(5f, 10f);
         animator.SetTrigger(TRIGGER_CATCH);
-        bobber.Throw(fishingPoint, transform.position, true);
-    }
-
-    void GetFish()
-    {
-
+        bobber.Throw(fishingPoint, transform.position, true, success);      // success 가 true면 물고기 획득.
     }
 }
