@@ -3,13 +3,11 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     Animator playerAnimator;
-    SpriteRenderer spriteRenderer;
     [SerializeField] Transform AttackCollider; //인스펙터에서 할당 
 
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void SetIdleAnimaion()
@@ -27,15 +25,13 @@ public class PlayerAnimator : MonoBehaviour
         playerAnimator.SetTrigger("Attack");
     }
 
-    public void LookRight()
+    public void LookLeft()
     {
-        //spriteRenderer.flipX = true;
         transform.localScale = new Vector3(-1, 1, 1);
     }
 
-    public void LookLeft()
+    public void LookRight()
     {
-        //spriteRenderer.flipX = false;
         transform.localScale = new Vector3(1, 1, 1);
     }
 

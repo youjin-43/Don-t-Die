@@ -10,9 +10,9 @@ public class MonsterSpawnManager : MonoBehaviour
     private void OnValidate()
     {
         // 변경된 값 확인 
-        DebugController.Log("OnValidate called, spawnRadius: " + spawnRadius);
-        DebugController.Log("OnValidate called, MinSpawnCnt: " + MinSpawnCnt);
-        DebugController.Log("OnValidate called, MaxSpawnCnt: " + MaxSpawnCnt);
+        DebugController.Log("OnValidate called, spawnRadius: " + spawnRadius + "called in MonsterSpawnManager");
+        DebugController.Log("OnValidate called, MinSpawnCnt: " + MinSpawnCnt + "called in MonsterSpawnManager");
+        DebugController.Log("OnValidate called, MaxSpawnCnt: " + MaxSpawnCnt + "called in MonsterSpawnManager");
     }
 
     private static MonsterSpawnManager instance;
@@ -50,19 +50,19 @@ public class MonsterSpawnManager : MonoBehaviour
     public SerializedDictionary<BiomeType, List<GameObject>> MonsterPrefab;
     public SerializedDictionary<BiomeType, List<GameObject>> SpawnedMonster; // 디버그용 
 
-    private void OnDrawGizmos()
-    {
-        foreach (var kvp in seedPoints)
-        {
-            BiomeType biome = kvp.Key;        // 현재 키 (BiomeType)
-            List<Vector3> points = kvp.Value; // 현재 값 (List<Vector3>)
+    //private void OnDrawGizmos()
+    //{
+    //    foreach (var kvp in seedPoints)
+    //    {
+    //        BiomeType biome = kvp.Key;        // 현재 키 (BiomeType)
+    //        List<Vector3> points = kvp.Value; // 현재 값 (List<Vector3>)
 
-            foreach (var pos in points)
-            {
-                Gizmos.DrawSphere(pos, 5f);
-            }
-        }
-    }
+    //        foreach (var pos in points)
+    //        {
+    //            Gizmos.DrawSphere(pos, 5f);
+    //        }
+    //    }
+    //}
 
     public void InitializeBiomeMonsters()
     {
@@ -75,7 +75,7 @@ public class MonsterSpawnManager : MonoBehaviour
         {
             BiomeType biome = kvp.Key;        // 현재 키 (BiomeType)
             List<Vector3> points = kvp.Value; // 현재 값 (List<Vector3>)
-            DebugController.Log($"Biome: {biome}, Seed Points Count: {points.Count}");
+            //DebugController.Log($"Biome: {biome}, Seed Points Count: {points.Count}");
 
             List<GameObject> monsters = MonsterPrefab[biome]; //선택된 바이옴에서 스폰될 수 있는 몬스터 리스트 
 
@@ -84,7 +84,7 @@ public class MonsterSpawnManager : MonoBehaviour
                 //현재 포인트가 현재 키 바이옴과 일치한다면(가끔 포인트가 바다 위에 있는 경우가 있음)
                 if (EnvironmentManager.Instance.biomeMap.GetTileBiome(new Vector2Int((int)points[i].x, (int)points[i].y)) == biome)
                 {
-                    DebugController.Log($"Biome: {biome}, Seed Points: {points[i]} 에 몬스터 무리 생성");
+                    //DebugController.Log($"Biome: {biome}, Seed Points: {points[i]} 에 몬스터 무리 생성");
 
                     // 각 seed point를 중심으로 무작위 위치에 여러 몬스터 스폰
                     int monsterCount = Random.Range(MinSpawnCnt, MaxSpawnCnt); // 스폰할 몬스터 수 (조정 가능)

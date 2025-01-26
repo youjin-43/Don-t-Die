@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: Bear
   m_EditorClassIdentifier: 
   MonsterName: Bear
-  biomeType: 1
+  MyBiomeType: 1
   MoveSpeed: 2
-  moveInterval: 10
+  MoveInterval: 5
   MaxHP: 30
+  ChaseSpeed: 3
   AttackDamage: 30
-  dropItems:
-  - {fileID: 11400000, guid: 23abf2565d772b346a31f5431cc011da, type: 2}
-  MaxDrops: 3
-  MinDrops: 1
+  KnockbackForce: 5
+  KnockbackDuration: 1
+  DropItems:
+  - data: {fileID: 11400000, guid: 62b608b058674f348a329c683464ff7a, type: 2}
+    minAmount: 1
+    maxAmount: 3
