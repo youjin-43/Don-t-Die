@@ -1,25 +1,22 @@
 using UnityEngine;
 
+/// <summary>
+/// 플레이어 자식 오브젝트 중 Attack Collider에 붙어있음 
+/// </summary>
 public class PlayerAttack : MonoBehaviour
 {
-    PlayerAnimator playerAnimator;
-    [SerializeField] Collider2D AttackCollider; // 인스펙터에서 할당 
-    [SerializeField] MonsterBase targetMonster;
+    public PlayerAnimator playerAnimator; //PlayerMoveManager 에서 할당 받도록 함 
 
-
-    private void Start()
-    {
-        playerAnimator = GetComponent<PlayerAnimator>();
-    }
+    //private void Start()
+    //{
+        //playerAnimator = transform.parent.GetComponent<PlayerAnimator>();
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         MonsterBase monsterBase = collision.GetComponent<MonsterBase>();
-        if (monsterBase != null)
-        {
-            monsterBase.TakeDamage(10); //TODO : 현재 착용중인 도구의 데이터를 가져오도록
-            monsterBase.OnHit(transform); // 이벤트 발생 
-        }
+        if (monsterBase != null) monsterBase.TakeDamage(10); //TODO : 데미지는 현재 착용중인 도구의 데이터를 가져오도록
+
     }
 
     public void Attack()

@@ -9,17 +9,19 @@ public class ChaseMonsterState : IMonsterState
     Transform target;
     float chaseSpeed;
 
+
     public ChaseMonsterState(MonsterBase monster)
     {
         this.monster = monster;
         monsterAnimator = monster.MonsterAnimator;
+        chaseSpeed = monster.ChaseSpeed;
     }
+
 
     public void EnterState()
     {
         Debug.Log($"{monster.gameObject.name} 이 Chase 상태로 진입!");
         target = monster.Target;
-        chaseSpeed = monster.ChaseSpeed;
     }
 
     public void ExitState()

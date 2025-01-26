@@ -10,8 +10,7 @@ public class PlayerAutoInteract : MonoBehaviour
         DebugController.Log("OnValidate called, detectionRange: " + detectionRange);
     }
 
-    PlayerAnimator playerAnimator;
-    SpriteRenderer spriteRenderer;
+    public PlayerAnimator playerAnimator;
     float moveSpeed =0f;
 
     [SerializeField] bool isAutoInteracting = false; // 자동 상호작용 중인지(디버그용)
@@ -24,8 +23,7 @@ public class PlayerAutoInteract : MonoBehaviour
 
     private void Start()
     {
-        playerAnimator = GetComponent<PlayerAnimator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //playerAnimator = GetComponent<PlayerAnimator>();
         moveSpeed = GetComponent<PlayerMove>().moveSpeed;
     }
 
@@ -55,12 +53,25 @@ public class PlayerAutoInteract : MonoBehaviour
         // 탐색 반경 내에 있는 Interactable 물체 탐지
         colliders = Physics2D.OverlapCircleAll(transform.position, detectionRange, LayerMask.GetMask("Interactable"));
 
+        // 주변에 Interactable한 오브젝트가 있다면 가장 가까운 것으로 이동 타겟 설정 
         if (colliders.Length > 0)
         {
             autoInteractTargetTransform = colliders // Collider2D 배열을 
                 .Select(collider => collider.transform) //transform 배열로 바꿔주고 (using System.Linq; 필요)
                 .OrderBy(t => Vector2.Distance(transform.position, t.position)) //Distance 기준 오름차순으로 정렬 
                 .FirstOrDefault(); // 첫번째 혹은 null 반환 ->  탐지된 물체가 없을 때도 오류 없이 처리가능
+
+            if (autoInteractTargetTransform != null)
+            {
+                isAutoInteracting = true;
+
+                playerAnimator.SetWalkAnimaion(); //애니메이션 적용
+
+                // 이동 방향에 따라 좌우 바라보게 하기          
+                Vector3 direction = autoInteractTargetTransform.position - transform.position;
+                if (direction.x < 0) playerAnimator.LookLeft();
+                if (direction.x > 0) playerAnimator.LookRight();
+            }
         }
         else
         {
@@ -76,20 +87,11 @@ public class PlayerAutoInteract : MonoBehaviour
     {
         if (autoInteractTargetTransform != null)
         {
-            isAutoInteracting = true;
-
             Vector3 direction = (autoInteractTargetTransform.position - transform.position).normalized;
             transform.position += direction * moveSpeed * Time.deltaTime;
-
-            playerAnimator.SetWalkAnimaion(); //애니메이션 적용
-
-            //좌우 바라보게 하기 
-            if (direction.x < 0) spriteRenderer.flipX = true;
-            if (direction.x > 0) spriteRenderer.flipX = false;
-
         }
 
-        // 타겟 근처에 도달하면 상호작용
+        // 타겟 근처에 도달하면 상호작용 //TODO : 아 이거 Distance 안쓰고 싶은데 나중에 최적화 ㄱㄱ 
         if (Vector2.Distance(transform.position, autoInteractTargetTransform.position) < InteractionRange) InteractWithTarget();
     }
 
