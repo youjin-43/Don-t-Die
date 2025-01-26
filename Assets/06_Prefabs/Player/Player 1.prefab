@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3896371103367941196}
   - component: {fileID: 8208501665278037843}
+  - component: {fileID: 4796768125185444446}
   m_Layer: 0
   m_Name: AttackCollider
   m_TagString: Untagged
@@ -69,6 +70,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
+--- !u!114 &4796768125185444446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774418940913057382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe21090521ec4e3fa447ee8f5470365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 0}
 --- !u!1 &6161194727708342292
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,13 +236,13 @@ GameObject:
   - component: {fileID: 5706483880056283610}
   - component: {fileID: 9006268405667800640}
   - component: {fileID: 924179375020231119}
-  - component: {fileID: 2719101778839705464}
   - component: {fileID: 5033660531289686608}
   - component: {fileID: 3103066371250681889}
   - component: {fileID: 6450673151335881347}
+  - component: {fileID: 8352818195275481724}
   m_Layer: 0
   m_Name: Player 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -367,20 +381,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
---- !u!114 &2719101778839705464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6399303531053045431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbe21090521ec4e3fa447ee8f5470365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackCollider: {fileID: 8208501665278037843}
-  targetMonster: {fileID: 0}
 --- !u!114 &5033660531289686608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,6 +439,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishingTip: {fileID: 6039076646575408782}
   bobberPrefab: {fileID: 3879519404677080971, guid: 6f61e99b3de699c42b3e593d1142de7c, type: 3}
+--- !u!70 &8352818195275481724
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6399303531053045431}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.018470764, y: 0.120090485}
+  m_Size: {x: 0.9261017, y: 1.240181}
+  m_Direction: 0
 --- !u!1 &7085297588775085368
 GameObject:
   m_ObjectHideFlags: 0

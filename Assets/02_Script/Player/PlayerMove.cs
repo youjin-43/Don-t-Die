@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    public PlayerAnimator playerAnimator; //PlayerMoveManager 에서 할당 받도록 함 
     public float moveSpeed = 4f; //이동 속도 
 
-    PlayerAnimator playerAnimator;
     Vector2 dir = new Vector2(0f, 0f);
 
-    private void Start()
-    {
-        playerAnimator = GetComponent<PlayerAnimator>();
-    }
+    //private void Start()
+    //{
+    //    playerAnimator = GetComponent<PlayerAnimator>();
+    //}
 
     public void HandleMovement()
     {
@@ -28,7 +28,7 @@ public class PlayerMove : MonoBehaviour
         else playerAnimator.SetWalkAnimaion();
 
         //좌우 바라보게 하기 
-        if (dir.x < 0) playerAnimator.LookRight();
-        if (dir.x > 0) playerAnimator.LookLeft();
+        if (dir.x < 0) playerAnimator.LookLeft();
+        if (dir.x > 0) playerAnimator.LookRight();
     }
 }
