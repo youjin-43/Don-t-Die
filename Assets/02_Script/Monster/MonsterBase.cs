@@ -169,7 +169,6 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     #region IItemDroppable
     public void DropItems()
     {
-        Debug.Log("DropItems 호출됨 "); // TODO : 아 왜 드랍아이템 안돼!!
         foreach (var item in monsterData.DropItems)
         {
             int count = UnityEngine.Random.Range(item.minAmount, item.maxAmount + 1);
@@ -178,9 +177,12 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
             {
                 Item go = PoolManager.Instance.InstantiateItem(item.data);
 
-                //플레이어 방향 반대쪽으로 흩뿌려지도록 
-                Vector3 dir = transform.position * 2 + GameManager.Instance.GetPlayerPos() + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
-                go.Spread(transform.position, dir, UnityEngine.Random.Range(2f, 2.5f));
+                // 플레이어 반대 방향으로 뿌리도록 
+                Vector3 dir = transform.position +
+                    (transform.position - GameManager.Instance.GetPlayerPos()
+                    + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)));
+
+                go.Spread(transform.position, dir, UnityEngine.Random.Range(2.5f, 3f));
                 count--;
             }
         }
