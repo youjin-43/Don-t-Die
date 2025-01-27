@@ -136,15 +136,13 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     public virtual void TakeDamage(int damage) // TODO : 선택된 도구의 공격력을 받아오도록 
     {
         if(monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState)
-        {
-            
-            MonsterAnimator.SetTrigger("TakeDamage"); // TODO : 피격 이미지 박쥐 참고해서 좀 수정하면 좋을것 같음
-                                      
-            ApplyKnockback(); // 넉백 적용
-
+        {   
             CurrentHp -= damage;
-            Debug.Log($"{transform.name} took {damage} damage -> Current HP : {CurrentHp}");
+            MonsterAnimator.SetTrigger("TakeDamage"); // TODO : 피격 이미지 박쥐 참고해서 좀 수정하면 좋을것 같음
+            DebugController.Log($"{transform.name} took {damage} damage -> Current HP : {CurrentHp} | called in MonsterBase");
+
             if (CurrentHp <= 0) OnDie();
+            else ApplyKnockback(); // 넉백 적용
         }    
     }
 
