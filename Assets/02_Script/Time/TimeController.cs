@@ -28,6 +28,8 @@ public class TimeController : MonoBehaviour
     float growTimer;
     float growthInterval = 60f; // 게임 시간 기준으로 1분
 
+    float playerTimer;
+
     [SerializeField] List<int> daysPerSeason;
 
     // Debug용
@@ -73,6 +75,8 @@ public class TimeController : MonoBehaviour
     {
         timer += Time.deltaTime * timeScale;
         growTimer += Time.deltaTime * timeScale;
+        playerTimer += Time.deltaTime * timeScale;
+
         DisplayTime();
         ControlLight();
 
@@ -86,6 +90,18 @@ public class TimeController : MonoBehaviour
             SignalToTimeAgents();
             growTimer = 0;
         }
+
+        if (playerTimer >= 60f)
+        {
+            playerTimer = 0;
+            ModifyPlayerStatus();
+        }
+    }
+
+    void ModifyPlayerStatus()
+    {
+        StatusManager.Instance.AddHungry(-0.05f);
+        StatusManager.Instance.AddThirsty(-0.05f);
     }
 
     /// <summary>
