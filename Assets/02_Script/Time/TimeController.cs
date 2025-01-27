@@ -100,6 +100,18 @@ public class TimeController : MonoBehaviour
 
     void ModifyPlayerStatus()
     {
+        float penalty = 0;      // 공복과 갈증이 0이 되면 체력 패널티를 받는다.
+
+        if (StatusManager.Instance.CurrentHungryPoint <= 0)
+        {
+            penalty -= 0.4f;
+        }
+        if (StatusManager.Instance.CurrentThirstyPoint <= 0)
+        {
+            penalty -= 0.4f;
+        }
+
+        StatusManager.Instance.AddHealth(penalty);
         StatusManager.Instance.AddHungry(-0.05f);
         StatusManager.Instance.AddThirsty(-0.05f);
     }
