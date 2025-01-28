@@ -92,6 +92,11 @@ public class InventoryManager : MonoBehaviour
         InventoryScroll();
     }
 
+    public Dictionary<string, int> GetInventoryDict()
+    {
+        return _inventoryDict;
+    }
+
     private void DragAndDropItem()
     {
         // 드래그 중 이라면

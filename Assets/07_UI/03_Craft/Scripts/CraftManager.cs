@@ -84,6 +84,11 @@ public class CraftManager : MonoBehaviour
     // 조합 UI 스위치
     public void ToggleCraftingUI()
     {
+        foreach(var category in Categories)
+        {
+            category.Value.ResouceCounting(InventoryManager.Instance.GetInventoryDict());
+        }
+
         gameObject.SetActive(!gameObject.activeSelf);
     }
 }

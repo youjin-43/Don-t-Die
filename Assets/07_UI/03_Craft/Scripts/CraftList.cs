@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,8 @@ public class CraftList : MonoBehaviour
     private List<CraftListItemSlot> _craftItemSlotList = new List<CraftListItemSlot>();
 
 
+    private Dictionary<string , TextMeshProUGUI> _currentItemCountTextDict = new Dictionary<string , TextMeshProUGUI>();
+
 
     private Image _mask;
 
@@ -33,9 +36,13 @@ public class CraftList : MonoBehaviour
         }
     }
 
-    public void AddCraftItemSlot(Transform parent, GameObject craftItemSlotPrefab, CraftingData data)
+    public void AddCraftItemSlot(Transform parent, GameObject craftItemSlotPrefab, CraftingData data, out Queue<string> resourceQueue)
     {
         Queue<string> queue = ParseRecipe(data);
+
+        // out 매개변수는 무조건 새로 할당해야 함
+        // resourceQueue = queue (X)
+        resourceQueue = new Queue<string>(queue);
 
         int count = 2 * data.NumOfMaterial + 1;
 
@@ -45,19 +52,21 @@ public class CraftList : MonoBehaviour
 
             if(j == count - 1)
             {
-                slot.SetType(CraftListItemSlot.Type.ItemSlot, _data.Name);
+                slot.SetData(CraftListItemSlot.Type.ItemSlot, _data.Name, 1);
             }
             else if (j == count - 2)
             {
-                slot.SetType(CraftListItemSlot.Type.Image_Equal, "Equal");
+                slot.SetData(CraftListItemSlot.Type.Image_Equal, "Equal");
             }
             else if (j % 2 == 1)
             {
-                slot.SetType(CraftListItemSlot.Type.Image_Plus, "Plus");
+                slot.SetData(CraftListItemSlot.Type.Image_Plus, "Plus");
             }
             else
             {
-                slot.SetType(CraftListItemSlot.Type.ItemSlot, queue.Dequeue());
+                string ingredient = queue.Dequeue();
+
+                slot.SetData(CraftListItemSlot.Type.ItemSlot, ingredient, _recipe[ingredient]);
             }
 
             _craftItemSlotList.Add(slot);

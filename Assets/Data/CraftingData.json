@@ -281,14 +281,6 @@
       "Recipe": "Wood_2+Rope_1"
     },
     {
-      "Name": "SlingShot",
-      "NameKR": "새총",
-      "Category": "Wood",
-      "NumOfMaterial": "2",
-      "NeedCraftingTable": "false",
-      "Recipe": "Wood_1+Rope_1"
-    },
-    {
       "Name": "WoodHelmet",
       "NameKR": "나무투구",
       "Category": "Wood",
