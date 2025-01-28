@@ -96,9 +96,10 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // 좌클릭 이벤트 (아이템 이동)
-        if (eventData.button == PointerEventData.InputButton.Right)
+        if (eventData.button == PointerEventData.InputButton.Right && _type == Type.ResultSlot)
         {
+            
+
             DebugController.Log("우클릭이에여");
         }
     }

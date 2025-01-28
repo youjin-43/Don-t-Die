@@ -18,7 +18,7 @@ public class CraftList : MonoBehaviour
     private List<CraftListItemSlot> _craftItemSlotList = new List<CraftListItemSlot>();
 
     // 조합 비활성화 마스크
-    private Image _mask;
+    public Image _mask;
 
     // 조합 플래그
     private bool _isPossibleCrafting = false;
@@ -26,13 +26,14 @@ public class CraftList : MonoBehaviour
 
     void Awake()
     {
-        _mask = transform.GetChild(1).GetComponent<Image>();
+        //_mask = transform.GetChild(1).GetComponent<Image>();
     }
 
     public void AddCraftItemSlot(Transform parent, GameObject craftItemSlotPrefab, CraftingData data)
     {
         _data = data;
 
+        // GetComponent하면 터져서 에디터에서 바인딩 했음
         if (_data.NeedCraftingTable == true)
         {
             _mask.color = new Color(0, 0, 0, 0.9f);
@@ -144,6 +145,11 @@ public class CraftList : MonoBehaviour
             _mask.color = new Color(0, 0, 0, 0f);
 
             _craftItemSlotList[_craftItemSlotList.Count - 1].CraftUnlock();
+        }
+        // 조합대가 필요한 조합들에 대해서는 아래서 처리
+        else
+        {
+
         }
     }
 }

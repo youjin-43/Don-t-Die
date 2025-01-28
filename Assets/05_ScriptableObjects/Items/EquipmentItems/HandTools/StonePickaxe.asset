@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: StonePickaxe
-  Prefab: {fileID: 0}
-  Image: {fileID: 0}
+  Prefab: {fileID: 2115217519617094371, guid: aa3ce4bd3b0786b47878a0308e5e4f3a, type: 3}
+  Image: {fileID: 21300000, guid: c6d1cff93f8570f45b2ce3d04206143c, type: 3}
   IsCountable: 0
   MaxCountSize: 1
   equipSlot: 2
