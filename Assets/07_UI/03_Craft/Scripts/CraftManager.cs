@@ -38,6 +38,8 @@ public class CraftManager : MonoBehaviour
     // 조합식에 필요한 아이템 슬롯 프리팹
     [SerializeField] GameObject CraftListItemSlotPrefab;
 
+    private bool _startFlag = false;
+
     void Awake()
     {
         SingletonInitialize();
@@ -70,6 +72,8 @@ public class CraftManager : MonoBehaviour
 
         // 처음 시작할 땐 닫아놓자
         ToggleCraftingUI();
+
+        _startFlag = true;
     }
 
     // 카테고리 클릭 이벤트
@@ -84,9 +88,12 @@ public class CraftManager : MonoBehaviour
     // 조합 UI 스위치
     public void ToggleCraftingUI()
     {
-        foreach(var category in Categories)
+        if(_startFlag == true)
         {
-            category.Value.ResouceCounting(InventoryManager.Instance.GetInventoryDict());
+            foreach (var category in Categories)
+            {
+                category.Value.ResourceCounting(InventoryManager.Instance.GetInventoryDict());
+            }
         }
 
         gameObject.SetActive(!gameObject.activeSelf);
