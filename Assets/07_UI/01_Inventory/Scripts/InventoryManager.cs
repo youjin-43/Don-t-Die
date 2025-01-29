@@ -43,6 +43,9 @@ public class InventoryManager : MonoBehaviour
     // 슬롯에 뭐가 들어가 있는지 확인하기 위한 컨테이너
     private Dictionary<string, int> _inventoryDict = new Dictionary<string, int>();
 
+    // 슬롯 카운터 이미지
+    [SerializeField]
+    public List<Sprite> _itemCountImages = new List<Sprite>();
 
 
     // 드래깅용 변수
@@ -363,7 +366,7 @@ public class InventoryManager : MonoBehaviour
                 else
                 {
                     endSlot.AddItemData(_startSlotItemData, Mathf.Abs(_startSlotItemCount - endSlotItemCount));
-                    _startSlot.RemoveItemData(Mathf.Abs(_startSlotItemCount - endSlotItemCount));
+                    _startSlot.AddItemData(_startSlotItemData, Mathf.Abs(9 - (_startSlotItemCount - endSlotItemCount)));
                 }
             }
             // 2. 비어있지 않았는데 서로 아이템이 다른 경우 (재료든 장비든 뭐든)
