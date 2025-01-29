@@ -284,7 +284,10 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
                     }
                 case ItemType.Installable:
                     {
-                        DebugController.Log("설치 가능한 아이템이에여");
+                        if(InventoryManager.Instance.InstallItem(_itemData as InstallableItemData) == true)
+                        {
+                            ClearItemSlot();
+                        }
                     }
                     break;
             }

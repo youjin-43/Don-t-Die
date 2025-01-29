@@ -35,7 +35,13 @@ public class PlayerMoveManager : MonoBehaviour
         playerAutoInteract = GetComponent<PlayerAutoInteract>();
         playerAttack = transform.GetChild((int)PlayerObjChilds.AttackCollider).GetComponent<PlayerAttack>();
         
-        SetAnimatorAtEachMoves(); // 각 행동에 애니메이터 설정 
+        SetAnimatorAtEachMoves(); // 각 행동에 애니메이터 설정
+
+
+        // 인벤토리서 아이템 버리기, 설치에 플레이어 위치가 필요해요
+        // 모양이 좀 이상하긴 한데....
+        InventoryManager.Instance.CachingPlayerTransform(transform);
+
     }
 
     void SetAnimatorAtEachMoves()
@@ -47,7 +53,7 @@ public class PlayerMoveManager : MonoBehaviour
 
     void Update()
     {
-        if(playerState != PlayerState.Attack) //공격중에는 이동 및 공격 못하도록 
+        if (playerState != PlayerState.Attack) //공격중에는 이동 및 공격 못하도록 
         {
             playerMove.HandleMovement(); // 상하좌우 입력 관리 
             playerAutoInteract.AutoInteract(); //자동 상호작용
