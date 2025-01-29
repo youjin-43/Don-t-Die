@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1303619f4b9d5aa4794d8d87c0d709a7, type: 3}
+  m_Name: BoneSword
+  m_EditorClassIdentifier: 
+  ItemType: 1
+  Name: BoneSword
+  Prefab: {fileID: 3704126909530333523, guid: 4071838c972f7964b9a41c0a37cd1800, type: 3}
+  Image: {fileID: 21300000, guid: 9acde34f918ad2243b89869149e2c174, type: 3}
+  IsCountable: 0
+  MaxCountSize: 1
+  equipSlot: 2
+  maxDurability: 10
+  currentDurability: 10
+  availableTypes: 
+  atk: 0

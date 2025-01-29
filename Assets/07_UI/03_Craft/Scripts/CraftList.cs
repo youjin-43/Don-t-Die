@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,25 +17,32 @@ public class CraftList : MonoBehaviour
     // 아이템 슬롯 담아놓을 컨테이너
     private List<CraftListItemSlot> _craftItemSlotList = new List<CraftListItemSlot>();
 
+    // 조합 비활성화 마스크
+    public Image _mask;
 
-
-    private Image _mask;
+    // 조합 플래그
+    private bool _isPossibleCrafting = false;
+    private int  _possibleItemCount  = int.MaxValue;
 
     void Awake()
     {
-        _mask = transform.GetChild(1).GetComponent<Image>();
-    }
-
-    void Start()
-    {
-        if(_data.NeedCraftingTable == true)
-        {
-            _mask.color = new Color(0, 0, 0, 0.7f);
-        }
+        //_mask = transform.GetChild(1).GetComponent<Image>();
     }
 
     public void AddCraftItemSlot(Transform parent, GameObject craftItemSlotPrefab, CraftingData data)
     {
+        _data = data;
+
+        // GetComponent하면 터져서 에디터에서 바인딩 했음
+        if (_data.NeedCraftingTable == true)
+        {
+            _mask.color = new Color(0, 0, 0, 0.9f);
+        }
+        else
+        {
+            _mask.color = new Color(0, 0, 0, 0.7f);
+        }
+
         Queue<string> queue = ParseRecipe(data);
 
         int count = 2 * data.NumOfMaterial + 1;
@@ -45,19 +53,22 @@ public class CraftList : MonoBehaviour
 
             if(j == count - 1)
             {
-                slot.SetType(CraftListItemSlot.Type.ItemSlot, _data.Name);
+                slot.SetData(CraftListItemSlot.Type.ResultSlot, _data.Name, 1);
+                slot.SetRecipe(_recipe);
             }
             else if (j == count - 2)
             {
-                slot.SetType(CraftListItemSlot.Type.Image_Equal, "Equal");
+                slot.SetData(CraftListItemSlot.Type.Image_Equal, "Equal");
             }
             else if (j % 2 == 1)
             {
-                slot.SetType(CraftListItemSlot.Type.Image_Plus, "Plus");
+                slot.SetData(CraftListItemSlot.Type.Image_Plus, "Plus");
             }
             else
             {
-                slot.SetType(CraftListItemSlot.Type.ItemSlot, queue.Dequeue());
+                string ingredient = queue.Dequeue();
+
+                slot.SetData(CraftListItemSlot.Type.ItemSlot, ingredient, _recipe[ingredient]);
             }
 
             _craftItemSlotList.Add(slot);
@@ -67,8 +78,6 @@ public class CraftList : MonoBehaviour
     private Queue<string> ParseRecipe(CraftingData data)
     {
         Queue<string> queue = new Queue<string>();
-
-        _data = data;
 
         string[] recipes = _data.Recipe.Split('+');
 
@@ -81,5 +90,72 @@ public class CraftList : MonoBehaviour
         }
 
         return queue;
+    }
+
+    public void ResourceCounting(Dictionary<string, int> inventoryDict)
+    {
+        // Counting
+        foreach (var craftItemSlot in _craftItemSlotList)
+        {
+            craftItemSlot.ResourceCounting(inventoryDict);
+        }
+
+        // Check
+        for(int i = 0; i < _craftItemSlotList.Count - 2; i += 2)
+        {
+            // 조합 아이템 슬롯이 들고있는 아이템 수
+            int itemCountInCraftItemSlot = _craftItemSlotList[i].ResourceCheck();
+
+            // 조합에 필요한 아이템 수
+            int needItemCount = _recipe[_craftItemSlotList[i].GetItemName()];
+
+            // 들고 있는 아이템의 수가 더 많다면
+            if (itemCountInCraftItemSlot >= needItemCount)
+            {
+                // 그렇다면 결과물을 몇 개 까지 만들 수 있을지 계산
+                if(_possibleItemCount >= itemCountInCraftItemSlot / needItemCount)
+                {
+                    _possibleItemCount = itemCountInCraftItemSlot / needItemCount;
+                }
+                
+                _isPossibleCrafting = true;
+            }
+            else
+            {
+                _isPossibleCrafting = false;
+                break;
+            }
+        }
+
+
+        // 모든 재료가 필요 재료보다 많은 경우
+        if(_isPossibleCrafting == true)
+        {
+            SetCount();
+        }
+        else
+        {
+            _possibleItemCount = int.MaxValue;
+            _isPossibleCrafting = false;
+            _mask.color = new Color(0, 0, 0, 0.7f);
+            _craftItemSlotList[_craftItemSlotList.Count - 1].CraftLock();
+        }
+    }
+
+    private void SetCount()
+    {
+        _craftItemSlotList[_craftItemSlotList.Count - 1].SetCount(_possibleItemCount);
+
+        if(_data.NeedCraftingTable == false)
+        {
+            _mask.color = new Color(0, 0, 0, 0f);
+
+            _craftItemSlotList[_craftItemSlotList.Count - 1].CraftUnlock();
+        }
+        // 조합대가 필요한 조합들에 대해서는 아래서 처리
+        else
+        {
+
+        }
     }
 }

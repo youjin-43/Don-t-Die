@@ -69,12 +69,13 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void ClearEquipment()
     {
-        InventoryManager.Instance.AddItem(_itemData);
-
-        _itemData         = null;
-        _itemImage.sprite = null;
-        _itemImage.color  = new Color(1, 1, 1, 0);
-        _itemDurability.gameObject.SetActive(false);
+        if(InventoryManager.Instance.AddItem(_itemData) == true)
+        {
+            _itemData = null;
+            _itemImage.sprite = null;
+            _itemImage.color = new Color(1, 1, 1, 0);
+            _itemDurability.gameObject.SetActive(false);
+        }
     }
 
     public bool IsEmpty()

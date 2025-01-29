@@ -5,7 +5,9 @@ public enum ItemType
 {
     Resource,
     Equippable,
-    Edible
+    Edible,
+    Installable,
+    Inventory
 }
 
 [CreateAssetMenu(fileName = "ItemData", menuName = "Item/ItemData")]
