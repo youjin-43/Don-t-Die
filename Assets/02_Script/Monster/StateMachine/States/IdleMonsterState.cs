@@ -6,7 +6,7 @@ using UnityEngine;
 public class IdleMonsterState : IMonsterState
 {
     MonsterBase monster;
-    Animator monsterAnimator;
+
     public BiomeType biomeType;
     float moveSpeed;
     float moveInterval;
@@ -19,7 +19,6 @@ public class IdleMonsterState : IMonsterState
     public IdleMonsterState(MonsterBase monster)
     {
         this.monster = monster;
-        monsterAnimator = monster.MonsterAnimator;
         biomeType = monster.monsterData.MyBiomeType;
         moveSpeed = monster.monsterData.MoveSpeed;
         moveInterval = monster.monsterData.MoveInterval;
@@ -28,7 +27,8 @@ public class IdleMonsterState : IMonsterState
     public void EnterState()
     {
         Debug.Log($"{monster.gameObject.name} 이 Idle 상태로 진입!");
-        monsterAnimator.SetBool("IsMoving", false);
+
+        monster.SetIsMovingAnimation(false);
         isMoving = false;
         moveTimer = Random.Range(5, moveInterval);
     }
@@ -61,9 +61,8 @@ public class IdleMonsterState : IMonsterState
 
                     // 애니메이션 설정
                     Vector3 dir = targetPosition - monster.transform.position;
-                    monsterAnimator.SetBool("IsMoving", true);
-                    monsterAnimator.SetFloat("dirX", dir.x);
-                    monsterAnimator.SetFloat("dirY", dir.y);
+                    monster.SetIsMovingAnimation(true);
+                    monster.SetDirnimaiton(dir.x, dir.y);
                 }
                 else
                 {
@@ -76,7 +75,7 @@ public class IdleMonsterState : IMonsterState
         else
         {
             // 타겟 위치와 가까워질 떄 까지 이동 
-            if(Vector3.Distance(monster.transform.position, targetPosition) > 0.1f)
+            if(Vector3.Magnitude(monster.transform.position-targetPosition) > 0.1f)
             {
                 monster.transform.position = Vector3.MoveTowards(monster.transform.position, targetPosition, moveSpeed * Time.deltaTime);
                 //Debug.Log($"이동중  {monster.transform.position}");
@@ -86,7 +85,7 @@ public class IdleMonsterState : IMonsterState
                 //도착하면 움직임 멈추기
                 //Debug.Log("목표 위치에 도착!");
                 isMoving = false;
-                monsterAnimator.SetBool("IsMoving", false);
+                monster.SetIsMovingAnimation(false);
                 moveTimer = Random.Range(0,moveInterval); // 타이머 초기화 
             }
         }

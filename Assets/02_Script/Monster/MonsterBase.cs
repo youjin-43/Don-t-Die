@@ -14,16 +14,6 @@ public enum MonsterState
     Die
 }
 
-public enum MonsterAimatorParams
-{
-    IsMoving,
-    dirX,
-    dirY,
-    Attack,
-    TakeDamage,
-    Die
-}
-
 // 몬스터들의 공통 속성 및 동작 정의
 public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 {
@@ -45,8 +35,11 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     Rigidbody2D monsterRigidbody;
 
 
-    // 옵저버 패턴을 이용해서 몬스터가 공격받는 순간 특정 State로 transition하도록 구현
+
     #region OnHitEvent
+
+    // 옵저버 패턴을 이용해서 몬스터가 공격받는 순간 특정 State로 transition하도록 구현
+
     public delegate void OnHitEventHandler(Transform attacker);
     public event OnHitEventHandler OnHitEvent;
     public Transform Target; // 공격 or 도망 대상 -> 지금 기획으로는 target이 플레이어가 될 수 밖에 없는데 나중에 확장 가능성을 고려하여 타겟을 설정하도록 함 
@@ -78,7 +71,8 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     private void Start()
     {
         SetData(); // 몬스터 기본 데이터 셋팅
-        monsterStateMachine.Initialize(monsterStateMachine.idleMonsterState);
+
+        monsterStateMachine.Initialize(monsterStateMachine.idleMonsterState); // State 설정 
         CurrentState = MonsterState.Idle; // 디버그용
                                           
         OnHitEvent += HandleMonsterHit; // 몬스터의 OnHitEvent를 구독
@@ -135,13 +129,14 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     }
     #endregion
 
-    #region IDamageable
+    #region Damaged(IDamageable)
+
     public virtual void TakeDamage(int damage) // TODO : 선택된 도구의 공격력을 받아오도록 
     {
         if(monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState)
         {   
             CurrentHp -= damage;
-            MonsterAnimator.SetTrigger("TakeDamage"); // TODO : 피격 이미지 박쥐 참고해서 좀 수정하면 좋을것 같음
+            TriggerDamagedAnimaiton(); // TODO : 피격 이미지 박쥐 참고해서 좀 수정하면 좋을것 같음
             //DebugController.Log($"{transform.name} took {damage} damage -> Current HP : {CurrentHp} | called in MonsterBase");
 
             if (CurrentHp <= 0) OnDie();
@@ -198,6 +193,44 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         }
     }
 
+    #endregion
+
+    #region Animation
+
+    // 4방향인 몬스터가 있고 2방향인 몬스터가 있어서 애니메이션 컨트롤 로직이 달라 몬스터별로 함수를 override 해서 사옹하도록 함
+ 
+    string isMoving = "IsMoving";
+    string attack = "Attack";
+    string takeDamage = "TakeDamage";
+    string Die = "Die";
+
+
+    public void SetIsMovingAnimation(bool value)
+    {
+        MonsterAnimator.SetBool(isMoving, value);
+    }
+
+    // 4방향인건 override 해서 사
+    public virtual void SetDirnimaiton(float dir_x, float dir_y)
+    {
+        if (dir_x < 0) transform.localScale = new Vector3(-1, 1, 1);
+        if (dir_x > 0) transform.localScale = new Vector3(1, 1, 1);
+    }
+
+    public void TriggerAttackAnimaiton()
+    {
+        MonsterAnimator.SetTrigger(attack);
+    }
+
+    public void TriggerDamagedAnimaiton()
+    {
+        MonsterAnimator.SetTrigger(takeDamage);
+    }
+
+    public void SetDieAnimation()
+    {
+        MonsterAnimator.SetTrigger(Die);
+    }
     #endregion
 
     #region Utility
