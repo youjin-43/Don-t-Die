@@ -14,6 +14,16 @@ public enum MonsterState
     Die
 }
 
+public enum MonsterAimatorParams
+{
+    IsMoving,
+    dirX,
+    dirY,
+    Attack,
+    TakeDamage,
+    Die
+}
+
 // 몬스터들의 공통 속성 및 동작 정의
 public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 {
@@ -132,7 +142,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         {   
             CurrentHp -= damage;
             MonsterAnimator.SetTrigger("TakeDamage"); // TODO : 피격 이미지 박쥐 참고해서 좀 수정하면 좋을것 같음
-            DebugController.Log($"{transform.name} took {damage} damage -> Current HP : {CurrentHp} | called in MonsterBase");
+            //DebugController.Log($"{transform.name} took {damage} damage -> Current HP : {CurrentHp} | called in MonsterBase");
 
             if (CurrentHp <= 0) OnDie();
             else ApplyKnockback(); // 넉백 적용
@@ -166,6 +176,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     #endregion
 
     #region IItemDroppable
+
     public void DropItems()
     {
         foreach (var item in monsterData.DropItems)
@@ -186,29 +197,8 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
             }
         }
     }
+
     #endregion
-
-    //#region Flee State
-
-    //protected virtual void FleeBehavior(Transform playerTransform)
-    //{
-    //    Vector3 direction = (transform.position - playerTransform.position).normalized;
-
-    //    // 애니메이션 설정
-    //    monsterAnimator.SetBool("IsMoving", true);
-    //    monsterAnimator.SetFloat("dirX", direction.x);
-    //    monsterAnimator.SetFloat("dirY", direction.y);
-
-    //    // 플레이어 반대 방향으로 이동
-    //    transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, monsterData.MoveSpeed * Time.deltaTime);
-
-    //    if (Vector3.Distance(transform.position, playerTransform.position) > moveRange * 2)
-    //    {
-    //        ChangeState(MonsterState.Idle);
-    //    }
-    //}
-
-    //#endregion
 
     #region Utility
 
@@ -231,5 +221,6 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         Vector3 currentPos = transform.position;
         return new Vector3(currentPos.x + randomX, currentPos.y + randomY, currentPos.z);
     }
+
     #endregion
 }

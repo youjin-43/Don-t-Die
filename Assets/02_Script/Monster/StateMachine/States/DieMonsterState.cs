@@ -17,7 +17,7 @@ public class DieMonsterState : IMonsterState
     public void EnterState()
     {
         Debug.Log($"{monster.gameObject.name} 이 Die 상태로 진입!");
-        monsterAnimator.SetTrigger("Die");
+        monsterAnimator.SetTrigger(MonsterAimatorParams.Die.ToString());
         monster.DropItems(); //아이템 스폰 
         //monster.Destroy(monster.gameObject, 3f); // TODO : 오브젝트 풀로 변경 
     }
