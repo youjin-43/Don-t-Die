@@ -48,7 +48,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
 
     public string GetItemName()
     {
-        return _itemData.Name;
+        return _itemData?.Name;
     }
 
     public bool IsEmpty()
@@ -108,6 +108,42 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    public int RemoveItemData(int itemCount)
+    {
+        // 다음 슬롯까지 갈 필요가 없이 여깄는거 빼면 끝
+        if(_currentItemCount > itemCount)
+        {
+            _currentItemCount -= itemCount;
+            UpdateItemCount();
+            return 0;
+        }
+        // 다음 슬롯까지 갈 필요는 없지만 슬롯이 비어야 하는 경우
+        else if (_currentItemCount == itemCount)
+        {
+            ClearItemSlot();
+            return 0;
+        }
+        // 다음 슬롯까지 탐색해서 지워야 하는 경우
+        else
+        {
+            ClearItemSlot();
+            return Math.Abs(_currentItemCount);
+        }
+    }
+
+    private void UpdateItemCount()
+    {
+        // 아이템 스택 표시
+        {
+            _itemCountImage.gameObject.SetActive(true);
+            _itemCountImage.sprite = _itemCountImages[_currentItemCount];
+        }
+        // 내구도 표시는 비활성
+        {
+            _itemDurability.gameObject.SetActive(false);
+        }
+    }
+
     public bool AddItemData(ItemData itemData, int itemCount = 1)
     {
         // 종류와 상관없는 공동 작업
@@ -153,28 +189,12 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
 
     private void AddResourceItem(ResourceItemData toolItemData)
     {
-        // 아이템 스택 표시
-        {
-            _itemCountImage.gameObject.SetActive(true);
-            _itemCountImage.sprite = _itemCountImages[_currentItemCount];
-        }
-        // 내구도 표시는 비활성
-        {
-            _itemDurability.gameObject.SetActive(false);
-        }
+        UpdateItemCount();
     }
 
     private void AddEdibleItem(EdibleItemData edibleItemData)
     {
-        // 아이템 스택 표시
-        {
-            _itemCountImage.gameObject.SetActive(true);
-            _itemCountImage.sprite = _itemCountImages[_currentItemCount];
-        }
-        // 내구도 표시는 비활성
-        {
-            _itemDurability.gameObject.SetActive(false);
-        }
+        UpdateItemCount();
     }
 
     private void AddEquippableItem(EquippableItemData equippableItemData)

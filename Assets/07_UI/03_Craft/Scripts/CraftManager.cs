@@ -88,14 +88,20 @@ public class CraftManager : MonoBehaviour
     // 조합 UI 스위치
     public void ToggleCraftingUI()
     {
-        if(_startFlag == true)
+        UpdateCraftingUI();
+
+        gameObject.SetActive(!gameObject.activeSelf);
+    }
+
+    // 조합창의 재료 갯수 업데이트
+    public void UpdateCraftingUI()
+    {
+        if (_startFlag == true)
         {
             foreach (var category in Categories)
             {
                 category.Value.ResourceCounting(InventoryManager.Instance.GetInventoryDict());
             }
         }
-
-        gameObject.SetActive(!gameObject.activeSelf);
     }
 }

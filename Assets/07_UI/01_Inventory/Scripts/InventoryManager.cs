@@ -164,6 +164,26 @@ public class InventoryManager : MonoBehaviour
         _playerTransform = playerTransform;
     }
 
+    public void RemoveItem(string itemName, int itemCount = 1)
+    {
+        int count = itemCount;
+
+        _inventoryDict[itemName] -= itemCount;
+
+        foreach(var item in _inventorySlot)
+        {
+            if(item.GetItemName() == itemName)
+            {
+                count = item.RemoveItemData(count);
+
+                if(count == 0)
+                {
+                    break;
+                }
+            }
+        }
+    }
+
     public bool AddItem(ItemData itemData)
     {
         if(itemData as ToolItemData)
@@ -326,13 +346,37 @@ public class InventoryManager : MonoBehaviour
         // 비어있지 않다면
         else
         {
-            // 데이터 스왑
-            ItemData endSlotItemData = endSlot.GetItemData(out int itemCount);
-            endSlot.ClearItemSlot();
+            // 1. 비어있지 않았는데 양 슬롯에 있던 아이템이 같고 재료 아이템이였다면
+            if(_startSlotItemData.Name == endSlot.GetItemName() && _startSlotItemData.ItemType == ItemType.Resource)
+            {
+                ItemData endSlotItemData  = endSlot.GetItemData(out int itemCount);
+                int      endSlotItemCount = itemCount;
 
-            endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
+                // 합치려면 양쪽 아이템 갯수를 더했을 때
+                // 인벤토리 최대 적재량 ( 9개 ) 과 같다면
+                if(_startSlotItemCount + endSlotItemCount <= 9)
+                {
+                    endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
+                    _startSlot.ClearItemSlot();
+                }
+                // 인벤토리 최대 적재량 보다 크다면
+                else
+                {
+                    endSlot.AddItemData(_startSlotItemData, Mathf.Abs(_startSlotItemCount - endSlotItemCount));
+                    _startSlot.RemoveItemData(Mathf.Abs(_startSlotItemCount - endSlotItemCount));
+                }
+            }
+            // 2. 비어있지 않았는데 서로 아이템이 다른 경우 (재료든 장비든 뭐든)
+            else
+            {
+                // 데이터 스왑
+                ItemData endSlotItemData = endSlot.GetItemData(out int itemCount);
+                endSlot.ClearItemSlot();
 
-            _startSlot.AddItemData(endSlotItemData, itemCount);
+                endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
+
+                _startSlot.AddItemData(endSlotItemData, itemCount);
+            }
         }
         // 드래그 UI 비활성화
         {

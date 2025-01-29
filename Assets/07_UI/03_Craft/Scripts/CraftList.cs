@@ -22,7 +22,7 @@ public class CraftList : MonoBehaviour
 
     // 조합 플래그
     private bool _isPossibleCrafting = false;
-    private int  _possibleItemCount  = int.MinValue;
+    private int  _possibleItemCount  = int.MaxValue;
 
     void Awake()
     {
@@ -54,6 +54,7 @@ public class CraftList : MonoBehaviour
             if(j == count - 1)
             {
                 slot.SetData(CraftListItemSlot.Type.ResultSlot, _data.Name, 1);
+                slot.SetRecipe(_recipe);
             }
             else if (j == count - 2)
             {
@@ -112,7 +113,7 @@ public class CraftList : MonoBehaviour
             if (itemCountInCraftItemSlot >= needItemCount)
             {
                 // 그렇다면 결과물을 몇 개 까지 만들 수 있을지 계산
-                if(_possibleItemCount <= itemCountInCraftItemSlot / needItemCount)
+                if(_possibleItemCount >= itemCountInCraftItemSlot / needItemCount)
                 {
                     _possibleItemCount = itemCountInCraftItemSlot / needItemCount;
                 }
@@ -122,6 +123,7 @@ public class CraftList : MonoBehaviour
             else
             {
                 _isPossibleCrafting = false;
+                break;
             }
         }
 
@@ -131,9 +133,13 @@ public class CraftList : MonoBehaviour
         {
             SetCount();
         }
-
-        _possibleItemCount  = int.MinValue;
-        _isPossibleCrafting = false;
+        else
+        {
+            _possibleItemCount = int.MaxValue;
+            _isPossibleCrafting = false;
+            _mask.color = new Color(0, 0, 0, 0.7f);
+            _craftItemSlotList[_craftItemSlotList.Count - 1].CraftLock();
+        }
     }
 
     private void SetCount()

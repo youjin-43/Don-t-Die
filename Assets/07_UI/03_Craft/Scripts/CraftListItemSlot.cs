@@ -18,10 +18,13 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
     private TextMeshProUGUI _currentItemCountText;
     private TextMeshProUGUI _needItemCountText;
 
+    private Dictionary<string, int> _recipe = new Dictionary<string, int>();
+
     private string _itemName;
     private int    _currentItemCount;
     private int    _needItemCount;
     private Type   _type;
+    private bool   _possibleCraft = false;
 
     public string GetItemName()
     {
@@ -58,6 +61,11 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    public void SetRecipe(Dictionary<string, int> recipe)
+    {
+        _recipe = recipe;
+    }
+
     public void ResourceCounting(Dictionary<string, int> inventoryDict)
     {
         if(inventoryDict.TryGetValue(_itemName, out int itemCount) == true)
@@ -68,7 +76,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
         else
         {
             _currentItemCount          = 0;
-            _currentItemCountText.text = 0.ToString();
+            _currentItemCountText.text = "0";
         }
     }
 
@@ -90,17 +98,38 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
     {
         if (_type == Type.ResultSlot)
         {
+            _possibleCraft = true;
+        }
+    }
 
+    public void CraftLock()
+    {
+        if (_type == Type.ResultSlot)
+        {
+            _possibleCraft = false;
         }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right && _type == Type.ResultSlot)
+        if (eventData.button == PointerEventData.InputButton.Right && _type == Type.ResultSlot && _possibleCraft == true)
         {
-            
+            ItemData currentItemData = DataManager.Instance.ItemData[_itemName];
 
-            DebugController.Log("우클릭이에여");
+            if(InventoryManager.Instance.AddItem(currentItemData) == true)
+            {
+                foreach(var ingredient in _recipe)
+                {
+                    InventoryManager.Instance.RemoveItem(ingredient.Key, ingredient.Value);
+                }
+
+                CraftManager.Instance.UpdateCraftingUI();
+            }
+            // 슬롯이 꽉 찼다면
+            else
+            {
+
+            }
         }
     }
 }
