@@ -9,19 +9,26 @@ public class Rat : MonsterBase
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) // 플레이어가 감지 범위 안으로 들어오면
+        if (monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState)
         {
-            Target = other.transform;
-            OnFlee();
+            if (other.CompareTag("Player")) // 플레이어가 감지 범위 안으로 들어오면
+            {
+                Target = other.transform;
+                OnFlee();
+            }
         }
+
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) // 플레이어가 감지 범위에서 벗어나면 
+        if (monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState)
         {
-            Target = other.transform;
-            OnIdle();
+            if (other.CompareTag("Player")) // 플레이어가 감지 범위에서 벗어나면 
+            {
+                Target = other.transform;
+                OnIdle();
+            }
         }
     }
 }

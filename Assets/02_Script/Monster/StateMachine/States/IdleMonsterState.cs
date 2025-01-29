@@ -28,6 +28,7 @@ public class IdleMonsterState : IMonsterState
     public void EnterState()
     {
         Debug.Log($"{monster.gameObject.name} 이 Idle 상태로 진입!");
+        monsterAnimator.SetBool("IsMoving", false);
         isMoving = false;
         moveTimer = Random.Range(5, moveInterval);
     }

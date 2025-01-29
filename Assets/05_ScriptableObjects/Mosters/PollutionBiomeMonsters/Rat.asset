@@ -16,7 +16,7 @@ MonoBehaviour:
   MyBiomeType: 3
   MoveSpeed: 2
   MoveInterval: 3
-  MaxHP: 120
+  MaxHP: 30
   ChaseOrFleeSpeed: 3
   AttackDamage: 0
   KnockbackForce: 5
