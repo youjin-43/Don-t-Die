@@ -24,13 +24,9 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     void ChangeState(MonsterState newState) => CurrentState = newState;
 
     [Header("Monster Data")]
-    [HideInInspector] public Animator MonsterAnimator; //StateMachine에서 호출되는 속성들 
-    public BiomeType BiomeType; 
-    public float MoveSpeed;
-    public float MoveInterval;
-    public float ChaseSpeed;
+    public MonsterData monsterData;
+    [HideInInspector] public Animator MonsterAnimator;
 
-    [SerializeField] protected MonsterData monsterData; 
     [SerializeField] protected float moveRange = 3f;
     [SerializeField] protected float CurrentHp;
 
@@ -61,11 +57,8 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     {
         MonsterAnimator = GetComponent<Animator>();
         monsterRigidbody = GetComponent<Rigidbody2D>();
-        BiomeType = monsterData.MyBiomeType;
+
         CurrentHp = monsterData.MaxHP;
-        MoveSpeed = monsterData.MoveSpeed;
-        MoveInterval = monsterData.MoveInterval;
-        ChaseSpeed = monsterData.ChaseSpeed;
         knockbackForce = monsterData.KnockbackForce;
         knockbackDuration = monsterData.KnockbackDuration;
 
@@ -144,6 +137,12 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
             if (CurrentHp <= 0) OnDie();
             else ApplyKnockback(); // 넉백 적용
         }    
+    }
+
+    // 아직 사용되는곳 없음! 
+    public bool IsDead()
+    {
+        return monsterStateMachine.CurrentState == monsterStateMachine.dieMonsterState;
     }
 
     private void ApplyKnockback()

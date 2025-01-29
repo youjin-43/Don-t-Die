@@ -20,9 +20,9 @@ public class IdleMonsterState : IMonsterState
     {
         this.monster = monster;
         monsterAnimator = monster.MonsterAnimator;
-        biomeType = monster.BiomeType;
-        moveSpeed = monster.MoveSpeed;
-        moveInterval = monster.MoveInterval;
+        biomeType = monster.monsterData.MyBiomeType;
+        moveSpeed = monster.monsterData.MoveSpeed;
+        moveInterval = monster.monsterData.MoveInterval;
     }
 
     public void EnterState()

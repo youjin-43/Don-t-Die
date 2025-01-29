@@ -14,7 +14,7 @@ public class ChaseMonsterState : IMonsterState
     {
         this.monster = monster;
         monsterAnimator = monster.MonsterAnimator;
-        chaseSpeed = monster.ChaseSpeed;
+        chaseSpeed = monster.monsterData.ChaseSpeed;
     }
 
 
