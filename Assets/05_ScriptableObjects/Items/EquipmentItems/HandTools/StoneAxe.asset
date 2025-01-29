@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: StoneAxe
-  Prefab: {fileID: 0}
-  Image: {fileID: 0}
+  Prefab: {fileID: 160519988169749028, guid: 911514f843a40694187e05eb10a3b194, type: 3}
+  Image: {fileID: 21300000, guid: 396d283a341ef3e45b8b0ded781fb171, type: 3}
   IsCountable: 0
   MaxCountSize: 1
   equipSlot: 2
-  maxDurability: 0
-  currentDurability: 0
+  maxDurability: 10
+  currentDurability: 10
   availableTypes: 02000000
   atk: 12.5

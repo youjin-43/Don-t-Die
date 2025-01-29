@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CraftCategory : MonoBehaviour
 {
     private GameObject _scrollView;           // 조합식들을 담는 Parent
     private GameObject _categorySelectImage;  // 클릭 됐는지 확인하기 위한 오브젝트
     
-    private List<CraftList> _craftLists       = new List<CraftList>(); // 조합식들 담아놓을 컨테이너
+    private List<CraftList>    _craftLists       = new List<CraftList>(); // 조합식들 담아놓을 컨테이너
     private List<CraftingData> _craftingDataList = new List<CraftingData>(); // 조합식들 데이터를 담아놓을 컨테이너
 
     public void Start()
@@ -47,6 +48,14 @@ public class CraftCategory : MonoBehaviour
             craftList.AddCraftItemSlot(craftList.transform.GetChild(0).transform, craftItemSlotPrefab, _craftingDataList[i]);
 
             _craftLists.Add(craftList);
+        }
+    }
+
+    public void ResourceCounting(Dictionary<string, int> inventoryDict)
+    {
+        foreach(var craftList in _craftLists)
+        {
+            craftList.ResourceCounting(inventoryDict);
         }
     }
 }

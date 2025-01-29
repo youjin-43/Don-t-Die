@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1303619f4b9d5aa4794d8d87c0d709a7, type: 3}
+  m_Name: BoneBottle
+  m_EditorClassIdentifier: 
+  ItemType: 1
+  Name: BoneBottle
+  Prefab: {fileID: 2349704539360168265, guid: df188096c06cfe149b3573bea33eddfc, type: 3}
+  Image: {fileID: 21300000, guid: fe081beed304260429b1735fd4107377, type: 3}
+  IsCountable: 0
+  MaxCountSize: 1
+  equipSlot: 2
+  maxDurability: 10
+  currentDurability: 10
+  availableTypes: 
+  atk: 0

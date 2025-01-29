@@ -34,8 +34,10 @@ public class EquipmentManager : MonoBehaviour
     // 장비 슬롯 최대 갯수
     int _initialEquipmentSize = 3;
 
-    // 장비 슬롯을 담아놓을 컨테이너
-    Dictionary<string, EquipmentItemSlot> _equipmentSlot = new Dictionary<string, EquipmentItemSlot>();
+    // 장비 슬롯을 담아놓을 변수들
+    EquipmentItemSlot _toolItemSlot;
+    EquipmentItemSlot _headItemSlot;
+    EquipmentItemSlot _chestItemSlot;
 
     private void Awake()
     {
@@ -46,71 +48,84 @@ public class EquipmentManager : MonoBehaviour
     {
         // 도구 슬롯
         {
-            GameObject go = Instantiate(EquipmentSlotPrefab, transform);
-
-            _equipmentSlot.Add("Hand", go.GetComponent<EquipmentItemSlot>());
+            _toolItemSlot = Instantiate(EquipmentSlotPrefab, transform).GetComponent<EquipmentItemSlot>();
         }
         // 투구 슬롯
         {
-            GameObject go = Instantiate(EquipmentSlotPrefab, transform);
-
-            _equipmentSlot.Add("Head", go.GetComponent<EquipmentItemSlot>());
+            _headItemSlot = Instantiate(EquipmentSlotPrefab, transform).GetComponent<EquipmentItemSlot>();
         }
         // 갑옷 슬롯
         {
-            GameObject go = Instantiate(EquipmentSlotPrefab, transform);
-
-            _equipmentSlot.Add("Chest", go.GetComponent<EquipmentItemSlot>());
+            _chestItemSlot = Instantiate(EquipmentSlotPrefab, transform).GetComponent<EquipmentItemSlot>();
         }
     }
 
     /// <summary>
     /// 장비창에 있는 장비를 가져오는 함수
     /// </summary>
-    /// <param name="parts">Head, Hand, Chest</param>
-    public ToolItemData GetCurrentTool(string parts)
+    public ToolItemData GetCurrentTool()
     {
-        if(_equipmentSlot[parts] != null)
-        {
-            return _equipmentSlot[parts].GetItemData() as ToolItemData;
-        }
+        return _toolItemSlot?.GetItemData() as ToolItemData;
+    }
 
-        return null;
+    /// <summary>
+    /// 장비창에 있는 투구를 가져오는 함수
+    /// </summary>
+    public HeadItemData GetCurrentHead()
+    {
+        return _headItemSlot?.GetItemData() as HeadItemData;
+    }
+
+    /// <summary>
+    /// 장비창에 있는 갑옷을 가져오는 함수
+    /// </summary>
+    public ChestItemData GetCurrentChest()
+    {
+        return _chestItemSlot?.GetItemData() as ChestItemData;
     }
 
     public ItemData EquipItem(ItemData itemData, EquipmentSlot slot)
     {
-        string key = "";
+        ItemData equippedItemData = null;
 
         switch (slot)
         {
             case EquipmentSlot.Hand:
-                key = "Hand";
-                break;
+                {
+                    if(_toolItemSlot != null)
+                    {
+                        equippedItemData = _toolItemSlot.GetItemData();
+                    }
 
+                    _toolItemSlot.AddItemData(itemData);
+
+                    break;
+                }
             case EquipmentSlot.Head:
-                key = "Head";
-                break;
+                {
+                    if (_headItemSlot != null)
+                    {
+                        equippedItemData = _headItemSlot.GetItemData();
+                    }
+
+                    _headItemSlot.AddItemData(itemData);
+
+                    break;
+                }
 
             case EquipmentSlot.Chest:
-                key = "Chest";
-                break;
+                {
+                    if (_chestItemSlot != null)
+                    {
+                        equippedItemData = _chestItemSlot.GetItemData();
+                    }
+
+                    _chestItemSlot.AddItemData(itemData);
+
+                    break;
+                }
         }
 
-        if(_equipmentSlot[key].IsEmpty() == true)
-        {
-            _equipmentSlot[key].AddItemData(itemData);
-
-            return null;
-        }
-        // 이미 장비하고 있다면
-        else
-        {
-            ItemData equippedItemData = _equipmentSlot[key].GetItemData();
-
-            _equipmentSlot[key].AddItemData(itemData);
-
-            return equippedItemData;
-        }
+        return equippedItemData;
     }
 }
