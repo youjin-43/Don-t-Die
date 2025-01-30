@@ -57,4 +57,9 @@ public class DamageableResourceNode : ResourceNode,IDamageable
         if (currentHealth <= 0) Harvest();
 
     }
+
+    public bool IsDead()
+    {
+        throw new System.NotImplementedException();
+    }
 }
