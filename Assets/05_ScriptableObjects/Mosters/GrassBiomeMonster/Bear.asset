@@ -17,7 +17,7 @@ MonoBehaviour:
   MoveSpeed: 2
   MoveInterval: 5
   MaxHP: 30
-  ChaseSpeed: 3
+  ChaseOrFleeSpeed: 4
   AttackDamage: 30
   KnockbackForce: 5
   KnockbackDuration: 1

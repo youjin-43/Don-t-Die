@@ -43,8 +43,8 @@ public class PlayerFishingAction : MonoBehaviour
     
     void Update()
     {
-        // if (도구 낀 상태로 앞에 물이 있으면)
-        if (!isBobberThrown && !isPulling)
+        ToolItemData currentTool = EquipmentManager.Instance.GetCurrentTool();
+        if (currentTool != null && currentTool.AvailableTypes.Contains(ObjectType.Fishing) && !isBobberThrown && !isPulling)
         {
             if ((Input.GetMouseButtonDown(0)))
             {

@@ -24,13 +24,9 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     void ChangeState(MonsterState newState) => CurrentState = newState;
 
     [Header("Monster Data")]
-    [HideInInspector] public Animator MonsterAnimator; //StateMachine에서 호출되는 속성들 
-    public BiomeType BiomeType; 
-    public float MoveSpeed;
-    public float MoveInterval;
-    public float ChaseSpeed;
+    public MonsterData monsterData;
+    [HideInInspector] public Animator MonsterAnimator;
 
-    [SerializeField] protected MonsterData monsterData; 
     [SerializeField] protected float moveRange = 3f;
     [SerializeField] protected float CurrentHp;
 
@@ -39,8 +35,11 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     Rigidbody2D monsterRigidbody;
 
 
-    // 옵저버 패턴을 이용해서 몬스터가 공격받는 순간 특정 State로 transition하도록 구현
+
     #region OnHitEvent
+
+    // 옵저버 패턴을 이용해서 몬스터가 공격받는 순간 특정 State로 transition하도록 구현
+
     public delegate void OnHitEventHandler(Transform attacker);
     public event OnHitEventHandler OnHitEvent;
     public Transform Target; // 공격 or 도망 대상 -> 지금 기획으로는 target이 플레이어가 될 수 밖에 없는데 나중에 확장 가능성을 고려하여 타겟을 설정하도록 함 
@@ -61,11 +60,8 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     {
         MonsterAnimator = GetComponent<Animator>();
         monsterRigidbody = GetComponent<Rigidbody2D>();
-        BiomeType = monsterData.MyBiomeType;
+
         CurrentHp = monsterData.MaxHP;
-        MoveSpeed = monsterData.MoveSpeed;
-        MoveInterval = monsterData.MoveInterval;
-        ChaseSpeed = monsterData.ChaseSpeed;
         knockbackForce = monsterData.KnockbackForce;
         knockbackDuration = monsterData.KnockbackDuration;
 
@@ -75,7 +71,8 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     private void Start()
     {
         SetData(); // 몬스터 기본 데이터 셋팅
-        monsterStateMachine.Initialize(monsterStateMachine.idleMonsterState);
+
+        monsterStateMachine.Initialize(monsterStateMachine.idleMonsterState); // State 설정 
         CurrentState = MonsterState.Idle; // 디버그용
                                           
         OnHitEvent += HandleMonsterHit; // 몬스터의 OnHitEvent를 구독
@@ -132,20 +129,25 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     }
     #endregion
 
-    #region IDamageable
+    #region Damaged(IDamageable)
+
     public virtual void TakeDamage(int damage) // TODO : 선택된 도구의 공격력을 받아오도록 
     {
         if(monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState)
-        {
-            
-            MonsterAnimator.SetTrigger("TakeDamage"); // TODO : 피격 이미지 박쥐 참고해서 좀 수정하면 좋을것 같음
-                                      
-            ApplyKnockback(); // 넉백 적용
-
+        {   
             CurrentHp -= damage;
-            Debug.Log($"{transform.name} took {damage} damage -> Current HP : {CurrentHp}");
+            TriggerDamagedAnimaiton(); // TODO : 피격 이미지 박쥐 참고해서 좀 수정하면 좋을것 같음
+            //DebugController.Log($"{transform.name} took {damage} damage -> Current HP : {CurrentHp} | called in MonsterBase");
+
             if (CurrentHp <= 0) OnDie();
+            else ApplyKnockback(); // 넉백 적용
         }    
+    }
+
+    // 아직 사용되는곳 없음! 
+    public bool IsDead()
+    {
+        return monsterStateMachine.CurrentState == monsterStateMachine.dieMonsterState;
     }
 
     private void ApplyKnockback()
@@ -169,9 +171,9 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     #endregion
 
     #region IItemDroppable
+
     public void DropItems()
     {
-        Debug.Log("DropItems 호출됨 "); // TODO : 아 왜 드랍아이템 안돼!!
         foreach (var item in monsterData.DropItems)
         {
             int count = UnityEngine.Random.Range(item.minAmount, item.maxAmount + 1);
@@ -180,36 +182,56 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
             {
                 Item go = PoolManager.Instance.InstantiateItem(item.data);
 
-                //플레이어 방향 반대쪽으로 흩뿌려지도록 
-                Vector3 dir = transform.position * 2 + GameManager.Instance.GetPlayerPos() + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
-                go.Spread(transform.position, dir, UnityEngine.Random.Range(2f, 2.5f));
+                // 플레이어 반대 방향으로 뿌리도록 
+                Vector3 dir = transform.position +
+                    (transform.position - GameManager.Instance.GetPlayerPos()
+                    + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)));
+
+                go.Spread(transform.position, dir, UnityEngine.Random.Range(2.5f, 3f));
                 count--;
             }
         }
     }
+
     #endregion
 
-    //#region Flee State
+    #region Animation
 
-    //protected virtual void FleeBehavior(Transform playerTransform)
-    //{
-    //    Vector3 direction = (transform.position - playerTransform.position).normalized;
+    // 4방향인 몬스터가 있고 2방향인 몬스터가 있어서 애니메이션 컨트롤 로직이 달라 몬스터별로 함수를 override 해서 사옹하도록 함
+ 
+    string isMoving = "IsMoving";
+    string attack = "Attack";
+    string takeDamage = "TakeDamage";
+    string Die = "Die";
 
-    //    // 애니메이션 설정
-    //    monsterAnimator.SetBool("IsMoving", true);
-    //    monsterAnimator.SetFloat("dirX", direction.x);
-    //    monsterAnimator.SetFloat("dirY", direction.y);
 
-    //    // 플레이어 반대 방향으로 이동
-    //    transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, monsterData.MoveSpeed * Time.deltaTime);
+    public void SetIsMovingAnimation(bool value)
+    {
+        MonsterAnimator.SetBool(isMoving, value);
+    }
 
-    //    if (Vector3.Distance(transform.position, playerTransform.position) > moveRange * 2)
-    //    {
-    //        ChangeState(MonsterState.Idle);
-    //    }
-    //}
+    // 4방향인건 override 해서 사
+    public virtual void SetDirnimaiton(float dir_x, float dir_y)
+    {
+        if (dir_x < 0) transform.localScale = new Vector3(-1, 1, 1);
+        if (dir_x > 0) transform.localScale = new Vector3(1, 1, 1);
+    }
 
-    //#endregion
+    public void TriggerAttackAnimaiton()
+    {
+        MonsterAnimator.SetTrigger(attack);
+    }
+
+    public void TriggerDamagedAnimaiton()
+    {
+        MonsterAnimator.SetTrigger(takeDamage);
+    }
+
+    public void SetDieAnimation()
+    {
+        MonsterAnimator.SetTrigger(Die);
+    }
+    #endregion
 
     #region Utility
 
@@ -232,5 +254,6 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         Vector3 currentPos = transform.position;
         return new Vector3(currentPos.x + randomX, currentPos.y + randomY, currentPos.z);
     }
+
     #endregion
 }

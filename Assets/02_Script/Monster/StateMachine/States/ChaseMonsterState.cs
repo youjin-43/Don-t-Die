@@ -5,22 +5,21 @@ using UnityEngine;
 public class ChaseMonsterState : IMonsterState
 {
     MonsterBase monster;
-    Animator monsterAnimator;
+
     Transform target;
     float chaseSpeed;
-
 
     public ChaseMonsterState(MonsterBase monster)
     {
         this.monster = monster;
-        monsterAnimator = monster.MonsterAnimator;
-        chaseSpeed = monster.ChaseSpeed;
+        chaseSpeed = monster.monsterData.ChaseOrFleeSpeed;
     }
 
 
     public void EnterState()
     {
         Debug.Log($"{monster.gameObject.name} 이 Chase 상태로 진입!");
+
         target = monster.Target;
     }
 
@@ -31,7 +30,7 @@ public class ChaseMonsterState : IMonsterState
     public void UpdateState()
     {
         ChaseTarget();
-        HandleAnimation();
+        HandleAnimation(); // TODO : 이거 꼭 매프레임 파라미터를 설정해야하나..?
     }
 
     void ChaseTarget()
@@ -47,9 +46,8 @@ public class ChaseMonsterState : IMonsterState
     {
         // 애니메이션 설정
         Vector3 dir = target.position - monster.transform.position;
-        monsterAnimator.SetBool("IsMoving", true);
-        monsterAnimator.SetFloat("dirX", dir.x);
-        monsterAnimator.SetFloat("dirY", dir.y);
+        monster.SetIsMovingAnimation(true);
+        monster.SetDirnimaiton(dir.x, dir.y);
     }
 
 

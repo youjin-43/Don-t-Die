@@ -42,6 +42,8 @@ public class StatusManager : MonoBehaviour
     private float _currentThirstyPoint = 75f;
     private float _currentTemperture;
 
+    public float CurrentHungryPoint { get { return _currentHungryPoint; } }
+    public float CurrentThirstyPoint { get { return _currentThirstyPoint; } }
 
     [Range(0f, 1f)]
     public float Temperature = 1f;
