@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 8447975895884736815}
   - component: {fileID: 5495906691170280439}
   - component: {fileID: 5706483880056283610}
+  - component: {fileID: 639041255283887235}
   - component: {fileID: 9006268405667800640}
   - component: {fileID: 924179375020231119}
   - component: {fileID: 5033660531289686608}
@@ -356,6 +357,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerState: 0
+  isDead: 0
+--- !u!114 &639041255283887235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6399303531053045431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272cedfecc8a7435da49f5793d5aa2fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHealthPoint: 0
 --- !u!114 &9006268405667800640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,8 +699,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
