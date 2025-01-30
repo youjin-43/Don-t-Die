@@ -180,6 +180,8 @@ MonoBehaviour:
   monsterData: {fileID: 11400000, guid: 266d885b4ebe54707ae738460623c6f9, type: 2}
   moveRange: 2
   CurrentHp: 0
+  knockbackForce: 0
+  knockbackDuration: 0
   Target: {fileID: 0}
 --- !u!50 &7089181861186380198
 Rigidbody2D:

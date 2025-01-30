@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4046f7e2b1cc9046a0987e8a80ecdc6, type: 3}
+  m_Name: Carrier
+  m_EditorClassIdentifier: 
+  ItemType: 4
+  Name: Carrier
+  Prefab: {fileID: 1203413875988446995, guid: 671273974a9755a44afb53615f23f13a, type: 3}
+  Image: {fileID: 21300000, guid: 277b16667e3e8334aa72eced23ab5b94, type: 3}
+  IsCountable: 0
+  MaxCountSize: 1
+  TestData: 0

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 74e14a9e8a91afd4d810695e425b1dc0
+guid: c136756366d455a459903affc3f19f93
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7345348705026113341
-    second: StoneBottleNone_0
+      213: -2315648145797253644
+    second: StoneBottleHigh_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StoneBottleNone_0
+      name: StoneBottleHigh_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d3ff47adabbefe560800000000000000
-      internalID: 7345348705026113341
+      spriteID: 4f576fcb74a2ddfd0800000000000000
+      internalID: -2315648145797253644
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      StoneBottleNone_0: 7345348705026113341
+      StoneBottleHigh_0: -2315648145797253644
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

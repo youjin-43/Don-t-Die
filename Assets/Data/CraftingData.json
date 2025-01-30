@@ -9,7 +9,7 @@
       "Recipe": "Bone_1"
     },
     {
-      "Name": "BoneAx",
+      "Name": "BoneAxe",
       "NameKR": "뼈도끼",
       "Category": "Bone",
       "NumOfMaterial": "3",
@@ -17,7 +17,7 @@
       "Recipe": "Bone_1+Wood_1+Rope_1"
     },
     {
-      "Name": "BonePickax",
+      "Name": "BonePickaxe",
       "NameKR": "뼈곡괭이",
       "Category": "Bone",
       "NumOfMaterial": "3",
@@ -33,7 +33,7 @@
       "Recipe": "Bone_1+Wood_1+Rope_1"
     },
     {
-      "Name": "BoneHelmet",
+      "Name": "BoneHead",
       "NameKR": "뼈투구",
       "Category": "Bone",
       "NumOfMaterial": "2",
@@ -41,7 +41,7 @@
       "Recipe": "Bone_2+Rope_2"
     },
     {
-      "Name": "BoneArmor",
+      "Name": "BoneChest",
       "NameKR": "뼈갑옷",
       "Category": "Bone",
       "NumOfMaterial": "2",
@@ -57,7 +57,7 @@
       "Recipe": "Gold_1"
     },
     {
-      "Name": "GoldAx",
+      "Name": "GoldAxe",
       "NameKR": "금도끼",
       "Category": "Gold",
       "NumOfMaterial": "3",
@@ -65,7 +65,7 @@
       "Recipe": "Gold_1+Wood_1+Rope_1"
     },
     {
-      "Name": "GoldPickax",
+      "Name": "GoldPickaxe",
       "NameKR": "금곡괭이",
       "Category": "Gold",
       "NumOfMaterial": "3",
@@ -81,7 +81,7 @@
       "Recipe": "Gold_1+Wood_1+Rope_1"
     },
     {
-      "Name": "GoldHelmet",
+      "Name": "GoldHead",
       "NameKR": "금투구",
       "Category": "Gold",
       "NumOfMaterial": "2",
@@ -89,7 +89,7 @@
       "Recipe": "Gold_2+Rope_2"
     },
     {
-      "Name": "GoldArmor",
+      "Name": "GoldChest",
       "NameKR": "금갑옷",
       "Category": "Gold",
       "NumOfMaterial": "2",
@@ -105,7 +105,7 @@
       "Recipe": "Iron_1"
     },
     {
-      "Name": "IronAx",
+      "Name": "IronAxe",
       "NameKR": "철도끼",
       "Category": "Iron",
       "NumOfMaterial": "3",
@@ -113,7 +113,7 @@
       "Recipe": "Iron_1+Wood_1+Rope_1"
     },
     {
-      "Name": "IronPickax",
+      "Name": "IronPickaxe",
       "NameKR": "철곡괭이",
       "Category": "Iron",
       "NumOfMaterial": "3",
@@ -129,7 +129,7 @@
       "Recipe": "Iron_1+Wood_1+Rope_1"
     },
     {
-      "Name": "IronHelmet",
+      "Name": "IronHeed",
       "NameKR": "철투구",
       "Category": "Iron",
       "NumOfMaterial": "2",
@@ -137,7 +137,7 @@
       "Recipe": "Iron_2+Rope_2"
     },
     {
-      "Name": "IronArmor",
+      "Name": "IronChest",
       "NameKR": "철갑옷",
       "Category": "Iron",
       "NumOfMaterial": "2",
@@ -153,7 +153,7 @@
       "Recipe": "Stone_1"
     },
     {
-      "Name": "StoneAx",
+      "Name": "StoneAxe",
       "NameKR": "돌도끼",
       "Category": "Stone",
       "NumOfMaterial": "3",
@@ -161,7 +161,7 @@
       "Recipe": "Stone_1+Wood_1+Rope_1"
     },
     {
-      "Name": "StonePickax",
+      "Name": "StonePickaxe",
       "NameKR": "돌곡괭이",
       "Category": "Stone",
       "NumOfMaterial": "3",
@@ -177,7 +177,7 @@
       "Recipe": "Stone_1+Wood_1+Rope_1"
     },
     {
-      "Name": "StoneHelmet",
+      "Name": "StoneHead",
       "NameKR": "돌투구",
       "Category": "Stone",
       "NumOfMaterial": "2",
@@ -185,7 +185,7 @@
       "Recipe": "Stone_2+Rope_2"
     },
     {
-      "Name": "StoneArmor",
+      "Name": "StoneChest",
       "NameKR": "돌갑옷",
       "Category": "Stone",
       "NumOfMaterial": "2",
@@ -257,7 +257,7 @@
       "Recipe": "Wood_1"
     },
     {
-      "Name": "WoodAx",
+      "Name": "WoodAxe",
       "NameKR": "나무도끼",
       "Category": "Wood",
       "NumOfMaterial": "2",
@@ -265,7 +265,7 @@
       "Recipe": "Wood_2+Rope_1"
     },
     {
-      "Name": "WoodPickax",
+      "Name": "WoodPickaxe",
       "NameKR": "나무곡괭이",
       "Category": "Wood",
       "NumOfMaterial": "2",
@@ -281,15 +281,7 @@
       "Recipe": "Wood_2+Rope_1"
     },
     {
-      "Name": "SlingShot",
-      "NameKR": "새총",
-      "Category": "Wood",
-      "NumOfMaterial": "2",
-      "NeedCraftingTable": "false",
-      "Recipe": "Wood_1+Rope_1"
-    },
-    {
-      "Name": "WoodHelmet",
+      "Name": "WoodHead",
       "NameKR": "나무투구",
       "Category": "Wood",
       "NumOfMaterial": "2",
@@ -297,7 +289,7 @@
       "Recipe": "Wood_2+Rope_2"
     },
     {
-      "Name": "WoodArmor",
+      "Name": "WoodChest",
       "NameKR": "나무갑옷",
       "Category": "Wood",
       "NumOfMaterial": "2",
