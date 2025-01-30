@@ -5,6 +5,7 @@ public class Item : MonoBehaviour
 {
     [SerializeField] AnimationCurve curve;
     [SerializeField] public ItemData ItemData;
+    [SerializeField] int currentDurability;
 
     void Start()
     {

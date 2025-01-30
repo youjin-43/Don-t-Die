@@ -20,7 +20,8 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
     private Transform    _itemDurability;
     private Image        _itemDurabilityGauge;
     private Image        _itemSelectImage;
-    private int          _currentItemCount;   
+    private int          _currentItemCount;
+    private int          _currentDurability;
 
     // 드래깅 데이터
     static bool _isDragging = false;
