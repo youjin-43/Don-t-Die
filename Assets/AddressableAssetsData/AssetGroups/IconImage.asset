@@ -381,20 +381,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ec8edf9a644ebff428787cf2718451e9
-    m_Address: BoneBottleHigh
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f06e25167a6d9b94eb57dff3d0de31db
     m_Address: IronSword
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f0b9de6b45095ab40a6ed9bfc07aa56a
-    m_Address: WoodBottleHigh
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage

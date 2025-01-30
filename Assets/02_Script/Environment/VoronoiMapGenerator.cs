@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.Build.Pipeline.Tasks;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 [Serializable]
 public class MapData
@@ -144,10 +145,11 @@ public class VoronoiMapGenerator : MonoBehaviour
         }
 
         ObjectGenerator objectGenerator = new ObjectGenerator(EnvironmentManager.Instance.biomeMap, mapWidth, mapHeight); // biome 정보에 맞춰서 오브젝트를 생성하기 때문에 파라미터로 건네준다.
-        List<ResourceObject> objects = objectGenerator.Generate();
+        List<ResourceObject> resourceObjects = objectGenerator.GetResourceObjects();
+        List<InstallableObject> installableObjects = objectGenerator.GetInstallableObjects();
         EnvironmentManager.Instance.objectMap = objectGenerator.objectMap;
 
-        foreach (ResourceObject obj in objects)
+        foreach (ResourceObject obj in resourceObjects)
         {
             GameObject go = InstantiateObject(obj);
             obj.gameObject = go;
@@ -160,6 +162,14 @@ public class VoronoiMapGenerator : MonoBehaviour
                 obj.isDamageable = true;
             }
             EnvironmentManager.Instance.natureResources.Add(obj.gameObject.transform.position, obj);
+        }
+
+        foreach(InstallableObject obj in installableObjects)
+        {
+            Vector3 position = landTilemap.GetCellCenterWorld(new Vector3Int(obj.position.x, obj.position.y));
+            GameObject go = PoolManager.Instance.InstantiatePoolObject(DataManager.Instance.ItemData[obj.dataName].Prefab, rootParent: objectParent.transform);
+            go.transform.position = position;
+            obj.gameObject = go;
         }
     }
 
