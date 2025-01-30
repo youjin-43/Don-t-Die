@@ -49,6 +49,7 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-ccf7510250a50eb4fa1f3d0b02c190ef-908489141-0
         - globalObjectIdString: GlobalObjectId_V1-2-ccf7510250a50eb4fa1f3d0b02c190ef-1563453926-0
         - globalObjectIdString: GlobalObjectId_V1-2-ccf7510250a50eb4fa1f3d0b02c190ef-6399303531053045431-741687840
+        - globalObjectIdString: GlobalObjectId_V1-2-ccf7510250a50eb4fa1f3d0b02c190ef-1851709859-0
         values:
         - colorIndex: 0
           iconNameOrGuid: Camera Icon
@@ -68,6 +69,8 @@ MonoBehaviour:
           iconNameOrGuid: Light Icon
         - colorIndex: 7
           iconNameOrGuid: 
+        - colorIndex: 6
+          iconNameOrGuid: Canvas Icon
     - goDatas_byGlobalId:
         keys:
         - globalObjectIdString: GlobalObjectId_V1-2-2473683d200294ff59f79c241951402b-1443246693-0

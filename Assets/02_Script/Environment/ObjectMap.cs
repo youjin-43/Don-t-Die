@@ -7,6 +7,7 @@ public enum ObjectType
     Tree,
     Plant,
     Mineral,
+    Installable,
     Fishing
 }
 

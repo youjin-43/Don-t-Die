@@ -43,7 +43,8 @@ public class PlayerFishingAction : MonoBehaviour
     
     void Update()
     {
-        if (EquipmentManager.Instance.GetCurrentTool().AvailableTypes.Contains(ObjectType.Fishing) && !isBobberThrown && !isPulling)
+        ToolItemData currentTool = EquipmentManager.Instance.GetCurrentTool();
+        if (currentTool != null && currentTool.AvailableTypes.Contains(ObjectType.Fishing) && !isBobberThrown && !isPulling)
         {
             if ((Input.GetMouseButtonDown(0)))
             {
