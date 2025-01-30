@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d44a951f04ff84e6880bebd1f684fbcd, type: 3}
-  m_Name: Bear
+  m_Name: Rat
   m_EditorClassIdentifier: 
-  MonsterName: Bear
-  MyBiomeType: 1
+  MonsterName: Rat
+  MyBiomeType: 3
   MoveSpeed: 2
-  MoveInterval: 5
+  MoveInterval: 3
   MaxHP: 30
-  ChaseOrFleeSpeed: 4
-  AttackDamage: 30
+  ChaseOrFleeSpeed: 3
+  AttackDamage: 0
   KnockbackForce: 5
   KnockbackDuration: 1
   DropItems:

@@ -12,11 +12,10 @@ public class MonsterData : ScriptableObject
     public float MoveSpeed;
     public float MoveInterval;
 
-    public float MaxHP;
-
     [Space(10f)]
     [Header("Hit")]
-    public float ChaseSpeed;
+    public float MaxHP;
+    public float ChaseOrFleeSpeed;
     public float AttackDamage;
 
     [Space(10f)]

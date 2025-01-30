@@ -35,5 +35,10 @@ public class PlayerAnimator : MonoBehaviour
         transform.localScale = new Vector3(1, 1, 1);
     }
 
+    public void TriggerDieAnimation()
+    {
+        playerAnimator.SetTrigger("Die");
+    }
+
 
 }

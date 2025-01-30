@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d44a951f04ff84e6880bebd1f684fbcd, type: 3}
-  m_Name: Bear
+  m_Name: Bat
   m_EditorClassIdentifier: 
-  MonsterName: Bear
-  MyBiomeType: 1
-  MoveSpeed: 2
-  MoveInterval: 5
-  MaxHP: 30
+  MonsterName: Bat
+  MyBiomeType: 3
+  MoveSpeed: 3
+  MoveInterval: 2
+  MaxHP: 60
   ChaseOrFleeSpeed: 4
-  AttackDamage: 30
-  KnockbackForce: 5
+  AttackDamage: 10
+  KnockbackForce: 10
   KnockbackDuration: 1
   DropItems:
   - data: {fileID: 11400000, guid: 62b608b058674f348a329c683464ff7a, type: 2}
-    minAmount: 1
-    maxAmount: 3
+    minAmount: 3
+    maxAmount: 5

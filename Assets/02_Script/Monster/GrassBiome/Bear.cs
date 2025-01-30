@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class Bear : MonsterBase
 {
+
     // 공격받으면 상태 전환
     protected override void HandleMonsterHit(Transform attacker)
     {
-        OnChase(); 
+        if (monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState) OnChase();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -30,6 +31,12 @@ public class Bear : MonsterBase
         {
             OnChase();
         }
+    }
+
+    public override void SetDirnimaiton(float dir_x, float dir_y)
+    {
+        MonsterAnimator.SetFloat("dirX", dir_x);
+        MonsterAnimator.SetFloat("dirY", dir_y);
     }
 
 
