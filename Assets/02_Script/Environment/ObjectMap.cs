@@ -6,7 +6,8 @@ public enum ObjectType
     Unknown,
     Tree,
     Plant,
-    Mineral
+    Mineral,
+    Fishing
 }
 
 [Serializable]
