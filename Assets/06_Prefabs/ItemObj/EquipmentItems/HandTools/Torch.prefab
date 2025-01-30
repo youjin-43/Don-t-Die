@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3161641014339942126}
   - component: {fileID: 2883185744108152516}
   - component: {fileID: 4287370779455369797}
+  - component: {fileID: 2301438714932842314}
   m_Layer: 3
   m_Name: Torch
   m_TagString: Item
@@ -124,3 +125,22 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.25
+--- !u!114 &2301438714932842314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986088506100351116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdbe7d44ec9f0af4eb192b398c9c8a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ItemData: {fileID: 11400000, guid: 0345136949176d84ba94771bddd06610, type: 2}

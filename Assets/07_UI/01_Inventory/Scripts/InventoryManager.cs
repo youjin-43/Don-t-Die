@@ -43,6 +43,18 @@ public class InventoryManager : MonoBehaviour
     // 슬롯에 뭐가 들어가 있는지 확인하기 위한 컨테이너
     private Dictionary<string, int> _inventoryDict = new Dictionary<string, int>();
 
+    // 설치아이템을 겹쳐서 설치하지 못하게 하기 위해 위치를 캐싱해놓음
+    private List<Vector3> _installedItemPosition = new List<Vector3>();
+
+
+    // 슬롯 카운터 이미지
+    [SerializeField]
+    public List<Sprite> _itemCountImages = new List<Sprite>();
+
+
+
+
+
 
 
     // 드래깅용 변수
@@ -186,21 +198,21 @@ public class InventoryManager : MonoBehaviour
 
     public bool AddItem(ItemData itemData)
     {
-        if(itemData as ToolItemData)
-        {
-            for (int i = 0; i < _maxInventorySize; ++i)
-            {
-                // 슬롯이 비어있다면
-                if (_inventorySlot[i].IsEmpty() == true)
-                {
-                    AddItemToSlot(itemData, i);
-                    return true;
-                }
-            }
-            return false;
-        }
-        else
-        {
+        //if(itemData as ToolItemData)
+        //{
+        //    for (int i = 0; i < _maxInventorySize; ++i)
+        //    {
+        //        // 슬롯이 비어있다면
+        //        if (_inventorySlot[i].IsEmpty() == true)
+        //        {
+        //            AddItemToSlot(itemData, i);
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
+        //else
+        //{
             for (int i = 0; i < _maxInventorySize; ++i)
             {
                 // 슬롯이 비어있다면
@@ -261,7 +273,7 @@ public class InventoryManager : MonoBehaviour
 
             // 꽉 참
             return false;
-        }
+        //}
     }
 
     private bool SearchFromFirstSlot(ItemData itemData, out int value)
@@ -363,7 +375,7 @@ public class InventoryManager : MonoBehaviour
                 else
                 {
                     endSlot.AddItemData(_startSlotItemData, Mathf.Abs(_startSlotItemCount - endSlotItemCount));
-                    _startSlot.RemoveItemData(Mathf.Abs(_startSlotItemCount - endSlotItemCount));
+                    _startSlot.AddItemData(_startSlotItemData, Mathf.Abs(9 - (_startSlotItemCount - endSlotItemCount)));
                 }
             }
             // 2. 비어있지 않았는데 서로 아이템이 다른 경우 (재료든 장비든 뭐든)
@@ -409,6 +421,7 @@ public class InventoryManager : MonoBehaviour
         {
             _inventoryDict[_startSlotItemData.Name] -= _startSlotItemCount;
 
+            _startSlot.ClearItemSlot();
             _startSlot          = null;
             _startSlotItemData  = null;
             _startSlotItemCount = 0;
@@ -457,5 +470,56 @@ public class InventoryManager : MonoBehaviour
         _inventoryDict[edibleItemData.Name] -= 1;
 
         edibleItemData.Execute();
+    }
+
+    public bool InstallItem(InstallableItemData installableItemData)
+    {
+        float installDistance = 1f;
+
+        Vector3 right = new Vector3(_playerTransform.localScale.x, 0f, 0f);
+
+        Vector3 position = _playerTransform.position + installDistance * right;
+
+        if(avoidOverlap(position) == false)
+        {
+            // 설치하려는 위치에 이미 아이템이 설치되어 있음
+            // TODO : 
+
+            return false;
+        }
+        else
+        {
+            _inventoryDict[installableItemData.Name] -= 1;
+
+            _installedItemPosition.Add(position);
+
+            GameObject go = Instantiate(installableItemData.Prefab, position, Quaternion.identity);
+
+            go.GetComponent<Item>().SetItemData(installableItemData);
+
+            return true;
+        }
+    }
+
+    private bool avoidOverlap(Vector3 position)
+    {
+        // 이 방법은
+        // 설치가 되었다가 회수가 되었을 때
+        // 해당 위치가 계속 컨테이너에 남아있기 때문에 오류가 발생함
+
+        float delta = 1f;
+
+        foreach(var installedItemPosition in _installedItemPosition)
+        {
+            if (installedItemPosition.x + delta >= position.x &&
+                installedItemPosition.x - delta <= position.x &&
+                installedItemPosition.y + delta >= position.y &&
+                installedItemPosition.y - delta <= position.y    )
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

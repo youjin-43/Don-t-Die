@@ -13,8 +13,6 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
     private int      _maxItemCount;
 
     // 슬롯 데이터
-    [SerializeField] 
-    private List<Sprite> _itemCountImages = new List<Sprite>();
     private Image        _itemImage;
     private Image        _itemCountImage;
     private Transform    _itemDurability;
@@ -136,7 +134,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
         // 아이템 스택 표시
         {
             _itemCountImage.gameObject.SetActive(true);
-            _itemCountImage.sprite = _itemCountImages[_currentItemCount];
+            _itemCountImage.sprite = InventoryManager.Instance._itemCountImages[_currentItemCount];
         }
         // 내구도 표시는 비활성
         {
@@ -254,7 +252,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
 
                         _currentItemCount -= 1;
 
-                        _itemCountImage.sprite = _itemCountImages[_currentItemCount];
+                        _itemCountImage.sprite = InventoryManager.Instance._itemCountImages[_currentItemCount];
 
                         if(_currentItemCount == 0)
                         {
@@ -284,6 +282,14 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
 
                         break;
                     }
+                case ItemType.Installable:
+                    {
+                        if(InventoryManager.Instance.InstallItem(_itemData as InstallableItemData) == true)
+                        {
+                            ClearItemSlot();
+                        }
+                    }
+                    break;
             }
         }
     }
