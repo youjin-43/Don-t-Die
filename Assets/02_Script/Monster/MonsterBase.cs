@@ -74,7 +74,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         Debug.Log(monsterStateMachine);
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         SetData(); // 몬스터 기본 데이터 셋팅
 

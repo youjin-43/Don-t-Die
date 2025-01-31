@@ -375,6 +375,7 @@ MonoBehaviour:
   equippedChestItem: {fileID: 0}
   _currentHealthPoint: 0
   playerAnimator: {fileID: 0}
+  knockbackDuration: 0.2
 --- !u!114 &9006268405667800640
 MonoBehaviour:
   m_ObjectHideFlags: 0
