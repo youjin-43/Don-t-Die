@@ -8,8 +8,9 @@ public class AttackMonsterState : IMonsterState
     MonsterBase monster;
 
     private IDamageable target;
+    Rigidbody2D targetRb;
     private float attackPower;
-    private float attackCooldown = 0.5f; // 공격 간격 타이머
+    private float attackCooldown = 1f; // 공격 간격 타이머
     private float lastAttackTime; // 마지막 공격 시점
 
     public AttackMonsterState(MonsterBase monster)
@@ -23,6 +24,7 @@ public class AttackMonsterState : IMonsterState
         Debug.Log($"{monster.gameObject.name} 이 Attack 상태로 진입!");
 
         target = monster.Target.GetComponent<IDamageable>();
+        targetRb = monster.Target.GetComponent<Rigidbody2D>();
         lastAttackTime = -attackCooldown; // 상태 진입 시 즉시 공격
     }
 
@@ -58,6 +60,8 @@ public class AttackMonsterState : IMonsterState
 
         // 데미지 계산 및 적용 -> 지금은 플레이어 밖에 공격을 하지 않지만 나중에 적대 몬스터끼리 or 몬스터가 오브젝트를 공격할 수 도 있기 때문에 이렇게 해놓음.
         target.TakeDamage((int)attackPower); // 몬스터 공격력 기반 데미지 전달
+
+        monster.ApplyKnockback(targetRb, monster.Target.position);
 
         Debug.Log($"몬스터가 {monster.Target.name}에게 {attackPower} 데미지를 입혔습니다.");
 

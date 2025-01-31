@@ -65,28 +65,36 @@ public class Bat : MonsterBase
     {
         attackCollider.enabled = true;
     }
-
-    private 
     //private void EnableDetectRange()
     //{
     //    detectCollider.enabled = true;
     //}
 
-    /// <summary>
-    /// 플레이어에게 넉백 적용
-    /// </summary>
-    void ApplyKnockback(Rigidbody2D playerRb, Vector2 playerPosition)
+    ///// <summary>
+    ///// 플레이어에게 넉백 적용
+    ///// </summary>
+    //override void ApplyKnockback(Rigidbody2D playerRb, Vector2 playerPosition)
+    //{
+    //    float knockbackForce = 5f; // 넉백 세기 
+
+    //    // 박쥐 → 플레이어 방향 벡터
+    //    Vector2 knockbackDirection = (playerPosition - (Vector2)transform.position).normalized;
+
+    //    // 반대 방향으로 넉백 적용
+    //    playerRb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+
+    //    // 박쥐가 플레이어와 반대 방향으로 이동하도록 설정
+    //    this.knockbackDirection = -knockbackDirection; // 반대 방향 설정
+    //    isKnockedBack = true;
+    //    knockbackTime = knockbackDuration; // 넉백 시간을 설정
+    //}
+
+    public override void ApplyKnockback(Rigidbody2D playerRb, Vector2 playerPosition)
     {
-        float knockbackForce = 5f; // 넉백 세기 
+        base.ApplyKnockback(playerRb, playerPosition); // 부모 클래스의 ApplyKnockback 호출
 
-        // 박쥐 → 플레이어 방향 벡터
-        Vector2 knockbackDirection = (playerPosition - (Vector2)transform.position).normalized;
-
-        // 반대 방향으로 넉백 적용
-        playerRb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
-
-        // 박쥐가 플레이어와 반대 방향으로 이동하도록 설정
-        this.knockbackDirection = -knockbackDirection; // 반대 방향 설정
+        // 넉백 후 박쥐가 플레이어와 반대 방향으로 이동하도록 설정
+        knockbackDirection = (playerPosition - (Vector2)transform.position).normalized * -1; // 반대 방향 설정
         isKnockedBack = true;
         knockbackTime = knockbackDuration; // 넉백 시간을 설정
     }

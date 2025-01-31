@@ -76,9 +76,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     private void Start()
     {
-        Debug.Log("실행1");
         SetData(); // 몬스터 기본 데이터 셋팅
-        Debug.Log("실행2");
 
         monsterStateMachine.Initialize(monsterStateMachine.idleMonsterState); // State 설정 
         CurrentState = MonsterState.Idle; // 디버그용
@@ -136,6 +134,25 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
             ChangeState(MonsterState.Die); // 디버그용 셋팅 
         }
     }
+
+    #endregion
+
+    #region Attack
+
+    /// <summary>
+    /// 플레이어에게 넉백 적용
+    /// </summary>
+    public virtual void ApplyKnockback(Rigidbody2D playerRb, Vector2 playerPosition)
+    {
+        float knockbackForce = 5f; // 넉백 세기 
+
+        // 몬스터 → 플레이어 방향 벡터
+        Vector2 knockbackDirection = (playerPosition - (Vector2)transform.position).normalized;
+
+        // 반대 방향으로 넉백 적용
+        playerRb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+    }
+
 
     #endregion
 
