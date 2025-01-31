@@ -10,7 +10,7 @@ public class PlayerAutoInteract : MonoBehaviour
         DebugController.Log("OnValidate called, detectionRange: " + detectionRange + "called in PlayerAutoInteract");
     }
 
-    public PlayerAnimator playerAnimator;
+    [HideInInspector] public PlayerAnimator playerAnimator;
     float moveSpeed =0f;
 
     [SerializeField] bool isAutoInteracting = false; // 자동 상호작용 중인지(디버그용)

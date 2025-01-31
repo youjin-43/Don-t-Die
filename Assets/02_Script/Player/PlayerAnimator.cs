@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     Animator playerAnimator;
-    [SerializeField] Transform AttackCollider; //인스펙터에서 할당 
 
     void Start()
     {
@@ -58,6 +57,11 @@ public class PlayerAnimator : MonoBehaviour
     #endregion
 
     #region Die
+
+    public void TriggerTakeDamageAnimation()
+    {
+        playerAnimator.SetTrigger("TakeDamage");
+    }
 
     public void TriggerDieAnimation()
     {

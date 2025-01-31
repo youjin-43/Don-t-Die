@@ -1,13 +1,4 @@
-using System;
 using UnityEngine;
-
-enum PlayerState
-{
-    Idle,
-    Walk,
-    Attack,
-    Die
-}
 
 enum PlayerObjChilds
 {
@@ -18,8 +9,8 @@ enum PlayerObjChilds
 
 public class PlayerMoveManager : MonoBehaviour
 {
-    // 플레이어의 현재 상태 관련 
-    [SerializeField] PlayerState playerState;
+    // 이동 가능한 상태인가? 
+    [SerializeField] bool canMove;
 
     // 플레이어 관련 수치들 
     PlayerStatus playerStatus;
@@ -28,15 +19,14 @@ public class PlayerMoveManager : MonoBehaviour
     PlayerAnimator playerAnimator;
 
     // 플레이어가 할 수 있는 행동들 
-    PlayerMove playerMove;
-    PlayerAutoInteract playerAutoInteract;
+    PlayerMove playerMove; // 이동 
+    PlayerAutoInteract playerAutoInteract; // 자동 상호작용 
     PlayerUseTool playerUseTool;
-    //TODO : fishing 추가
+    PlayerFishingAction playerFishingAction;
 
     void Start()
     {
-        // 플레이어의 현재 상태 
-        playerState = PlayerState.Idle;
+        canMove = true;
 
         // 플레이어 관련 수치들 
         playerStatus = GetComponent<PlayerStatus>();
@@ -45,6 +35,7 @@ public class PlayerMoveManager : MonoBehaviour
         playerMove = GetComponent<PlayerMove>();
         playerAutoInteract = GetComponent<PlayerAutoInteract>();
         playerUseTool = transform.GetChild((int)PlayerObjChilds.ToolCollider).GetComponent<PlayerUseTool>();
+        playerFishingAction = GetComponent<PlayerFishingAction>();
 
         // 각 행동에 애니메이터 설정 -> awake start 순서 꼬일까봐 매니저에서 한번에 셋팅 
         playerAnimator = GetComponent<PlayerAnimator>();
@@ -53,6 +44,7 @@ public class PlayerMoveManager : MonoBehaviour
 
     void SetAnimatorAtEachMoves()
     {
+        playerStatus.playerAnimator = playerAnimator;
         playerMove.playerAnimator = playerAnimator;
         playerAutoInteract.playerAnimator = playerAnimator;
         playerUseTool.playerAnimator = playerAnimator;
@@ -63,20 +55,19 @@ public class PlayerMoveManager : MonoBehaviour
         // 플레이어가 죽었으면 조작 금지
         if (playerStatus.IsDead()) return;
 
-        //if (playerState != PlayerState.Attack) //공격중에는 이동 및 공격 못하도록 
-        //{
+        if (canMove) // 도구 사용중에는 이동 및 공격 못하도록 
+        {
             playerMove.HandleMovement(); // 상하좌우 입력 관리 
             playerAutoInteract.AutoInteract(); // 자동 상호작용 (스페이스바)
-        //}
+            if (Input.GetMouseButtonDown(0)) playerUseTool.StartUsingEquippedTool(); // 도구 사용 
+        }
 
-        
-        playerUseTool.UseTool(); // 현재 장착중인 도구 사용 (마우스 왼쪽 클릭)
+        if (Input.GetMouseButtonUp(0)) playerUseTool.StopUsingEquippedTool(); 
+
+        playerFishingAction.Fishing(); // 낚시 
 
         // 인벤토리에서 선택된 아이템 사용
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            InventoryManager.Instance.UseSelectedItem();
-        }
+        if (Input.GetKeyDown(KeyCode.U))InventoryManager.Instance.UseSelectedItem();
 
         // 조합창 토글
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -89,15 +80,25 @@ public class PlayerMoveManager : MonoBehaviour
     public void Die()
     {
         playerAnimator.TriggerDieAnimation();
-        ChangeToDieState();
     }
 
-    #region ChangeStateFunc
+    #region Set canMove - Tool 애니메이션에서 호출됨 
 
-    public void ChangeToIdleState() { playerState = PlayerState.Idle; } //공격 애니메이션 끝날 때 호출 
-    public void ChangeToWalkState() { playerState = PlayerState.Walk; }
-    public void ChangeToAttackState() { playerState = PlayerState.Attack; } //공격 애니메이션 시작할 떄 호출
-    public void ChangeToDieState() { playerState = PlayerState.Die; }
+    public void SetcanMove_True()
+    {
+        canMove = true;
+    }
+
+    public void SetcanMove_False()
+    {
+        canMove = false;
+    }
 
     #endregion
+
+    // tool 애니메이션 끝날때 호출 
+    public void ClearTarget()
+    {
+        playerUseTool.clearTarget();
+    }
 }

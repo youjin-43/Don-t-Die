@@ -4,9 +4,10 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour, IDamageable
 {
     [Header("Equipment")]
-    public HeadItemData equippedHeadItem;
-    public ChestItemData equippedChestItem;
+    [SerializeField] HeadItemData equippedHeadItem;
+    [SerializeField] ChestItemData equippedChestItem;
 
+    [Space(10f)]
     [Header("SurvivalStats")]
     private float _maxHealthPoint = 150f;
     private float _maxHungryPoint = 150f;
@@ -16,17 +17,43 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     [SerializeField] private float _currentHealthPoint;
     private bool isDead = false; // Player의 사망 여부를 명확하게 PlayerStatus에서 관리
 
+    [HideInInspector] public PlayerAnimator playerAnimator; //PlayerMoveManager 에서 할당 받도록 함 
+
+
+    #region 장비 변경 이벤트 
+
+    private void OnDestroy()
+    {
+        // 이벤트 해제 (메모리 누수 방지)
+        EquipmentManager.Instance.OnEquipChanged -= HandleEquipChanged;
+    }
+
+    /// <summary>
+    /// 장비가 변경될 때 호출되는 함수
+    /// </summary>
+    private void HandleEquipChanged(ItemData itemData, EquipmentSlot slot)
+    {
+        if (slot == EquipmentSlot.Head) equippedHeadItem = EquipmentManager.Instance.GetCurrentHead();
+        if (slot == EquipmentSlot.Chest) equippedChestItem = EquipmentManager.Instance.GetCurrentChest();
+
+    }
+
+    #endregion
+
     private void Start()
     {
+        // 장비 변경 이벤트 구독
+        EquipmentManager.Instance.OnEquipChanged += HandleEquipChanged;
         _currentHealthPoint = _maxHealthPoint;
     }
+
 
     #region IDamageable
 
     public void TakeDamage(int damage)
     {
-        // TODO : 현재 방어구 기반으로 수치 조정 후 전달 
-        LoseHP(damage);
+        playerAnimator.TriggerTakeDamageAnimation();
+        LoseHP(damage); // TODO : 현재 방어구 기반으로 수치 조정 후 전달
     }
 
     public bool IsDead()
@@ -35,6 +62,10 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     }
 
     #endregion
+
+    #region HP
+
+    // TODO : UI랑 연동!! 
 
     public void LoseHP(int amount)
     {
@@ -53,4 +84,6 @@ public class PlayerStatus : MonoBehaviour, IDamageable
             _currentHealthPoint = Mathf.Min(_currentHealthPoint + amount, _maxHealthPoint);
         }
     }
+
+    #endregion
 }

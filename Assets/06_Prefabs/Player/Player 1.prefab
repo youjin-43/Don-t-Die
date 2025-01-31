@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 8208501665278037843}
   - component: {fileID: 4796768125185444446}
   m_Layer: 0
-  m_Name: AttackCollider
+  m_Name: ToolCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3896371103367941196
 Transform:
   m_ObjectHideFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1774418940913057382}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.05, y: -0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,7 +40,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774418940913057382}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -68,7 +68,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!114 &4796768125185444446
 MonoBehaviour:
@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe21090521ec4e3fa447ee8f5470365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTool: {fileID: 0}
   playerAnimator: {fileID: 0}
 --- !u!1 &6161194727708342292
 GameObject:
@@ -356,8 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2103261ab0c4c97995b4ad61b6a282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerState: 0
-  isDead: 0
+  canMove: 0
 --- !u!114 &639041255283887235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,7 +370,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272cedfecc8a7435da49f5793d5aa2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equippedHeadItem: {fileID: 0}
+  equippedChestItem: {fileID: 0}
   _currentHealthPoint: 0
+  playerAnimator: {fileID: 0}
 --- !u!114 &9006268405667800640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,7 +386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f50112b032324e369e9b6ff2aa795bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackCollider: {fileID: 3896371103367941196}
 --- !u!114 &924179375020231119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,6 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e06060469b0954bb818aea170fa2ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTool: {fileID: 0}
   fishingTip: {fileID: 6039076646575408782}
   bobberPrefab: {fileID: 3879519404677080971, guid: 6f61e99b3de699c42b3e593d1142de7c, type: 3}
 --- !u!50 &3103066371250681889

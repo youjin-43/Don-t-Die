@@ -5,18 +5,57 @@ using UnityEngine;
 /// </summary>
 public class PlayerUseTool : MonoBehaviour
 {
-    public PlayerAnimator playerAnimator; //PlayerMoveManager 에서 할당 받도록 함 
+    public ToolItemData currentTool;
+    [SerializeField] Transform target;
+
+    [HideInInspector] public PlayerAnimator playerAnimator; //PlayerMoveManager 에서 할당 받도록 함 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        MonsterBase monsterBase = collision.GetComponent<MonsterBase>();
-        if (monsterBase != null)
+        if(target == null)
         {
-            Debug.Log($"{collision.name}을 공격!");
-            //TODO : 데미지는 현재 착용중인 도구의 데이터를 가져오도록
-            monsterBase.OnHit(transform.parent,10); // OnHit 이벤트 발생 -> attacker로 플레이어의 transfrom 전달
+            target = collision.transform;
+
+            // 몬스터를 때린 경우 
+            MonsterBase monsterBase = collision.GetComponent<MonsterBase>();
+            if (monsterBase != null)
+            {
+                Debug.Log($"{transform.parent}가 {collision.name}을 공격!");
+                monsterBase.OnHit(transform.parent, (int)currentTool.Atk); // OnHit 이벤트 발생 -> attacker로 플레이어의 transfrom 전달
+            }
+
+            //TODO : 광석이나 나무 추가 
         }
     }
+
+    public void clearTarget()
+    {
+        target = null;
+    }
+
+    #region 장비 변경 이벤트
+
+    private void Start()
+    {
+        // 이벤트 구독
+        EquipmentManager.Instance.OnEquipChanged += HandleEquipChanged;
+    }
+
+    private void OnDestroy()
+    {
+        // 이벤트 해제 (메모리 누수 방지)
+        EquipmentManager.Instance.OnEquipChanged -= HandleEquipChanged;
+    }
+
+    /// <summary>
+    /// 장비가 변경될 때 호출되는 함수
+    /// </summary>
+    private void HandleEquipChanged(ItemData itemData, EquipmentSlot slot)
+    {
+        if (slot == EquipmentSlot.Hand) currentTool = EquipmentManager.Instance.GetCurrentTool();
+    }
+
+    #endregion
 
     public void UseTool()
     {
@@ -24,18 +63,18 @@ public class PlayerUseTool : MonoBehaviour
         if (Input.GetMouseButtonUp(0)) StopUsingEquippedTool();
     }
 
-    void StartUsingEquippedTool()
+    public void StartUsingEquippedTool()
     {
-        ToolItemData currentTool = EquipmentManager.Instance.GetCurrentTool();
-
-        if(currentTool == null)
+        if (currentTool == null)
         {
             Debug.Log("착용중인 Tool 이 없습니다");
+            return;
         }
         else
         {
-            playerAnimator.SetUseToolAnimation_True();
             Debug.Log($"{currentTool.Type.ToString()} 사용 중");
+
+            playerAnimator.SetUseToolAnimation_True();
 
             switch (currentTool.Type)
             {
@@ -48,18 +87,14 @@ public class PlayerUseTool : MonoBehaviour
                 case ToolType.Pickaxe:
                     playerAnimator.SetPickAxeAnimation_True();
                     break;
-                case ToolType.Rod:
-                    break;
                 default:
                     break;
             }
         }
     }
 
-    void StopUsingEquippedTool()
+    public void StopUsingEquippedTool()
     {
-        //Debug.Log("StopUsingEquippedTool 실행됨");
-
         playerAnimator.SetUseToolAnimation_False();
         playerAnimator.SetSwordAnimation_False();
         playerAnimator.SetAxeAnimation_False();
