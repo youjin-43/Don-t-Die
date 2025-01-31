@@ -371,6 +371,14 @@ public class VoronoiMapGenerator : MonoBehaviour
         Item go = PoolManager.Instance.InstantiateItem(data);
         go.transform.position = tilePosition;
 
+        InstallableObject obj = new InstallableObject { 
+            position = new Vector2Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)),
+            dataName = data.Name,
+            gameObject = go.gameObject
+        };
+
+        EnvironmentManager.Instance.installableObjects.Add(tilePosition, obj);
+
         return true;
     }
 
