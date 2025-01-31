@@ -7,11 +7,6 @@ public class PlayerMove : MonoBehaviour
 
     Vector2 dir = new Vector2(0f, 0f);
 
-    //private void Start()
-    //{
-    //    playerAnimator = GetComponent<PlayerAnimator>();
-    //}
-
     public void HandleMovement()
     {
         dir.x = Input.GetAxisRaw("Horizontal");

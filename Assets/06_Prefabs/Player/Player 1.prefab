@@ -238,8 +238,8 @@ GameObject:
   - component: {fileID: 9006268405667800640}
   - component: {fileID: 924179375020231119}
   - component: {fileID: 5033660531289686608}
-  - component: {fileID: 3103066371250681889}
   - component: {fileID: 6450673151335881347}
+  - component: {fileID: 3103066371250681889}
   - component: {fileID: 8352818195275481724}
   m_Layer: 0
   m_Name: Player 1
@@ -416,6 +416,20 @@ MonoBehaviour:
   InteractionRange: 1
   colliders: []
   autoInteractTargetTransform: {fileID: 0}
+--- !u!114 &6450673151335881347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6399303531053045431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e06060469b0954bb818aea170fa2ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishingTip: {fileID: 6039076646575408782}
+  bobberPrefab: {fileID: 3879519404677080971, guid: 6f61e99b3de699c42b3e593d1142de7c, type: 3}
 --- !u!50 &3103066371250681889
 Rigidbody2D:
   serializedVersion: 5
@@ -443,20 +457,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6450673151335881347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6399303531053045431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67e06060469b0954bb818aea170fa2ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fishingTip: {fileID: 6039076646575408782}
-  bobberPrefab: {fileID: 3879519404677080971, guid: 6f61e99b3de699c42b3e593d1142de7c, type: 3}
 --- !u!70 &8352818195275481724
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

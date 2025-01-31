@@ -84,6 +84,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     }
 
     #region OnState
+
     public void OnIdle()
     {
         if (monsterStateMachine.CurrentState != monsterStateMachine.idleMonsterState)
@@ -127,6 +128,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
             ChangeState(MonsterState.Die); // 디버그용 셋팅 
         }
     }
+
     #endregion
 
     #region Damaged(IDamageable)
@@ -202,7 +204,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     string isMoving = "IsMoving";
     string attack = "Attack";
     string takeDamage = "TakeDamage";
-    string Die = "Die";
+    string die = "Die";
 
 
     public void SetIsMovingAnimation(bool value)
@@ -229,7 +231,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     public void SetDieAnimation()
     {
-        MonsterAnimator.SetTrigger(Die);
+        MonsterAnimator.SetTrigger(die);
     }
     #endregion
 

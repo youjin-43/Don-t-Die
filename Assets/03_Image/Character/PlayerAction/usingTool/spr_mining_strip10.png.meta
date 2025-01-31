@@ -67,7 +67,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -81,7 +81,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,7 +105,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -185,10 +185,10 @@ TextureImporter:
       name: spr_mining_strip10_0
       rect:
         serializedVersion: 2
-        x: 34
-        y: 24
-        width: 22
-        height: 22
+        x: 0
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -207,10 +207,10 @@ TextureImporter:
       name: spr_mining_strip10_1
       rect:
         serializedVersion: 2
-        x: 126
-        y: 24
-        width: 26
-        height: 23
+        x: 96
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,10 +229,10 @@ TextureImporter:
       name: spr_mining_strip10_2
       rect:
         serializedVersion: 2
-        x: 218
-        y: 24
-        width: 29
-        height: 20
+        x: 192
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -251,10 +251,10 @@ TextureImporter:
       name: spr_mining_strip10_3
       rect:
         serializedVersion: 2
-        x: 313
-        y: 21
-        width: 29
-        height: 23
+        x: 288
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -273,10 +273,10 @@ TextureImporter:
       name: spr_mining_strip10_4
       rect:
         serializedVersion: 2
-        x: 409
-        y: 19
-        width: 28
-        height: 25
+        x: 384
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -295,10 +295,10 @@ TextureImporter:
       name: spr_mining_strip10_5
       rect:
         serializedVersion: 2
-        x: 508
-        y: 24
-        width: 44
-        height: 27
+        x: 480
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -317,10 +317,10 @@ TextureImporter:
       name: spr_mining_strip10_6
       rect:
         serializedVersion: 2
-        x: 616
-        y: 24
-        width: 46
-        height: 22
+        x: 576
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -339,10 +339,10 @@ TextureImporter:
       name: spr_mining_strip10_7
       rect:
         serializedVersion: 2
-        x: 712
-        y: 24
-        width: 44
-        height: 24
+        x: 672
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -361,10 +361,10 @@ TextureImporter:
       name: spr_mining_strip10_8
       rect:
         serializedVersion: 2
-        x: 751
-        y: 36
-        width: 10
-        height: 7
+        x: 768
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -383,10 +383,10 @@ TextureImporter:
       name: spr_mining_strip10_9
       rect:
         serializedVersion: 2
-        x: 810
-        y: 24
-        width: 49
-        height: 26
+        x: 864
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -401,33 +401,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: spr_mining_strip10_10
-      rect:
-        serializedVersion: 2
-        x: 906
-        y: 24
-        width: 28
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: efe7add0c78390890800000000000000
-      internalID: -7491394399694586114
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 187e898858dbe426e9d6f8ad42ebfd84
     internalID: 0
     vertices: []
     indices: 
@@ -439,7 +417,6 @@ TextureImporter:
     nameFileIdTable:
       spr_mining_strip10_0: 6489405204074437699
       spr_mining_strip10_1: 3130937185800148438
-      spr_mining_strip10_10: -7491394399694586114
       spr_mining_strip10_2: 3348623333602413122
       spr_mining_strip10_3: -7647103970911014579
       spr_mining_strip10_4: 459535804329583316
