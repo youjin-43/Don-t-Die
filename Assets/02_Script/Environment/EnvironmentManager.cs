@@ -1,9 +1,20 @@
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
 using VInspector;
+
+[Serializable]
+public class MapData
+{
+    public BiomeMap biomeMap;
+    public ObjectMap objectMap;
+    public List<ResourceObject> resourceObjects;
+    public List<InstallableObject> installableObjects;
+}
+
 
 public class EnvironmentManager : MonoBehaviour
 {
@@ -144,5 +155,14 @@ public class EnvironmentManager : MonoBehaviour
     public void UpdateTilesBySeason()
     {
         voronoiMapGenerator.UpdateTilesBySeason(timeController.CurrentSeason);
+    }
+
+    public bool InstallObject(Vector3 position, InstallableItemData data)
+    {
+        Vector2Int cellPosition = new Vector2Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y));
+        if (!objectMap.AreTilesEmpty(cellPosition, data.Width, data.Height) || !biomeMap.IsOnMap(cellPosition, data.Width, data.Height)) return false;
+
+        objectMap.MarkTiles(cellPosition, data.Width, data.Height, ObjectType.Installable);
+        return voronoiMapGenerator.InstallObject(position, data);
     }
 }

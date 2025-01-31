@@ -471,7 +471,25 @@ public class InventoryManager : MonoBehaviour
 
         edibleItemData.Execute();
     }
+    public bool InstallItem(InstallableItemData installableItemData)
+    {
+        Vector3 position = GameManager.Instance.GetPlayerPos() + new Vector3(0, -1, 0);
 
+        if (EnvironmentManager.Instance.InstallObject(position, installableItemData) == false)
+        {
+            // 설치하려는 위치에 이미 다른 오브젝트가 존재하거나 물 위에 지으려고 할 때
+
+            return false;
+        }
+        else
+        {
+            _inventoryDict[installableItemData.Name] -= 1;
+
+            return true;
+        }
+    }
+
+    /* 호준님 코드
     public bool InstallItem(InstallableItemData installableItemData)
     {
         float installDistance = 1f;
@@ -522,4 +540,5 @@ public class InventoryManager : MonoBehaviour
 
         return true;
     }
+    */
 }
