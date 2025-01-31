@@ -32,3 +32,31 @@ public class CraftingDataLoader : ILoader<string, CraftingData>
     }
 }
 #endregion
+
+
+#region AchievementData
+[Serializable]
+public class AchievementData
+{
+    public string Code;
+    public string Content;
+}
+
+[Serializable]
+public class AchievementDataLoader : ILoader<string, AchievementData>
+{
+    public List<AchievementData> Items = new List<AchievementData>();
+
+    public Dictionary<string, AchievementData> MakeDict()
+    {
+        Dictionary<string, AchievementData> dict = new Dictionary<string, AchievementData>();
+
+        foreach(AchievementData data in Items)
+        {
+            dict.Add(data.Code, data);
+        }
+
+        return dict;
+    }
+}
+#endregion

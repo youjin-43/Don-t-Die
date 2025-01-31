@@ -101,7 +101,7 @@ public class InventoryManager : MonoBehaviour
     void Update()
     {
         DragAndDropItem();
-        InventoryScroll();
+        //InventoryScroll();
     }
 
     public Dictionary<string, int> GetInventoryDict()
@@ -411,6 +411,8 @@ public class InventoryManager : MonoBehaviour
                 GameObject go = Instantiate(_startSlotItemData.Prefab, position, Quaternion.identity);
 
                 go.GetComponent<Item>().SetItemData(_startSlotItemData);
+
+                go.GetComponent<Item>().DropEffect();
             }
         }
         // 드래그 UI 비활성화
@@ -434,11 +436,11 @@ public class InventoryManager : MonoBehaviour
 
     private Vector3 adjustDropItemDistance()
     {
-        Vector3 randomPos = new Vector3(_playerTransform.position.x - Random.Range(-2f, 2f), _playerTransform.position.y - Random.Range(-2f, 2f), _playerTransform.position.z - Random.Range(-2f, 2f));
+        Vector3 randomPos = new Vector3(GameManager.Instance.GetPlayerPos().x - Random.Range(-2f, 2f), GameManager.Instance.GetPlayerPos().y - Random.Range(-2f, 2f), GameManager.Instance.GetPlayerPos().z - Random.Range(-2f, 2f));
 
-        while(Vector3.Distance(_playerTransform.position, randomPos) > 2)
+        while(Vector3.Distance(GameManager.Instance.GetPlayerPos(), randomPos) > 2)
         {
-            randomPos = new Vector3(_playerTransform.position.x - Random.Range(-2f, 2f), _playerTransform.position.y - Random.Range(-2f, 2f), _playerTransform.position.z - Random.Range(-2f, 2f));
+            randomPos = new Vector3(GameManager.Instance.GetPlayerPos().x - Random.Range(-2f, 2f), GameManager.Instance.GetPlayerPos().y - Random.Range(-2f, 2f), GameManager.Instance.GetPlayerPos().z - Random.Range(-2f, 2f));
         }
 
         return randomPos;
@@ -476,9 +478,9 @@ public class InventoryManager : MonoBehaviour
     {
         float installDistance = 1f;
 
-        Vector3 right = new Vector3(_playerTransform.localScale.x, 0f, 0f);
+        Vector3 right = new Vector3(GameManager.Instance.PlayerTransform.localScale.x, 0f, 0f);
 
-        Vector3 position = _playerTransform.position + installDistance * right;
+        Vector3 position = GameManager.Instance.PlayerTransform.position + installDistance * right;
 
         if(avoidOverlap(position) == false)
         {
