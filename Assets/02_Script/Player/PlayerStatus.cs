@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour, IDamageable
@@ -18,7 +19,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     private bool isDead = false; // Player의 사망 여부를 명확하게 PlayerStatus에서 관리
 
     [HideInInspector] public PlayerAnimator playerAnimator; //PlayerMoveManager 에서 할당 받도록 함 
-
+    Rigidbody2D playerRigidbody;
 
     #region 장비 변경 이벤트 
 
@@ -42,6 +43,8 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        playerRigidbody = GetComponent<Rigidbody2D>();
+
         // 장비 변경 이벤트 구독
         EquipmentManager.Instance.OnEquipChanged += HandleEquipChanged;
         _currentHealthPoint = _maxHealthPoint;
@@ -52,8 +55,19 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
+        // 피격 애니메이션 재생 
         playerAnimator.TriggerTakeDamageAnimation();
+
+        StartCoroutine(ResetVelocity());  // 넉백 후 일정 시간 후에 제어 복원
+
         LoseHP(damage); // TODO : 현재 방어구 기반으로 수치 조정 후 전달
+    }
+
+    [SerializeField] float knockbackDuration = 0.2f; // 넉백 지속 시간
+    private IEnumerator ResetVelocity()
+    {
+        yield return new WaitForSeconds(knockbackDuration); // 넉백 지속 시간
+        playerRigidbody.linearVelocity = Vector2.zero; // Rigidbody의 속도를 초기화
     }
 
     public bool IsDead()

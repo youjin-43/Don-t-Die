@@ -26,7 +26,7 @@ public class IdleMonsterState : IMonsterState
 
     public void EnterState()
     {
-        Debug.Log($"{monster.gameObject.name} 이 Idle 상태로 진입!");
+        //Debug.Log($"{monster.gameObject.name} 이 Idle 상태로 진입!");
 
         monster.SetIsMovingAnimation(false);
         isMoving = false;
