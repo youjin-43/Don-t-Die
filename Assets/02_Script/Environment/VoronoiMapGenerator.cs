@@ -354,8 +354,8 @@ public class VoronoiMapGenerator : MonoBehaviour
 
     public bool InstallObject(Vector3 position, InstallableItemData data)
     {
-        Vector3 cellCenterPosition = landTilemap.GetCellCenterWorld(new Vector3Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)));
-        Vector3 cellPosition = landTilemap.CellToWorld(new Vector3Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)));
+        Vector3 cellCenterPosition = landTilemap.GetCellCenterWorld(new Vector3Int((int)(position.x), (int)(position.y)));
+        Vector3 cellPosition = landTilemap.CellToWorld(new Vector3Int((int)(position.x), (int)(position.y)));
 
         Vector3 tilePosition = cellPosition;
 
@@ -373,7 +373,7 @@ public class VoronoiMapGenerator : MonoBehaviour
         go.transform.position = tilePosition;
 
         InstallableObject obj = new InstallableObject { 
-            position = new Vector2Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)),
+            position = new Vector2Int((int)(position.x), (int)(position.y)),
             dataName = data.Name,
             gameObject = go.gameObject
         };

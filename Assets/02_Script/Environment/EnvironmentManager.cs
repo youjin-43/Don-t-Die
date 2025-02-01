@@ -159,7 +159,7 @@ public class EnvironmentManager : MonoBehaviour
 
     public bool InstallObject(Vector3 position, InstallableItemData data)
     {
-        Vector2Int cellPosition = new Vector2Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y));
+        Vector2Int cellPosition = new Vector2Int((int)(position.x), (int)(position.y));
         if (!objectMap.AreTilesEmpty(cellPosition, data.Width, data.Height) || !biomeMap.IsOnMap(cellPosition, data.Width, data.Height)) return false;
 
         objectMap.MarkTiles(cellPosition, data.Width, data.Height, ObjectType.Installable);

@@ -291,6 +291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6770973889154513921}
+  - component: {fileID: 3663111152048838803}
   m_Layer: 0
   m_Name: Campfire 1
   m_TagString: Untagged
@@ -315,3 +316,17 @@ Transform:
   - {fileID: 8261129155879114682}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3663111152048838803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963164792868939583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5aca71999a3e79429fec08eb9b0aa25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDurability: 300
+  currentDurability: 0
