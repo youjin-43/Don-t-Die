@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -18,8 +15,10 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
     private Transform    _itemDurability;
     private Image        _itemDurabilityGauge;
     private Image        _itemSelectImage;
+    private Image        _slotNumberImage;
     private int          _currentItemCount;
     private int          _currentDurability;
+    private int          _slotNumber;
 
     // 드래깅 데이터
     static bool _isDragging = false;
@@ -31,11 +30,24 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
         _itemDurability      = transform.GetChild(2);
         _itemDurabilityGauge = _itemDurability.GetChild(1).GetComponent<Image>();
         _itemSelectImage     = transform.GetChild(3).GetComponent<Image>();
+        _slotNumberImage     = transform.GetChild(4).GetComponent<Image>();
 
         _itemImage.color = new Color(1, 1, 1, 0);
         _itemCountImage.gameObject.SetActive(false);
         _itemDurability.gameObject.SetActive(false);
         _itemSelectImage.gameObject.SetActive(false);
+        _slotNumberImage.gameObject.SetActive(false);
+    }
+
+    public void SetSlotNumber(int slotNumber)
+    {
+        _slotNumber = slotNumber;
+
+        if(_slotNumber < 10)
+        {
+            _slotNumberImage.gameObject.SetActive(true);
+            _slotNumberImage.sprite = InventoryManager.Instance._itemCountImages[_slotNumber];
+        }
     }
 
     public ItemData GetItemData(out int itenCount)
@@ -86,6 +98,8 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
             {
                 return;
             }
+
+            // UI 클릭 플래그
 
             // 아이템 인벤토리 상에서의 이동
             if (InventoryManager.Instance.IsDragging() == false)
@@ -238,60 +252,71 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void UseItem()
     {
-        if(_itemData != null)
+        if(_itemData == null)
         {
-            // 사용 할 아이템의 종류에 따라 분류
-            switch (_itemData.ItemType)
+            return;
+        }
+
+        if (BoxManager.Instance.IsBoxOpened() == true)
+        {
+            if (InventoryManager.Instance.SendItemDataToBox(_itemData) == true)
             {
-                case ItemType.Resource:
-                    {
-                        break;
-                    }
-                case ItemType.Edible:
-                    {
-                        InventoryManager.Instance.EatItem(_itemData as EdibleItemData);
-
-                        _currentItemCount -= 1;
-
-                        _itemCountImage.sprite = InventoryManager.Instance._itemCountImages[_currentItemCount];
-
-                        if(_currentItemCount == 0)
-                        {
-                            ClearItemSlot();
-                        }
-
-                        break;
-                    }
-                case ItemType.Equippable:
-                    {
-                        EquippableItemData equippableItemData = _itemData as EquippableItemData;
-
-                        // 현재 슬롯의 장비를 장비창으로 넘기고
-                        // 장비창에 이미 아이템이 있다면 그 아이템을 받아옴
-                        ItemData itemData = InventoryManager.Instance.ExchangeEquipItem(equippableItemData, equippableItemData.EquipSlot);
-
-                        // 장착하고 있던 장비가 없었다면
-                        if (itemData == null)
-                        {
-                            ClearItemSlot();
-                        }
-                        // 있었다면
-                        else
-                        {
-                            AddItemData(itemData);
-                        }
-
-                        break;
-                    }
-                case ItemType.Installable:
-                    {
-                        if(InventoryManager.Instance.InstallItem(_itemData as InstallableItemData) == true)
-                        {
-                            ClearItemSlot();
-                        }
-                    }
-                    break;
+                RemoveItemData(1);
             }
+            return;
+        }
+
+        // 사용 할 아이템의 종류에 따라 분류
+        switch (_itemData.ItemType)
+        {
+            case ItemType.Resource:
+                {
+                    break;
+                }
+            case ItemType.Edible:
+                {
+                    InventoryManager.Instance.EatItem(_itemData as EdibleItemData);
+
+                    _currentItemCount -= 1;
+
+                    _itemCountImage.sprite = InventoryManager.Instance._itemCountImages[_currentItemCount];
+
+                    if (_currentItemCount == 0)
+                    {
+                        ClearItemSlot();
+                    }
+
+                    break;
+                }
+            case ItemType.Equippable:
+                {
+                    EquippableItemData equippableItemData = _itemData as EquippableItemData;
+
+                    // 현재 슬롯의 장비를 장비창으로 넘기고
+                    // 장비창에 이미 아이템이 있다면 그 아이템을 받아옴
+                    ItemData itemData = InventoryManager.Instance.ExchangeEquipItem(equippableItemData, equippableItemData.EquipSlot);
+
+                    // 장착하고 있던 장비가 없었다면
+                    if (itemData == null)
+                    {
+                        ClearItemSlot();
+                    }
+                    // 있었다면
+                    else
+                    {
+                        AddItemData(itemData);
+                    }
+
+                    break;
+                }
+            case ItemType.Installable:
+                {
+                    if (InventoryManager.Instance.InstallItem(_itemData as InstallableItemData) == true)
+                    {
+                        ClearItemSlot();
+                    }
+                }
+                break;
         }
     }
 }
