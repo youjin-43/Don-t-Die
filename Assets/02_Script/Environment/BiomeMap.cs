@@ -57,4 +57,16 @@ public class BiomeMap
         }
         return true;
     }
+
+    public bool IsOnMap(Vector2Int pos, int width, int height)
+    {
+        for (int i = pos.y - height + 1; i <= pos.y; i++)
+        {
+            for (int j = pos.x - width + 1; j <= pos.x; j++)
+            {
+                if (map[i][j] == BiomeType.WaterBiome) return false;
+            }
+        }
+        return true;
+    }
 }
