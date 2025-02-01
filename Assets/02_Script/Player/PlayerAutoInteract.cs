@@ -105,10 +105,9 @@ public class PlayerAutoInteract : MonoBehaviour
             case "Item":
                 GetItem(); //아이템습득 
                 break;
-            //case "Monster":
-                //공격
-                //Attack();
-                //break;
+            case "Harvestable":
+                autoInteractTargetTransform.GetComponent<ResourceNode>().Harvest();
+                break;
             // TODO : 태그 회의 후 추가 
             default:
                 break;
