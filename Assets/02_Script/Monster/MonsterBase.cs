@@ -26,7 +26,6 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     [Header("Monster Data")]
     public MonsterData monsterData;
     [HideInInspector] public Animator MonsterAnimator;
-    
 
     [SerializeField] protected float moveRange = 3f;
     [SerializeField] protected float CurrentHp;
@@ -35,9 +34,9 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     [SerializeField] float knockbackForce;
     [SerializeField] float knockbackDuration;
-
     Rigidbody2D monsterRigidbody;
-    MonsterAtkCol monsterAtkCol;
+
+
 
     #region OnHitEvent
 
@@ -59,11 +58,11 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     #endregion
 
+    Transform go;
     protected void SetData()
     {
         MonsterAnimator = GetComponent<Animator>();
         monsterRigidbody = GetComponent<Rigidbody2D>();
-        if (transform.childCount > 0) monsterAtkCol = transform.GetChild(0)?.GetComponent<MonsterAtkCol>();
 
         CurrentHp = monsterData.MaxHP;
         atkDamage = (int)monsterData.AttackDamage;
@@ -71,6 +70,8 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
         knockbackForce = monsterData.KnockbackForce;
         knockbackDuration = monsterData.KnockbackDuration;
+
+        if(transform.childCount >0) transform.GetChild(0)?.GetComponent<MonsterAtkCol>()?.SetAtkDamage(atkDamage);
 
         monsterStateMachine = new MonsterStateMachine(this);
     }
@@ -159,8 +160,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         playerRb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
     }
 
-    public void ClearAttackTarget()=> monsterAtkCol.ClearTarget();
-    
+
     #endregion
 
     #region Damaged(IDamageable)

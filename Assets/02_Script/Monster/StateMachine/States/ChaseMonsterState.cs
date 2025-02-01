@@ -8,6 +8,7 @@ public class ChaseMonsterState : IMonsterState
 
     Transform target;
     float chaseSpeed;
+
     float attackRange; // 공격 사거리
 
 
