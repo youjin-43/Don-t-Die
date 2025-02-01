@@ -39,6 +39,9 @@ public class Bear : MonsterBase
         MonsterAnimator.SetFloat("dirY", dir_y);
     }
 
-
+    public override void AfterFleeState()
+    {
+        OnChase();
+    }
 }
 

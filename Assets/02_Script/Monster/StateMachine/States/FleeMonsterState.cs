@@ -7,7 +7,12 @@ public class FleeMonsterState : IMonsterState
     MonsterBase monster;
 
     Transform target;
+
+    float fleeDistance = 3f;
+    Vector3 fleeDirection;
     float fleeSpeed;
+    float fleeTime = 1.0f; // 후퇴하는 시간
+    float startTime;
 
     public FleeMonsterState(MonsterBase monster)
     {
@@ -19,6 +24,11 @@ public class FleeMonsterState : IMonsterState
     {
         Debug.Log($"{monster.gameObject.name} 이 Flee 상태로 진입!");
         target = monster.Target;
+
+        // 플레이어 반대 방향으로 후퇴
+        fleeDirection = (monster.transform.position - target.position).normalized;
+        startTime = Time.time;
+        HandleAnimation();
     }
 
     public void ExitState()
@@ -27,12 +37,22 @@ public class FleeMonsterState : IMonsterState
 
     public void UpdateState()
     {
-        // 도망가기 
-        Vector3 dir = (monster.transform.position - target.position).normalized;
-        monster.transform.position += dir * fleeSpeed * Time.deltaTime;
 
-        // 애니메이션 설정 // TODO : 이거 꼭 매프레임 파라미터를 설정해야하나..?
+        if (Time.time - startTime < fleeTime)
+        {
+            monster.transform.position += fleeDirection * fleeSpeed * Time.deltaTime;
+        }
+        else
+        {
+            // 후퇴 후 어떤 상태로 갈 것인지 
+            monster.AfterFleeState();
+        }
+    }
+
+    void HandleAnimation()
+    {
+        // 애니메이션 설정
         monster.SetIsMovingAnimation(true);
-        monster.SetDirnimaiton(dir.x, dir.y);
+        monster.SetDirnimaiton(fleeDirection.x, fleeDirection.y);
     }
 }

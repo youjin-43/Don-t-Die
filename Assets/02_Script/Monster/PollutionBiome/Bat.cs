@@ -123,4 +123,9 @@ public class Bat : MonsterBase
             base.Update();
         }
     }
+
+    public override void AfterFleeState()
+    {
+        OnChase();
+    }
 }

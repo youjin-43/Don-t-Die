@@ -58,6 +58,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     #endregion
 
+    Transform go;
     protected void SetData()
     {
         MonsterAnimator = GetComponent<Animator>();
@@ -69,6 +70,8 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
         knockbackForce = monsterData.KnockbackForce;
         knockbackDuration = monsterData.KnockbackDuration;
+
+        if(transform.childCount >0) transform.GetChild(0)?.GetComponent<MonsterAtkCol>()?.SetAtkDamage(atkDamage);
 
         monsterStateMachine = new MonsterStateMachine(this);
     }
@@ -87,6 +90,11 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     {
         monsterStateMachine.Execute();
     }
+
+    /// <summary>
+    /// Flee 상태 이후 어떤 State로 넘어갈것인지 
+    /// </summary>
+    public abstract void AfterFleeState();
 
     #region OnState
 
@@ -143,7 +151,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     /// </summary>
     public virtual void ApplyKnockback(Rigidbody2D playerRb, Vector2 playerPosition)
     {
-        float knockbackForce = 5f; // 넉백 세기 
+        float knockbackForce = 5f; // 넉백 세기 // TODO : 이거 따로 변수로 빼는게 좋을것 같음
 
         // 몬스터 → 플레이어 방향 벡터
         Vector2 knockbackDirection = (playerPosition - (Vector2)transform.position).normalized;
