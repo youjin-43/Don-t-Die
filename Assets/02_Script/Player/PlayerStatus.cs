@@ -10,12 +10,19 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     [Space(10f)]
     [Header("SurvivalStats")]
-    private float _maxHealthPoint = 150f;
-    private float _maxHungryPoint = 150f;
-    private float _maxThirstyPoint = 150f;
-    private float _maxTemperture;
+    public float _maxHealthPoint = 150f;
+    public float _maxHungryPoint = 150f;
+    public float _maxThirstyPoint = 150f;
+    public float _maxTemperture;
 
-    [SerializeField] private float _currentHealthPoint;
+    public float _currentHealthPoint = 75f;
+    public float _currentHungryPoint = 75f;
+    public float _currentThirstyPoint = 75f;
+    public float _currentTemperture;
+
+    public float CurrentHungryPoint { get { return _currentHungryPoint; } }
+    public float CurrentThirstyPoint { get { return _currentThirstyPoint; } }
+
     private bool isDead = false; // Player의 사망 여부를 명확하게 PlayerStatus에서 관리
 
     [HideInInspector] public PlayerAnimator playerAnimator; //PlayerMoveManager 에서 할당 받도록 함 
@@ -50,6 +57,10 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         _currentHealthPoint = _maxHealthPoint;
     }
 
+    private void Update()
+    {
+        
+    }
 
     #region IDamageable
 
@@ -79,9 +90,12 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     #region HP
 
-    // TODO : UI랑 연동!! 
+    // TODO : UI랑 연동!!
 
-    public void LoseHP(int amount)
+    // TODO : clamp로 변경!! 
+    //_currentThirstyPoint = Mathf.Clamp(_currentThirstyPoint + thirstyPoint, 0f, _maxThirstyPoint);
+
+    public void LoseHP(float amount)
     {
         _currentHealthPoint -= amount;
         if (_currentHealthPoint <= 0 && !isDead)
@@ -89,15 +103,64 @@ public class PlayerStatus : MonoBehaviour, IDamageable
             isDead = true;
             GetComponent<PlayerMoveManager>().Die(); // PlayerMoveManager의 Die() 호출
         }
+        StatusUIManager.Instance.UpdateHealthUI();
     }
 
-    public void GainHP(int amount)
+    public void GainHP(float amount)
     {
         if (!isDead)  // 죽은 상태에서는 회복 불가
         {
             _currentHealthPoint = Mathf.Min(_currentHealthPoint + amount, _maxHealthPoint);
+            StatusUIManager.Instance.UpdateHealthUI();
         }
     }
 
     #endregion
+
+    #region Thirsty
+
+    public void LoseThirsty(float amount)
+    {
+        _currentThirstyPoint -= amount;
+        StatusUIManager.Instance.UpdateThirstyUI();
+    }
+
+    public void GainThirsty(float amount)
+    {
+        if (!isDead)  // 죽은 상태에서는 회복 불가
+        {
+            _currentThirstyPoint = Mathf.Min(_currentThirstyPoint + amount, _maxThirstyPoint);
+            StatusUIManager.Instance.UpdateThirstyUI();
+        }
+    }
+
+
+    #endregion
+
+    #region Hungry 
+
+    public void LoseHungry(float amount)
+    {
+        _currentHungryPoint -= amount;
+        StatusUIManager.Instance.UpdateHungryUI();
+    }
+
+    public void GainHungry(float amount)
+    {
+        if (!isDead)  // 죽은 상태에서는 회복 불가
+        {
+            _currentHungryPoint = Mathf.Min(_currentHungryPoint + amount, _maxHungryPoint);
+            StatusUIManager.Instance.UpdateHungryUI();
+        }
+    }
+
+    #endregion
+
+
+    public void EatItem(EdibleItemData edibleItemData)
+    {
+        GainHP(edibleItemData.healthValue);
+        GainHungry(edibleItemData.hungerValue);
+        GainThirsty(edibleItemData.thirstValue);
+    }
 }

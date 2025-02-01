@@ -94,27 +94,27 @@ public class TimeController : MonoBehaviour
         if (playerTimer >= 60f)
         {
             playerTimer = 0;
-            ModifyPlayerStatus();
+            //ModifyPlayerStatus();
         }
     }
 
-    void ModifyPlayerStatus()
-    {
-        float penalty = 0;      // 공복과 갈증이 0이 되면 체력 패널티를 받는다.
+    //void ModifyPlayerStatus()
+    //{
+    //    float penalty = 0;      // 공복과 갈증이 0이 되면 체력 패널티를 받는다.
 
-        if (StatusManager.Instance.CurrentHungryPoint <= 0)
-        {
-            penalty -= 0.4f;
-        }
-        if (StatusManager.Instance.CurrentThirstyPoint <= 0)
-        {
-            penalty -= 0.4f;
-        }
+    //    if (StatusManager.Instance.CurrentHungryPoint <= 0)
+    //    {
+    //        penalty -= 0.4f;
+    //    }
+    //    if (StatusManager.Instance.CurrentThirstyPoint <= 0)
+    //    {
+    //        penalty -= 0.4f;
+    //    }
 
-        StatusManager.Instance.AddHealth(penalty);
-        StatusManager.Instance.AddHungry(-0.05f);
-        StatusManager.Instance.AddThirsty(-0.05f);
-    }
+    //    StatusManager.Instance.AddHealth(penalty);
+    //    StatusManager.Instance.AddHungry(-0.05f);
+    //    StatusManager.Instance.AddThirsty(-0.05f);
+    //}
 
     /// <summary>
     /// 시간의 영향을 받는 agent들에게 신호를 보냄

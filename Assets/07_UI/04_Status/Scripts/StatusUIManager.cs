@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatusManager : MonoBehaviour
+public class StatusUIManager : MonoBehaviour
 {
     #region SINGLETON
-    private static StatusManager instance;
-    public  static StatusManager Instance
+    private static StatusUIManager instance;
+    public  static StatusUIManager Instance
     {
         get
         {
@@ -27,23 +27,12 @@ public class StatusManager : MonoBehaviour
     }
     #endregion
 
+    [SerializeField] PlayerStatus playerStatus; // 인스펙터에서 할당
+
     private Image _healthGauge;
     private Image _hungryGauge;
     private Image _thirstyGauge;
     private Image _temperatureGauge;
-
-    private float _maxHealthPoint  = 150f;
-    private float _maxHungryPoint  = 150f;
-    private float _maxThirstyPoint = 150f;
-    private float _maxTemperture;
-
-    private float _currentHealthPoint  = 75f;
-    private float _currentHungryPoint  = 75f;
-    private float _currentThirstyPoint = 75f;
-    private float _currentTemperture;
-
-    public float CurrentHungryPoint { get { return _currentHungryPoint; } }
-    public float CurrentThirstyPoint { get { return _currentThirstyPoint; } }
 
     [Range(0f, 1f)]
     public float Temperature = 1f;
@@ -66,25 +55,20 @@ public class StatusManager : MonoBehaviour
         SetTemperature(Temperature);
     }
 
-    public void AddHealth(float healthPoint)
+    public void UpdateHealthUI()
     {
-        _currentHealthPoint = Mathf.Clamp(_currentHealthPoint + healthPoint, 0f, _maxHealthPoint);
-
-        _healthGauge.fillAmount = _currentHealthPoint / _maxHealthPoint;
-    }
-    
-    public void AddHungry(float hungryPoint)
-    {
-        _currentHungryPoint = Mathf.Clamp(_currentHungryPoint + hungryPoint, 0f, _maxHungryPoint);
-        
-        _hungryGauge.fillAmount = _currentHungryPoint / _maxHungryPoint;
+        _healthGauge.fillAmount = playerStatus._currentHealthPoint / playerStatus._maxHealthPoint;
     }
 
-    public void AddThirsty(float thirstyPoint)
+
+    public void UpdateHungryUI()
     {
-        _currentThirstyPoint = Mathf.Clamp(_currentThirstyPoint + thirstyPoint, 0f, _maxThirstyPoint);
-        
-        _thirstyGauge.fillAmount = _currentThirstyPoint / _maxThirstyPoint;
+        _hungryGauge.fillAmount = playerStatus._currentHungryPoint / playerStatus._maxHungryPoint;
+    }
+
+    public void UpdateThirstyUI()
+    {
+        _thirstyGauge.fillAmount = playerStatus._currentThirstyPoint / playerStatus._maxThirstyPoint;
     }
 
     public void SetTemperature(float currentTemperature)

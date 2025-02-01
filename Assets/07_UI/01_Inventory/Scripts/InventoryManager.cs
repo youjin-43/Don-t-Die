@@ -471,10 +471,10 @@ public class InventoryManager : MonoBehaviour
 
     public void EatItem(EdibleItemData edibleItemData)
     {
+        GameManager.Instance.PlayerTransform.GetComponent<PlayerStatus>().EatItem(edibleItemData);
         _inventoryDict[edibleItemData.Name] -= 1;
-
-        edibleItemData.Execute();
     }
+
     public bool InstallItem(InstallableItemData installableItemData)
     {
         Vector3 position = GameManager.Instance.GetPlayerPos() + new Vector3(0, -1, 0);
