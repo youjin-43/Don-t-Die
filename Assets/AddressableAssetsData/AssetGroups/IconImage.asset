@@ -21,12 +21,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 09a68baa25aa607469ec702c05f42ef9
-    m_Address: WoodBottleNone
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0c4f9dd2a52e62d4a8c62abf71f8e89a
     m_Address: IronBottleHigh
     m_ReadOnly: 0
@@ -389,12 +383,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f9f24954e37f4974eadfb67740c3a713
     m_Address: Grass
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fe081beed304260429b1735fd4107377
-    m_Address: BoneBottleNone
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage

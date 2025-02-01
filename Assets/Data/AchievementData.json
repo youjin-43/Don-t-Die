@@ -1,0 +1,48 @@
+{
+  "Items": [
+    {
+      "Code": "001",
+      "Content": "A로 인한 사망"
+    },
+    {
+      "Code": "002",
+      "Content": "B로 인한 사망"
+    },
+    {
+      "Code": "003",
+      "Content": "C로 인한 사망"
+    },
+    {
+      "Code": "004",
+      "Content": "D로 인한 사망"
+    },
+    {
+      "Code": "005",
+      "Content": "E로 인한 사망"
+    },
+    {
+      "Code": "006",
+      "Content": "F로 인한 사망"
+    },
+    {
+      "Code": "007",
+      "Content": "G로 인한 사망"
+    },
+    {
+      "Code": "008",
+      "Content": "H로 인한 사망"
+    },
+    {
+      "Code": "009",
+      "Content": "I로 인한 사망"
+    },
+    {
+      "Code": "010",
+      "Content": "J로 인한 사망"
+    },
+    {
+      "Code": "011",
+      "Content": "K로 인한 사망"
+    }
+  ]
+}

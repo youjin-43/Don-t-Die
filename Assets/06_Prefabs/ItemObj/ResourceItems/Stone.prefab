@@ -144,3 +144,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   ItemData: {fileID: 11400000, guid: 15f0f374eb56b3742a3cd1dda4f483f8, type: 2}
+  currentDurability: 0
