@@ -368,7 +368,8 @@ public class VoronoiMapGenerator : MonoBehaviour
             tilePosition.y = cellCenterPosition.y;
         }
 
-        Item go = PoolManager.Instance.InstantiateItem(data);
+        //Item go = PoolManager.Instance.InstantiateItem(data);
+        GameObject go = Instantiate(data.Prefab);
         go.transform.position = tilePosition;
 
         InstallableObject obj = new InstallableObject { 
