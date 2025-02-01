@@ -20,6 +20,9 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     public float _currentThirstyPoint = 75f;
     public float _currentTemperture;
 
+    float timeScale = 180f;
+    float debuffTimer = 0f;
+
     public float CurrentHungryPoint { get { return _currentHungryPoint; } }
     public float CurrentThirstyPoint { get { return _currentThirstyPoint; } }
 
@@ -59,7 +62,25 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        
+        debuffTimer += Time.deltaTime * timeScale;
+
+        if (debuffTimer > 60f)
+        {
+            debuffTimer = 0f;
+
+            if (CurrentHungryPoint <= 0)
+            {
+                LoseHP(0.4f);
+            }
+
+            if (CurrentThirstyPoint <= 0)
+            {
+                LoseHP(0.4f);
+            }
+
+            LoseHungry(0.05f);
+            LoseThirsty(0.05f);
+        }
     }
 
     #region IDamageable
@@ -97,7 +118,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     public void LoseHP(float amount)
     {
-        _currentHealthPoint -= amount;
+        _currentHealthPoint = Mathf.Clamp(_currentHealthPoint - amount, 0, _maxHealthPoint);
         if (_currentHealthPoint <= 0 && !isDead)
         {
             isDead = true;
@@ -110,7 +131,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     {
         if (!isDead)  // 죽은 상태에서는 회복 불가
         {
-            _currentHealthPoint = Mathf.Min(_currentHealthPoint + amount, _maxHealthPoint);
+            _currentHealthPoint = Mathf.Clamp(_currentHealthPoint + amount, 0, _maxHealthPoint);
             StatusUIManager.Instance.UpdateHealthUI();
         }
     }
@@ -121,7 +142,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     public void LoseThirsty(float amount)
     {
-        _currentThirstyPoint -= amount;
+        _currentThirstyPoint = Mathf.Clamp(_currentThirstyPoint - amount, 0, _maxThirstyPoint);
         StatusUIManager.Instance.UpdateThirstyUI();
     }
 
@@ -129,7 +150,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     {
         if (!isDead)  // 죽은 상태에서는 회복 불가
         {
-            _currentThirstyPoint = Mathf.Min(_currentThirstyPoint + amount, _maxThirstyPoint);
+            _currentThirstyPoint = Mathf.Clamp(_currentThirstyPoint + amount, 0, _maxThirstyPoint);
             StatusUIManager.Instance.UpdateThirstyUI();
         }
     }
@@ -141,7 +162,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     public void LoseHungry(float amount)
     {
-        _currentHungryPoint -= amount;
+        _currentHungryPoint = Mathf.Clamp(_currentHungryPoint - amount, 0, _maxHungryPoint);
         StatusUIManager.Instance.UpdateHungryUI();
     }
 
@@ -149,7 +170,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     {
         if (!isDead)  // 죽은 상태에서는 회복 불가
         {
-            _currentHungryPoint = Mathf.Min(_currentHungryPoint + amount, _maxHungryPoint);
+            _currentHungryPoint = Mathf.Clamp(_currentHungryPoint + amount, 0, _maxHungryPoint);
             StatusUIManager.Instance.UpdateHungryUI();
         }
     }
