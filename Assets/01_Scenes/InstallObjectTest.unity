@@ -5080,6 +5080,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4796768125185444446, guid: 661156808213248eb968b902125bc270, type: 3}
+      propertyPath: torchLight
+      value: 
+      objectReference: {fileID: 1723173650}
     - target: {fileID: 6399303531053045431, guid: 661156808213248eb968b902125bc270, type: 3}
       propertyPath: m_Name
       value: Player 1
@@ -5125,6 +5129,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8339596729906989707, guid: 661156808213248eb968b902125bc270, type: 3}
+      propertyPath: m_Name
+      value: Light 2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339596729906989707, guid: 661156808213248eb968b902125bc270, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -5135,7 +5143,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8339596729906989707, guid: 661156808213248eb968b902125bc270, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1723173650}
   m_SourcePrefab: {fileID: 100100000, guid: 661156808213248eb968b902125bc270, type: 3}
 --- !u!4 &893604185 stripped
 Transform:
@@ -9437,6 +9448,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2721880678856490455, guid: d1d824bcba29c5b42824f1f79bfc4e8f, type: 3}
   m_PrefabInstance: {fileID: 1092457697}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1723173647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8339596729906989707, guid: 661156808213248eb968b902125bc270, type: 3}
+  m_PrefabInstance: {fileID: 889780503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1723173650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723173647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 588cef802f47e824d9abb2478dba1c9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDuration: 100
+  currentDuration: 100
 --- !u!1 &1736998846
 GameObject:
   m_ObjectHideFlags: 0

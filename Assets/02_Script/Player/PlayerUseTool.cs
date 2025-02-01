@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 /// <summary>
 /// 플레이어 자식 오브젝트 중 ToolCollider에 붙어있음 
@@ -7,6 +8,7 @@ public class PlayerUseTool : MonoBehaviour
 {
     public ToolItemData currentTool;
     [SerializeField] Transform target;
+    [SerializeField] Torch torchLight;
 
     [HideInInspector] public PlayerAnimator playerAnimator; //PlayerMoveManager 에서 할당 받도록 함 
 
@@ -63,6 +65,14 @@ public class PlayerUseTool : MonoBehaviour
     private void HandleEquipChanged(ItemData itemData, EquipmentSlot slot)
     {
         if (slot == EquipmentSlot.Hand) currentTool = EquipmentManager.Instance.GetCurrentTool();
+        if ((itemData as ToolItemData).Type == ToolType.Torch)
+        {
+            torchLight.TurnOn(); 
+        }
+        else
+        {
+            torchLight.TurnOff();
+        }
     }
 
     #endregion
