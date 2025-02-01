@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public PlayerAnimator playerAnimator; //PlayerMoveManager 에서 할당 받도록 함 
+    [HideInInspector] public PlayerAnimator playerAnimator; //PlayerMoveManager 에서 할당 받도록 함 
     public float moveSpeed = 4f; //이동 속도 
 
     Vector2 dir = new Vector2(0f, 0f);
-
-    //private void Start()
-    //{
-    //    playerAnimator = GetComponent<PlayerAnimator>();
-    //}
 
     public void HandleMovement()
     {

@@ -29,6 +29,8 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     [SerializeField] protected float moveRange = 3f;
     [SerializeField] protected float CurrentHp;
+    [SerializeField] protected int atkDamage;
+    [SerializeField] protected float chaseOrFleeSpeed;
 
     [SerializeField] float knockbackForce;
     [SerializeField] float knockbackDuration;
@@ -62,13 +64,17 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         monsterRigidbody = GetComponent<Rigidbody2D>();
 
         CurrentHp = monsterData.MaxHP;
+        atkDamage = (int)monsterData.AttackDamage;
+        chaseOrFleeSpeed = monsterData.ChaseOrFleeSpeed;
+
         knockbackForce = monsterData.KnockbackForce;
         knockbackDuration = monsterData.KnockbackDuration;
 
         monsterStateMachine = new MonsterStateMachine(this);
+        Debug.Log(monsterStateMachine);
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         SetData(); // 몬스터 기본 데이터 셋팅
 
@@ -78,12 +84,13 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         OnHitEvent += HandleMonsterHit; // 몬스터의 OnHitEvent를 구독
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         monsterStateMachine.Execute();
     }
 
     #region OnState
+
     public void OnIdle()
     {
         if (monsterStateMachine.CurrentState != monsterStateMachine.idleMonsterState)
@@ -127,6 +134,26 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
             ChangeState(MonsterState.Die); // 디버그용 셋팅 
         }
     }
+
+    #endregion
+
+    #region Attack
+
+    /// <summary>
+    /// 플레이어에게 넉백 적용
+    /// </summary>
+    public virtual void ApplyKnockback(Rigidbody2D playerRb, Vector2 playerPosition)
+    {
+        float knockbackForce = 5f; // 넉백 세기 
+
+        // 몬스터 → 플레이어 방향 벡터
+        Vector2 knockbackDirection = (playerPosition - (Vector2)transform.position).normalized;
+
+        // 반대 방향으로 넉백 적용
+        playerRb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+    }
+
+
     #endregion
 
     #region Damaged(IDamageable)
@@ -139,7 +166,10 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
             TriggerDamagedAnimaiton(); // TODO : 피격 이미지 박쥐 참고해서 좀 수정하면 좋을것 같음
             //DebugController.Log($"{transform.name} took {damage} damage -> Current HP : {CurrentHp} | called in MonsterBase");
 
-            if (CurrentHp <= 0) OnDie();
+            if (CurrentHp <= 0)
+            {
+                OnDie();
+            }
             else ApplyKnockback(); // 넉백 적용
         }    
     }
@@ -152,7 +182,11 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     private void ApplyKnockback()
     {
-        if (monsterRigidbody == null) return; // Rigidbody2D가 없으면 넉백을 적용하지 않음
+        if (monsterRigidbody == null)
+        {
+            Debug.Log($"{transform.name}에 Rigidbody2D가 컴포넌트가 없습니다 ");
+            return; // Rigidbody2D가 없으면 넉백을 적용하지 않음
+        }
 
         //Debug.Log("ApplyKnockback 호출됨 ");
         Vector2 knockbackDirection = (transform.position - Target.position).normalized; // 공격 방향 계산 (몬스터의 위치에서 공격자의 위치를 뺀 방향 벡터)
@@ -202,7 +236,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     string isMoving = "IsMoving";
     string attack = "Attack";
     string takeDamage = "TakeDamage";
-    string Die = "Die";
+    string die = "Die";
 
 
     public void SetIsMovingAnimation(bool value)
@@ -227,9 +261,10 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         MonsterAnimator.SetTrigger(takeDamage);
     }
 
-    public void SetDieAnimation()
+    public void SetDieAnimation() // DieMonsterState에서 호출 
     {
-        MonsterAnimator.SetTrigger(Die);
+        Debug.Log("SetDieAnimation 실행 ");
+        MonsterAnimator.SetTrigger(die);
     }
     #endregion
 

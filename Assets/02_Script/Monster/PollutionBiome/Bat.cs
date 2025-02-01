@@ -2,6 +2,16 @@ using UnityEngine;
 
 public class Bat : MonsterBase
 {
+    //인스펙터에서 할당
+    [SerializeField] Collider2D detectCollider;
+    [SerializeField] Collider2D attackCollider;
+
+    // 플레이어를 공격 후 잠시 거리를 두는 행동
+    [SerializeField] private bool isKnockedBack = false; // 넉백 상태 확인
+    private Vector2 knockbackDirection; // 넉백 방향
+    private float knockbackDuration = 1f; // 넉백 지속 시간
+    private float knockbackTime = 0f; // 넉백 시간 카운트
+
     protected override void HandleMonsterHit(Transform attacker)
     {
         if (monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState) OnChase();
@@ -9,14 +19,108 @@ public class Bat : MonsterBase
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState)
+        if (other.CompareTag("Player"))
         {
-            if (other.CompareTag("Player")) // 플레이어가 감지 범위 안으로 들어오면
+            if (monsterStateMachine.CurrentState == monsterStateMachine.chaseMonsterState)
             {
+                // 공격 범위에서 플레이어와 충돌했을 경우
+                IDamageable target = other.GetComponent<IDamageable>();
+                if (target != null)
+                {
+                    TriggerAttackAnimaiton(); // 공격 애니메이션 
+                    target.TakeDamage(atkDamage);
+
+                    // 넉백 적용
+                    Rigidbody2D playerRb = other.GetComponent<Rigidbody2D>();
+                    if (playerRb != null)
+                    {
+                        ApplyKnockback(playerRb, other.transform.position);
+                    }
+
+                    attackCollider.enabled = false; // 공격 후 잠시 비활성화
+                    Invoke(nameof(EnableAttackCollider), 1f); // 1초 후 다시 활성화
+                }
+            }
+            else if (monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState)
+            {
+                // 감지 범위에서 플레이어를 찾았을 경우
                 Target = other.transform;
+                detectCollider.enabled = false; // 감지 범위 비활성화 (한 번 감지하면 비활성화)
+                attackCollider.enabled = true; // 공격 가능 상태로 변경
                 OnChase();
             }
         }
+    }
 
+    //void OnTriggerExit2D(Collider2D other)
+    //{
+    //    // 플레이어가 감지 범위에서 벗어나면 다시 감지 가능하도록 변경
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        Invoke(nameof(EnableDetectRange), 2f); // 2초 후 감지 범위 다시 활성화
+    //    }
+    //}
+
+    void EnableAttackCollider()
+    {
+        attackCollider.enabled = true;
+    }
+    //private void EnableDetectRange()
+    //{
+    //    detectCollider.enabled = true;
+    //}
+
+    ///// <summary>
+    ///// 플레이어에게 넉백 적용
+    ///// </summary>
+    //override void ApplyKnockback(Rigidbody2D playerRb, Vector2 playerPosition)
+    //{
+    //    float knockbackForce = 5f; // 넉백 세기 
+
+    //    // 박쥐 → 플레이어 방향 벡터
+    //    Vector2 knockbackDirection = (playerPosition - (Vector2)transform.position).normalized;
+
+    //    // 반대 방향으로 넉백 적용
+    //    playerRb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+
+    //    // 박쥐가 플레이어와 반대 방향으로 이동하도록 설정
+    //    this.knockbackDirection = -knockbackDirection; // 반대 방향 설정
+    //    isKnockedBack = true;
+    //    knockbackTime = knockbackDuration; // 넉백 시간을 설정
+    //}
+
+    public override void ApplyKnockback(Rigidbody2D playerRb, Vector2 playerPosition)
+    {
+        base.ApplyKnockback(playerRb, playerPosition); // 부모 클래스의 ApplyKnockback 호출
+
+        // 넉백 후 박쥐가 플레이어와 반대 방향으로 이동하도록 설정
+        knockbackDirection = (playerPosition - (Vector2)transform.position).normalized * -1; // 반대 방향 설정
+        isKnockedBack = true;
+        knockbackTime = knockbackDuration; // 넉백 시간을 설정
+    }
+
+
+    protected override void Update()
+    {
+        if (isKnockedBack)
+        {
+            // 넉백 후 일정 시간 동안 플레이어와 반대 방향으로 이동
+            if (knockbackTime > 0f)
+            {
+                // 넉백 시간동안 반대 방향으로 이동
+                transform.Translate(knockbackDirection * Time.deltaTime * chaseOrFleeSpeed); // 3f는 이동 속도
+                knockbackTime -= Time.deltaTime; // 넉백 시간 차감
+            }
+            else
+            {
+                // 넉백 시간이 끝났으면 추적 상태로 돌아가도록 설정
+                isKnockedBack = false;
+                OnChase(); // 추적 상태로 돌아가기
+            }
+        }
+        else
+        {
+            base.Update();
+        }
     }
 }

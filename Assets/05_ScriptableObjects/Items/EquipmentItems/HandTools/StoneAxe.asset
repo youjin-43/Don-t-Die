@@ -23,3 +23,4 @@ MonoBehaviour:
   currentDurability: 10
   availableTypes: 02000000
   atk: 12.5
+  Type: 2

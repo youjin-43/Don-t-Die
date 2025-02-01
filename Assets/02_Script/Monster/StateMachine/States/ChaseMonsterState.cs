@@ -29,17 +29,23 @@ public class ChaseMonsterState : IMonsterState
 
     public void UpdateState()
     {
-        ChaseTarget();
-        HandleAnimation(); // TODO : 이거 꼭 매프레임 파라미터를 설정해야하나..?
+        if (target != null)
+        {
+            ChaseTarget();
+            HandleAnimation(); // TODO : 이거 꼭 매프레임 파라미터를 설정해야하나..?
+        }
+        else
+        {
+            monster.OnIdle();
+        }
+            
     }
 
     void ChaseTarget()
     {
-        if (target != null)
-        {
-            //Debug.Log($"내 위치 : {monster.transform.position}, 타겟 위치 : {target.position}");
-            monster.transform.position = Vector3.MoveTowards(monster.transform.position, target.position, chaseSpeed * Time.deltaTime);
-        }
+        //Debug.Log($"내 위치 : {monster.transform.position}, 타겟 위치 : {target.position}");
+        monster.transform.position = Vector3.MoveTowards(monster.transform.position, target.position, chaseSpeed * Time.deltaTime);
+
     }
 
     void HandleAnimation()
