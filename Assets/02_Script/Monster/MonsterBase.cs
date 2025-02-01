@@ -71,7 +71,6 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         knockbackDuration = monsterData.KnockbackDuration;
 
         monsterStateMachine = new MonsterStateMachine(this);
-        Debug.Log(monsterStateMachine);
     }
 
     protected virtual void Start()
@@ -140,7 +139,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     #region Attack
 
     /// <summary>
-    /// 플레이어에게 넉백 적용
+    /// 공격 타겟에게 넉백 적용
     /// </summary>
     public virtual void ApplyKnockback(Rigidbody2D playerRb, Vector2 playerPosition)
     {
