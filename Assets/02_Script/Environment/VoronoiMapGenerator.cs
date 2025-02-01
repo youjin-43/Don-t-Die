@@ -6,15 +6,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
-[Serializable]
-public class MapData
-{
-    public BiomeMap biomeMap;
-    public ObjectMap objectMap;
-    public List<ResourceObject> resourceObjects;
-}
-
-
 /// <summary>
 /// Voronoi Diagram의 구성 요소. 랜덤한 위치에 찍히는 점.
 /// </summary>
@@ -361,11 +352,41 @@ public class VoronoiMapGenerator : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 전체 맵의 랜덤 포인트에 점을 찍고 biome을 랜덤하게 정한다.
-    /// </summary>
-    /// <returns></returns>
-    List<SeedPoint> GenerateSeedPoints(int count)
+    public bool InstallObject(Vector3 position, InstallableItemData data)
+    {
+        Vector3 cellCenterPosition = landTilemap.GetCellCenterWorld(new Vector3Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)));
+        Vector3 cellPosition = landTilemap.CellToWorld(new Vector3Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)));
+
+        Vector3 tilePosition = cellPosition;
+
+        if (data.Width % 2 != 0)
+        {
+            tilePosition.x = cellCenterPosition.x;
+        }
+        if (data.Height % 2 != 0)
+        {
+            tilePosition.y = cellCenterPosition.y;
+        }
+
+        Item go = PoolManager.Instance.InstantiateItem(data);
+        go.transform.position = tilePosition;
+
+        InstallableObject obj = new InstallableObject { 
+            position = new Vector2Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)),
+            dataName = data.Name,
+            gameObject = go.gameObject
+        };
+
+        EnvironmentManager.Instance.installableObjects.Add(tilePosition, obj);
+
+        return true;
+    }
+
+/// <summary>
+/// 전체 맵의 랜덤 포인트에 점을 찍고 biome을 랜덤하게 정한다.
+/// </summary>
+/// <returns></returns>
+List<SeedPoint> GenerateSeedPoints(int count)
     {
         List<SeedPoint> seeds = new List<SeedPoint>();
         for (int i = 0; i < count; i++)
@@ -388,4 +409,6 @@ public class VoronoiMapGenerator : MonoBehaviour
         }
         return seeds;
     }
+
+
 }

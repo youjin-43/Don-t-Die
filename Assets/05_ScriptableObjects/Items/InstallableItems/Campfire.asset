@@ -19,3 +19,5 @@ MonoBehaviour:
   IsCountable: 0
   MaxCountSize: 1
   TestData: 0
+  width: 1
+  height: 1

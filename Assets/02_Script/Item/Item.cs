@@ -52,4 +52,53 @@ public class Item : MonoBehaviour
             yield return null;
         }
     }
+
+
+    float initialForce = 2f;
+    float damping = 1f;
+    float frequency = 8f;
+    float time = 1.2f;
+
+    Vector3 startPosition;
+    float xDir;
+    float xPower;
+
+    public void DropEffect()
+    {
+        StartCoroutine(DropEffectCoroutine());
+
+        startPosition = GameManager.Instance.GetPlayerPos();
+
+        // RandomDir
+        xDir = Random.Range(-1, 1);
+        xPower = Random.Range(1f, 2f);
+
+
+        if (xDir < 0f)
+        {
+            xDir = -1;
+        }
+        else
+        {
+            xDir = 1;
+        }
+
+    }
+
+    IEnumerator DropEffectCoroutine()
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < time)
+        {
+            elapsedTime += Time.deltaTime;
+
+            // Y = A*e^(-kt)*|sin(Bt)|
+            float height = initialForce * Mathf.Exp(-damping * elapsedTime) * Mathf.Abs(Mathf.Sin(frequency * elapsedTime));
+
+            transform.position = startPosition + new Vector3(elapsedTime * xDir * xPower, height, 0);
+            
+            yield return null;
+        }
+    }
 }

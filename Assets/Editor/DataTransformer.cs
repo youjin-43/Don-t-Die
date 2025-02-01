@@ -9,12 +9,25 @@ using System.Data;
 public class DataTransformer : EditorWindow
 {
 #if UNITY_EDITOR
-    [MenuItem("¡ÚTools¡Ú/ParseExcel %#K")]
+    [MenuItem("â˜…Toolsâ˜…/ParseExcel %#K")]
     public static void ParseExcelDataToJson()
     {
         ParseExcelDataToJson<CraftingDataLoader, CraftingData>("CraftingData");
+        ParseExcelDataToJson<AchievementDataLoader, AchievementData>("AchievementData");
 
         Debug.Log("DataTransformer Completed");
+    }
+
+    [MenuItem("â˜…Toolsâ˜…/CreateDefaultUserAchieveJson")]
+    public static void CreateDefaultUserAchieveJson()
+    {
+        Dictionary<string, AchievementData> UserAchievementData  = new Dictionary<string, AchievementData>();
+
+        string json = JsonUtility.ToJson(UserAchievementData, true);
+
+        File.WriteAllText(PathManager.Instance.JsonFilePath("UserAchievementData"), json);
+    
+        Debug.Log("CreateDefaultUserAchieveJson Completed");
     }
 
     private static void ParseExcelDataToJson<Loader, LoaderData>(string fileName) where Loader : new() where LoaderData : new()
