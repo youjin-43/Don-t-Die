@@ -44,37 +44,37 @@ public class VoronoiMapGenerator : MonoBehaviour
 
     private void Update()
     {
-        #region Debug용
+        //#region Debug용
         // --- 타일이 바이옴 정보와 오브젝트 정보를 잘 가지고 있는지 디버깅 하는 부분!! -- 나중에 지우셈
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3Int tilemapPos = landTilemap.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Vector3Int tilemapPos = landTilemap.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
-            TileBase tile = landTilemap.GetTile(tilemapPos);
+        //    TileBase tile = landTilemap.GetTile(tilemapPos);
 
-            //GenerateTreeTmp(tilemapPos);
+        //    //GenerateTreeTmp(tilemapPos);
 
-            DebugController.Log($"map[{tilemapPos.y}, {tilemapPos.x}] {EnvironmentManager.Instance.biomeMap.GetTileBiome(new Vector2Int(tilemapPos.x, tilemapPos.y))}");
-            DebugController.Log($"{EnvironmentManager.Instance.objectMap.Map[tilemapPos.y, tilemapPos.x]}");
-        }
+        //    DebugController.Log($"map[{tilemapPos.y}, {tilemapPos.x}] {EnvironmentManager.Instance.biomeMap.GetTileBiome(new Vector2Int(tilemapPos.x, tilemapPos.y))}");
+        //    DebugController.Log($"{EnvironmentManager.Instance.objectMap.Map[tilemapPos.y, tilemapPos.x]}");
+        //}
 
         // --- Damageable Resource 잘 작동하는지 체크하는 부분. 지금은 Grass Tree 2 종류만 체크
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
+        //if (Input.GetMouseButtonDown(1))
+        //{
+        //    Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //    RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
 
-            if (hit && hit.transform.GetComponent<DamageableResourceNode>() != null)
-            {
-                hit.transform.GetComponent<DamageableResourceNode>().TakeDamage(10);
-            }
-            else if (hit && hit.transform.GetComponent<ResourceNode>() != null)
-            {
-                hit.transform.GetComponent<ResourceNode>().Harvest();
-            }
-        }
-        #endregion
+        //    if (hit && hit.transform.GetComponent<DamageableResourceNode>() != null)
+        //    {
+        //        hit.transform.GetComponent<DamageableResourceNode>().TakeDamage(10);
+        //    }
+        //    else if (hit && hit.transform.GetComponent<ResourceNode>() != null)
+        //    {
+        //        hit.transform.GetComponent<ResourceNode>().Harvest();
+        //    }
+        //}
+        //#endregion
     }
 
     /// <summary>

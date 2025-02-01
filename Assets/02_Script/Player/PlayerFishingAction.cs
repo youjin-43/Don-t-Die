@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerFishingAction : MonoBehaviour
 {
+    [SerializeField] ToolItemData currentTool;
+
     [SerializeField] Transform fishingTip;      // 낚싯대 끝부분
     [SerializeField] GameObject bobberPrefab;   // 찌 원본 프리팹
     Bobber bobber;                          // 지금 던져진 찌
@@ -32,8 +34,30 @@ public class PlayerFishingAction : MonoBehaviour
     const string TRIGGER_PULL = "Fish_Pull";
     const string TRIGGER_CATCH = "Fish_Catch";
 
+
+    #region 장비 변경 이벤트
+
+    private void OnDestroy()
+    {
+        // 이벤트 해제 (메모리 누수 방지)
+        EquipmentManager.Instance.OnEquipChanged -= HandleEquipChanged;
+    }
+
+    /// <summary>
+    /// 장비가 변경될 때 호출되는 함수
+    /// </summary>
+    private void HandleEquipChanged(ItemData itemData, EquipmentSlot slot)
+    {
+        if (slot == EquipmentSlot.Hand) currentTool = EquipmentManager.Instance.GetCurrentTool();
+    }
+
+    #endregion
+
     void Start()
     {
+        // 장비 변경 이벤트 구독
+        EquipmentManager.Instance.OnEquipChanged += HandleEquipChanged;
+
         animator = GetComponent<Animator>();
         lineRenderer = fishingTip.GetComponent<LineRenderer>();
         isBobberThrown = false;
@@ -41,12 +65,11 @@ public class PlayerFishingAction : MonoBehaviour
         targetWaitingTime = Random.Range(5f, 10f);
     }
     
-    void Update()
+    public void Fishing()
     {
-        ToolItemData currentTool = EquipmentManager.Instance.GetCurrentTool();
-        if (currentTool != null && currentTool.AvailableTypes.Contains(ObjectType.Fishing) && !isBobberThrown && !isPulling)
+        if (currentTool != null && currentTool.Type == ToolType.Rod && !isBobberThrown && !isPulling)
         {
-            if ((Input.GetMouseButtonDown(0)))
+            if (Input.GetMouseButtonDown(0))
             {
                 isPressed = true;
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

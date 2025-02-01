@@ -1,6 +1,5 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using static InventoryItemSlot;
 
 public class EquipmentManager : MonoBehaviour
 {
@@ -84,6 +83,10 @@ public class EquipmentManager : MonoBehaviour
         return _chestItemSlot?.GetItemData() as ChestItemData;
     }
 
+
+    // 장비 변경 이벤트 정의
+    public event Action<ItemData, EquipmentSlot> OnEquipChanged;
+
     public ItemData EquipItem(ItemData itemData, EquipmentSlot slot)
     {
         ItemData equippedItemData = null;
@@ -125,7 +128,7 @@ public class EquipmentManager : MonoBehaviour
                     break;
                 }
         }
-
+        OnEquipChanged?.Invoke(itemData, slot); // 장비가 변경되었음을 알리는 이벤트 호출
         return equippedItemData;
     }
 }

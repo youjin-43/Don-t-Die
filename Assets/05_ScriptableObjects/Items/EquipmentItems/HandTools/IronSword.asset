@@ -22,4 +22,5 @@ MonoBehaviour:
   maxDurability: 10
   currentDurability: 10
   availableTypes: 
-  atk: 0
+  atk: 10
+  Type: 1
