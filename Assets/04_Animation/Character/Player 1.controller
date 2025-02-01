@@ -695,16 +695,16 @@ AnimatorStateMachine:
     m_Position: {x: 280, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5902303015738269002}
-    m_Position: {x: 650, y: 50, z: 0}
+    m_Position: {x: 670, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8454632512343545163}
-    m_Position: {x: 890, y: 180, z: 0}
+    m_Position: {x: 960, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3050378050119820901}
-    m_Position: {x: 650, y: 180, z: 0}
+    m_Position: {x: 670, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 503710052255070685}
-    m_Position: {x: 890, y: 60, z: 0}
+    m_Position: {x: 960, y: 60, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: -5956138279668397394}
@@ -859,7 +859,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Fish_Catch
+    m_ConditionEvent: Fish_Cast
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5902303015738269002}

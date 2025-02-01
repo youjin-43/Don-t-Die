@@ -185,6 +185,9 @@ public class PlayerFishingAction : MonoBehaviour
 
     public void ResetCatchTrigger()
     {
+        animator.ResetTrigger(TRIGGER_CAST);
+        animator.ResetTrigger(TRIGGER_PULL);
+        animator.ResetTrigger(TRIGGER_WAIT);
         animator.ResetTrigger(TRIGGER_CATCH);
     }
 
