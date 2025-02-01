@@ -1,20 +1,12 @@
 {
   "Items": [
     {
-      "Code": "001",
-      "Content": "A로 인한 사망"
-    },
-    {
       "Code": "002",
       "Content": "B로 인한 사망"
     },
     {
       "Code": "003",
       "Content": "C로 인한 사망"
-    },
-    {
-      "Code": "005",
-      "Content": "E로 인한 사망"
     }
   ]
 }

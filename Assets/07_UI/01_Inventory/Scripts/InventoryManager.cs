@@ -88,10 +88,10 @@ public class InventoryManager : MonoBehaviour
 
             _inventorySlot.Add(go.GetComponent<InventoryItemSlot>());
 
-            if(i == 0)
-            {
-                go.GetComponent<InventoryItemSlot>().Select();
-            }
+            //if(i == 0)
+            //{
+            //    go.GetComponent<InventoryItemSlot>().Select();
+            //}
         }
 
         _dragUI.gameObject.SetActive(false);
@@ -412,7 +412,9 @@ public class InventoryManager : MonoBehaviour
 
                 go.GetComponent<Item>().SetItemData(_startSlotItemData);
 
-                go.GetComponent<Item>().DropEffect();
+                //Vector3 dir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
+                //
+                //go.GetComponent<Item>().Spread(GameManager.Instance.GetPlayerPos(), dir, Random.Range(2.5f, 3f));
             }
         }
         // 드래그 UI 비활성화
