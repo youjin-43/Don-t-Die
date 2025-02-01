@@ -90,8 +90,6 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     #region HP
 
-    // TODO : UI랑 연동!!
-
     // TODO : clamp로 변경!! 
     //_currentThirstyPoint = Mathf.Clamp(_currentThirstyPoint + thirstyPoint, 0f, _maxThirstyPoint);
 

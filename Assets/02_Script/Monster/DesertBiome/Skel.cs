@@ -34,9 +34,4 @@ public class Skel : MonsterBase
     {
         OnChase();
     }
-
-    public void ClearAttackTarget()
-    {
-        transform.GetChild(0).GetComponent<MonsterAtkCol>()?.ClearTarget();
-    }
 }
