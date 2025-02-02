@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -35,6 +36,9 @@ public class TimeController : MonoBehaviour
     // Debug용
     [SerializeField] TMP_Text timeDisplayer;
 
+    public event Action OnNightStart;
+    public event Action OnNightEnd;
+
     private void Awake()
     {
         timeAgents = new List<TimeAgent>();
@@ -47,9 +51,9 @@ public class TimeController : MonoBehaviour
         timer = startAtTime;
     }
 
-    public Season CurrentSeason 
+    public Season CurrentSeason
     {
-        get { return currentSeason; } 
+        get { return currentSeason; }
     }
     public int Days
     {
@@ -71,6 +75,13 @@ public class TimeController : MonoBehaviour
         get { return timer % 3600f / 60f; }
     }
 
+    public bool IsNight
+    {
+        get { return timeCurves[(int)currentSeason].Evaluate(Hours) < float.Epsilon; }
+    }
+
+    bool wasNight;  // 이전 프레임에 밤이었는지 저장하는 변수
+
     void Update()
     {
         timer += Time.deltaTime * timeScale;
@@ -91,30 +102,19 @@ public class TimeController : MonoBehaviour
             growTimer = 0;
         }
 
-        if (playerTimer >= 60f)
+        if (IsNight != wasNight)    // 낮 -> 밤이거나 밤 -> 낮 됐을 때
         {
-            playerTimer = 0;
-            //ModifyPlayerStatus();
+            if (IsNight)
+            {
+                OnNightStart?.Invoke();
+            }
+            else
+            {
+                OnNightEnd?.Invoke();
+            }
         }
+        wasNight = IsNight;
     }
-
-    //void ModifyPlayerStatus()
-    //{
-    //    float penalty = 0;      // 공복과 갈증이 0이 되면 체력 패널티를 받는다.
-
-    //    if (StatusManager.Instance.CurrentHungryPoint <= 0)
-    //    {
-    //        penalty -= 0.4f;
-    //    }
-    //    if (StatusManager.Instance.CurrentThirstyPoint <= 0)
-    //    {
-    //        penalty -= 0.4f;
-    //    }
-
-    //    StatusManager.Instance.AddHealth(penalty);
-    //    StatusManager.Instance.AddHungry(-0.05f);
-    //    StatusManager.Instance.AddThirsty(-0.05f);
-    //}
 
     /// <summary>
     /// 시간의 영향을 받는 agent들에게 신호를 보냄
@@ -161,11 +161,6 @@ public class TimeController : MonoBehaviour
     {
         float v = timeCurves[(int)currentSeason].Evaluate(Hours);
         globalLight.intensity = v;
-    }
-
-    void ControlPlayerStatus()
-    {
-        // StatusManager에 함수 추가하기.
     }
 
     void NextDay()
