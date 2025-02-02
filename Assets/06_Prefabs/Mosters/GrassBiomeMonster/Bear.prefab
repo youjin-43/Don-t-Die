@@ -176,6 +176,8 @@ MonoBehaviour:
   MonsterAnimator: {fileID: 0}
   moveRange: 2
   CurrentHp: 0
+  atkDamage: 0
+  chaseOrFleeSpeed: 0
   knockbackForce: 0
   knockbackDuration: 0
   Target: {fileID: 0}

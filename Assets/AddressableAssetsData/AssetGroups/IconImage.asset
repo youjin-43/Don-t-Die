@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0abb02bb49a174ae9ad5689bd1e7faaa
+    m_Address: Assets/03_Image/Icon/ResourceItems/milk.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0c4f9dd2a52e62d4a8c62abf71f8e89a
     m_Address: IronBottleHigh
     m_ReadOnly: 0
@@ -52,7 +58,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 225069a750824944db4866ac56c72092
-    m_Address: Branch
+    m_Address: Assets/03_Image/Icon/ResourceItems/Branch.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -76,7 +82,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 34d5507f2605f8049b22019c8fb87aed
-    m_Address: Bone
+    m_Address: Assets/03_Image/Icon/ResourceItems/Bone.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -171,6 +177,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e65fd1cd1921234187e9052dbfb388a
+    m_Address: Assets/03_Image/Icon/ResourceItems/GrilledMeat.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 67cb4ec51aff04f49b32da33df17610d
     m_Address: BonePickax
     m_ReadOnly: 0
@@ -178,7 +190,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 69302f908c7154a41945c603bf6531d9
-    m_Address: Rope
+    m_Address: Assets/03_Image/Icon/ResourceItems/Rope.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -219,6 +231,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 818407d810c9482419f51f9882e1b1ab
+    m_Address: Assets/03_Image/Icon/Items/WoodBottleNone.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 83f7aad9bc0276640a3fe5128dfc93e7
     m_Address: StoneBottleLow
     m_ReadOnly: 0
@@ -238,7 +256,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9698ca0bff4322244b7b493a170e78e4
-    m_Address: Wood
+    m_Address: Assets/03_Image/Icon/ResourceItems/Wood.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -255,6 +273,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2184639a12f09e43bb7d0722ab92963
+    m_Address: Assets/03_Image/Icon/Items/BoneBottleNone.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a65c36bcc2d4f5d478a022f619f29250
     m_Address: StoneBottleMiddle
     m_ReadOnly: 0
@@ -267,8 +291,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b0cb431ca9efe4ce3947f1e3bce326df
+    m_Address: Assets/03_Image/Icon/ResourceItems/wood_2.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b34c10ddc3aef3e4ebd4d20b54f3e10e
-    m_Address: Flint
+    m_Address: Assets/03_Image/Icon/ResourceItems/Flint.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -280,7 +310,13 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b4dd2206500503f4ebff6b7027b6c17a
-    m_Address: Leather
+    m_Address: Assets/03_Image/Icon/ResourceItems/Leather.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b5684bacf1d334249aa87b015058d12a
+    m_Address: Assets/03_Image/Icon/ResourceItems/fish.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -334,7 +370,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dee3676c9076c4b4ea4b5e0ab8beb31c
-    m_Address: Iron
+    m_Address: Assets/03_Image/Icon/ResourceItems/Iron.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -375,14 +411,32 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec8edf9a644ebff428787cf2718451e9
+    m_Address: Assets/03_Image/Icon/Items/BoneBottle.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee1ab99b76c6245dea14b085f2968642
+    m_Address: Assets/03_Image/Icon/ResourceItems/rock_2.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f06e25167a6d9b94eb57dff3d0de31db
     m_Address: IronSword
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0b9de6b45095ab40a6ed9bfc07aa56a
+    m_Address: Assets/03_Image/Icon/Items/WoodBottle.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f9f24954e37f4974eadfb67740c3a713
-    m_Address: Grass
+    m_Address: Assets/03_Image/Icon/ResourceItems/Grass.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage

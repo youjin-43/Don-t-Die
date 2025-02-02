@@ -59,7 +59,12 @@ public class PlayerMoveManager : MonoBehaviour
         {
             playerMove.HandleMovement(); // 상하좌우 입력 관리 
             playerAutoInteract.AutoInteract(); // 자동 상호작용 (스페이스바)
-            if (Input.GetMouseButtonDown(0)) playerUseTool.StartUsingEquippedTool(); // 도구 사용 
+
+            // UI 클릭 중에는 도구 사용을 막아야 할 듯?
+            if(UIManager.Instance.IsUIClick() == false)
+            {
+                if (Input.GetMouseButtonDown(0)) playerUseTool.StartUsingEquippedTool(); // 도구 사용 
+            }
         }
 
         if (Input.GetMouseButtonUp(0)) playerUseTool.StopUsingEquippedTool(); 
@@ -74,6 +79,23 @@ public class PlayerMoveManager : MonoBehaviour
         {
             CraftManager.Instance.ToggleCraftingUI();
             InventoryManager.Instance.DisableScrollToggle();
+        }
+
+        // 인벤토리 단축키
+        // Update안에서 for문 돌린 이유
+        // 안 그러면 if(1) else if(2) else if(3) .... 늘어저서 그랬어요...
+        for(int i = 0; i < 9; ++i)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            {
+                InventoryManager.Instance.UseItem((int)(KeyCode.Alpha1 + i));
+            }
+        }
+
+        // DEBUG : 상자 토글
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            BoxManager.Instance.ToggleBoxUI();
         }
     }
 

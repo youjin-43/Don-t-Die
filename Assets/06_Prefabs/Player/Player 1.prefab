@@ -373,7 +373,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equippedHeadItem: {fileID: 0}
   equippedChestItem: {fileID: 0}
+  _maxHealthPoint: 150
+  _maxHungryPoint: 150
+  _maxThirstyPoint: 150
+  _maxTemperture: 0
   _currentHealthPoint: 0
+  _currentHungryPoint: 75
+  _currentThirstyPoint: 75
+  _currentTemperture: 0
   playerAnimator: {fileID: 0}
   knockbackDuration: 0.2
 --- !u!114 &9006268405667800640

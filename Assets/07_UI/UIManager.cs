@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class UIManager : MonoBehaviour
     {
         get
         {
-            
             return instance;
         }
     }
@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject _craftUI;
     [SerializeField] GameObject _statusUI;
+    [SerializeField] GameObject _boxUI;
 
     private void Awake()
     {
@@ -37,6 +38,19 @@ public class UIManager : MonoBehaviour
         
         _craftUI.SetActive(true);
         _statusUI.SetActive(true);
+        _boxUI.SetActive(true);
     }
 
+    public bool IsUIClick()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
+
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+
+        return results.Count > 0;
+    }
 }
