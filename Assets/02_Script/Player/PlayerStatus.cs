@@ -21,7 +21,9 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     public float _currentTemperture;
 
     float timeScale = 180f;
-    float debuffTimer = 0f;
+    float statusDebuffTimer = 0f;
+
+    Coroutine darknessDamageRoutine;
 
     public float CurrentHungryPoint { get { return _currentHungryPoint; } }
     public float CurrentThirstyPoint { get { return _currentThirstyPoint; } }
@@ -37,6 +39,8 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     {
         // 이벤트 해제 (메모리 누수 방지)
         EquipmentManager.Instance.OnEquipChanged -= HandleEquipChanged;
+        EnvironmentManager.Instance.Time.OnNightStart -= StartDarknessDamage;
+        EnvironmentManager.Instance.Time.OnNightEnd -= StopDarknessDamage;
     }
 
     /// <summary>
@@ -57,16 +61,18 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
         // 장비 변경 이벤트 구독
         EquipmentManager.Instance.OnEquipChanged += HandleEquipChanged;
+        EnvironmentManager.Instance.Time.OnNightStart += StartDarknessDamage;
+        EnvironmentManager.Instance.Time.OnNightEnd += StopDarknessDamage;
         _currentHealthPoint = _maxHealthPoint;
     }
 
     private void Update()
     {
-        debuffTimer += Time.deltaTime * timeScale;
+        statusDebuffTimer += Time.deltaTime * timeScale;
 
-        if (debuffTimer > 60f)
+        if (statusDebuffTimer > 60f)
         {
-            debuffTimer = 0f;
+            statusDebuffTimer = 0f;
 
             if (CurrentHungryPoint <= 0)
             {
@@ -177,6 +183,42 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     #endregion
 
+    #region Night Debuff
+
+    bool isNight;
+
+    void StartDarknessDamage()
+    {
+        isNight = true;
+        if (darknessDamageRoutine == null)
+        {
+            darknessDamageRoutine = StartCoroutine(DamageOverTime());
+        }
+    }
+
+    void StopDarknessDamage()
+    {
+        isNight = false;
+        if (darknessDamageRoutine != null)
+        {
+            StopCoroutine(darknessDamageRoutine);
+            darknessDamageRoutine = null;
+        }
+    }
+
+    IEnumerator DamageOverTime()
+    {
+        while (isNight)
+        {
+            if (!Physics2D.OverlapCircle(transform.position, 5f, LayerMask.GetMask("Light")))
+            {
+                LoseHP(37.5f);
+            }
+            yield return new WaitForSeconds(3f);
+        }
+    }
+
+    #endregion
 
     public void EatItem(EdibleItemData edibleItemData)
     {
@@ -184,4 +226,6 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         GainHungry(edibleItemData.hungerValue);
         GainThirsty(edibleItemData.thirstValue);
     }
+
+
 }

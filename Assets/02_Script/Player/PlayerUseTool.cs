@@ -65,7 +65,7 @@ public class PlayerUseTool : MonoBehaviour
     private void HandleEquipChanged(ItemData itemData, EquipmentSlot slot)
     {
         if (slot == EquipmentSlot.Hand) currentTool = EquipmentManager.Instance.GetCurrentTool();
-        if ((itemData as ToolItemData).Type == ToolType.Torch)
+        if (currentTool != null && currentTool.Type == ToolType.Torch)
         {
             torchLight.TurnOn(); 
         }
