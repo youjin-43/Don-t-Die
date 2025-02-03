@@ -24,6 +24,7 @@ public class PlayerUseTool : MonoBehaviour
             {
                 Debug.Log($"{transform.parent}가 {collision.name}을 공격!");
                 monsterBase.OnHit(transform.parent, (int)currentTool.Atk); // OnHit 이벤트 발생 -> attacker로 플레이어의 transfrom 전달
+                EquipmentManager.Instance.ReduceToolDurability();
             }
             else
             {
@@ -31,6 +32,7 @@ public class PlayerUseTool : MonoBehaviour
                 if(damageable != null)
                 {
                     damageable.TakeDamage((int)currentTool.Atk);
+                    EquipmentManager.Instance.ReduceToolDurability();
                 }
             }
 

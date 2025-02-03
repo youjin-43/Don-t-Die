@@ -11,6 +11,7 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
     private Image     _itemImage;
     private Transform _itemDurability;
     private Image     _itemDurabilityGauge;
+    public int _currentDurability;
 
     private void Awake()
     {
@@ -67,9 +68,9 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
         return _itemData.Name;
     }
 
-    public void ClearEquipment()
+    public void ClearEquipment(bool destroy = false)
     {
-        if(InventoryManager.Instance.AddItem(_itemData) == true)
+        if(destroy || InventoryManager.Instance.AddItem(_itemData) == true)
         {
             _itemData = null;
             _itemImage.sprite = null;
@@ -78,6 +79,15 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
 
             EquipmentManager.Instance.InvokeOnEquipChanged(_itemData, EquipmentSlot.Unknown);
         }
+    }
+
+    public void UpdateDurabilityGaugeUI()
+    {
+        EquippableItemData equippableItemData = _itemData as EquippableItemData;
+        float fillAmount = _currentDurability / equippableItemData.maxDurability;
+
+        _itemDurabilityGauge.fillAmount = fillAmount;
+        _itemDurabilityGauge.color = Color.HSVToRGB(fillAmount / 3, 1.0f, 1.0f);
     }
 
     public bool IsEmpty()
