@@ -363,6 +363,7 @@ public class InventoryManager : MonoBehaviour
             _startSlotItemData  = startSlot.GetItemData(out int itemCount);
             _startSlotItemCount = itemCount;
             _startSlotDurability = startSlot._currentDurability;
+            DebugController.Log($"BeginDrag {_startSlotDurability}");
         }
         // 드래그 UI 활성화
         {
@@ -381,6 +382,7 @@ public class InventoryManager : MonoBehaviour
         if (endSlot.IsEmpty() == true)
         {
             endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
+            endSlot._currentDurability = _startSlotDurability;
         }
         // 비어있지 않다면
         else
@@ -415,11 +417,16 @@ public class InventoryManager : MonoBehaviour
             {
                 // 데이터 스왑
                 ItemData endSlotItemData = endSlot.GetItemData(out int itemCount);
+                int endSlotDurability = endSlot._currentDurability;
                 endSlot.ClearItemSlot();
 
                 endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
+                endSlot._currentDurability = _startSlotDurability;
+                DebugController.Log($"start dura : {_startSlotDurability}");
 
                 _startSlot.AddItemData(endSlotItemData, itemCount);
+                _startSlot._currentDurability = endSlotDurability;
+                DebugController.Log($"end dura : {endSlotDurability}");
             }
         }
         // 드래그 UI 비활성화
