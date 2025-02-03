@@ -3,8 +3,8 @@ guid: 7f45bf4b854043542bf421917b27b23c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2684557680462377405
-    second: GoldAx_0
+      213: 4854652209350677895
+    second: GoldAxe_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GoldAx_0
+      name: GoldAxe_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: db1b10bacf6714520800000000000000
-      internalID: 2684557680462377405
+      spriteID: 785996e96703f5340800000000000000
+      internalID: 4854652209350677895
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GoldAx_0: 2684557680462377405
+      GoldAxe_0: 4854652209350677895
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

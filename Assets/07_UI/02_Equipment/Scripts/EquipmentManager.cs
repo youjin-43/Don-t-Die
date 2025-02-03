@@ -83,11 +83,21 @@ public class EquipmentManager : MonoBehaviour
         return _chestItemSlot?.GetItemData() as ChestItemData;
     }
 
+    public void ReduceToolDurability()
+    {
+        _toolItemSlot._currentDurability--;
+
+        if (_toolItemSlot._currentDurability <= 0)
+        {
+            _toolItemSlot.ClearEquipment(true);     // 착용한 툴 없애기
+        }
+        _toolItemSlot.UpdateDurabilityGaugeUI();
+    }
 
     // 장비 변경 이벤트 정의
     public event Action<ItemData, EquipmentSlot> OnEquipChanged;
 
-    public ItemData EquipItem(ItemData itemData, EquipmentSlot slot)
+    public ItemData EquipItem(ItemData itemData, EquipmentSlot slot, int durability = 0)
     {
         ItemData equippedItemData = null;
 
@@ -100,7 +110,7 @@ public class EquipmentManager : MonoBehaviour
                         equippedItemData = _toolItemSlot.GetItemData();
                     }
 
-                    _toolItemSlot.AddItemData(itemData);
+                    _toolItemSlot.AddItemData(itemData, durability);
 
                     break;
                 }
@@ -111,7 +121,7 @@ public class EquipmentManager : MonoBehaviour
                         equippedItemData = _headItemSlot.GetItemData();
                     }
 
-                    _headItemSlot.AddItemData(itemData);
+                    _headItemSlot.AddItemData(itemData, durability);
 
                     break;
                 }
@@ -123,7 +133,7 @@ public class EquipmentManager : MonoBehaviour
                         equippedItemData = _chestItemSlot.GetItemData();
                     }
 
-                    _chestItemSlot.AddItemData(itemData);
+                    _chestItemSlot.AddItemData(itemData, durability);
 
                     break;
                 }

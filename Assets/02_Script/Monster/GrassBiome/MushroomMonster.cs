@@ -100,7 +100,7 @@ public class MushroomMonster : MonoBehaviour, IItemDroppable, IDamageable
     public void TakeDamage(int damage)
     {
         DropItems();
-        Destroy(this); // TODO : 풀매니저로 나중에 변경.. 
+        Destroy(gameObject); // TODO : 풀매니저로 나중에 변경.. 
     }
 
     public bool IsDead()

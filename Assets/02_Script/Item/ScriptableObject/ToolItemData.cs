@@ -8,7 +8,8 @@ public enum ToolType
     Axe,
     Pickaxe,
     Rod,
-    Torch
+    Torch,
+    Bottle
 }
 
 [CreateAssetMenu(fileName = "ToolItemData", menuName = "Item/ToolItemData")]

@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 6770973889154513921}
   - component: {fileID: 3663111152048838803}
   - component: {fileID: 3333404001118075201}
+  - component: {fileID: 2781191422975997565}
   m_Layer: 6
   m_Name: Campfire
   m_TagString: Untagged
@@ -329,8 +330,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5aca71999a3e79429fec08eb9b0aa25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDurability: 30000
+  maxDurability: 30
   currentDurability: 0
+  fireLight: {fileID: 208277773405931376}
+  animator: {fileID: 1242506412874330277}
+  intensity: 0
+  fireObj: {fileID: 526879475146240596}
 --- !u!58 &3333404001118075201
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -367,3 +372,21 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.12749717}
   m_Radius: 0.1716673
+--- !u!114 &2781191422975997565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963164792868939583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 737a9cdf7f0c1485daeed2e8f60be20c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  darkSpiritPrefab: {fileID: 5231987450327133425, guid: 1365e1d3e57654817ac4310c97b15cbe, type: 3}
+  minSpawnCount: 2
+  maxSpawnCount: 4
+  spawnRadius: 10
+  minSpawnDelay: 1
+  maxSpawnDelay: 5

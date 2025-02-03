@@ -17,7 +17,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
     private Image        _itemSelectImage;
     private Image        _slotNumberImage;
     private int          _currentItemCount;
-    private int          _currentDurability;
+    public int          _currentDurability;
     private int          _slotNumber;
 
     // 드래깅 데이터
@@ -217,8 +217,12 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
         // 아이템 내구도 표시
         {
             _itemDurability.gameObject.SetActive(true);
+            float fillAmount = _currentDurability / (float)equippableItemData.maxDurability;
 
-            float fillAmount = equippableItemData.currentDurability / equippableItemData.maxDurability;
+            // currentDurability는 어떻게 구함?
+            // Item.cs에 들고 있는다며
+            // 여기는 데이터밖에 없는데?
+            // GetComponent<Item>()이 불가능하잖아
 
             _itemDurabilityGauge.fillAmount = fillAmount;
             _itemDurabilityGauge.color = Color.HSVToRGB(fillAmount / 3f, 1f, 1f);
@@ -249,6 +253,10 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
             _itemImage.color  = new Color(1, 1, 1, 0);
             _itemCountImage.gameObject.SetActive(false);
             _itemDurability.gameObject.SetActive(false);
+        }
+        // 5. 내구도 초기화
+        {
+            _currentDurability = 0;
         }
     }
 
@@ -296,7 +304,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
 
                     // 현재 슬롯의 장비를 장비창으로 넘기고
                     // 장비창에 이미 아이템이 있다면 그 아이템을 받아옴
-                    ItemData itemData = InventoryManager.Instance.ExchangeEquipItem(equippableItemData, equippableItemData.EquipSlot);
+                    ItemData itemData = InventoryManager.Instance.ExchangeEquipItem(equippableItemData, equippableItemData.EquipSlot, _currentDurability, out _currentDurability);
 
                     // 장착하고 있던 장비가 없었다면
                     if (itemData == null)

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8287317821263404613}
   - component: {fileID: 5572930857886043153}
   - component: {fileID: 5639528400587392968}
-  - component: {fileID: 2064850256693520671}
   m_Layer: 3
   m_Name: CraftingTable
   m_TagString: Item
@@ -125,22 +124,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.25
---- !u!114 &2064850256693520671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5701550997541667543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdbe7d44ec9f0af4eb192b398c9c8a9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  ItemData: {fileID: 11400000, guid: 55064cbb53dae8a46872cad9e5e05502, type: 2}

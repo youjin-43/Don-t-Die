@@ -22,7 +22,7 @@ MonoBehaviour:
     - ItemData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0826ab5676c2d6c48a7eb7d13b3c0c3d
-    m_Address: Assets/05_ScriptableObjects/Items/ResourceItems/Branch.asset
+    m_Address: Branch
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -148,7 +148,7 @@ MonoBehaviour:
     - ItemData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 78d280e5c811e8e4ab8dba1ed6c45ed4
-    m_Address: Assets/05_ScriptableObjects/Items/ResourceItems/Grass.asset
+    m_Address: Grass
     m_ReadOnly: 0
     m_SerializedLabels:
     - ItemData
@@ -208,7 +208,7 @@ MonoBehaviour:
     - ItemData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a843d2fe2c7d58c42a3199384e8eba93
-    m_Address: Assets/05_ScriptableObjects/Items/ResourceItems/Flint.asset
+    m_Address: Flint
     m_ReadOnly: 0
     m_SerializedLabels:
     - ItemData

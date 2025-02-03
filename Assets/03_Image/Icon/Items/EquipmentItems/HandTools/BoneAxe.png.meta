@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cb199a04643bb5a4cb829d05b12342ad
+guid: 7a723cd025eb4a545b61eaee275bf199
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8023414048573446547
-    second: BoneAx_0
+      213: -7794722247605491228
+    second: BoneAxe_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BoneAx_0
+      name: BoneAxe_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d66a6e4ce6b17a090800000000000000
-      internalID: -8023414048573446547
+      spriteID: 4e9e3acf96593d390800000000000000
+      internalID: -7794722247605491228
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BoneAx_0: -8023414048573446547
+      BoneAxe_0: -7794722247605491228
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
