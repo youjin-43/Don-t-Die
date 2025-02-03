@@ -24,7 +24,7 @@ MonoBehaviour:
     maxAmount: 3
   timeToAllGrown: 1441
   sprites:
-  - {fileID: 76822181, guid: bbcd361f555a947ac98c3d39099e6235, type: 3}
-  - {fileID: 119448159, guid: bbcd361f555a947ac98c3d39099e6235, type: 3}
+  - {fileID: -4743401, guid: bbcd361f555a947ac98c3d39099e6235, type: 3}
+  - {fileID: -1706188496, guid: bbcd361f555a947ac98c3d39099e6235, type: 3}
   growthStageTime: a0050000a1050000
   minTimeToHarvest: 1440
