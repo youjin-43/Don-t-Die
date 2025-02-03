@@ -153,11 +153,11 @@ public class CraftList : MonoBehaviour
     {
         _craftItemSlotList[_craftItemSlotList.Count - 1].SetCount(_possibleItemCount);
 
-        if(_data.NeedCraftingTable == false)
-        {
             _mask.color = new Color(0, 0, 0, 0f);
 
             _craftItemSlotList[_craftItemSlotList.Count - 1].CraftUnlock();
+        if(_data.NeedCraftingTable == false)
+        {
         }
         // 조합대가 필요한 조합들에 대해서는 아래서 처리
         else
