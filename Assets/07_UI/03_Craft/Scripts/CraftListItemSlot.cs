@@ -117,8 +117,14 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Right && _type == CraftListItemSlotType.ResultSlot && _possibleCraft == true)
         {
             ItemData currentItemData = DataManager.Instance.ItemData[_itemName];
+            int maxDurability = 0;
 
-            if(InventoryManager.Instance.AddItem(currentItemData) == true)
+            if (currentItemData is EquippableItemData)
+            {
+                maxDurability = (currentItemData as EquippableItemData).maxDurability;
+            }
+
+            if(InventoryManager.Instance.AddItem(currentItemData, maxDurability) == true)
             {
                 foreach(var ingredient in _recipe)
                 {

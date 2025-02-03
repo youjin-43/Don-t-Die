@@ -135,9 +135,10 @@ public class PlayerAutoInteract : MonoBehaviour
     {
         //DebugController.Log("GetItem 함수 실행됨");
         Item gotItem = autoInteractTargetTransform.GetComponent<Item>();
+        if (gotItem == null) return;
 
         // 필드의 아이템을 인벤토리에 추가했다면
-        if (gotItem != null && InventoryManager.Instance.AddItem(gotItem.ItemData))
+        if (InventoryManager.Instance.AddItem(gotItem.ItemData, gotItem.currentDurability))
         {
             Destroy(autoInteractTargetTransform.gameObject); // 필드의 아이템은 지움 //TODO : 아이템들도 오브젝트 풀 써야할까? 
         }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 using static InventoryItemSlot;
@@ -57,6 +58,7 @@ public class InventoryManager : MonoBehaviour
     private InventoryItemSlot      _startSlot;
     private ItemData               _startSlotItemData;
     private int                    _startSlotItemCount;
+    private int                    _startSlotDurability;
     private bool                   _isDragging = false;
 
 
@@ -216,7 +218,7 @@ public class InventoryManager : MonoBehaviour
         _inventoryDict[itemName] -= itemCount;
     }
 
-    public bool AddItem(ItemData itemData)
+    public bool AddItem(ItemData itemData, int durability = 0)
     {
         for (int i = 0; i < _maxInventorySize; ++i)
         {
@@ -232,7 +234,7 @@ public class InventoryManager : MonoBehaviour
                 else
                 {
                     // 아이템 추가
-                    AddItemToSlot(itemData, i);
+                    AddItemToSlot(itemData, i, durability);
 
                     return true;
                 }
@@ -249,7 +251,7 @@ public class InventoryManager : MonoBehaviour
                         // 처음부터 다시 돌아서 빈 칸에 추가함
                         if (SearchFromFirstSlot(itemData, out int slot) == true && slot >= 0)
                         {
-                            AddItemToSlot(itemData, slot);
+                            AddItemToSlot(itemData, slot, durability);
 
                             return true;
                         }
@@ -262,7 +264,7 @@ public class InventoryManager : MonoBehaviour
                     else
                     {
                         // 아이템 추가
-                        AddItemToSlot(itemData, i);
+                        AddItemToSlot(itemData, i, durability);
 
                         return true;
                     }
@@ -324,8 +326,9 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void AddItemToSlot(ItemData itemData, int slot)
+    private void AddItemToSlot(ItemData itemData, int slot, int durability)
     {
+        _inventorySlot[slot]._currentDurability = durability;
         _inventorySlot[slot].AddItemData(itemData);
 
         if (_inventoryDict.ContainsKey(itemData.Name))
@@ -359,6 +362,8 @@ public class InventoryManager : MonoBehaviour
             _startSlot          = startSlot;
             _startSlotItemData  = startSlot.GetItemData(out int itemCount);
             _startSlotItemCount = itemCount;
+            _startSlotDurability = startSlot._currentDurability;
+            DebugController.Log($"BeginDrag {_startSlotDurability}");
         }
         // 드래그 UI 활성화
         {
@@ -377,6 +382,7 @@ public class InventoryManager : MonoBehaviour
         if (endSlot.IsEmpty() == true)
         {
             endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
+            endSlot._currentDurability = _startSlotDurability;
         }
         // 비어있지 않다면
         else
@@ -411,11 +417,16 @@ public class InventoryManager : MonoBehaviour
             {
                 // 데이터 스왑
                 ItemData endSlotItemData = endSlot.GetItemData(out int itemCount);
+                int endSlotDurability = endSlot._currentDurability;
                 endSlot.ClearItemSlot();
 
                 endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
+                endSlot._currentDurability = _startSlotDurability;
+                DebugController.Log($"start dura : {_startSlotDurability}");
 
                 _startSlot.AddItemData(endSlotItemData, itemCount);
+                _startSlot._currentDurability = endSlotDurability;
+                DebugController.Log($"end dura : {endSlotDurability}");
             }
         }
         // 드래그 UI 비활성화
@@ -481,6 +492,7 @@ public class InventoryManager : MonoBehaviour
             for(int i = 0; i < _startSlotItemCount; ++i) 
             {
                 Item item = PoolManager.Instance.InstantiateItem(_startSlotItemData);
+                item.currentDurability = _startSlotDurability;
 
                 Vector3 dir = GameManager.Instance.GetPlayerPos() + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
 
@@ -492,12 +504,28 @@ public class InventoryManager : MonoBehaviour
         ClearDragUI();
     }
 
-    public ItemData ExchangeEquipItem(ItemData itemData, EquipmentSlot slot)
+    public ItemData ExchangeEquipItem(ItemData itemData, EquipmentSlot slot, int durability, out int exchangedDurability)
     {
         _inventoryDict[itemData.Name] -= 1;
+        exchangedDurability = 0;
+        switch (slot)
+        {
+            case EquipmentSlot.Head:
+                if (EquipmentManager.Instance.GetCurrentHead() != null)
+                    exchangedDurability = EquipmentManager.Instance.GetCurrentHead().currentDurability;
+                break;
+            case EquipmentSlot.Chest:
+                if (EquipmentManager.Instance.GetCurrentChest() != null)
+                    exchangedDurability = EquipmentManager.Instance.GetCurrentChest().currentDurability;
+                break;
+            case EquipmentSlot.Hand:
+                if (EquipmentManager.Instance.GetCurrentTool() != null)
+                    exchangedDurability = EquipmentManager.Instance.GetCurrentTool().currentDurability;
+                break;
+        }
 
         // 받아 온 장비를 장착하고 장착하고 있던 장비는 가져옴
-        ItemData equipedItemData = EquipmentManager.Instance.EquipItem(itemData, slot);
+        ItemData equipedItemData = EquipmentManager.Instance.EquipItem(itemData, slot, durability);
 
         // 장착하고 있던 장비가 없었다면
         if (equipedItemData == null) 
