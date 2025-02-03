@@ -22,3 +22,6 @@ MonoBehaviour:
   - data: {fileID: 11400000, guid: 15f0f374eb56b3742a3cd1dda4f483f8, type: 2}
     minAmount: 3
     maxAmount: 5
+  - data: {fileID: 11400000, guid: a843d2fe2c7d58c42a3199384e8eba93, type: 2}
+    minAmount: 2
+    maxAmount: 3

@@ -22,6 +22,9 @@ MonoBehaviour:
   - data: {fileID: 11400000, guid: 62b608b058674f348a329c683464ff7a, type: 2}
     minAmount: 3
     maxAmount: 5
+  - data: {fileID: 11400000, guid: 0826ab5676c2d6c48a7eb7d13b3c0c3d, type: 2}
+    minAmount: 1
+    maxAmount: 3
   timeToAllGrown: 0
   sprites:
   - {fileID: 3814261555255109445, guid: 0b0eed48bf8f3470abb49d16fb11ace6, type: 3}

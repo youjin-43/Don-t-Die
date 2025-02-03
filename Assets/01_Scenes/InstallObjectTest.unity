@@ -3526,7 +3526,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 21
+      time: 20.5
       value: 1
       inSlope: 0
       outSlope: 0
@@ -3548,7 +3548,7 @@ MonoBehaviour:
       value: 0
       inSlope: 0
       outSlope: 0
-      tangentMode: 34
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
@@ -3576,7 +3576,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 20.1
+      time: 20.5
       value: 0
       inSlope: 0
       outSlope: 0
@@ -3597,7 +3597,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   timeScale: 180
-  startAtTime: 0
+  startAtTime: 80000
   globalLight: {fileID: 1686254544}
   daysPerSeason: 1900000019000000
   timeDisplayer: {fileID: 1512239500}
@@ -5034,11 +5034,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 639041255283887235, guid: 661156808213248eb968b902125bc270, type: 3}
       propertyPath: _currentHungryPoint
-      value: 1
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 639041255283887235, guid: 661156808213248eb968b902125bc270, type: 3}
       propertyPath: _currentThirstyPoint
-      value: 1
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 3103066371250681889, guid: 661156808213248eb968b902125bc270, type: 3}
       propertyPath: m_Constraints
@@ -11049,6 +11049,10 @@ PrefabInstance:
     - target: {fileID: 208277773405931376, guid: d386b81b89f6e3b4fb7e695501077a15, type: 3}
       propertyPath: m_PointLightOuterRadius
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663111152048838803, guid: d386b81b89f6e3b4fb7e695501077a15, type: 3}
+      propertyPath: maxDurability
+      value: 14400
       objectReference: {fileID: 0}
     - target: {fileID: 6770973889154513921, guid: d386b81b89f6e3b4fb7e695501077a15, type: 3}
       propertyPath: m_LocalPosition.x

@@ -36,6 +36,8 @@ public class Growable : TimeAgent
         spriteRenderer = GetComponent<SpriteRenderer>();
         // 맵 Clear 된 상태로 실행해야 에러 안 남
         EnvironmentManager.Instance.GetComponent<TimeController>().Subscribe(this);
+        growStage = data.GrowthStageTime.Count - 1;
+        timer = data.TimeToAllGrown;
         UpdateSprite();
     }
 
