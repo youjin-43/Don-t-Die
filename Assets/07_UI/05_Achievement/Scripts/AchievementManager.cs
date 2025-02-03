@@ -35,9 +35,6 @@ public class AchievementManager : MonoBehaviour
     // 업적 슬롯 컨테이너
     private Dictionary<string, AchievementSlot> _achievementSlotDict = new Dictionary<string, AchievementSlot>();
 
-    [SerializeField]
-    public TMP_InputField _inputField;
-    
     void Awake()
     {
         SingletonInitialize();
@@ -46,14 +43,14 @@ public class AchievementManager : MonoBehaviour
     void Start()
     {
         int achievementCount = DataManager.Instance.AchievementData.Count;
-        Transform parent = transform.GetChild(0).GetChild(0).GetChild(0).transform;
+        Transform content = transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).transform;
 
         // 우선 총 업적 갯수만큼 슬롯을 생성
         for (int i = 1; i <= achievementCount; ++i)
         {
             string code = i.ToString("D3");
 
-            AchievementSlot achievementSlot = Instantiate(AchievementSlotPrefab, parent).GetComponent<AchievementSlot>();
+            AchievementSlot achievementSlot = Instantiate(AchievementSlotPrefab, content).GetComponent<AchievementSlot>();
 
             achievementSlot.SetCode(code);
 
@@ -67,6 +64,8 @@ public class AchievementManager : MonoBehaviour
         {
             _achievementSlotDict[data.Key].RefreshAchievement(data.Key, data.Value.Content);
         }
+
+        ToggleAchievementUI();
     }
 
     public void RefreshAchievement(string code)
@@ -74,25 +73,15 @@ public class AchievementManager : MonoBehaviour
         _achievementSlotDict[code].RefreshAchievement(code, DataManager.Instance.AchievementData[code].Content);
     }
 
-    public void ReturnToTitle()
+    public void ToggleAchievementUI()
     {
-        // TODO : 타이틀로 돌아가기
-        //SceneManager.LoadScene("TitleScene");
-
-        DebugController.Log("타이틀로 돌아가요");
-    }
-
-    public void Debug_AddData()
-    {
-        DataManager.Instance.SetAchievement(_inputField.text);
-
-        RefreshAchievement(_inputField.text);
+        gameObject.SetActive(!gameObject.activeSelf);
     }
 
     public void SetAchievement(string code)
     {
         DataManager.Instance.SetAchievement(code);
 
-        RefreshAchievement(_inputField.text);
+        RefreshAchievement(code);
     }
 }

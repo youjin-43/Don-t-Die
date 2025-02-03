@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class DraggableUI : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField] RectTransform clickArea;
+    [SerializeField] RectTransform ClickArea;
 
     private RectTransform rectTransform;
     private Canvas        canvas;
@@ -24,17 +24,17 @@ public class DraggableUI : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        // Æ¯Á¤ ºÎºĞÀ» Àâ°í µå·¡±× ÇØ¾ß ÇÒ ¶§
-        if(clickArea != null)
+        // íŠ¹ì • ë¶€ë¶„ì„ ì¡ê³  ë“œë˜ê·¸ í•´ì•¼ í•  ë•Œ
+        if(ClickArea != null)
         {
-            if (RectTransformUtility.RectangleContainsScreenPoint(clickArea, eventData.position, eventData.pressEventCamera))
+            if (RectTransformUtility.RectangleContainsScreenPoint(ClickArea, eventData.position, eventData.pressEventCamera))
             {
                 isDragging = true;
 
                 RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out offset);
             }
         }
-        // UI ¾îµğµç Àâ°í µå·¡±×°¡ µÇ¾îµµ µÉ ¶§
+        // UI ì–´ë””ë“  ì¡ê³  ë“œë˜ê·¸ê°€ ë˜ì–´ë„ ë  ë•Œ
         else
         {
             if (RectTransformUtility.RectangleContainsScreenPoint(rectTransform, eventData.position, eventData.pressEventCamera))
@@ -45,8 +45,8 @@ public class DraggableUI : MonoBehaviour, IPointerDownHandler
             }
         }
 
-        // UI¸¦ ÃÖ»ó´ÜÀ¸·Î
-        transform.SetAsLastSibling();
+        // UIë¥¼ ìµœìƒë‹¨ìœ¼ë¡œ
+        //transform.SetAsLastSibling();
     }
 
     void OnDragging()

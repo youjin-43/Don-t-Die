@@ -20,6 +20,11 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     public float _currentThirstyPoint = 75f;
     public float _currentTemperture;
 
+    float timeScale = 180f;
+    float statusDebuffTimer = 0f;
+
+    Coroutine darknessDamageRoutine;
+
     public float CurrentHungryPoint { get { return _currentHungryPoint; } }
     public float CurrentThirstyPoint { get { return _currentThirstyPoint; } }
 
@@ -34,6 +39,8 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     {
         // 이벤트 해제 (메모리 누수 방지)
         EquipmentManager.Instance.OnEquipChanged -= HandleEquipChanged;
+        EnvironmentManager.Instance.Time.OnNightStart -= StartDarknessDamage;
+        EnvironmentManager.Instance.Time.OnNightEnd -= StopDarknessDamage;
     }
 
     /// <summary>
@@ -54,12 +61,32 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
         // 장비 변경 이벤트 구독
         EquipmentManager.Instance.OnEquipChanged += HandleEquipChanged;
+        EnvironmentManager.Instance.Time.OnNightStart += StartDarknessDamage;
+        EnvironmentManager.Instance.Time.OnNightEnd += StopDarknessDamage;
         _currentHealthPoint = _maxHealthPoint;
     }
 
     private void Update()
     {
-        
+        statusDebuffTimer += Time.deltaTime * timeScale;
+
+        if (statusDebuffTimer > 60f)
+        {
+            statusDebuffTimer = 0f;
+
+            if (CurrentHungryPoint <= 0)
+            {
+                LoseHP(0.4f);
+            }
+
+            if (CurrentThirstyPoint <= 0)
+            {
+                LoseHP(0.4f);
+            }
+
+            LoseHungry(0.05f);
+            LoseThirsty(0.05f);
+        }
     }
 
     #region IDamageable
@@ -97,7 +124,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     public void LoseHP(float amount)
     {
-        _currentHealthPoint -= amount;
+        _currentHealthPoint = Mathf.Clamp(_currentHealthPoint - amount, 0, _maxHealthPoint);
         if (_currentHealthPoint <= 0 && !isDead)
         {
             isDead = true;
@@ -110,7 +137,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     {
         if (!isDead)  // 죽은 상태에서는 회복 불가
         {
-            _currentHealthPoint = Mathf.Min(_currentHealthPoint + amount, _maxHealthPoint);
+            _currentHealthPoint = Mathf.Clamp(_currentHealthPoint + amount, 0, _maxHealthPoint);
             StatusUIManager.Instance.UpdateHealthUI();
         }
     }
@@ -121,7 +148,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     public void LoseThirsty(float amount)
     {
-        _currentThirstyPoint -= amount;
+        _currentThirstyPoint = Mathf.Clamp(_currentThirstyPoint - amount, 0, _maxThirstyPoint);
         StatusUIManager.Instance.UpdateThirstyUI();
     }
 
@@ -129,7 +156,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     {
         if (!isDead)  // 죽은 상태에서는 회복 불가
         {
-            _currentThirstyPoint = Mathf.Min(_currentThirstyPoint + amount, _maxThirstyPoint);
+            _currentThirstyPoint = Mathf.Clamp(_currentThirstyPoint + amount, 0, _maxThirstyPoint);
             StatusUIManager.Instance.UpdateThirstyUI();
         }
     }
@@ -141,7 +168,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     public void LoseHungry(float amount)
     {
-        _currentHungryPoint -= amount;
+        _currentHungryPoint = Mathf.Clamp(_currentHungryPoint - amount, 0, _maxHungryPoint);
         StatusUIManager.Instance.UpdateHungryUI();
     }
 
@@ -149,13 +176,49 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     {
         if (!isDead)  // 죽은 상태에서는 회복 불가
         {
-            _currentHungryPoint = Mathf.Min(_currentHungryPoint + amount, _maxHungryPoint);
+            _currentHungryPoint = Mathf.Clamp(_currentHungryPoint + amount, 0, _maxHungryPoint);
             StatusUIManager.Instance.UpdateHungryUI();
         }
     }
 
     #endregion
 
+    #region Night Debuff
+
+    bool isNight;
+
+    void StartDarknessDamage()
+    {
+        isNight = true;
+        if (darknessDamageRoutine == null)
+        {
+            darknessDamageRoutine = StartCoroutine(DamageOverTime());
+        }
+    }
+
+    void StopDarknessDamage()
+    {
+        isNight = false;
+        if (darknessDamageRoutine != null)
+        {
+            StopCoroutine(darknessDamageRoutine);
+            darknessDamageRoutine = null;
+        }
+    }
+
+    IEnumerator DamageOverTime()
+    {
+        while (isNight)
+        {
+            if (!Physics2D.OverlapCircle(transform.position, 5f, LayerMask.GetMask("Light")))
+            {
+                LoseHP(37.5f);
+            }
+            yield return new WaitForSeconds(3f);
+        }
+    }
+
+    #endregion
 
     public void EatItem(EdibleItemData edibleItemData)
     {
@@ -163,4 +226,6 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         GainHungry(edibleItemData.hungerValue);
         GainThirsty(edibleItemData.thirstValue);
     }
+
+
 }

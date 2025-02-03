@@ -3,7 +3,7 @@ using UnityEngine;
 public class Torch : TimeAgent
 {
     [SerializeField] float maxDuration;         // 게임 시간 기준 몇 분 버틸 수 있는지.
-    [SerializeField] float currentDuration;
+    public float currentDuration;
 
     public override void UpdateTimer()
     {
@@ -14,12 +14,12 @@ public class Torch : TimeAgent
         }
     }
 
-    void TurnOff()
+    public void TurnOff()
     {
         gameObject.SetActive(false);
     }
 
-    void TurnOn()
+    public void TurnOn()
     {
         gameObject.SetActive(true);
     }

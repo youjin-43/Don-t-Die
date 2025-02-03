@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 3
   Name: Campfire
-  Prefab: {fileID: 2976184465953682281, guid: 2b875a3e7e4a01242b5770b53b544fc1, type: 3}
+  Prefab: {fileID: 6963164792868939583, guid: d386b81b89f6e3b4fb7e695501077a15, type: 3}
   Image: {fileID: 21300000, guid: e2f4a58041f05f34695e272d3f8d4f73, type: 3}
   IsCountable: 0
   MaxCountSize: 1

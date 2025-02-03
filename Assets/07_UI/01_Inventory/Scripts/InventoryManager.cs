@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static InventoryItemSlot;
 
@@ -53,10 +52,6 @@ public class InventoryManager : MonoBehaviour
 
 
 
-
-
-
-
     // 드래깅용 변수
     [SerializeField] RectTransform _dragUI;
     private InventoryItemSlot      _startSlot;
@@ -82,11 +77,13 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         // 자식으로 아이템 슬롯을 생성
-        for(int i = 0; i < _maxInventorySize; ++i)
+        for(int i = 1; i <= _maxInventorySize; ++i)
         {
-            GameObject go = Instantiate(ItemSlotPrefab, transform);
+            InventoryItemSlot go = Instantiate(ItemSlotPrefab, transform).GetComponent<InventoryItemSlot>();
 
-            _inventorySlot.Add(go.GetComponent<InventoryItemSlot>());
+            go.SetSlotNumber(i);
+
+            _inventorySlot.Add(go);
 
             //if(i == 0)
             //{
@@ -104,6 +101,11 @@ public class InventoryManager : MonoBehaviour
         //InventoryScroll();
     }
 
+    public void UseItem(int slotNumber)
+    {
+        _inventorySlot[slotNumber - 49].UseItem();
+    }
+
     public Dictionary<string, int> GetInventoryDict()
     {
         return _inventoryDict;
@@ -119,9 +121,21 @@ public class InventoryManager : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (!EventSystem.current.IsPointerOverGameObject())
+                if(UIManager.Instance.IsUIClick() == false)
                 {
-                    DropItemToField();
+                    EdibleItemData edibleItemData = _startSlotItemData as EdibleItemData;
+
+                    // 구울 수 있니?
+                    if(edibleItemData != null && edibleItemData.PossibleGrilling == true)
+                    {
+                        // 네
+                        DropItemToCampFire(edibleItemData);
+                    }
+                    else
+                    {
+                        // 아니요
+                        DropItemToField();
+                    }
                 }
             }
         }
@@ -176,6 +190,7 @@ public class InventoryManager : MonoBehaviour
         _playerTransform = playerTransform;
     }
 
+    // Legacy
     public void RemoveItem(string itemName, int itemCount = 1)
     {
         int count = itemCount;
@@ -196,33 +211,53 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void RemoveItemFromDict(string itemName, int itemCount)
+    { 
+        _inventoryDict[itemName] -= itemCount;
+    }
+
     public bool AddItem(ItemData itemData)
     {
-        //if(itemData as ToolItemData)
-        //{
-        //    for (int i = 0; i < _maxInventorySize; ++i)
-        //    {
-        //        // 슬롯이 비어있다면
-        //        if (_inventorySlot[i].IsEmpty() == true)
-        //        {
-        //            AddItemToSlot(itemData, i);
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
-        //else
-        //{
-            for (int i = 0; i < _maxInventorySize; ++i)
+        for (int i = 0; i < _maxInventorySize; ++i)
+        {
+            // 슬롯이 비어있다면
+            if (_inventorySlot[i].IsEmpty() == true)
             {
-                // 슬롯이 비어있다면
-                if (_inventorySlot[i].IsEmpty() == true)
+                // 다른 슬롯에 같은 아이템이 있는가
+                if (_inventoryDict.TryGetValue(itemData.Name, out int count) && count != 0)
                 {
-                    // 다른 슬롯에 같은 아이템이 있는가
-                    if (_inventoryDict.TryGetValue(itemData.Name, out int count) && count != 0)
+                    // 있으면 그 슬롯까지 계속 감
+                    continue;
+                }
+                else
+                {
+                    // 아이템 추가
+                    AddItemToSlot(itemData, i);
+
+                    return true;
+                }
+            }
+            // 슬롯이 비어있지 않다면
+            else
+            {
+                // 같은 아이템인가
+                if (_inventorySlot[i].GetItemName() == itemData.Name)
+                {
+                    // 같은 아이템이지만 꽉 차있는가?
+                    if (_inventorySlot[i].IsFull() == true)
                     {
-                        // 있으면 그 슬롯까지 계속 감
-                        continue;
+                        // 처음부터 다시 돌아서 빈 칸에 추가함
+                        if (SearchFromFirstSlot(itemData, out int slot) == true && slot >= 0)
+                        {
+                            AddItemToSlot(itemData, slot);
+
+                            return true;
+                        }
+                        // 다 돌았는데도 슬롯이 없음 = 꽉참
+                        else
+                        {
+                            break;
+                        }
                     }
                     else
                     {
@@ -232,73 +267,61 @@ public class InventoryManager : MonoBehaviour
                         return true;
                     }
                 }
-                // 슬롯이 비어있지 않다면
+                // 다른 아이템인가
                 else
                 {
-                    // 같은 아이템인가
-                    if (_inventorySlot[i].GetItemName() == itemData.Name)
-                    {
-                        // 같은 아이템이지만 꽉 차있는가?
-                        if (_inventorySlot[i].IsFull() == true)
-                        {
-                            // 처음부터 다시 돌아서 빈 칸에 추가함
-                            if (SearchFromFirstSlot(itemData, out int slot) == true && slot >= 0)
-                            {
-                                AddItemToSlot(itemData, slot);
-
-                                return true;
-                            }
-                            // 다 돌았는데도 슬롯이 없음 = 꽉참
-                            else
-                            {
-                                break;
-                            }
-                        }
-                        else
-                        {
-                            // 아이템 추가
-                            AddItemToSlot(itemData, i);
-
-                            return true;
-                        }
-                    }
-                    // 다른 아이템인가
-                    else
-                    {
-                        // 다음 슬롯으로
-                        continue;
-                    }
-                }
-            }
-
-            // 꽉 참
-            return false;
-        //}
-    }
-
-    private bool SearchFromFirstSlot(ItemData itemData, out int value)
-    {
-        for(int i = 0; i < _maxInventorySize; ++i)
-        {
-            // 슬롯이 비어있다면
-            if (_inventorySlot[i].IsEmpty() == true)
-            {
-                value = i;
-                return true;
-            }
-            // 비어있지는 않은데
-            else
-            {
-                if (_inventorySlot[i].IsFull() == false && _inventorySlot[i].GetItemData(out int itemCount) == itemData)
-                {
-                    value = i;
-                    return true;
+                    // 다음 슬롯으로
+                    continue;
                 }
             }
         }
 
-        value = -1;
+        // 꽉 참
         return false;
+
+    }
+
+    private bool SearchFromFirstSlot(ItemData itemData, out int value)
+    {
+        int emptySlot    = int.MaxValue;
+        int sameItemSlot = int.MaxValue;
+
+        for (int i = 0; i < _maxInventorySize; ++i)
+        {
+            // 슬롯이 비어있다면
+            if (_inventorySlot[i].IsEmpty() == true)
+            {
+                if(emptySlot > i)
+                {
+                    emptySlot = i;
+                }
+            }
+            // 비어있지는 않은데 같은 아이템이 들어있고 가득 채워지지 않았다면
+            else if (_inventorySlot[i].GetItemData(out int count) == itemData
+                && _inventorySlot[i].IsFull() == false)
+            {
+                if (sameItemSlot > i)
+                {
+                    sameItemSlot = i;
+                }
+            }
+        }
+
+        if(sameItemSlot != int.MaxValue)
+        {
+            value = sameItemSlot;
+            return true;
+        }
+        else if (sameItemSlot == int.MaxValue)
+        {
+            value = emptySlot;
+            return true;
+        }
+        else
+        {
+            value = -1;
+            return false;
+        }
     }
 
     private void AddItemToSlot(ItemData itemData, int slot)
@@ -359,7 +382,10 @@ public class InventoryManager : MonoBehaviour
         else
         {
             // 1. 비어있지 않았는데 양 슬롯에 있던 아이템이 같고 재료 아이템이였다면
-            if(_startSlotItemData.Name == endSlot.GetItemName() && _startSlotItemData.ItemType == ItemType.Resource)
+            // 또는 먹을 수 있는 아이템이면
+            if(_startSlotItemData.Name == endSlot.GetItemName() 
+                && _startSlotItemData.ItemType == ItemType.Resource
+                && _startSlotItemData.ItemType == ItemType.Edible)
             {
                 ItemData endSlotItemData  = endSlot.GetItemData(out int itemCount);
                 int      endSlotItemCount = itemCount;
@@ -400,34 +426,17 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void DropItemToField()
+    private void ClearDragUI()
     {
-        // 아이템 생성, 데이터 이전
-        {
-            for(int i = 0; i < _startSlotItemCount; ++i)
-            {
-                Vector3 position = adjustDropItemDistance();
-
-                GameObject go = Instantiate(_startSlotItemData.Prefab, position, Quaternion.identity);
-
-                go.GetComponent<Item>().SetItemData(_startSlotItemData);
-
-                //Vector3 dir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
-                //
-                //go.GetComponent<Item>().Spread(GameManager.Instance.GetPlayerPos(), dir, Random.Range(2.5f, 3f));
-            }
-        }
         // 드래그 UI 비활성화
         {
             _dragUI.gameObject.SetActive(false);
         }
         // 캐시데이터, 출발지점, 데이터  초기화
         {
-            _inventoryDict[_startSlotItemData.Name] -= _startSlotItemCount;
-
             _startSlot.ClearItemSlot();
-            _startSlot          = null;
-            _startSlotItemData  = null;
+            _startSlot = null;
+            _startSlotItemData = null;
             _startSlotItemCount = 0;
         }
         // 드래그 플래그
@@ -436,16 +445,49 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private Vector3 adjustDropItemDistance()
+    private void DropItemToCampFire(EdibleItemData edibleItemData)
     {
-        Vector3 randomPos = new Vector3(GameManager.Instance.GetPlayerPos().x - Random.Range(-2f, 2f), GameManager.Instance.GetPlayerPos().y - Random.Range(-2f, 2f), GameManager.Instance.GetPlayerPos().z - Random.Range(-2f, 2f));
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
 
-        while(Vector3.Distance(GameManager.Instance.GetPlayerPos(), randomPos) > 2)
+        if (hit.collider != null && hit.collider.name == "Campfire" &&
+            Vector3.Distance(GameManager.Instance.GetPlayerPos(), hit.collider.transform.position) < 2f)
         {
-            randomPos = new Vector3(GameManager.Instance.GetPlayerPos().x - Random.Range(-2f, 2f), GameManager.Instance.GetPlayerPos().y - Random.Range(-2f, 2f), GameManager.Instance.GetPlayerPos().z - Random.Range(-2f, 2f));
+            for (int i = 0; i < _startSlotItemCount; ++i)
+            {
+                Item item = PoolManager.Instance.InstantiateItem(edibleItemData.ItemDataAfterGrilled);
+
+                Vector3 dir = hit.collider.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
+
+                item.Spread(hit.collider.transform.position, dir, Random.Range(2.5f, 3f));
+            }
+
+            RemoveItemFromDict(edibleItemData.Name, _startSlotItemCount);
+
+            ClearDragUI();
+        }
+        else
+        {
+            DropItemToField();
+        }
+    }
+
+    private void DropItemToField()
+    {
+        // 아이템 생성, 데이터 이전
+        {
+            for(int i = 0; i < _startSlotItemCount; ++i) 
+            {
+                Item item = PoolManager.Instance.InstantiateItem(_startSlotItemData);
+
+                Vector3 dir = GameManager.Instance.GetPlayerPos() + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
+
+                item.Spread(GameManager.Instance.GetPlayerPos(), dir, Random.Range(2.5f, 3f));
+            }
         }
 
-        return randomPos;
+        _inventoryDict[_startSlotItemData.Name] -= _startSlotItemCount;
+        ClearDragUI();
     }
 
     public ItemData ExchangeEquipItem(ItemData itemData, EquipmentSlot slot)
@@ -491,6 +533,13 @@ public class InventoryManager : MonoBehaviour
 
             return true;
         }
+    }
+
+    public bool SendItemDataToBox(ItemData itemData)
+    {
+        _inventoryDict[itemData.Name] -= 1;
+
+        return BoxManager.Instance.AddItem(itemData);
     }
 
     /* 호준님 코드

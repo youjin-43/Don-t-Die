@@ -131,4 +131,9 @@ public class EquipmentManager : MonoBehaviour
         OnEquipChanged?.Invoke(itemData, slot); // 장비가 변경되었음을 알리는 이벤트 호출
         return equippedItemData;
     }
+
+    public void InvokeOnEquipChanged(ItemData itemData, EquipmentSlot slot)
+    {
+        OnEquipChanged?.Invoke(itemData, slot);
+    }
 }

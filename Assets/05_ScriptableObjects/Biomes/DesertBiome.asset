@@ -22,6 +22,8 @@ MonoBehaviour:
   plantsIntensity: 0
   minerals:
   - {fileID: 11400000, guid: 0e2417fa2ff442f43bcfc887038bbfbf, type: 2}
+  - {fileID: 11400000, guid: 0e2417fa2ff442f43bcfc887038bbfbf, type: 2}
   - {fileID: 11400000, guid: a9e8ba6620b544b49aca1fe1da97c66c, type: 2}
-  - {fileID: 11400000, guid: 42c73f8d6367c3b4dadcdb530cf86b4e, type: 2}
   mineralsIntensity: 0.8
+  installableObjects: {fileID: 0}
+  installableObjectsIntensity: 0
