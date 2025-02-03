@@ -51,12 +51,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 221279116f2678845bbcd90ab4e65ce0
-    m_Address: IronBottleNone
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 225069a750824944db4866ac56c72092
     m_Address: Assets/03_Image/Icon/ResourceItems/Branch.png
     m_ReadOnly: 0
@@ -65,18 +59,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 24c7803d7c3c71748b3282bc07f1ffdc
     m_Address: Tool
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 277b16667e3e8334aa72eced23ab5b94
-    m_Address: Carrier
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2fd0040ad29dce041a193163dc018722
-    m_Address: IronBottleMiddle
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -111,18 +93,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 42ea6f206e2a75f408057525f6721968
-    m_Address: IronBottleLow
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4c75a5a1efe01c94b85561c07dc87046
-    m_Address: BoneBottleLow
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4e9455ac5f29e4144a4511c5e4bdb15e
     m_Address: GoldBottleHigh
     m_ReadOnly: 0
@@ -143,12 +113,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5607c7e5e49c12547953293d81e7bd92
     m_Address: BoneHelemt
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 58abf2170a027bd4a9fd490768f59950
-    m_Address: WoodBottleMiddle
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -207,38 +171,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 74e14a9e8a91afd4d810695e425b1dc0
-    m_Address: StoneBottleNone
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 761d82abef34c2c409606321a0438bd7
     m_Address: Torch
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 76880ab51e7486e49bc8bd44e4b9b347
-    m_Address: Bag
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7f45bf4b854043542bf421917b27b23c
     m_Address: GoldAx
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 818407d810c9482419f51f9882e1b1ab
-    m_Address: Assets/03_Image/Icon/Items/WoodBottleNone.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 83f7aad9bc0276640a3fe5128dfc93e7
-    m_Address: StoneBottleLow
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -273,18 +213,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a2184639a12f09e43bb7d0722ab92963
-    m_Address: Assets/03_Image/Icon/Items/BoneBottleNone.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a65c36bcc2d4f5d478a022f619f29250
-    m_Address: StoneBottleMiddle
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a7a959f24618676438bed184aff458a2
     m_Address: WoodHelmet
     m_ReadOnly: 0
@@ -299,12 +227,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b34c10ddc3aef3e4ebd4d20b54f3e10e
     m_Address: Assets/03_Image/Icon/ResourceItems/Flint.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b4c183b2d697bf345b2f92a9fbb26c8d
-    m_Address: BoneBottleMiddle
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -347,12 +269,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cb199a04643bb5a4cb829d05b12342ad
     m_Address: BoneAx
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cf8235c45d08a574b8fd774b92edb501
-    m_Address: WoodBottleLow
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage

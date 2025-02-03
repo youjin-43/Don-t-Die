@@ -33,7 +33,7 @@ public class CraftList : MonoBehaviour
     {
         _data = data;
 
-        // GetComponent하면 터져서 에디터에서 바인딩 했음
+        // _mask는 GetComponent하면 터져서 에디터에서 바인딩 했음
         if (_data.NeedCraftingTable == true)
         {
             _mask.color = new Color(0, 0, 0, 0.9f);
@@ -53,22 +53,22 @@ public class CraftList : MonoBehaviour
 
             if(j == count - 1)
             {
-                slot.SetData(CraftListItemSlot.Type.ResultSlot, _data.Name, 1);
+                slot.SetData(CraftListItemSlot.CraftListItemSlotType.ResultSlot, _data.Name, 1);
                 slot.SetRecipe(_recipe);
             }
             else if (j == count - 2)
             {
-                slot.SetData(CraftListItemSlot.Type.Image_Equal, "Equal");
+                slot.SetData(CraftListItemSlot.CraftListItemSlotType.Image_Equal, "Equal");
             }
             else if (j % 2 == 1)
             {
-                slot.SetData(CraftListItemSlot.Type.Image_Plus, "Plus");
+                slot.SetData(CraftListItemSlot.CraftListItemSlotType.Image_Plus, "Plus");
             }
             else
             {
                 string ingredient = queue.Dequeue();
 
-                slot.SetData(CraftListItemSlot.Type.ItemSlot, ingredient, _recipe[ingredient]);
+                slot.SetData(CraftListItemSlot.CraftListItemSlotType.ItemSlot, ingredient, _recipe[ingredient]);
             }
 
             _craftItemSlotList.Add(slot);
@@ -137,8 +137,15 @@ public class CraftList : MonoBehaviour
         {
             _possibleItemCount = int.MaxValue;
             _isPossibleCrafting = false;
-            _mask.color = new Color(0, 0, 0, 0.7f);
             _craftItemSlotList[_craftItemSlotList.Count - 1].CraftLock();
+            if (_data.NeedCraftingTable == true)
+            {
+                _mask.color = new Color(0, 0, 0, 0.9f);
+            }
+            else
+            {
+                _mask.color = new Color(0, 0, 0, 0.7f);
+            }
         }
     }
 

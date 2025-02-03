@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
 {
     // 아이템을 그릴 슬롯인지, +, = 모양을 그릴 슬롯인지
-    public enum Type
+    public enum CraftListItemSlotType
     {
         ItemSlot,
         ResultSlot,
@@ -20,18 +20,18 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
 
     private Dictionary<string, int> _recipe = new Dictionary<string, int>();
 
-    private string _itemName;
-    private int    _currentItemCount;
-    private int    _needItemCount;
-    private Type   _type;
-    private bool   _possibleCraft = false;
+    private string                _itemName;
+    private int                   _currentItemCount;
+    private int                   _needItemCount;
+    private CraftListItemSlotType _type;
+    private bool                  _possibleCraft = false;
 
     public string GetItemName()
     {
         return _itemName;
     }
 
-    public void SetData(Type type, string itemName, int needItemCount = 0)
+    public void SetData(CraftListItemSlotType type, string itemName, int needItemCount = 0)
     {
         if(_currentItemCountText == null && _needItemCountText == null)
         {
@@ -44,7 +44,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
         _type          = type;
 
         // 아이템이 그려질 슬롯이라면
-        if (_type == Type.ItemSlot || _type == Type.ResultSlot)
+        if (_type == CraftListItemSlotType.ItemSlot || _type == CraftListItemSlotType.ResultSlot)
         {
             _needItemCountText.text = needItemCount.ToString();
         }
@@ -68,7 +68,9 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void ResourceCounting(Dictionary<string, int> inventoryDict)
     {
-        if(inventoryDict.TryGetValue(_itemName, out int itemCount) == true)
+        if(inventoryDict.TryGetValue(_itemName, out int itemCount) == true
+            && _type != CraftListItemSlotType.ResultSlot)
+            // 결과슬롯의 갯수는 인벤토리의 아이템 갯수가 아니라 생성가능한 숫자
         {
             _currentItemCount          = itemCount;
             _currentItemCountText.text = itemCount.ToString();
@@ -87,7 +89,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void SetCount(int possibleItemCount)
     {
-        if(_type == Type.ResultSlot)
+        if(_type == CraftListItemSlotType.ResultSlot)
         {
             _currentItemCount          = possibleItemCount;
             _currentItemCountText.text = possibleItemCount.ToString();
@@ -96,7 +98,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void CraftUnlock()
     {
-        if (_type == Type.ResultSlot)
+        if (_type == CraftListItemSlotType.ResultSlot)
         {
             _possibleCraft = true;
         }
@@ -104,7 +106,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void CraftLock()
     {
-        if (_type == Type.ResultSlot)
+        if (_type == CraftListItemSlotType.ResultSlot)
         {
             _possibleCraft = false;
         }
@@ -112,7 +114,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right && _type == Type.ResultSlot && _possibleCraft == true)
+        if (eventData.button == PointerEventData.InputButton.Right && _type == CraftListItemSlotType.ResultSlot && _possibleCraft == true)
         {
             ItemData currentItemData = DataManager.Instance.ItemData[_itemName];
 
