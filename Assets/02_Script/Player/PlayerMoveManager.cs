@@ -23,6 +23,7 @@ public class PlayerMoveManager : MonoBehaviour
     PlayerAutoInteract playerAutoInteract; // 자동 상호작용 
     PlayerUseTool playerUseTool;
     PlayerFishingAction playerFishingAction;
+    PlayerGetWaterAction playerGetWaterAction;
 
     void Start()
     {
@@ -36,6 +37,7 @@ public class PlayerMoveManager : MonoBehaviour
         playerAutoInteract = GetComponent<PlayerAutoInteract>();
         playerUseTool = transform.GetChild((int)PlayerObjChilds.ToolCollider).GetComponent<PlayerUseTool>();
         playerFishingAction = GetComponent<PlayerFishingAction>();
+        playerGetWaterAction = GetComponent<PlayerGetWaterAction>();
 
         // 각 행동에 애니메이터 설정 -> awake start 순서 꼬일까봐 매니저에서 한번에 셋팅 
         playerAnimator = GetComponent<PlayerAnimator>();
@@ -70,6 +72,7 @@ public class PlayerMoveManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0)) playerUseTool.StopUsingEquippedTool(); 
 
         playerFishingAction.Fishing(); // 낚시 
+        playerGetWaterAction.GetWater(); // 물 퍼오기ㄷ
 
         // 인벤토리에서 선택된 아이템 사용
         if (Input.GetKeyDown(KeyCode.U))InventoryManager.Instance.UseSelectedItem();

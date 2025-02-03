@@ -3,8 +3,8 @@ guid: c6d1cff93f8570f45b2ce3d04206143c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6939379948453874481
-    second: StonePickax_0
+      213: 3736395663679042801
+    second: StonePickaxe_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StonePickax_0
+      name: StonePickaxe_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc430fa04be52bf90800000000000000
-      internalID: -6939379948453874481
+      spriteID: 1f436e15f085ad330800000000000000
+      internalID: 3736395663679042801
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      StonePickax_0: -6939379948453874481
+      StonePickaxe_0: 3736395663679042801
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
