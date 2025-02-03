@@ -217,9 +217,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
         // 아이템 내구도 표시
         {
             _itemDurability.gameObject.SetActive(true);
-
-            DebugController.Log($"{_currentDurability}");
-            float fillAmount = _currentDurability / equippableItemData.maxDurability;
+            float fillAmount = _currentDurability / (float)equippableItemData.maxDurability;
 
             _itemDurabilityGauge.fillAmount = fillAmount;
             _itemDurabilityGauge.color = Color.HSVToRGB(fillAmount / 3f, 1f, 1f);
