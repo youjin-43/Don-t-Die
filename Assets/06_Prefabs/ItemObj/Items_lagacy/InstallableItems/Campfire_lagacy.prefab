@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8786970665496987555}
   - component: {fileID: -5776624073089894662}
   m_Layer: 3
-  m_Name: Campfire
+  m_Name: Campfire_lagacy
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
