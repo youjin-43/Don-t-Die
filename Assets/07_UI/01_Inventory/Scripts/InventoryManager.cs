@@ -420,12 +420,12 @@ public class InventoryManager : MonoBehaviour
                 int endSlotDurability = endSlot._currentDurability;
                 endSlot.ClearItemSlot();
 
-                endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
                 endSlot._currentDurability = _startSlotDurability;
+                endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
                 DebugController.Log($"start dura : {_startSlotDurability}");
 
-                _startSlot.AddItemData(endSlotItemData, itemCount);
                 _startSlot._currentDurability = endSlotDurability;
+                _startSlot.AddItemData(endSlotItemData, itemCount);
                 DebugController.Log($"end dura : {endSlotDurability}");
             }
         }
