@@ -4,8 +4,8 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField] AnimationCurve curve;
-    [SerializeField] public ItemData ItemData;
-    [SerializeField] int currentDurability;
+    public ItemData ItemData;
+    public int currentDurability;
 
     void Start()
     {
