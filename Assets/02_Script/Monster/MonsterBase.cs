@@ -58,7 +58,6 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     #endregion
 
-    Transform go;
     protected void SetData()
     {
         MonsterAnimator = GetComponent<Animator>();

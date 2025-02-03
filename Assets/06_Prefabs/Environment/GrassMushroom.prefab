@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8936762397297866994}
   - component: {fileID: 5390615739114777304}
-  - component: {fileID: 2194967463900439150}
   - component: {fileID: 2610537199890399564}
+  - component: {fileID: 3043314061026950844}
   m_Layer: 3
   m_Name: GrassMushroom
   m_TagString: Harvestable
@@ -90,19 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2194967463900439150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688159776559383801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6b91246de854c4a9c9a70bcb5ec994, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  natureResourceData: {fileID: 11400000, guid: 21dba384d14db454c862f481060775bc, type: 2}
 --- !u!61 &2610537199890399564
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,6 +136,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.8, y: 0.6}
   m_EdgeRadius: 0
+--- !u!114 &3043314061026950844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688159776559383801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4eed789256ff4edebf97768fbbb391e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  natureResourceData: {fileID: 11400000, guid: 21dba384d14db454c862f481060775bc, type: 2}
+  mushroomMonsterPrefab: {fileID: 5231987450327133425, guid: d1bbb9e50d0db4ca5b7ff504dea1376d, type: 3}
+  transformChance: 0.8
 --- !u!1 &1825300541142144828
 GameObject:
   m_ObjectHideFlags: 0
