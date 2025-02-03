@@ -9,10 +9,14 @@ public class ChaseMonsterState : IMonsterState
     Transform target;
     float chaseSpeed;
 
+    float attackRange; // 공격 사거리
+
+
     public ChaseMonsterState(MonsterBase monster)
     {
         this.monster = monster;
         chaseSpeed = monster.monsterData.ChaseOrFleeSpeed;
+        attackRange = monster.monsterData.AttackRange;
     }
 
 
@@ -31,14 +35,22 @@ public class ChaseMonsterState : IMonsterState
     {
         if (target != null)
         {
-            ChaseTarget();
-            HandleAnimation(); // TODO : 이거 꼭 매프레임 파라미터를 설정해야하나..?
+            float distance = Vector3.Distance(monster.transform.position, target.position);
+
+            if (distance <= attackRange)
+            {
+                monster.OnAttack();  // 공격 상태로 전환
+            }
+            else
+            {
+                ChaseTarget();
+                HandleAnimation();
+            }
         }
         else
         {
             monster.OnIdle();
         }
-            
     }
 
     void ChaseTarget()
@@ -48,6 +60,7 @@ public class ChaseMonsterState : IMonsterState
 
     }
 
+    // TODO : 이거 꼭 매프레임 파라미터를 설정해야하나..?
     void HandleAnimation()
     {
         // 애니메이션 설정

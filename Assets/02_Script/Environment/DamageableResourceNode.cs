@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class DamageableResourceNode : ResourceNode,IDamageable
 {
+    public static event Action<Transform> OnResourceAttacked; // 자원 위치 + 공격자(플레이어) 위치
+
     [SerializeField] GameObject hitEffect;
     float maxHealth;
     float currentHealth;
@@ -30,21 +33,6 @@ public class DamageableResourceNode : ResourceNode,IDamageable
         Init();
     }
 
-    public void Hit(int damage)     // 도구로 자원을 캐는 과정
-    {
-        if (hitEffect != null)
-        {
-            hitEffect.GetComponent<Animator>().Play("Hit", -1, 0f);
-        }
-        currentHealth = Mathf.Max(0, currentHealth - damage);
-        DebugController.Log($"Hit {gameObject.name}. Damage : {damage} CurrentHealth : {currentHealth}");
-
-        if (currentHealth < float.Epsilon)
-        {
-            Harvest();
-        }
-    }
-
     public void TakeDamage(int damage)
     {
         if (hitEffect != null)
@@ -53,6 +41,9 @@ public class DamageableResourceNode : ResourceNode,IDamageable
         }
         currentHealth = Mathf.Max(0, currentHealth - damage);
         DebugController.Log($"Hit {gameObject.name}. Damage : {damage} CurrentHealth : {currentHealth}");
+
+        // 공격 받았을 때 이벤트 호출
+        OnResourceAttacked?.Invoke(transform);
 
         if (currentHealth <= 0) Harvest();
 

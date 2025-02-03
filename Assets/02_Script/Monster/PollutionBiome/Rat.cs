@@ -84,6 +84,11 @@ public class Rat : MonsterBase
         //OnIdle();
         //throw new System.NotImplementedException();
     }
+
+    public override void AfterFleeState()
+    {
+        OnIdle();
+    }
 }
 
     //protected override void HandleMonsterHit(Transform attacker)
