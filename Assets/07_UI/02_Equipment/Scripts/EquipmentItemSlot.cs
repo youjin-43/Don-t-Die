@@ -40,17 +40,18 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public bool AddItemData(ItemData itemData)
+    public bool AddItemData(ItemData itemData, int durability)
     {
         _itemData         = itemData;
         _itemImage.sprite = itemData.Image;
         _itemImage.color  = new Color(1, 1, 1, 1);
         _itemDurability.gameObject.SetActive(true);
+        _currentDurability = durability;
 
+        EquippableItemData equippableItemData = itemData as EquippableItemData;
 
-        EquippableItemData equippableItemData = itemData as EquippableItemData; ;
-
-        float fillAmount = equippableItemData.currentDurability / equippableItemData.maxDurability;
+        float fillAmount = _currentDurability / (float)equippableItemData.maxDurability;
+        DebugController.Log($"{_currentDurability}, {equippableItemData.maxDurability}, {fillAmount}");
 
         _itemDurabilityGauge.fillAmount = fillAmount;
         _itemDurabilityGauge.color = Color.HSVToRGB(fillAmount / 3, 1.0f, 1.0f);
@@ -84,7 +85,7 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
     public void UpdateDurabilityGaugeUI()
     {
         EquippableItemData equippableItemData = _itemData as EquippableItemData;
-        float fillAmount = _currentDurability / equippableItemData.maxDurability;
+        float fillAmount = _currentDurability / (float) equippableItemData.maxDurability;
 
         _itemDurabilityGauge.fillAmount = fillAmount;
         _itemDurabilityGauge.color = Color.HSVToRGB(fillAmount / 3, 1.0f, 1.0f);

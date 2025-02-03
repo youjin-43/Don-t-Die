@@ -249,6 +249,10 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
             _itemCountImage.gameObject.SetActive(false);
             _itemDurability.gameObject.SetActive(false);
         }
+        // 5. 내구도 초기화
+        {
+            _currentDurability = 0;
+        }
     }
 
     public void UseItem()
@@ -295,7 +299,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
 
                     // 현재 슬롯의 장비를 장비창으로 넘기고
                     // 장비창에 이미 아이템이 있다면 그 아이템을 받아옴
-                    ItemData itemData = InventoryManager.Instance.ExchangeEquipItem(equippableItemData, equippableItemData.EquipSlot);
+                    ItemData itemData = InventoryManager.Instance.ExchangeEquipItem(equippableItemData, equippableItemData.EquipSlot, _currentDurability, out _currentDurability);
 
                     // 장착하고 있던 장비가 없었다면
                     if (itemData == null)

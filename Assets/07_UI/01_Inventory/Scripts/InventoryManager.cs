@@ -494,12 +494,28 @@ public class InventoryManager : MonoBehaviour
         ClearDragUI();
     }
 
-    public ItemData ExchangeEquipItem(ItemData itemData, EquipmentSlot slot)
+    public ItemData ExchangeEquipItem(ItemData itemData, EquipmentSlot slot, int durability, out int exchangedDurability)
     {
         _inventoryDict[itemData.Name] -= 1;
+        exchangedDurability = 0;
+        switch (slot)
+        {
+            case EquipmentSlot.Head:
+                if (EquipmentManager.Instance.GetCurrentHead() != null)
+                    exchangedDurability = EquipmentManager.Instance.GetCurrentHead().currentDurability;
+                break;
+            case EquipmentSlot.Chest:
+                if (EquipmentManager.Instance.GetCurrentChest() != null)
+                    exchangedDurability = EquipmentManager.Instance.GetCurrentChest().currentDurability;
+                break;
+            case EquipmentSlot.Hand:
+                if (EquipmentManager.Instance.GetCurrentTool() != null)
+                    exchangedDurability = EquipmentManager.Instance.GetCurrentTool().currentDurability;
+                break;
+        }
 
         // 받아 온 장비를 장착하고 장착하고 있던 장비는 가져옴
-        ItemData equipedItemData = EquipmentManager.Instance.EquipItem(itemData, slot);
+        ItemData equipedItemData = EquipmentManager.Instance.EquipItem(itemData, slot, durability);
 
         // 장착하고 있던 장비가 없었다면
         if (equipedItemData == null) 
