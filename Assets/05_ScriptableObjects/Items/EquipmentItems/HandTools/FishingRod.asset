@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemType: 1
   Name: FishingRod
   Prefab: {fileID: 0}
-  Image: {fileID: -2554780720562376739, guid: 3dd8a23dcf1c94ef1a73b5730cd1efbe, type: 3}
+  Image: {fileID: 7946365620166837317, guid: 8d03d90851168f448a78b3a1156af5e6, type: 3}
   IsCountable: 0
   MaxCountSize: 1
   equipSlot: 2

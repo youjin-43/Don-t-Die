@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemType: 1
   Name: BoneBottle
   Prefab: {fileID: 2349704539360168265, guid: df188096c06cfe149b3573bea33eddfc, type: 3}
-  Image: {fileID: 21300000, guid: fe081beed304260429b1735fd4107377, type: 3}
+  Image: {fileID: 21300000, guid: ec8edf9a644ebff428787cf2718451e9, type: 3}
   IsCountable: 0
   MaxCountSize: 1
   equipSlot: 2
@@ -23,3 +23,4 @@ MonoBehaviour:
   currentDurability: 10
   availableTypes: 
   atk: 0
+  Type: 0
