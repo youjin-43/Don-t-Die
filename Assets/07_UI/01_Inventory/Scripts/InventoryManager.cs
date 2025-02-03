@@ -190,7 +190,7 @@ public class InventoryManager : MonoBehaviour
         _playerTransform = playerTransform;
     }
 
-    // Legacy
+    // 조합 후 인벤토리에 있는 재료탬을 지우는 함수
     public void RemoveItem(string itemName, int itemCount = 1)
     {
         int count = itemCount;
@@ -384,8 +384,8 @@ public class InventoryManager : MonoBehaviour
             // 1. 비어있지 않았는데 양 슬롯에 있던 아이템이 같고 재료 아이템이였다면
             // 또는 먹을 수 있는 아이템이면
             if(_startSlotItemData.Name == endSlot.GetItemName() 
-                && _startSlotItemData.ItemType == ItemType.Resource
-                && _startSlotItemData.ItemType == ItemType.Edible)
+                && (_startSlotItemData.ItemType == ItemType.Resource
+                || _startSlotItemData.ItemType == ItemType.Edible))
             {
                 ItemData endSlotItemData  = endSlot.GetItemData(out int itemCount);
                 int      endSlotItemCount = itemCount;
@@ -399,9 +399,11 @@ public class InventoryManager : MonoBehaviour
                 }
                 // 인벤토리 최대 적재량 보다 크다면
                 else
-                {
-                    endSlot.AddItemData(_startSlotItemData, Mathf.Abs(_startSlotItemCount - endSlotItemCount));
-                    _startSlot.AddItemData(_startSlotItemData, Mathf.Abs(9 - (_startSlotItemCount - endSlotItemCount)));
+                {                                        // 9 : 인벤토리 최대 적재가능 갯수
+                    endSlot.AddItemData(_startSlotItemData, 9 - endSlotItemCount);
+                    _startSlot.AddItemData(_startSlotItemData, _startSlotItemCount - (9 - endSlotItemCount));
+                    //endSlot.AddItemData(_startSlotItemData, Mathf.Abs(_startSlotItemCount - endSlotItemCount));
+                    //_startSlot.AddItemData(_startSlotItemData, Mathf.Abs(9 - (_startSlotItemCount - endSlotItemCount)));
                 }
             }
             // 2. 비어있지 않았는데 서로 아이템이 다른 경우 (재료든 장비든 뭐든)

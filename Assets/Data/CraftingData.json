@@ -217,22 +217,6 @@
       "Recipe": "Grass_4"
     },
     {
-      "Name": "Carrier",
-      "NameKR": "지게",
-      "Category": "Tool",
-      "NumOfMaterial": "2",
-      "NeedCraftingTable": "false",
-      "Recipe": "Rope_2+Branch_4"
-    },
-    {
-      "Name": "Bag",
-      "NameKR": "가방",
-      "Category": "Tool",
-      "NumOfMaterial": "3",
-      "NeedCraftingTable": "false",
-      "Recipe": "Rope_4+Branch_4+Leather_3"
-    },
-    {
       "Name": "Box",
       "NameKR": "상자",
       "Category": "Tool",

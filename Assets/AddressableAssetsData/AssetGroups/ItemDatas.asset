@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - ItemData
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0826ab5676c2d6c48a7eb7d13b3c0c3d
+    m_Address: Assets/05_ScriptableObjects/Items/ResourceItems/Branch.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0b3e4601311f0294c830cfeefea8d93a
     m_Address: Gold
     m_ReadOnly: 0
@@ -111,14 +117,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - ItemData
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 55064cbb53dae8a46872cad9e5e05502
-    m_Address: CraftingTable
+  - m_GUID: 62b608b058674f348a329c683464ff7a
+    m_Address: Wood
     m_ReadOnly: 0
     m_SerializedLabels:
     - ItemData
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 62b608b058674f348a329c683464ff7a
-    m_Address: Wood
+  - m_GUID: 66176cedc3758cb40afbbd6927d81abe
+    m_Address: CraftingTable
     m_ReadOnly: 0
     m_SerializedLabels:
     - ItemData
@@ -136,7 +142,13 @@ MonoBehaviour:
     - ItemData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 70b862d54c6da8343abbd8838ccce4d8
-    m_Address: Assets/05_ScriptableObjects/Items/InstallableItems/TreasureChest.asset
+    m_Address: TreasureChest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78d280e5c811e8e4ab8dba1ed6c45ed4
+    m_Address: Assets/05_ScriptableObjects/Items/ResourceItems/Grass.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - ItemData
@@ -177,12 +189,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - ItemData
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 989530f6da75b19459795b663c74626a
-    m_Address: Bag
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - ItemData
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 995f3a062fa574644938d246a7428bf8
     m_Address: Bone
     m_ReadOnly: 0
@@ -197,6 +203,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a432a9b3beafd02468428949a5980406
     m_Address: StoneChest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a843d2fe2c7d58c42a3199384e8eba93
+    m_Address: Assets/05_ScriptableObjects/Items/ResourceItems/Flint.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - ItemData
@@ -245,12 +257,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dee2419837521ec43895c435561409a6
     m_Address: BonePickaxe
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - ItemData
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e2c38cda48cc87b4b9eb559bec80dd2c
-    m_Address: Carrier
     m_ReadOnly: 0
     m_SerializedLabels:
     - ItemData

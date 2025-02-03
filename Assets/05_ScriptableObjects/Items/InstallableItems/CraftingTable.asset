@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4046f7e2b1cc9046a0987e8a80ecdc6, type: 3}
+  m_Script: {fileID: 11500000, guid: f340eda0f397be84fb3ac5fd72d264ce, type: 3}
   m_Name: CraftingTable
   m_EditorClassIdentifier: 
   ItemType: 3
@@ -19,3 +19,5 @@ MonoBehaviour:
   IsCountable: 0
   MaxCountSize: 1
   TestData: 0
+  width: 1
+  height: 1

@@ -123,6 +123,8 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
 
     public int RemoveItemData(int itemCount)
     {
+        int remainItemCount = _currentItemCount;
+
         // 다음 슬롯까지 갈 필요가 없이 여깄는거 빼면 끝
         if(_currentItemCount > itemCount)
         {
@@ -140,7 +142,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
         else
         {
             ClearItemSlot();
-            return Math.Abs(_currentItemCount);
+            return Math.Abs(remainItemCount- itemCount);
         }
     }
 
