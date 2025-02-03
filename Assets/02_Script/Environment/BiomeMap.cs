@@ -69,4 +69,10 @@ public class BiomeMap
         }
         return true;
     }
+
+    public bool IsOnMap(Vector3 pos)
+    {
+        if (pos.x < 0 || pos.x >= width || pos.y < 0 || pos.y >= height) return false;
+        return map[(int)pos.y][(int)pos.x] != BiomeType.WaterBiome;
+    }
 }
