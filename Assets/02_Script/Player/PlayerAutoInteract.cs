@@ -106,7 +106,10 @@ public class PlayerAutoInteract : MonoBehaviour
                 GetItem(); //아이템습득 
                 break;
             case "Harvestable":
-                autoInteractTargetTransform.GetComponent<ResourceNode>().Harvest();
+                if (autoInteractTargetTransform.TryGetComponent(out ResourceNode resourceNode))
+                    resourceNode.Harvest();
+                else if (autoInteractTargetTransform.TryGetComponent(out TreasureChest chest))
+                    chest.Harvest();
                 break;
             // TODO : 태그 회의 후 추가 
             default:

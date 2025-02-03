@@ -11050,6 +11050,10 @@ PrefabInstance:
       propertyPath: m_PointLightOuterRadius
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3663111152048838803, guid: d386b81b89f6e3b4fb7e695501077a15, type: 3}
+      propertyPath: maxDurability
+      value: 14400
+      objectReference: {fileID: 0}
     - target: {fileID: 6770973889154513921, guid: d386b81b89f6e3b4fb7e695501077a15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 101.109924
