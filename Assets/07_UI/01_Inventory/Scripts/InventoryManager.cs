@@ -58,6 +58,7 @@ public class InventoryManager : MonoBehaviour
     private InventoryItemSlot      _startSlot;
     private ItemData               _startSlotItemData;
     private int                    _startSlotItemCount;
+    private int                    _startSlotDurability;
     private bool                   _isDragging = false;
 
 
@@ -361,6 +362,7 @@ public class InventoryManager : MonoBehaviour
             _startSlot          = startSlot;
             _startSlotItemData  = startSlot.GetItemData(out int itemCount);
             _startSlotItemCount = itemCount;
+            _startSlotDurability = startSlot._currentDurability;
         }
         // 드래그 UI 활성화
         {
@@ -483,6 +485,7 @@ public class InventoryManager : MonoBehaviour
             for(int i = 0; i < _startSlotItemCount; ++i) 
             {
                 Item item = PoolManager.Instance.InstantiateItem(_startSlotItemData);
+                item.currentDurability = _startSlotDurability;
 
                 Vector3 dir = GameManager.Instance.GetPlayerPos() + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
 

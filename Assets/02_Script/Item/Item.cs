@@ -7,16 +7,6 @@ public class Item : MonoBehaviour
     public ItemData ItemData;
     public int currentDurability;
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void SetItemData(ItemData itemData)
     {
         ItemData = itemData;
