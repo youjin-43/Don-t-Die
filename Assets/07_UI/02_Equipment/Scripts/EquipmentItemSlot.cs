@@ -71,7 +71,7 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void ClearEquipment(bool destroy = false)
     {
-        if(destroy || InventoryManager.Instance.AddItem(_itemData) == true)
+        if(destroy || InventoryManager.Instance.AddItem(_itemData, _currentDurability) == true)
         {
             _itemData = null;
             _itemImage.sprite = null;
