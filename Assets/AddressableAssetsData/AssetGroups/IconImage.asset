@@ -274,13 +274,13 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e2f4a58041f05f34695e272d3f8d4f73
-    m_Address: Campfire
+    m_Address: Assets/03_Image/Icon/Items/InstallableItems/Campfire.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e3cd8e9a275421846b7b39c4f9b70f0c
-    m_Address: Box
+    m_Address: Assets/03_Image/Icon/Items/InstallableItems/Box.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
