@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
         return PlayerTransform.position;
     }
 
+    public Vector2 PlayerDir { get; set; } // PlayerMove.cs에서 캐싱받고있음
+
     void GenMonsters()
     {
         Debug.Log("GenMonsters 호출됨 ");

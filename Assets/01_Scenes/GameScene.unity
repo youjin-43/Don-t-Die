@@ -12056,7 +12056,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6399303531053045431, guid: 661156808213248eb968b902125bc270, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1724513019}
   m_SourcePrefab: {fileID: 100100000, guid: 661156808213248eb968b902125bc270, type: 3}
 --- !u!1001 &892029526
 PrefabInstance:
@@ -16040,7 +16043,7 @@ GameObject:
   - component: {fileID: 1263489937}
   - component: {fileID: 1263489936}
   - component: {fileID: 1263489935}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: WaterTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16120,7 +16123,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -19093,7 +19096,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 639041255283887235, guid: 661156808213248eb968b902125bc270, type: 3}
   m_PrefabInstance: {fileID: 889780503}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1724513009}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 272cedfecc8a7435da49f5793d5aa2fc, type: 3}
@@ -21637,6 +21640,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2721880678856490455, guid: d1d824bcba29c5b42824f1f79bfc4e8f, type: 3}
   m_PrefabInstance: {fileID: 1092457697}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1724513009 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6399303531053045431, guid: 661156808213248eb968b902125bc270, type: 3}
+  m_PrefabInstance: {fileID: 889780503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1724513019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724513009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def08243237dfc64ea9175cfa263c289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTool: {fileID: 0}
+  RayDistance: 1
 --- !u!1001 &1733579836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23870,7 +23892,7 @@ MonoBehaviour:
       isKeyRepeated: 0
       isKeyNull: 0
     dividerPos: 0.33
-  CraftListPrefab: {fileID: 3481420466216304959, guid: bf05676e5e52d364c953633b0eae887c, type: 3}
+  CraftListPrefab: {fileID: 3481420466216304959, guid: 3e7803d64815ebe4c82bc3f8085c98aa, type: 3}
   CraftListItemSlotPrefab: {fileID: 405714739702161845, guid: dc21969b866595a41ba257d632b65edb, type: 3}
 --- !u!114 &1894338125
 MonoBehaviour:

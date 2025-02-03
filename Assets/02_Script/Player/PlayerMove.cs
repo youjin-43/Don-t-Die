@@ -15,6 +15,10 @@ public class PlayerMove : MonoBehaviour
 
         transform.position += new Vector3(dir.x, dir.y, 0).normalized * moveSpeed * Time.deltaTime;
         HandleMoveAnimation();
+
+
+        // GameManager에 플레이어 방향 캐싱
+        GameManager.Instance.PlayerDir = dir;
     }
 
     void HandleMoveAnimation()
