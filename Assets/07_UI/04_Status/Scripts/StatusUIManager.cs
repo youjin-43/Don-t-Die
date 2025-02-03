@@ -27,7 +27,7 @@ public class StatusUIManager : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] PlayerStatus playerStatus; // 인스펙터에서 할당
+    public PlayerStatus playerStatus; // 인스펙터에서 할당
 
     private Image _healthGauge;
     private Image _hungryGauge;
@@ -47,6 +47,8 @@ public class StatusUIManager : MonoBehaviour
         _hungryGauge      = transform.GetChild(1).GetChild(0).GetComponent<Image>();
         _thirstyGauge     = transform.GetChild(2).GetChild(0).GetComponent<Image>();
         _temperatureGauge = transform.GetChild(3).GetChild(0).GetComponent<Image>();
+
+        playerStatus = GameManager.Instance.PlayerTransform.GetComponent<PlayerStatus>();
     }
 
     private void Update()
