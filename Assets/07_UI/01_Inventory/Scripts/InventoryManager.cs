@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 using static InventoryItemSlot;
@@ -216,7 +217,7 @@ public class InventoryManager : MonoBehaviour
         _inventoryDict[itemName] -= itemCount;
     }
 
-    public bool AddItem(ItemData itemData)
+    public bool AddItem(ItemData itemData, int durability = 0)
     {
         for (int i = 0; i < _maxInventorySize; ++i)
         {
@@ -232,7 +233,7 @@ public class InventoryManager : MonoBehaviour
                 else
                 {
                     // 아이템 추가
-                    AddItemToSlot(itemData, i);
+                    AddItemToSlot(itemData, i, durability);
 
                     return true;
                 }
@@ -249,7 +250,7 @@ public class InventoryManager : MonoBehaviour
                         // 처음부터 다시 돌아서 빈 칸에 추가함
                         if (SearchFromFirstSlot(itemData, out int slot) == true && slot >= 0)
                         {
-                            AddItemToSlot(itemData, slot);
+                            AddItemToSlot(itemData, slot, durability);
 
                             return true;
                         }
@@ -262,7 +263,7 @@ public class InventoryManager : MonoBehaviour
                     else
                     {
                         // 아이템 추가
-                        AddItemToSlot(itemData, i);
+                        AddItemToSlot(itemData, i, durability);
 
                         return true;
                     }
@@ -324,8 +325,9 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void AddItemToSlot(ItemData itemData, int slot)
+    private void AddItemToSlot(ItemData itemData, int slot, int durability)
     {
+        _inventorySlot[slot]._currentDurability = durability;
         _inventorySlot[slot].AddItemData(itemData);
 
         if (_inventoryDict.ContainsKey(itemData.Name))

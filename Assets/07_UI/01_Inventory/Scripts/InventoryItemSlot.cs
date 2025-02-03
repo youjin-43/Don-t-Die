@@ -17,7 +17,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
     private Image        _itemSelectImage;
     private Image        _slotNumberImage;
     private int          _currentItemCount;
-    private int          _currentDurability;
+    public int          _currentDurability;
     private int          _slotNumber;
 
     // 드래깅 데이터
@@ -218,7 +218,8 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
         {
             _itemDurability.gameObject.SetActive(true);
 
-            float fillAmount = equippableItemData.currentDurability / equippableItemData.maxDurability;
+            DebugController.Log($"{_currentDurability}");
+            float fillAmount = _currentDurability / equippableItemData.maxDurability;
 
             _itemDurabilityGauge.fillAmount = fillAmount;
             _itemDurabilityGauge.color = Color.HSVToRGB(fillAmount / 3f, 1f, 1f);
