@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.UI.Image;
 
@@ -30,8 +31,6 @@ public class PlayerGetWaterAction : MonoBehaviour
     {
         // 장비 변경 이벤트 구독
         EquipmentManager.Instance.OnEquipChanged += HandleEquipChanged;
-
-        TargetLayer = LayerMask.GetMask("Water");
     }
 
         Vector2 PlayerDir;
@@ -55,7 +54,9 @@ public class PlayerGetWaterAction : MonoBehaviour
 
                 if (hit.collider != null)
                 {
-                    DebugController.Log("물을 푸었습니다 : " + hit.collider.name.ToString());
+                    // 여기서 물병의 내구도를 최대로 올리면 될듯?
+
+                    // currentTool.GetComponent<Item>().SetDurability();
                 }
             }
         }

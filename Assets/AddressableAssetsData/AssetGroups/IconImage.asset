@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: IconImage
   m_GUID: ffd961bf4a655554a997e2a2f98cf31f
   m_SerializeEntries:
+  - m_GUID: 00233372fb25852469bcbff352cf72ff
+    m_Address: FishRod
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 02c50b0915e730e429442c5a1c279568
     m_Address: Forbid
     m_ReadOnly: 0
@@ -22,19 +28,19 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0c4f9dd2a52e62d4a8c62abf71f8e89a
-    m_Address: IronBottleHigh
+    m_Address: IronBottle
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0e0b6c87637acb0409043f1fd4e92658
-    m_Address: WoodPickax
+    m_Address: WoodPickaxe
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1c462c3c596daf2488544c0b736a73db
-    m_Address: WoodAx
+    m_Address: WoodAxe
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -70,7 +76,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 396d283a341ef3e45b8b0ded781fb171
-    m_Address: StoneAx
+    m_Address: StoneAxe
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -88,7 +94,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4e9455ac5f29e4144a4511c5e4bdb15e
-    m_Address: GoldBottleHigh
+    m_Address: GoldBottle
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -100,7 +106,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 53a33bb9ea701034fa19b7e38e31b3a8
-    m_Address: IronPickax
+    m_Address: IronPickaxe
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -136,7 +142,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 67cb4ec51aff04f49b32da33df17610d
-    m_Address: BonePickax
+    m_Address: BonePickaxe
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -154,7 +160,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 74aa28bf4fb2cf54aa8b4391cf69e3a7
-    m_Address: GoldPickax
+    m_Address: GoldPickaxe
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -165,14 +171,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a723cd025eb4a545b61eaee275bf199
+    m_Address: BoneAxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7f45bf4b854043542bf421917b27b23c
-    m_Address: GoldAx
+    m_Address: GoldAxe
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8d3adf9a19812ed46bf0743db6530ed4
-    m_Address: IronAx
+    m_Address: IronAxe
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -232,19 +244,13 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c136756366d455a459903affc3f19f93
-    m_Address: StoneBottleHigh
+    m_Address: StoneBottle
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c6d1cff93f8570f45b2ce3d04206143c
-    m_Address: StonePickax
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cb199a04643bb5a4cb829d05b12342ad
-    m_Address: BoneAx
+    m_Address: StonePickaxe
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage

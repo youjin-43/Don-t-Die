@@ -220,6 +220,11 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
 
             float fillAmount = equippableItemData.currentDurability / equippableItemData.maxDurability;
 
+            // currentDurability는 어떻게 구함?
+            // Item.cs에 들고 있는다며
+            // 여기는 데이터밖에 없는데?
+            // GetComponent<Item>()이 불가능하잖아
+
             _itemDurabilityGauge.fillAmount = fillAmount;
             _itemDurabilityGauge.color = Color.HSVToRGB(fillAmount / 3f, 1f, 1f);
         }
