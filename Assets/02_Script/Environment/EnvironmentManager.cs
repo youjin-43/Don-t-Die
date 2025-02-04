@@ -25,6 +25,8 @@ public class EnvironmentManager : MonoBehaviour
     public SerializedDictionary<Vector3, ResourceObject> natureResources = new SerializedDictionary<Vector3, ResourceObject>();
     public SerializedDictionary<Vector3, InstallableObject> installableObjects = new SerializedDictionary<Vector3, InstallableObject>();
     public SerializedDictionary<BiomeType, List<Vector3>> seedPoints = new SerializedDictionary<BiomeType, List<Vector3>>();
+    public Vector3 playerSpawnPosition = Vector3.zero;
+
 
     public VoronoiMapGenerator VoronoiMapGenerator
     {

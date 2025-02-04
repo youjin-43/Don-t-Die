@@ -9446,6 +9446,7 @@ MonoBehaviour:
   seedPoints:
     serializedKvps: []
     dividerPos: 0.33
+  playerSpawnPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &723452117
 Transform:
   m_ObjectHideFlags: 0

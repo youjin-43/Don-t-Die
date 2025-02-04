@@ -25,3 +25,13 @@ MonoBehaviour:
   plantsIntensity: 0.4
   minerals: []
   mineralsIntensity: 0
+  installableObjects: {fileID: 0}
+  installableObjectsIntensity: 0
+  dropItems:
+  - data: {fileID: 11400000, guid: 0826ab5676c2d6c48a7eb7d13b3c0c3d, type: 2}
+    minAmount: 0
+    maxAmount: 0
+  - data: {fileID: 11400000, guid: 78d280e5c811e8e4ab8dba1ed6c45ed4, type: 2}
+    minAmount: 0
+    maxAmount: 0
+  dropItemsIntensity: 0.1
