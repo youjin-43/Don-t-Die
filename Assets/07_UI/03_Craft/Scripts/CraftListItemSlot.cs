@@ -30,6 +30,8 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
     private CraftListItemSlotType _type;
     private bool                  _possibleCraft = false;
 
+    private bool _isBag = false;
+
     Coroutine co_doingCraft;
 
     public string GetItemName()
@@ -75,6 +77,11 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
             _descriptionText.text = itemData.NameKR;
             _itemNameKr = itemData.NameKR;
         }
+    }
+
+    public bool IsBag()
+    {
+        return _isBag;
     }
 
     public void SetRecipe(Dictionary<string, int> recipe)
@@ -133,6 +140,21 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
         if (co_doingCraft != null) return;
         if (eventData.button == PointerEventData.InputButton.Right && _type == CraftListItemSlotType.ResultSlot && _possibleCraft == true)
         {
+            if (_itemName == "Bag")
+            {
+                _isBag = true;
+
+                foreach (var ingredient in _recipe)
+                {
+                    InventoryManager.Instance.RemoveItem(ingredient.Key, ingredient.Value);
+                }
+
+                CraftManager.Instance.UpdateCraftingUI();
+                GameManager.Instance.IsBagCreated = true;
+
+                return;
+            }
+
             ItemData currentItemData = DataManager.Instance.ItemData[_itemName];
             int maxDurability = 0;
 

@@ -81,4 +81,7 @@ public class GameManager : MonoBehaviour
             go.transform.position = EnvironmentManager.Instance.playerSpawnPosition; 
         }
     }
+
+
+    public bool IsBagCreated = false; // 조합에서 가방 만들면 true로 바뀜
 }

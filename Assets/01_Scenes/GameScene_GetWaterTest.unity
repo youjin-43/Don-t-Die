@@ -9521,11 +9521,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8231141823858960642, guid: 661156808213248eb968b902125bc270, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 100
+      value: 110.99
       objectReference: {fileID: 0}
     - target: {fileID: 8231141823858960642, guid: 661156808213248eb968b902125bc270, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 100
+      value: 101.13
       objectReference: {fileID: 0}
     - target: {fileID: 8231141823858960642, guid: 661156808213248eb968b902125bc270, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14372,7 +14372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1174491137
 Transform:
   m_ObjectHideFlags: 0
@@ -25435,7 +25435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC0C1\uC790"
+  m_text: "\uAC00\uBC29"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1807590ac7716844192798484cce38d4, type: 2}
   m_sharedMaterial: {fileID: 2517142486483154601, guid: 1807590ac7716844192798484cce38d4, type: 2}
@@ -25583,12 +25583,12 @@ GameObject:
   - component: {fileID: 5409572614493608652}
   - component: {fileID: 1565256472498428333}
   m_Layer: 5
-  m_Name: BoxManager
+  m_Name: BagManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &4951602950993559971
 GameObject:
   m_ObjectHideFlags: 0

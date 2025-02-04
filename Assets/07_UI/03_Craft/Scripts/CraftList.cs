@@ -19,6 +19,7 @@ public class CraftList : MonoBehaviour
 
     // 조합 비활성화 마스크
     public Image _mask;
+    public Image _createDenyImage;
 
     // 조합 플래그
     private bool _isPossibleCrafting = false;
@@ -138,7 +139,7 @@ public class CraftList : MonoBehaviour
 
 
         // 모든 재료를 모았습니다
-        if(_isPossibleCrafting == true)
+        if(_isPossibleCrafting == true) 
         {
             // 제작대가 필요한 아이템을 제작
             if(_data.NeedCraftingTable == true)
@@ -161,8 +162,22 @@ public class CraftList : MonoBehaviour
             // 제작대가 필요하지 않은 아이템들을 제작
             else
             {
-                // 바로 만들면 될듯?
-                SetCount();
+                // 그런데 가방의 경우는 단 한번만 만들 수 있어요
+                if (_craftItemSlotList[_craftItemSlotList.Count - 1].IsBag() == true)
+                {
+                    // 좀 연하게 비활성화
+                    _mask.color = new Color(0, 0, 0, 0.7f);
+
+                    // 조합식 잠금
+                    _craftItemSlotList[_craftItemSlotList.Count - 1].CraftLock();
+
+                    _createDenyImage.gameObject.SetActive(true);
+                }
+                else
+                {
+                    // 바로 만들면 될듯?
+                    SetCount();
+                }
             }
         }
         // 재료가 부족합니다
@@ -194,6 +209,18 @@ public class CraftList : MonoBehaviour
             else
             {
                 _mask.color = new Color(0, 0, 0, 0.7f);
+            }
+
+            // 가방의 경우
+            if (_craftItemSlotList[_craftItemSlotList.Count - 1].IsBag() == true)
+            {
+                // 좀 연하게 비활성화
+                _mask.color = new Color(0, 0, 0, 0.7f);
+
+                // 조합식 잠금
+                _craftItemSlotList[_craftItemSlotList.Count - 1].CraftLock();
+
+                _createDenyImage.gameObject.SetActive(true);
             }
         }
 
