@@ -48,7 +48,7 @@ public class StatusUIManager : MonoBehaviour
         _thirstyGauge     = transform.GetChild(2).GetChild(0).GetComponent<Image>();
         _temperatureGauge = transform.GetChild(3).GetChild(0).GetComponent<Image>();
 
-        playerStatus = GameManager.Instance.PlayerTransform.GetComponent<PlayerStatus>();
+        //playerStatus = GameManager.Instance.PlayerTransform.GetComponent<PlayerStatus>();
     }
 
     private void Update()

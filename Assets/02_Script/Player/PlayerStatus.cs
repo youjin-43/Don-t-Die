@@ -64,6 +64,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         EnvironmentManager.Instance.Time.OnNightStart += StartDarknessDamage;
         EnvironmentManager.Instance.Time.OnNightEnd += StopDarknessDamage;
         _currentHealthPoint = _maxHealthPoint;
+        StatusUIManager.Instance.UpdateHealthUI();
         StatusUIManager.Instance.playerStatus = this;
     }
 
