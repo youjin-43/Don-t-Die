@@ -40,6 +40,9 @@ public class CraftManager : MonoBehaviour
 
     private bool _startFlag = false;
 
+
+    [SerializeField] public Transform ToolTipCanvas;
+
     void Awake()
     {
         SingletonInitialize();

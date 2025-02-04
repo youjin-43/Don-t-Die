@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -19,7 +20,7 @@ public class PlayerAutoInteract : MonoBehaviour
     [Space(10f)]
     [SerializeField] float detectionRange = 5f; // 탐색 반경
     [SerializeField] float InteractionRange = 1f; // 상호작용 반경
-    [SerializeField] Collider2D[] colliders; // 주변에 상호작용 가능한 물체들 (디버그용)
+    [SerializeField] List<Collider2D> colliders; // 주변에 상호작용 가능한 물체들 (디버그용)
     [SerializeField] Transform autoInteractTargetTransform; // 자동 상호작용 대상
     [SerializeField] Transform targetItem; // Item 줍는 과정에서 널 레퍼런스 방지를 위해 캐싱
     bool isPickingUp = false;
@@ -54,11 +55,13 @@ public class PlayerAutoInteract : MonoBehaviour
         //DebugController.Log("FindClosestInteractableObj 실행 ");
 
         // 탐색 반경 내에 있는 Interactable 물체 탐지
-        colliders = Physics2D.OverlapCircleAll(transform.position, detectionRange, LayerMask.GetMask("Interactable"));
+        colliders = Physics2D.OverlapCircleAll(transform.position, detectionRange, LayerMask.GetMask("Interactable")).ToList();
 
         // 주변에 Interactable한 오브젝트가 있다면 가장 가까운 것으로 이동 타겟 설정 
-        if (colliders.Length > 0)
+        if (colliders.Count > 0)
         {
+            colliders.RemoveAll(collider => collider.TryGetComponent(out Growable growable) && !growable.canBeHarvested);
+
             autoInteractTargetTransform = colliders // Collider2D 배열을 
                 .Select(collider => collider.transform) //transform 배열로 바꿔주고 (using System.Linq; 필요)
                 .OrderBy(t => Vector2.Distance(transform.position, t.position)) //Distance 기준 오름차순으로 정렬 
@@ -160,6 +163,7 @@ public class PlayerAutoInteract : MonoBehaviour
         // 필드의 아이템을 인벤토리에 추가했다면
         if (InventoryManager.Instance.AddItem(gotItem.ItemData, gotItem.currentDurability))
         {
+            CraftManager.Instance.UpdateCraftingUI();
             PoolManager.Instance.Push(targetItem.gameObject); // 필드의 아이템은 지움 //TODO : 아이템들도 오브젝트 풀 써야할까? 
             targetItem = null;
         }

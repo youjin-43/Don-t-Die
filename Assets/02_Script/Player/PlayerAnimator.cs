@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    Animator playerAnimator;
+    public Animator playerAnimator;
 
     void Start()
     {
@@ -31,6 +31,14 @@ public class PlayerAnimator : MonoBehaviour
         playerAnimator.SetTrigger("GetItem");
     }
 
+    #endregion
+
+    #region Craft
+
+    public void TriggerDoingAnimation()
+    {
+        playerAnimator.SetTrigger("Doing");
+    }
     #endregion
 
     #region Use Tool

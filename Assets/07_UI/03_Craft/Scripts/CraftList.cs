@@ -137,33 +137,100 @@ public class CraftList : MonoBehaviour
         }
 
 
-        // 모든 재료가 필요 재료보다 많은 경우
+        // 모든 재료를 모았습니다
         if(_isPossibleCrafting == true)
         {
-            SetCount();
-        }
-        else
-        {
-            _possibleItemCount = int.MaxValue;
-            _isPossibleCrafting = false;
-            _craftItemSlotList[_craftItemSlotList.Count - 1].CraftLock();
-
-            if (_data.NeedCraftingTable == true)
+            // 제작대가 필요한 아이템을 제작
+            if(_data.NeedCraftingTable == true)
             {
+                // 그러면 제작대 근처에요?
                 if(_isInRange == true)
                 {
+                    SetCount();
+                }
+                // 아니에요
+                else
+                {
+                    // 좀 연하게 비활성화
+                    _mask.color = new Color(0, 0, 0, 0.7f);
+
+                    // 조합식 잠금
+                    _craftItemSlotList[_craftItemSlotList.Count - 1].CraftLock();
+                }
+            }
+            // 제작대가 필요하지 않은 아이템들을 제작
+            else
+            {
+                // 바로 만들면 될듯?
+                SetCount();
+            }
+        }
+        // 재료가 부족합니다
+        else
+        {
+            // 계산에 필요한 변수 초기화
+            _possibleItemCount  = int.MaxValue;
+            _isPossibleCrafting = false;
+
+            // 조합식 잠금
+            _craftItemSlotList[_craftItemSlotList.Count - 1].CraftLock();
+
+            // 제작대가 필요한 못만드는 아이템
+            if (_data.NeedCraftingTable == true)
+            {
+                // 그런데 제작대 근처면
+                if (_isInRange == true)
+                {
+                    // 좀 연하게 비활성화
                     _mask.color = new Color(0, 0, 0, 0.7f);
                 }
                 else
                 {
+                    // 진하게 비활성화
                     _mask.color = new Color(0, 0, 0, 0.9f);
                 }
             }
+            // 제작대가 필요하지 않은 못만드는 아이템
             else
             {
                 _mask.color = new Color(0, 0, 0, 0.7f);
             }
         }
+
+
+
+        //// 모든 재료가 필요 재료보다 많은 경우
+        //if (_isPossibleCrafting == true)
+        //{
+        //    if(_isInRange == false)
+        //    {
+        //        _isPossibleCrafting = false;
+        //    }
+
+        //    SetCount();
+        //}
+        //else
+        //{
+        //    _possibleItemCount = int.MaxValue;
+        //    _isPossibleCrafting = false;
+        //    _craftItemSlotList[_craftItemSlotList.Count - 1].CraftLock();
+
+        //    if (_data.NeedCraftingTable == true)
+        //    {
+        //        if(_isInRange == true)
+        //        {
+        //            _mask.color = new Color(0, 0, 0, 0.7f);
+        //        }
+        //        else
+        //        {
+        //            _mask.color = new Color(0, 0, 0, 0.9f);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        _mask.color = new Color(0, 0, 0, 0.7f);
+        //    }
+        //}
     }
 
     private void SetCount()
