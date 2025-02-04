@@ -57,19 +57,17 @@ public class PlayerMoveManager : MonoBehaviour
         // 플레이어가 죽었으면 조작 금지
         if (playerStatus.IsDead()) return;
 
-        
 
-        if (canMove) 
+
+        if (canMove)
         {
             playerAutoInteract.AutoInteract(); // 자동 상호작용 중이면 이동 X
             isAutoInteracting = playerAutoInteract.isAutoInteracting;
 
-            if (!isAutoInteracting) 
-            {
-                playerMove.HandleMovement(); // 상하좌우 이동
-            }
-        }
+            if (!isAutoInteracting) playerMove.HandleMovement(); // 상하좌우 이동
+            if (UIManager.Instance.IsUIClick() == false && Input.GetMouseButtonDown(0)) playerUseTool.StartUsingEquippedTool(); // 도구 사용 
 
+        }
         if (Input.GetMouseButtonUp(0)) playerUseTool.StopUsingEquippedTool(); 
 
         playerFishingAction.Fishing(); // 낚시 
