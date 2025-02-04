@@ -9502,8 +9502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5492752dcbe204a9c02eee72e97ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliders: []
-  autoInteractTargetTransform: {fileID: 0}
 --- !u!1 &789228682
 GameObject:
   m_ObjectHideFlags: 0
@@ -22540,6 +22538,7 @@ MonoBehaviour:
     dividerPos: 0.33
   CraftListPrefab: {fileID: 3481420466216304959, guid: 3e7803d64815ebe4c82bc3f8085c98aa, type: 3}
   CraftListItemSlotPrefab: {fileID: 405714739702161845, guid: dc21969b866595a41ba257d632b65edb, type: 3}
+  ToolTipCanvas: {fileID: 853603363}
 --- !u!114 &1894338125
 MonoBehaviour:
   m_ObjectHideFlags: 0

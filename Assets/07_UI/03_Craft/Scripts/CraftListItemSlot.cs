@@ -158,12 +158,21 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
     {
         if(_itemNameKr != null)
         {
+            _description.transform.SetParent(CraftManager.Instance.ToolTipCanvas);
+
+            // UI를 최상단으로
+            //_description.transform.SetAsLastSibling();
+
             _description.SetActive(true);
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        _description.SetActive(false);
+        if (_itemNameKr != null)
+        {
+            _description.transform.SetParent(transform);
+            _description.SetActive(false);
+        }
     }
 }
