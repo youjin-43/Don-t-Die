@@ -38,9 +38,18 @@ public class GameManager : MonoBehaviour
     {
         if(Test == false)
         {
+
             GenMonsters();
             SpawnPlayer();
+            InitStatusUI();
         }
+    }
+
+    void InitStatusUI()
+    {
+        StatusUIManager.Instance.UpdateHealthUI();
+        StatusUIManager.Instance.UpdateHungryUI();
+        StatusUIManager.Instance.UpdateThirstyUI();
     }
 
     public Transform PlayerTransform; //인스펙터에서 할당해야함
