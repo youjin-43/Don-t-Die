@@ -52,21 +52,13 @@ public class GameManager : MonoBehaviour
     {
         GameObject go = Instantiate(playerPrefab);
         PlayerTransform = go.transform;
-
-        int count = EnvironmentManager.Instance.seedPoints[BiomeType.GrassBiome].Count;
-
-        BiomeMap biomeMap = EnvironmentManager.Instance.biomeMap;
-        Vector3 position = new Vector3(100, 100);
-        float timer = 0f;
-
-        do
+        if (EnvironmentManager.Instance.playerSpawnPosition == Vector3.zero)    // 만에 하나 GrassBiome 타일이 하나도 없는 경우
         {
-            timer += Time.deltaTime;
-            int randIdx = Random.Range(0, count);
-            position = EnvironmentManager.Instance.seedPoints[BiomeType.GrassBiome][randIdx];
+            go.transform.position = new Vector3(100, 100);
         }
-        while (timer < 5f && !biomeMap.IsOnMap(position));
-
-        go.transform.position = position;
+        else 
+        {
+            go.transform.position = EnvironmentManager.Instance.playerSpawnPosition; 
+        }
     }
 }

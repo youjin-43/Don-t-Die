@@ -57,23 +57,6 @@ public class VoronoiMapGenerator : MonoBehaviour
         //    DebugController.Log($"map[{tilemapPos.y}, {tilemapPos.x}] {EnvironmentManager.Instance.biomeMap.GetTileBiome(new Vector2Int(tilemapPos.x, tilemapPos.y))}");
         //    DebugController.Log($"{EnvironmentManager.Instance.objectMap.Map[tilemapPos.y, tilemapPos.x]}");
         //}
-
-        // --- Damageable Resource 잘 작동하는지 체크하는 부분. 지금은 Grass Tree 2 종류만 체크
-
-        //if (Input.GetMouseButtonDown(1))
-        //{
-        //    Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //    RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
-
-        //    if (hit && hit.transform.GetComponent<DamageableResourceNode>() != null)
-        //    {
-        //        hit.transform.GetComponent<DamageableResourceNode>().TakeDamage(10);
-        //    }
-        //    else if (hit && hit.transform.GetComponent<ResourceNode>() != null)
-        //    {
-        //        hit.transform.GetComponent<ResourceNode>().Harvest();
-        //    }
-        //}
         //#endregion
     }
 
@@ -231,6 +214,8 @@ public class VoronoiMapGenerator : MonoBehaviour
         // 맵의 중앙에서 가장 멀리 떨어진 거리. 외곽을 바다로 설정하기 위해 둔 변수이다. 
         float maxDistance = Mathf.Sqrt(Mathf.Pow(mapWidth / 2, 2) + Mathf.Pow(mapHeight / 2, 2));
 
+        float playerSpawnPointDistance = Vector3.Distance(mapCenter, EnvironmentManager.Instance.playerSpawnPosition);
+
         // 맵 전체 순회
         for (int x = 0; x < mapWidth; x++)
         {
@@ -273,6 +258,14 @@ public class VoronoiMapGenerator : MonoBehaviour
                 {
                     landTilemap.SetTile(new Vector3Int(x, y, 0), selectedBiome.Tiles[seasonIdx]);  // 육지
                     EnvironmentManager.Instance.biomeMap.MarkTile(x, y, selectedBiome.BiomeType);
+                    if (selectedBiome.BiomeType == BiomeType.GrassBiome)
+                    {
+                        if (Vector3.Distance(mapCenter, currentPos) < playerSpawnPointDistance)
+                        {
+                            playerSpawnPointDistance = Vector3.Distance(mapCenter, currentPos);
+                            EnvironmentManager.Instance.playerSpawnPosition = currentPos;
+                        }
+                    }
                 }
             }
         }
