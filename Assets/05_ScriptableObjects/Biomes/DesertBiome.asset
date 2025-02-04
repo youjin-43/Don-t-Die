@@ -34,4 +34,4 @@ MonoBehaviour:
   - data: {fileID: 11400000, guid: 15f0f374eb56b3742a3cd1dda4f483f8, type: 2}
     minAmount: 0
     maxAmount: 0
-  dropItemsIntensity: 0.2
+  dropItemsIntensity: 0.95
