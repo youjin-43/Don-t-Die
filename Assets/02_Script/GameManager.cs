@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 
             GenMonsters();
             SpawnPlayer();
-            InitStatusUI();
+            //InitStatusUI();
         }
     }
 
@@ -70,6 +70,8 @@ public class GameManager : MonoBehaviour
     {
         GameObject go = Instantiate(playerPrefab);
         PlayerTransform = go.transform;
+        StatusUIManager.Instance.playerStatus = PlayerTransform.GetComponent<PlayerStatus>();
+
         if (EnvironmentManager.Instance.playerSpawnPosition == Vector3.zero)    // 만에 하나 GrassBiome 타일이 하나도 없는 경우
         {
             go.transform.position = new Vector3(100, 100);
