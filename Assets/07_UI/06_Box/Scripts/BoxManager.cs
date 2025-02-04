@@ -52,6 +52,7 @@ public class BoxManager : MonoBehaviour
     private BoxItemSlot            _startSlot;
     private ItemData               _startSlotItemData;
     private int                    _startSlotItemCount;
+    private int                    _startSlotDurability;
     private bool                   _isDragging = false;
 
 
@@ -133,27 +134,13 @@ public class BoxManager : MonoBehaviour
         }
     }
 
-    public void RemoveItem(string itemName, int itemCount = 1)
+    public void RemoveItemFromDict(string itemName, int itemCount)
     {
-        int count = itemCount;
-
         _boxDict[itemName] -= itemCount;
-
-        foreach (var item in _boxSlot)
-        {
-            if (item.GetItemName() == itemName)
-            {
-                count = item.RemoveItemData(count);
-
-                if (count == 0)
-                {
-                    break;
-                }
-            }
-        }
     }
 
-    public bool AddItem(ItemData itemData)
+
+    public bool AddItem(ItemData itemData, int durability = 0)
     {
         for (int i = 0; i < _maxBoxSize; ++i)
         {
@@ -169,7 +156,7 @@ public class BoxManager : MonoBehaviour
                 else
                 {
                     // 아이템 추가
-                    AddItemToSlot(itemData, i);
+                    AddItemToSlot(itemData, i, durability);
 
                     return true;
                 }
@@ -186,7 +173,7 @@ public class BoxManager : MonoBehaviour
                         // 처음부터 다시 돌아서 빈 칸에 추가함
                         if (SearchFromFirstSlot(itemData, out int slot) == true && slot >= 0)
                         {
-                            AddItemToSlot(itemData, slot);
+                            AddItemToSlot(itemData, slot, durability);
 
                             return true;
                         }
@@ -199,7 +186,7 @@ public class BoxManager : MonoBehaviour
                     else
                     {
                         // 아이템 추가
-                        AddItemToSlot(itemData, i);
+                        AddItemToSlot(itemData, i, durability);
 
                         return true;
                     }
@@ -261,8 +248,9 @@ public class BoxManager : MonoBehaviour
         }
     }
 
-    private void AddItemToSlot(ItemData itemData, int slot)
+    private void AddItemToSlot(ItemData itemData, int slot, int durability)
     {
+        _boxSlot[slot]._currentDurability = durability;
         _boxSlot[slot].AddItemData(itemData);
 
         if (_boxDict.ContainsKey(itemData.Name))
@@ -296,6 +284,7 @@ public class BoxManager : MonoBehaviour
             _startSlot = startSlot;
             _startSlotItemData = startSlot.GetItemData(out int itemCount);
             _startSlotItemCount = itemCount;
+            _startSlotDurability = startSlot._currentDurability;
         }
         // 드래그 UI 활성화
         {
@@ -313,13 +302,16 @@ public class BoxManager : MonoBehaviour
         // 비어 있어야
         if (endSlot.IsEmpty() == true)
         {
+            endSlot._currentDurability = _startSlotDurability;
             endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
         }
         // 비어있지 않다면
         else
         {
             // 1. 비어있지 않았는데 양 슬롯에 있던 아이템이 같고 재료 아이템이였다면
-            if (_startSlotItemData.Name == endSlot.GetItemName() && _startSlotItemData.ItemType == ItemType.Resource)
+            if (_startSlotItemData.Name == endSlot.GetItemName()
+                && (_startSlotItemData.ItemType == ItemType.Resource
+                || _startSlotItemData.ItemType == ItemType.Edible))
             {
                 ItemData endSlotItemData = endSlot.GetItemData(out int itemCount);
                 int endSlotItemCount = itemCount;
@@ -334,8 +326,8 @@ public class BoxManager : MonoBehaviour
                 // 인벤토리 최대 적재량 보다 크다면
                 else
                 {
-                    endSlot.AddItemData(_startSlotItemData, Mathf.Abs(_startSlotItemCount - endSlotItemCount));
-                    _startSlot.AddItemData(_startSlotItemData, Mathf.Abs(9 - (_startSlotItemCount - endSlotItemCount)));
+                    endSlot.AddItemData(_startSlotItemData, 9 - endSlotItemCount);
+                    _startSlot.AddItemData(_startSlotItemData, _startSlotItemCount - (9 - endSlotItemCount));
                 }
             }
             // 2. 비어있지 않았는데 서로 아이템이 다른 경우 (재료든 장비든 뭐든)
@@ -343,10 +335,13 @@ public class BoxManager : MonoBehaviour
             {
                 // 데이터 스왑
                 ItemData endSlotItemData = endSlot.GetItemData(out int itemCount);
+                int endSlotDurability = endSlot._currentDurability;
                 endSlot.ClearItemSlot();
 
+                endSlot._currentDurability = _startSlotDurability;
                 endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
 
+                _startSlot._currentDurability = endSlotDurability;
                 _startSlot.AddItemData(endSlotItemData, itemCount);
             }
         }
@@ -368,8 +363,6 @@ public class BoxManager : MonoBehaviour
         }
         // 캐시데이터, 출발지점, 데이터  초기화
         {
-            _boxDict[_startSlotItemData.Name] -= _startSlotItemCount;
-
             _startSlot.ClearItemSlot();
             _startSlot = null;
             _startSlotItemData = null;
@@ -386,12 +379,19 @@ public class BoxManager : MonoBehaviour
         Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
 
-        if (hit.collider != null && hit.collider.name == "Campfire" &&
-            Vector3.Distance(GameManager.Instance.GetPlayerPos(), hit.collider.transform.position) < 2f)
+        if (hit.collider != null)
         {
-            RemoveItem(wood.Name, _startSlotItemCount);
+            string[] split = hit.collider.name.Split('(');
 
-            ClearDragUI();
+            if (split[0] == "Campfire" &&
+            Vector3.Distance(GameManager.Instance.GetPlayerPos(), hit.collider.transform.position) < 2f)
+            {
+                hit.collider.gameObject.GetComponent<Campfire>().AddDurability(_startSlotItemCount * 10);
+
+                RemoveItemFromDict(wood.Name, _startSlotItemCount);
+
+                ClearDragUI();
+            }
         }
         else
         {
@@ -404,19 +404,24 @@ public class BoxManager : MonoBehaviour
         Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
 
-        if (hit.collider != null && hit.collider.name == "Campfire" &&
-            Vector3.Distance(GameManager.Instance.GetPlayerPos(), hit.collider.transform.position) < 2f)
+        if (hit.collider != null)
         {
-            for (int i = 0; i < _startSlotItemCount; ++i)
+            string[] split = hit.collider.name.Split('(');
+
+            if (split[0] == "Campfire" &&
+            Vector3.Distance(GameManager.Instance.GetPlayerPos(), hit.collider.transform.position) < 2f)
             {
-                Item item = PoolManager.Instance.InstantiateItem(edibleItemData.ItemDataAfterGrilled);
+                for (int i = 0; i < _startSlotItemCount; ++i)
+                {
+                    Item item = PoolManager.Instance.InstantiateItem(edibleItemData.ItemDataAfterGrilled);
 
-                Vector3 dir = hit.collider.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
+                    Vector3 dir = hit.collider.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
 
-                item.Spread(hit.collider.transform.position, dir, Random.Range(2.5f, 3f));
+                    item.Spread(hit.collider.transform.position, dir, Random.Range(2.5f, 3f));
+                }
             }
 
-            RemoveItem(edibleItemData.Name, _startSlotItemCount);
+            RemoveItemFromDict(edibleItemData.Name, _startSlotItemCount);
 
             ClearDragUI();
         }
@@ -433,6 +438,7 @@ public class BoxManager : MonoBehaviour
             for (int i = 0; i < _startSlotItemCount; ++i)
             {
                 Item item = PoolManager.Instance.InstantiateItem(_startSlotItemData);
+                item.currentDurability = _startSlotDurability;
 
                 Vector3 dir = GameManager.Instance.GetPlayerPos() + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
 
@@ -440,58 +446,14 @@ public class BoxManager : MonoBehaviour
             }
         }
 
+        _boxDict[_startSlotItemData.Name] -= _startSlotItemCount;
         ClearDragUI();
     }
 
-    public ItemData ExchangeEquipItem(ItemData itemData, EquipmentSlot slot)
+    public bool SendItemDataToInventory(ItemData itemData, int durability)
     {
         _boxDict[itemData.Name] -= 1;
 
-        // 받아 온 장비를 장착하고 장착하고 있던 장비는 가져옴
-        ItemData equipedItemData = EquipmentManager.Instance.EquipItem(itemData, slot);
-
-        // 장착하고 있던 장비가 없었다면
-        if (equipedItemData == null)
-        {
-            return null;
-        }
-        // 장착하고 있던 장비가 있다면
-        else
-        {
-            _boxDict[equipedItemData.Name] += 1;
-
-            return equipedItemData;
-        }
-    }
-
-    public void EatItem(EdibleItemData edibleItemData)
-    {
-        GameManager.Instance.PlayerTransform.GetComponent<PlayerStatus>().EatItem(edibleItemData);
-        _boxDict[edibleItemData.Name] -= 1;
-    }
-
-    public bool InstallItem(InstallableItemData installableItemData)
-    {
-        Vector3 position = GameManager.Instance.GetPlayerPos() + new Vector3(0, -1, 0);
-
-        if (EnvironmentManager.Instance.InstallObject(position, installableItemData) == false)
-        {
-            // 설치하려는 위치에 이미 다른 오브젝트가 존재하거나 물 위에 지으려고 할 때
-
-            return false;
-        }
-        else
-        {
-            _boxDict[installableItemData.Name] -= 1;
-
-            return true;
-        }
-    }
-
-    public bool SendItemDataToBox(ItemData itemData)
-    {
-        _boxDict[itemData.Name] -= 1;
-
-        return InventoryManager.Instance.AddItem(itemData);
+        return InventoryManager.Instance.AddItem(itemData, durability);
     }
 }

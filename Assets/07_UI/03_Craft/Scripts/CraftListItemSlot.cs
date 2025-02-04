@@ -134,7 +134,16 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
 
             if (currentItemData is EquippableItemData)
             {
-                maxDurability = (currentItemData as EquippableItemData).maxDurability;
+                string[] split = currentItemData.NameKR.Split(' ');
+
+                if (split[1] == "물병")
+                {
+                    maxDurability = 0;
+                }
+                else
+                {
+                    maxDurability = (currentItemData as EquippableItemData).maxDurability;
+                }
             }
 
             if(InventoryManager.Instance.AddItem(currentItemData, maxDurability) == true)

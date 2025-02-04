@@ -280,7 +280,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
 
         if (BoxManager.Instance.IsBoxOpened() == true)
         {
-            if (InventoryManager.Instance.SendItemDataToBox(_itemData) == true)
+            if (InventoryManager.Instance.SendItemDataToBox(_itemData, _currentDurability) == true)
             {
                 RemoveItemData(1);
             }
@@ -315,7 +315,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
 
                     // 현재 슬롯의 장비를 장비창으로 넘기고
                     // 장비창에 이미 아이템이 있다면 그 아이템을 받아옴
-                    ItemData itemData = InventoryManager.Instance.ExchangeEquipItem(equippableItemData, equippableItemData.EquipSlot, _currentDurability, out _currentDurability);
+                    ItemData itemData = InventoryManager.Instance.ExchangeEquipItem(equippableItemData, equippableItemData.EquipSlot, _currentDurability, out int currentDurability);
 
                     // 장착하고 있던 장비가 없었다면
                     if (itemData == null)
@@ -325,6 +325,10 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
                     // 있었다면
                     else
                     {
+                        ClearItemSlot();
+
+                        _currentDurability = currentDurability;
+
                         AddItemData(itemData);
                     }
 

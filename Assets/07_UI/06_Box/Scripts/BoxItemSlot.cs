@@ -17,7 +17,7 @@ public class BoxItemSlot : MonoBehaviour, IPointerClickHandler
     private Image     _itemSelectImage;
     private Image     _slotNumberImage;
     private int       _currentItemCount;
-    private int       _currentDurability;
+    public int       _currentDurability;
     private int       _slotNumber;
 
     // 드래깅 데이터
@@ -216,7 +216,7 @@ public class BoxItemSlot : MonoBehaviour, IPointerClickHandler
         {
             _itemDurability.gameObject.SetActive(true);
 
-            float fillAmount = equippableItemData.currentDurability / equippableItemData.maxDurability;
+            float fillAmount = _currentDurability / equippableItemData.maxDurability;
 
             _itemDurabilityGauge.fillAmount = fillAmount;
             _itemDurabilityGauge.color = Color.HSVToRGB(fillAmount / 3f, 1f, 1f);
@@ -248,6 +248,10 @@ public class BoxItemSlot : MonoBehaviour, IPointerClickHandler
             _itemCountImage.gameObject.SetActive(false);
             _itemDurability.gameObject.SetActive(false);
         }
+        // 5. 내구도 초기화
+        {
+            _currentDurability = 0;
+        }
     }
 
     public void UseItem()
@@ -257,7 +261,7 @@ public class BoxItemSlot : MonoBehaviour, IPointerClickHandler
             return;
         }
 
-        if (BoxManager.Instance.SendItemDataToBox(_itemData) == true)
+        if (BoxManager.Instance.SendItemDataToInventory(_itemData, _currentDurability) == true)
         {
             RemoveItemData(1);
         }
