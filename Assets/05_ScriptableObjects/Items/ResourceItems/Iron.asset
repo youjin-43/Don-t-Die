@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 0
   Name: Iron
+  NameKR: "\uCCA0"
   Prefab: {fileID: 6872303991672121665, guid: 611beef7d6e0ec04daf85590ae28013d, type: 3}
   Image: {fileID: 21300000, guid: 21b76e4bd1bb1e6429135198ff62c716, type: 3}
   IsCountable: 1

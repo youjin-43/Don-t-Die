@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: BoneAxe
+  NameKR: "\uBF08 \uB3C4\uB07C"
   Prefab: {fileID: 4232268840720025113, guid: 52d137de3047bfa40a8101bf44d8b7c4, type: 3}
   Image: {fileID: 21300000, guid: 7a723cd025eb4a545b61eaee275bf199, type: 3}
   IsCountable: 0
   MaxCountSize: 1
   equipSlot: 2
   maxDurability: 10
-  currentDurability: 1.25
+  currentDurability: 1
   availableTypes: 02000000
   atk: 17
   Type: 2

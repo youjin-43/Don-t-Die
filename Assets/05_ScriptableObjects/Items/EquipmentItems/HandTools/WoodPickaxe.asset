@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: WoodPickaxe
+  NameKR: "\uB098\uBB34 \uACE1\uAD2D\uC774"
   Prefab: {fileID: 7550815638160485263, guid: 4b7bbe1983ed1c645aa26d90a233ee71, type: 3}
   Image: {fileID: 21300000, guid: 0e0b6c87637acb0409043f1fd4e92658, type: 3}
   IsCountable: 0

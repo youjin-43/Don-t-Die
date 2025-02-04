@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 3
   Name: Box
+  NameKR: "\uC0C1\uC790"
   Prefab: {fileID: 130404457932581576, guid: a9b5487b61dca8041b012736c36c617a, type: 3}
   Image: {fileID: 4727633781103762509, guid: e3cd8e9a275421846b7b39c4f9b70f0c, type: 3}
   IsCountable: 0

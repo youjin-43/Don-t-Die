@@ -38,7 +38,6 @@ public class PlayerMoveManager : MonoBehaviour
         playerUseTool = transform.GetChild((int)PlayerObjChilds.ToolCollider).GetComponent<PlayerUseTool>();
         playerFishingAction = GetComponent<PlayerFishingAction>();
         playerGetWaterAction = GetComponent<PlayerGetWaterAction>();
-
         // 각 행동에 애니메이터 설정 -> awake start 순서 꼬일까봐 매니저에서 한번에 셋팅 
         playerAnimator = GetComponent<PlayerAnimator>();
         SetAnimatorAtEachMoves(); 
@@ -80,6 +79,26 @@ public class PlayerMoveManager : MonoBehaviour
         // 조합창 토글
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            Collider2D collider = Physics2D.OverlapCircle(transform.position, 1f, LayerMask.GetMask("Interactable"));
+
+            if(collider != null)
+            {
+                string[] split = collider.name.Split('(');
+
+                if(split[0] == "CraftingTable")
+                {
+                    CraftManager.Instance.InRange(true);
+                }
+                else
+                {
+                    CraftManager.Instance.InRange(false);
+                }
+            }
+            else
+            {
+                CraftManager.Instance.InRange(false);
+            }
+
             CraftManager.Instance.ToggleCraftingUI();
             InventoryManager.Instance.DisableScrollToggle();
         }

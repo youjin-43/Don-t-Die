@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 2
   Name: Fish
+  NameKR: "\uC0DD\uC120"
   Prefab: {fileID: 0}
   Image: {fileID: 21300000, guid: 1f93b090d725c2143844fe367136810a, type: 3}
   IsCountable: 1

@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: StoneChest
+  NameKR: "\uB3CC \uAC11\uC637"
   Prefab: {fileID: 1522524378567408781, guid: fe94e063ecb05714d997f0719780e234, type: 3}
   Image: {fileID: 21300000, guid: 90648a8d8b929eb4495d4d83938c0914, type: 3}
   IsCountable: 0
   MaxCountSize: 1
   equipSlot: 3
   maxDurability: 10
-  currentDurability: 7.5
+  currentDurability: 7
   def: 1

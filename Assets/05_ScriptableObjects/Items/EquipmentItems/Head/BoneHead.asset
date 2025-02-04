@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: BoneHead
+  NameKR: "\uBF08 \uD22C\uAD6C"
   Prefab: {fileID: 8891785055699985278, guid: 88306c133ae5c1b4798893fdcad5aa53, type: 3}
   Image: {fileID: 21300000, guid: 5607c7e5e49c12547953293d81e7bd92, type: 3}
   IsCountable: 0
   MaxCountSize: 1
   equipSlot: 1
   maxDurability: 10
-  currentDurability: 8.75
+  currentDurability: 8
   def: 1

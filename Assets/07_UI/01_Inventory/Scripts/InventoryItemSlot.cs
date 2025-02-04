@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
                                           
-public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
+public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     // 아이템 데이터
     private ItemData _itemData;
@@ -119,6 +119,17 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
                 UseItem();
             }
         }
+    }
+
+    // IPointerEnterHandler 인터페이스 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        
+    }
+
+    // IPointerExitHandler 인터페이스
+    public void OnPointerExit(PointerEventData eventData)
+    {
     }
 
     public int RemoveItemData(int itemCount)
@@ -329,4 +340,6 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler
                 break;
         }
     }
+
+    
 }

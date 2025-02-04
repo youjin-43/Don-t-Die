@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 2
   Name: GrilledMeat
+  NameKR: "\uAD6C\uC6B4 \uACE0\uAE30"
   Prefab: {fileID: 0}
   Image: {fileID: 21300000, guid: 5e65fd1cd1921234187e9052dbfb388a, type: 3}
   IsCountable: 1

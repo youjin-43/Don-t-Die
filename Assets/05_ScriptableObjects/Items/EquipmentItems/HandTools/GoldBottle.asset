@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: GoldBottle
+  NameKR: "\uAE08 \uBB3C\uBCD1"
   Prefab: {fileID: 7303379248116216445, guid: 859fa3f09879c5343b7d16b0cdf5b3ea, type: 3}
   Image: {fileID: 21300000, guid: 4e9455ac5f29e4144a4511c5e4bdb15e, type: 3}
   IsCountable: 0

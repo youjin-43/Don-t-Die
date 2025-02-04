@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: BoneSword
+  NameKR: "\uBF08 \uCE7C"
   Prefab: {fileID: 3704126909530333523, guid: 4071838c972f7964b9a41c0a37cd1800, type: 3}
   Image: {fileID: 21300000, guid: 9acde34f918ad2243b89869149e2c174, type: 3}
   IsCountable: 0

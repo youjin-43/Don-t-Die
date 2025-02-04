@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: GoldHead
+  NameKR: "\uAE08 \uD22C\uAD6C"
   Prefab: {fileID: 7148193334890074845, guid: c7342db1073b58d44a5ee9c586daab03, type: 3}
   Image: {fileID: 21300000, guid: e88a6e493e5a8be4f98b34c7d9d63731, type: 3}
   IsCountable: 0

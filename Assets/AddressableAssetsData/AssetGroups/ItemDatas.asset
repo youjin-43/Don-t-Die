@@ -25,7 +25,7 @@ MonoBehaviour:
     m_Address: Branch
     m_ReadOnly: 0
     m_SerializedLabels:
-    - IconImage
+    - ItemData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0b3e4601311f0294c830cfeefea8d93a
     m_Address: Gold
@@ -113,6 +113,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4fc1faa75bbe1e9418f447a1597aae48
     m_Address: GoldHead
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61f9040c5ae9ff548ab2c27fba3e2c44
+    m_Address: FishingRod
     m_ReadOnly: 0
     m_SerializedLabels:
     - ItemData

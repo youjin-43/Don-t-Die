@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 3
   Name: CraftingTable
+  NameKR: "\uC870\uD569\uB300"
   Prefab: {fileID: 5701550997541667543, guid: 53d3808e3591ec547b630ce8d04c469c, type: 3}
   Image: {fileID: 21300000, guid: 375ecacf14401ef4bbd4604f29cc09a3, type: 3}
   IsCountable: 0

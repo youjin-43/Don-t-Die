@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
+public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     // 아이템을 그릴 슬롯인지, +, = 모양을 그릴 슬롯인지
     public enum CraftListItemSlotType
@@ -17,10 +17,13 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
     
     private TextMeshProUGUI _currentItemCountText;
     private TextMeshProUGUI _needItemCountText;
+    private GameObject      _description;
+    private TextMeshProUGUI _descriptionText;
 
     private Dictionary<string, int> _recipe = new Dictionary<string, int>();
 
     private string                _itemName;
+    private string                _itemNameKr;
     private int                   _currentItemCount;
     private int                   _needItemCount;
     private CraftListItemSlotType _type;
@@ -33,10 +36,15 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void SetData(CraftListItemSlotType type, string itemName, int needItemCount = 0)
     {
-        if(_currentItemCountText == null && _needItemCountText == null)
+        if(_currentItemCountText == null && _needItemCountText == null && _description == null)
         {
             _currentItemCountText = transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
             _needItemCountText    = transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>();
+
+            _description     = transform.GetChild(3).gameObject;
+            _descriptionText = _description.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        
+            _description.SetActive(false);
         }
 
         _itemName      = itemName;
@@ -58,6 +66,11 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
         {
             transform.GetChild(1).GetComponent<Image>().color  = new Color(1, 1, 1, 1);
             transform.GetChild(1).GetComponent<Image>().sprite = sprite;
+        }
+        if(DataManager.Instance.ItemData.TryGetValue(_itemName, out ItemData itemData))
+        {
+            _descriptionText.text = itemData.NameKR;
+            _itemNameKr = itemData.NameKR;
         }
     }
 
@@ -139,5 +152,18 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler
 
             }
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(_itemNameKr != null)
+        {
+            _description.SetActive(true);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _description.SetActive(false);
     }
 }

@@ -58,4 +58,12 @@ public class CraftCategory : MonoBehaviour
             craftList.ResourceCounting(inventoryDict);
         }
     }
+
+    public void InRange(bool inRange)
+    {
+        foreach(var craftList in _craftLists)
+        {
+            craftList.InRange(inRange);
+        }
+    }
 }

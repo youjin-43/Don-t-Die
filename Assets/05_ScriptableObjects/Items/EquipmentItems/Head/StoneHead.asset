@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: StoneHead
+  NameKR: "\uB3CC \uD22C\uAD6C"
   Prefab: {fileID: 7148193334890074845, guid: a17c1228379dd784a9cf1031b7d4e0ff, type: 3}
   Image: {fileID: 21300000, guid: 1c8a0536b47febc41877cf4faf6a1bfe, type: 3}
   IsCountable: 0
