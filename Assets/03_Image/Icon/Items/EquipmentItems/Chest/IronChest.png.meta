@@ -3,8 +3,8 @@ guid: 5ca12080a71b1ad4da4e00f24893224c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1646928301184787994
-    second: IronArmor_0
+      213: 427008829792269768
+    second: IronChest_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IronArmor_0
+      name: IronChest_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e9d7559f6fe429e0800000000000000
-      internalID: -1646928301184787994
+      spriteID: 8c539bfa44a0de500800000000000000
+      internalID: 427008829792269768
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IronArmor_0: -1646928301184787994
+      IronChest_0: 427008829792269768
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

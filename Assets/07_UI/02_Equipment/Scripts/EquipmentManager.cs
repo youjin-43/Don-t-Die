@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EquipmentManager : MonoBehaviour
 {
@@ -30,6 +32,9 @@ public class EquipmentManager : MonoBehaviour
     // 장비창이 들고 있을 장비 슬롯 프리팹
     [SerializeField] GameObject EquipmentSlotPrefab;
 
+    // 장비창 프리뷰
+    [SerializeField] public List<Sprite> PreviewImage = new List<Sprite>();
+
     // 장비 슬롯 최대 갯수
     int _initialEquipmentSize = 3;
 
@@ -48,14 +53,17 @@ public class EquipmentManager : MonoBehaviour
         // 도구 슬롯
         {
             _toolItemSlot = Instantiate(EquipmentSlotPrefab, transform).GetComponent<EquipmentItemSlot>();
+            _toolItemSlot.SetPreviewImage(PreviewImage[0]);
         }
         // 투구 슬롯
         {
             _headItemSlot = Instantiate(EquipmentSlotPrefab, transform).GetComponent<EquipmentItemSlot>();
+            _headItemSlot.SetPreviewImage(PreviewImage[1]);
         }
         // 갑옷 슬롯
         {
             _chestItemSlot = Instantiate(EquipmentSlotPrefab, transform).GetComponent<EquipmentItemSlot>();
+            _chestItemSlot.SetPreviewImage(PreviewImage[2]);
         }
     }
 

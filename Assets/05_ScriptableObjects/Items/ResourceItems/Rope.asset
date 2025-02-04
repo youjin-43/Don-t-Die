@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemType: 0
   Name: Rope
   Prefab: {fileID: 379832288423224323, guid: 857c53dca3b556d44a13ec2fefb9115e, type: 3}
-  Image: {fileID: 21300000, guid: 69302f908c7154a41945c603bf6531d9, type: 3}
+  Image: {fileID: 21300000, guid: 538e152a00953eb4d9495395b2651b24, type: 3}
   IsCountable: 1
   MaxCountSize: 9
   TestData: 0

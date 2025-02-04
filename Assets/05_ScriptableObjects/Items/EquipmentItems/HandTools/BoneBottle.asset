@@ -20,7 +20,7 @@ MonoBehaviour:
   MaxCountSize: 1
   equipSlot: 2
   maxDurability: 10
-  currentDurability: 10
+  currentDurability: 0
   availableTypes: 
   atk: 0
   Type: 6

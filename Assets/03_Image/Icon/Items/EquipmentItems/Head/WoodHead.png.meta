@@ -3,8 +3,8 @@ guid: a7a959f24618676438bed184aff458a2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5461973971545172347
-    second: WoodHelmet_0
+      213: -7315082373715850266
+    second: WoodHead_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WoodHelmet_0
+      name: WoodHead_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 4
+        y: 0
         width: 16
-        height: 12
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b79216a6364dccb40800000000000000
-      internalID: 5461973971545172347
+      spriteID: 6eb02fb865b9b7a90800000000000000
+      internalID: -7315082373715850266
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      WoodHelmet_0: 5461973971545172347
+      WoodHead_0: -7315082373715850266
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

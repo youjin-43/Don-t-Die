@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemType: 0
   Name: Bone
   Prefab: {fileID: 2235368862984631620, guid: 51af4633cad60474582db0e241ef6dcc, type: 3}
-  Image: {fileID: 21300000, guid: 34d5507f2605f8049b22019c8fb87aed, type: 3}
+  Image: {fileID: 21300000, guid: 014e763f4b503e04f9f6bbf710553f90, type: 3}
   IsCountable: 1
   MaxCountSize: 9
   TestData: 0

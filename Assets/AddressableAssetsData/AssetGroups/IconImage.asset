@@ -15,8 +15,20 @@ MonoBehaviour:
   m_GroupName: IconImage
   m_GUID: ffd961bf4a655554a997e2a2f98cf31f
   m_SerializeEntries:
+  - m_GUID: 001b83bbd183b2d44890c77ffc82919a
+    m_Address: Grass
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 00233372fb25852469bcbff352cf72ff
     m_Address: FishRod
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 014e763f4b503e04f9f6bbf710553f90
+    m_Address: Bone
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -46,7 +58,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1c8a0536b47febc41877cf4faf6a1bfe
-    m_Address: StoneHelmet
+    m_Address: StoneHead
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -57,20 +69,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 225069a750824944db4866ac56c72092
-    m_Address: Branch
+  - m_GUID: 21b76e4bd1bb1e6429135198ff62c716
+    m_Address: Iron
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 24c7803d7c3c71748b3282bc07f1ffdc
-    m_Address: Tool
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 34d5507f2605f8049b22019c8fb87aed
-    m_Address: Bone
+  - m_GUID: 2b7b2b7ae11af344ab6611d301336272
+    m_Address: Gold
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -99,14 +105,38 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 432cbfd006861754ba1e08275c8f49ef
+    m_Address: Wood
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4378c33658d83e044bcdec7c78f3496f
+    m_Address: Branch
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4e9455ac5f29e4144a4511c5e4bdb15e
     m_Address: GoldBottle
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4efb86c02c8fe1744b38cf609575bca9
+    m_Address: Stone
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5242dcfbeac0ade4d944e402c403c75d
     m_Address: GoldSword
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 538e152a00953eb4d9495395b2651b24
+    m_Address: Rope
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -118,25 +148,19 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5607c7e5e49c12547953293d81e7bd92
-    m_Address: BoneHelemt
+    m_Address: BoneHead
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5ca12080a71b1ad4da4e00f24893224c
-    m_Address: IronArmor
+    m_Address: IronChest
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5cd18f46a12ccc1418bdfbc723763e07
-    m_Address: GoldArmor
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5dcd4cf57dcf1494dbfa8827373af932
-    m_Address: Gold
+    m_Address: GoldChest
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -159,14 +183,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 69302f908c7154a41945c603bf6531d9
-    m_Address: Rope
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6d507a9690ff330408f37d84f02545f7
-    m_Address: IronHelmet
+    m_Address: IronHead
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -195,6 +213,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 883b3b98c69605e45b168b6541bd6ecd
+    m_Address: Flint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8d3adf9a19812ed46bf0743db6530ed4
     m_Address: IronAxe
     m_ReadOnly: 0
@@ -202,25 +226,13 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 90648a8d8b929eb4495d4d83938c0914
-    m_Address: StoneArmor
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9698ca0bff4322244b7b493a170e78e4
-    m_Address: Wood
+    m_Address: StoneChest
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9acde34f918ad2243b89869149e2c174
     m_Address: BoneSword
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9b2e138ccf9d482439dbbeed0d3b357f
-    m_Address: Stone
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -232,13 +244,7 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a7a959f24618676438bed184aff458a2
-    m_Address: WoodHelmet
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b34c10ddc3aef3e4ebd4d20b54f3e10e
-    m_Address: Flint
+    m_Address: WoodHead
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -273,14 +279,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: dee3676c9076c4b4ea4b5e0ab8beb31c
-    m_Address: Iron
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e2572a708294570498d910e6fb83d25b
-    m_Address: BoneArmor
+    m_Address: BoneChest
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -298,13 +298,13 @@ MonoBehaviour:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e5b2bf62f12338a4987da73e6bf20274
-    m_Address: WoodArmor
+    m_Address: WoodChest
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e88a6e493e5a8be4f98b34c7d9d63731
-    m_Address: GoldHelmet
+    m_Address: GoldHead
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage
@@ -329,12 +329,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f0b9de6b45095ab40a6ed9bfc07aa56a
     m_Address: WoodBottle
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconImage
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f9f24954e37f4974eadfb67740c3a713
-    m_Address: Grass
     m_ReadOnly: 0
     m_SerializedLabels:
     - IconImage

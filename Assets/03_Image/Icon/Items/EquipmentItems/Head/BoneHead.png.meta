@@ -3,8 +3,8 @@ guid: 5607c7e5e49c12547953293d81e7bd92
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1854566004215070952
-    second: BoneHelemt_0
+      213: 5132473569880578963
+    second: BoneHead_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BoneHelemt_0
+      name: BoneHead_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 4
+        y: 0
         width: 16
-        height: 12
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8e041c574fdbcb910800000000000000
-      internalID: 1854566004215070952
+      spriteID: 39b10dfc4853a3740800000000000000
+      internalID: 5132473569880578963
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BoneHelemt_0: 1854566004215070952
+      BoneHead_0: 5132473569880578963
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemType: 2
   Name: GrilledFish
   Prefab: {fileID: 0}
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: c8a100436f1276547bd1b5d2fb96ebbc, type: 3}
   IsCountable: 1
   MaxCountSize: 9
   healthValue: 0

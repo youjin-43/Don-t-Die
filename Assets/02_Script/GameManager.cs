@@ -30,10 +30,17 @@ public class GameManager : MonoBehaviour
         Init();
     }
 
+
+    public bool Test = false;
+
+
     private void Start()
     {
-        GenMonsters();
-        SpawnPlayer();
+        if(Test == false)
+        {
+            GenMonsters();
+            SpawnPlayer();
+        }
     }
 
     public Transform PlayerTransform; //인스펙터에서 할당해야함
