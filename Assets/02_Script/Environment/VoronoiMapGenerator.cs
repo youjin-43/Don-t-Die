@@ -260,10 +260,11 @@ public class VoronoiMapGenerator : MonoBehaviour
                     EnvironmentManager.Instance.biomeMap.MarkTile(x, y, selectedBiome.BiomeType);
                     if (selectedBiome.BiomeType == BiomeType.GrassBiome)
                     {
-                        if (Vector3.Distance(mapCenter, currentPos) < playerSpawnPointDistance)
+                        Vector3 playerSpawnPositionOnTilemap = landTilemap.GetCellCenterWorld(new Vector3Int(x, y));
+                        if (Vector3.Distance(mapCenter, playerSpawnPositionOnTilemap) < playerSpawnPointDistance)
                         {
-                            playerSpawnPointDistance = Vector3.Distance(mapCenter, currentPos);
-                            EnvironmentManager.Instance.playerSpawnPosition = currentPos;
+                            playerSpawnPointDistance = Vector3.Distance(mapCenter, playerSpawnPositionOnTilemap);
+                            EnvironmentManager.Instance.playerSpawnPosition = playerSpawnPositionOnTilemap;
                         }
                     }
                 }
