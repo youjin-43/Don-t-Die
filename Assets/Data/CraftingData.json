@@ -217,8 +217,8 @@
       "Recipe": "Grass_4"
     },
     {
-      "Name": "Box",
-      "NameKR": "상자",
+      "Name": "Bag",
+      "NameKR": "가방",
       "Category": "Tool",
       "NumOfMaterial": "3",
       "NeedCraftingTable": "false",

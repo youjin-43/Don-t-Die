@@ -267,6 +267,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - ItemData
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dfd2402fe61ba544cb6fcfbbcb82d2c7
+    m_Address: Assets/05_ScriptableObjects/Items/InventoryItems/Bag.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ec0fa6eb77fbab642aa2aba5f7f0630d
     m_Address: WoodHead
     m_ReadOnly: 0
