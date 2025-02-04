@@ -23,12 +23,14 @@ public class Apple : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 던진 오브젝트(곰)와 충돌하면 무시
-        if (collision.gameObject == thrower)
-            return;
+        if (collision.gameObject == thrower) return;
 
-        IDamageable damageable = collision.GetComponent<IDamageable>();
+        Transform target = collision.transform;
+        IDamageable damageable = target.GetComponent<IDamageable>();
         if (damageable != null)
         {
+            Debug.Log(collision.name);
+            target.GetComponent<PlayerStatus>().SetLastDamageCause(DeathCause.BearAttack); // 사망 사유 셋팅 
             damageable.TakeDamage(damage);
             Destroy(gameObject);
         }

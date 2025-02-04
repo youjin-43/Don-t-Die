@@ -29,6 +29,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     public float CurrentThirstyPoint { get { return _currentThirstyPoint; } }
 
     private bool isDead = false; // Player의 사망 여부를 명확하게 PlayerStatus에서 관리
+    public DeathCause lastDamageCause = DeathCause.None; // 죽음 사유 
 
     [HideInInspector] public PlayerAnimator playerAnimator; //PlayerMoveManager 에서 할당 받도록 함 
     Rigidbody2D playerRigidbody;
@@ -78,11 +79,13 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
             if (CurrentHungryPoint <= 0)
             {
+                lastDamageCause = DeathCause.Starvation;
                 LoseHP(0.4f);
             }
 
             if (CurrentThirstyPoint <= 0)
             {
+                lastDamageCause = DeathCause.Dehydration;
                 LoseHP(0.4f);
             }
 
@@ -91,6 +94,18 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         }
     }
 
+
+    public void SetLastDamageCause(DeathCause cause)
+    {
+        lastDamageCause = cause;
+    }
+
+    public void Die()
+    {
+        Debug.Log($"플레이어가 {lastDamageCause} 원인으로 사망!");
+        playerAnimator.TriggerDieAnimation();
+        // TODO :  UI 사망 메시지 표시
+    }
     #region IDamageable
 
     public void TakeDamage(int damage)
@@ -130,7 +145,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         if (_currentHealthPoint <= 0 && !isDead)
         {
             isDead = true;
-            GetComponent<PlayerMoveManager>().Die(); // PlayerMoveManager의 Die() 호출
+            Die();
         }
         StatusUIManager.Instance.UpdateHealthUI();
     }

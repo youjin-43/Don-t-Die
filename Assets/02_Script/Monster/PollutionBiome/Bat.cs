@@ -27,7 +27,8 @@ public class Bat : MonsterBase
                 IDamageable target = other.GetComponent<IDamageable>();
                 if (target != null)
                 {
-                    TriggerAttackAnimaiton(); // 공격 애니메이션 
+                    TriggerAttackAnimaiton(); // 공격 애니메이션
+                    other.GetComponent<PlayerStatus>().SetLastDamageCause(DeathCause.BatAttack); // 사망 사유 셋팅 
                     target.TakeDamage(atkDamage);
 
                     // 넉백 적용

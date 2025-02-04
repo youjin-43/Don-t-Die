@@ -124,11 +124,6 @@ public class PlayerMoveManager : MonoBehaviour
         }
     }
 
-    public void Die()
-    {
-        playerAnimator.TriggerDieAnimation();
-    }
-
     #region Set canMove - Tool 애니메이션에서 호출됨 
 
     public void SetcanMove_True()
