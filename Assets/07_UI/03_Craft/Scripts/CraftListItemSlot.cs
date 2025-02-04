@@ -46,7 +46,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
             _currentItemCountText = transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
             _needItemCountText    = transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>();
 
-            _description     = transform.GetChild(3).gameObject;
+            _description     = transform.GetChild(3).GetChild(0).gameObject;
             _descriptionText = _description.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         
             _description.SetActive(false);
@@ -199,7 +199,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
     {
         if(_itemNameKr != null)
         {
-            _description.transform.SetParent(CraftManager.Instance.ToolTipCanvas);
+            //_description.transform.SetParent(CraftManager.Instance.ToolTipCanvas);
 
             // UI를 최상단으로
             //_description.transform.SetAsLastSibling();
@@ -212,7 +212,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
     {
         if (_itemNameKr != null)
         {
-            _description.transform.SetParent(transform);
+            //_description.transform.SetParent(transform);
             _description.SetActive(false);
         }
     }

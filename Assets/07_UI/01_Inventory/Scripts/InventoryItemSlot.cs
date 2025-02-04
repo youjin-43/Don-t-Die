@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
-                                          
+using TMPro;
+
 public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     // 아이템 데이터
@@ -20,6 +21,9 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
     public int          _currentDurability;
     private int          _slotNumber;
 
+    private GameObject      _description;
+    private TextMeshProUGUI _descriptionText;
+
     // 드래깅 데이터
     static bool _isDragging = false;
 
@@ -32,11 +36,17 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
         _itemSelectImage     = transform.GetChild(3).GetComponent<Image>();
         _slotNumberImage     = transform.GetChild(4).GetComponent<Image>();
 
+
+        _description     = transform.GetChild(5).GetChild(0).gameObject;
+        _descriptionText = _description.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
         _itemImage.color = new Color(1, 1, 1, 0);
         _itemCountImage.gameObject.SetActive(false);
         _itemDurability.gameObject.SetActive(false);
         _itemSelectImage.gameObject.SetActive(false);
         _slotNumberImage.gameObject.SetActive(false);
+
+        _description.SetActive(false);
     }
 
     public void SetSlotNumber(int slotNumber)
@@ -124,12 +134,19 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
     // IPointerEnterHandler 인터페이스 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        if(_itemData != null)
+        {
+            _description.SetActive(true);
+        }
     }
 
     // IPointerExitHandler 인터페이스
     public void OnPointerExit(PointerEventData eventData)
     {
+        if(_itemData != null)
+        {
+            _description.SetActive(false);
+        }
     }
 
     public int RemoveItemData(int itemCount)
@@ -190,6 +207,10 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
             {
                 _itemImage.sprite = itemData.Image;
                 _itemImage.color  = new Color(1, 1, 1, 1);
+            }
+            // 5. 툴팁 텍스트 교체
+            {
+                _descriptionText.text = itemData.NameKR;
             }
         }
         // 아이템 종류에 따른 개별 작업
