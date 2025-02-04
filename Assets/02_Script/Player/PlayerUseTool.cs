@@ -29,8 +29,13 @@ public class PlayerUseTool : MonoBehaviour
             else
             {
                 IDamageable damageable = collision.GetComponent<IDamageable>();
-                if(damageable != null)
+                if (damageable != null)
                 {
+                    if (collision.gameObject.GetComponent<DamageableResourceNode>() != null)
+                    {
+                        ObjectType type = collision.gameObject.GetComponent<DamageableResourceNode>().Data.ObjectType;
+                        if (!currentTool.AvailableTypes.Contains(type)) return;
+                    }
                     damageable.TakeDamage((int)currentTool.Atk);
                     EquipmentManager.Instance.ReduceToolDurability(out destroyed);
                 }
