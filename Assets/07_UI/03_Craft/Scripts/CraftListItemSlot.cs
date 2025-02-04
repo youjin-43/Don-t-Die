@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -28,6 +29,8 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
     private int                   _needItemCount;
     private CraftListItemSlotType _type;
     private bool                  _possibleCraft = false;
+
+    Coroutine co_doingCraft;
 
     public string GetItemName()
     {
@@ -127,6 +130,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (co_doingCraft != null) return;
         if (eventData.button == PointerEventData.InputButton.Right && _type == CraftListItemSlotType.ResultSlot && _possibleCraft == true)
         {
             ItemData currentItemData = DataManager.Instance.ItemData[_itemName];
@@ -137,21 +141,27 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
                 maxDurability = (currentItemData as EquippableItemData).maxDurability;
             }
 
-            if(InventoryManager.Instance.AddItem(currentItemData, maxDurability) == true)
-            {
-                foreach(var ingredient in _recipe)
-                {
-                    InventoryManager.Instance.RemoveItem(ingredient.Key, ingredient.Value);
-                }
-
-                CraftManager.Instance.UpdateCraftingUI();
-            }
-            // 슬롯이 꽉 찼다면
-            else
-            {
-
-            }
+            co_doingCraft = StartCoroutine(DoingCraftRoutine(currentItemData, maxDurability));
         }
+    }
+
+    IEnumerator DoingCraftRoutine(ItemData itemData, int maxDurability)
+    {
+        PlayerAnimator playerAnimator = GameManager.Instance.PlayerTransform.GetComponent<PlayerAnimator>();
+        playerAnimator.TriggerDoingAnimation();
+
+        yield return new WaitForSeconds(0.5f);
+
+        if (InventoryManager.Instance.AddItem(itemData, maxDurability) == true)
+        {
+            foreach (var ingredient in _recipe)
+            {
+                InventoryManager.Instance.RemoveItem(ingredient.Key, ingredient.Value);
+            }
+
+            CraftManager.Instance.UpdateCraftingUI();
+        }
+        co_doingCraft = null;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
