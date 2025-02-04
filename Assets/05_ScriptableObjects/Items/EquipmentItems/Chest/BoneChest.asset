@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: BoneChest
+  NameKR: "\uBF08 \uAC11\uC637"
   Prefab: {fileID: 1131760014385117478, guid: c2bf3cfe827fd144e9808df4d80ddb6d, type: 3}
   Image: {fileID: 21300000, guid: e2572a708294570498d910e6fb83d25b, type: 3}
   IsCountable: 0
   MaxCountSize: 1
   equipSlot: 3
   maxDurability: 10
-  currentDurability: 6.25
+  currentDurability: 6
   def: 1

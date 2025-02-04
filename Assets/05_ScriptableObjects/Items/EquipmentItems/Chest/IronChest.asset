@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: IronChest
+  NameKR: "\uCCA0 \uAC11\uC637"
   Prefab: {fileID: 1522524378567408781, guid: f5281e70b902b914096e428e81a256a5, type: 3}
   Image: {fileID: 21300000, guid: 5ca12080a71b1ad4da4e00f24893224c, type: 3}
   IsCountable: 0
   MaxCountSize: 1
   equipSlot: 3
   maxDurability: 10
-  currentDurability: 7.5
+  currentDurability: 7
   def: 1

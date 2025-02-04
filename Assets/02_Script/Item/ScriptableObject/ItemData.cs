@@ -16,6 +16,7 @@ public class ItemData : ScriptableObject
     [Header("ItemData")]
     [SerializeField] public ItemType   ItemType;
     [SerializeField] public string     Name;
+    [SerializeField] public string     NameKR;
     [SerializeField] public GameObject Prefab;
     [SerializeField] public Sprite     Image;
 

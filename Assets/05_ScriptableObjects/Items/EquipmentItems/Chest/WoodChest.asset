@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: WoodChest
+  NameKR: "\uB098\uBB34 \uAC11\uC637"
   Prefab: {fileID: 1522524378567408781, guid: 36b8b440e4394f649851a06d59ccf4c0, type: 3}
   Image: {fileID: 21300000, guid: e5b2bf62f12338a4987da73e6bf20274, type: 3}
   IsCountable: 0
   MaxCountSize: 1
   equipSlot: 3
   maxDurability: 10
-  currentDurability: 7.5
+  currentDurability: 7
   def: 1

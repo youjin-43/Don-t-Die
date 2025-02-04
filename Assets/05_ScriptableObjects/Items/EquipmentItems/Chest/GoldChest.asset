@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: GoldChest
+  NameKR: "\uAE08 \uAC11\uC637"
   Prefab: {fileID: 1522524378567408781, guid: a40708a6c393c28469f134459d95dcd6, type: 3}
   Image: {fileID: 21300000, guid: 5cd18f46a12ccc1418bdfbc723763e07, type: 3}
   IsCountable: 0
   MaxCountSize: 1
   equipSlot: 3
   maxDurability: 10
-  currentDurability: 7.5
+  currentDurability: 7
   def: 1

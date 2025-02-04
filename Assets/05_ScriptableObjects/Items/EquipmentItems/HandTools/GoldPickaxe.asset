@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: GoldPickaxe
+  NameKR: "\uAE08 \uACE1\uAD2D\uC774"
   Prefab: {fileID: 7305105133991219191, guid: 8bc2de3d59ed42946a3511f5d8649d39, type: 3}
   Image: {fileID: 21300000, guid: 74aa28bf4fb2cf54aa8b4391cf69e3a7, type: 3}
   IsCountable: 0

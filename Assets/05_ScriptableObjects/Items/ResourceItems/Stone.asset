@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 0
   Name: Stone
+  NameKR: "\uB3CC"
   Prefab: {fileID: 8979981604408090299, guid: 93c47dea5b6bedb43ac59ab3e8424898, type: 3}
   Image: {fileID: 21300000, guid: 4efb86c02c8fe1744b38cf609575bca9, type: 3}
   IsCountable: 1

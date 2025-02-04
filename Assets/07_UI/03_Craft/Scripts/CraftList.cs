@@ -24,9 +24,18 @@ public class CraftList : MonoBehaviour
     private bool _isPossibleCrafting = false;
     private int  _possibleItemCount  = int.MaxValue;
 
+
+    // 플레이어가 조합대 근처에 있어요?
+    private bool _isInRange = false;
+
     void Awake()
     {
         //_mask = transform.GetChild(1).GetComponent<Image>();
+    }
+
+    public void InRange(bool inRange)
+    {
+        _isInRange = inRange;
     }
 
     public void AddCraftItemSlot(Transform parent, GameObject craftItemSlotPrefab, CraftingData data)
@@ -138,9 +147,17 @@ public class CraftList : MonoBehaviour
             _possibleItemCount = int.MaxValue;
             _isPossibleCrafting = false;
             _craftItemSlotList[_craftItemSlotList.Count - 1].CraftLock();
+
             if (_data.NeedCraftingTable == true)
             {
-                _mask.color = new Color(0, 0, 0, 0.9f);
+                if(_isInRange == true)
+                {
+                    _mask.color = new Color(0, 0, 0, 0.7f);
+                }
+                else
+                {
+                    _mask.color = new Color(0, 0, 0, 0.9f);
+                }
             }
             else
             {
@@ -153,16 +170,16 @@ public class CraftList : MonoBehaviour
     {
         _craftItemSlotList[_craftItemSlotList.Count - 1].SetCount(_possibleItemCount);
 
-            _mask.color = new Color(0, 0, 0, 0f);
+        _mask.color = new Color(0, 0, 0, 0f);
 
-            _craftItemSlotList[_craftItemSlotList.Count - 1].CraftUnlock();
         if(_data.NeedCraftingTable == false)
         {
+            _craftItemSlotList[_craftItemSlotList.Count - 1].CraftUnlock();
         }
         // 조합대가 필요한 조합들에 대해서는 아래서 처리
-        else
+        else if (_isInRange == true)
         {
-
+            _craftItemSlotList[_craftItemSlotList.Count - 1].CraftUnlock();
         }
     }
 }

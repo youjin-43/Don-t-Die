@@ -104,4 +104,12 @@ public class CraftManager : MonoBehaviour
             }
         }
     }
+
+    public void InRange(bool inRange)
+    {
+        foreach(var category in Categories)
+        {
+            category.Value.InRange(inRange);
+        }
+    }
 }

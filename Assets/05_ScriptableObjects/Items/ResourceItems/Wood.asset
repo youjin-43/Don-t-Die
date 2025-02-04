@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 0
   Name: Wood
+  NameKR: "\uB098\uBB34"
   Prefab: {fileID: 2235368862984631620, guid: 7c81f6f6d78e3ab43ad5bfa51a3ddaa1, type: 3}
   Image: {fileID: 21300000, guid: 432cbfd006861754ba1e08275c8f49ef, type: 3}
   IsCountable: 1
