@@ -11,6 +11,7 @@ public class PlayerMoveManager : MonoBehaviour
 {
     // 이동 가능한 상태인가? 
     [SerializeField] bool canMove;
+    [SerializeField] bool isAutoInteracting;
 
     // 플레이어 관련 수치들 
     PlayerStatus playerStatus;
@@ -56,15 +57,16 @@ public class PlayerMoveManager : MonoBehaviour
         // 플레이어가 죽었으면 조작 금지
         if (playerStatus.IsDead()) return;
 
-        if (canMove) // 도구 사용중에는 이동 및 공격 못하도록 
-        {
-            playerMove.HandleMovement(); // 상하좌우 입력 관리 
-            playerAutoInteract.AutoInteract(); // 자동 상호작용 (스페이스바)
+        
 
-            // UI 클릭 중에는 도구 사용을 막아야 할 듯?
-            if(UIManager.Instance.IsUIClick() == false)
+        if (canMove) 
+        {
+            playerAutoInteract.AutoInteract(); // 자동 상호작용 중이면 이동 X
+            isAutoInteracting = playerAutoInteract.isAutoInteracting;
+
+            if (!isAutoInteracting) 
             {
-                if (Input.GetMouseButtonDown(0)) playerUseTool.StartUsingEquippedTool(); // 도구 사용 
+                playerMove.HandleMovement(); // 상하좌우 이동
             }
         }
 
