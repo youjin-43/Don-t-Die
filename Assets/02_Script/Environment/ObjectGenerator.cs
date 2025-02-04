@@ -52,6 +52,7 @@ public class ObjectGenerator
         GenerateObjectsByType(ObjectType.Tree);
         GenerateObjectsByType(ObjectType.Plant);
         GenerateObjectsByType(ObjectType.Mineral);
+        GenerateItems();
         return resourceObjects;
     }
 
@@ -126,6 +127,29 @@ public class ObjectGenerator
                             dataName = obj.name,
                         });
                     }
+                }
+            }
+        }
+    }
+
+    void GenerateItems()
+    {
+        for (int i = 0; i < biomeMap.height; i++)
+        {
+            for (int j = 0; j < biomeMap.width; j++)
+            {
+                DataManager.Instance.BiomeDatas.TryGetValue(biomeMap.map[i][j].ToString(), out Biome currentBiome);
+                if (currentBiome == null || currentBiome.DropItems.Count == 0)
+                {
+                    continue;
+                }
+
+                if (UnityEngine.Random.Range(0, 10000) / 100f < currentBiome.DropItemsIntensity)
+                {
+                    ItemData itemData = currentBiome.DropItems[UnityEngine.Random.Range(0, currentBiome.DropItems.Count)].data;
+                    Item item = PoolManager.Instance.InstantiateItem(itemData);
+                    Vector3 position = new Vector3(j, i) + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 0.5f));
+                    item.transform.position = position;
                 }
             }
         }

@@ -30,6 +30,9 @@ public class Biome : ScriptableObject
     [SerializeField] InstallableItemData installableObjects;
     [SerializeField]
     [Range(0f, 1f)] float installableObjectsIntensity;
+    [SerializeField] List<DropItem> dropItems;
+    [SerializeField]
+    [Range(0f, 1f)] float dropItemsIntensity;
     Dictionary<ObjectType, List<NatureResourceData>> natureResources;
     Dictionary<ObjectType, float> intensities;
 
@@ -43,6 +46,8 @@ public class Biome : ScriptableObject
     public float MineralsIntensity { get { return mineralsIntensity; } }
     public InstallableItemData InstallableItemData { get { return installableObjects; } }
     public float InstallableObjectsIntensity {  get { return installableObjectsIntensity; } }
+    public List<DropItem> DropItems { get { return dropItems; } }
+    public float DropItemsIntensity { get { return dropItemsIntensity; } }
     public Dictionary<ObjectType, List<NatureResourceData>> NatureResources
     {
         get
