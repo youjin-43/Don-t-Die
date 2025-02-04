@@ -238,7 +238,15 @@
       "Category": "Wood",
       "NumOfMaterial": "1",
       "NeedCraftingTable": "false",
-      "Recipe": "Wood_1"
+      "Recipe": "Branch_1"
+    },
+    {
+      "Name": "FishingRod",
+      "NameKR": "낚싯대",
+      "Category": "Wood",
+      "NumOfMaterial": "2",
+      "NeedCraftingTable": "false",
+      "Recipe": "Wood_2+Rope_2"
     },
     {
       "Name": "WoodAxe",
@@ -246,7 +254,7 @@
       "Category": "Wood",
       "NumOfMaterial": "2",
       "NeedCraftingTable": "false",
-      "Recipe": "Wood_2+Rope_1"
+      "Recipe": "Branch_2+Rope_1"
     },
     {
       "Name": "WoodPickaxe",
@@ -254,7 +262,7 @@
       "Category": "Wood",
       "NumOfMaterial": "2",
       "NeedCraftingTable": "false",
-      "Recipe": "Wood_2+Rope_1"
+      "Recipe": "Branch_2+Rope_1"
     },
     {
       "Name": "WoodSword",
@@ -262,7 +270,7 @@
       "Category": "Wood",
       "NumOfMaterial": "2",
       "NeedCraftingTable": "false",
-      "Recipe": "Wood_2+Rope_1"
+      "Recipe": "Branch_2+Rope_1"
     },
     {
       "Name": "WoodHead",
@@ -270,7 +278,7 @@
       "Category": "Wood",
       "NumOfMaterial": "2",
       "NeedCraftingTable": "true",
-      "Recipe": "Wood_2+Rope_2"
+      "Recipe": "Branch_2+Rope_2"
     },
     {
       "Name": "WoodChest",
@@ -278,7 +286,7 @@
       "Category": "Wood",
       "NumOfMaterial": "2",
       "NeedCraftingTable": "true",
-      "Recipe": "Wood_2+Rope_2"
+      "Recipe": "Branch_2+Rope_2"
     }
   ]
 }

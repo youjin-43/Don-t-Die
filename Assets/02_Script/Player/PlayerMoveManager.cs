@@ -38,7 +38,6 @@ public class PlayerMoveManager : MonoBehaviour
         playerUseTool = transform.GetChild((int)PlayerObjChilds.ToolCollider).GetComponent<PlayerUseTool>();
         playerFishingAction = GetComponent<PlayerFishingAction>();
         playerGetWaterAction = GetComponent<PlayerGetWaterAction>();
-
         // 각 행동에 애니메이터 설정 -> awake start 순서 꼬일까봐 매니저에서 한번에 셋팅 
         playerAnimator = GetComponent<PlayerAnimator>();
         SetAnimatorAtEachMoves(); 

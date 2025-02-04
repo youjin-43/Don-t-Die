@@ -115,14 +115,17 @@ public class BoxManager : MonoBehaviour
                     EdibleItemData edibleItemData = _startSlotItemData as EdibleItemData;
 
                     // 구울 수 있니?
-                    if (edibleItemData.PossibleGrilling == true)
+                    if(edibleItemData != null && edibleItemData.PossibleGrilling == true)
                     {
-                        // 네
-                        DropItemToCampFire(edibleItemData);
+                        DropItemToCampfire(edibleItemData);
+                    }
+                    // 나무니?
+                    else if(_startSlotItemData.Name == "Wood")
+                    {
+                        DropItemToCampfire(_startSlotItemData as ResourceItemData);    
                     }
                     else
-                    {
-                        // 아니요
+                    { 
                         DropItemToField();
                     }
                 }
@@ -378,7 +381,25 @@ public class BoxManager : MonoBehaviour
         }
     }
 
-    private void DropItemToCampFire(EdibleItemData edibleItemData)
+    private void DropItemToCampfire(ResourceItemData wood)
+    {
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+
+        if (hit.collider != null && hit.collider.name == "Campfire" &&
+            Vector3.Distance(GameManager.Instance.GetPlayerPos(), hit.collider.transform.position) < 2f)
+        {
+            RemoveItem(wood.Name, _startSlotItemCount);
+
+            ClearDragUI();
+        }
+        else
+        {
+            DropItemToField();
+        }
+    }
+
+    private void DropItemToCampfire(EdibleItemData edibleItemData)
     {
         Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
