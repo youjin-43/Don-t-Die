@@ -17,14 +17,14 @@ public class PlayerUseTool : MonoBehaviour
         if(target == null)
         {
             target = collision.transform;
-
+            bool destroyed = false;
             // 몬스터를 때린 경우 
             MonsterBase monsterBase = collision.GetComponent<MonsterBase>();
             if (monsterBase != null)
             {
                 Debug.Log($"{transform.parent}가 {collision.name}을 공격!");
                 monsterBase.OnHit(transform.parent, (int)currentTool.Atk); // OnHit 이벤트 발생 -> attacker로 플레이어의 transfrom 전달
-                EquipmentManager.Instance.ReduceToolDurability();
+                EquipmentManager.Instance.ReduceToolDurability(out destroyed);
             }
             else
             {
@@ -32,8 +32,13 @@ public class PlayerUseTool : MonoBehaviour
                 if(damageable != null)
                 {
                     damageable.TakeDamage((int)currentTool.Atk);
-                    EquipmentManager.Instance.ReduceToolDurability();
+                    EquipmentManager.Instance.ReduceToolDurability(out destroyed);
                 }
+            }
+
+            if (destroyed)
+            {
+                StopUsingEquippedTool();
             }
 
             //TODO : 광석이나 나무 추가

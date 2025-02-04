@@ -91,15 +91,20 @@ public class EquipmentManager : MonoBehaviour
         return _chestItemSlot?.GetItemData() as ChestItemData;
     }
 
-    public void ReduceToolDurability()
+    public void ReduceToolDurability(out bool destroyed)
     {
+        destroyed = false;
         _toolItemSlot._currentDurability--;
 
         if (_toolItemSlot._currentDurability <= 0)
         {
             _toolItemSlot.ClearEquipment(true);     // 착용한 툴 없애기
+            destroyed = true;
         }
-        _toolItemSlot.UpdateDurabilityGaugeUI();
+        else
+        {
+            _toolItemSlot.UpdateDurabilityGaugeUI();
+        }
     }
 
     // 장비 변경 이벤트 정의
