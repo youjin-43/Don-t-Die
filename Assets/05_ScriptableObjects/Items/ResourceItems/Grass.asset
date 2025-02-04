@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemType: 0
   Name: Grass
   Prefab: {fileID: 2235368862984631620, guid: d1d824bcba29c5b42824f1f79bfc4e8f, type: 3}
-  Image: {fileID: 21300000, guid: f9f24954e37f4974eadfb67740c3a713, type: 3}
+  Image: {fileID: 21300000, guid: 001b83bbd183b2d44890c77ffc82919a, type: 3}
   IsCountable: 1
   MaxCountSize: 9
   TestData: 0

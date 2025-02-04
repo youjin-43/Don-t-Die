@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemType: 2
   Name: Mushroom
   Prefab: {fileID: 580427599980164827, guid: 882f499ab6fb6fa428b6916cc5659e23, type: 3}
-  Image: {fileID: 21300000, guid: d47798169f20ad6418491998b309c4a2, type: 2}
+  Image: {fileID: 21300000, guid: 9bbc16c5f906c90478fee8c415442544, type: 3}
   IsCountable: 1
   MaxCountSize: 9
   healthValue: 0

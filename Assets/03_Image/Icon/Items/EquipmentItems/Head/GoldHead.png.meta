@@ -3,8 +3,8 @@ guid: e88a6e493e5a8be4f98b34c7d9d63731
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8216988361221005011
-    second: GoldHelmet_0
+      213: -719424727783028141
+    second: GoldHead_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GoldHelmet_0
+      name: GoldHead_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 4
+        y: 0
         width: 16
-        height: 12
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3ded81a016b980270800000000000000
-      internalID: 8216988361221005011
+      spriteID: 35a4cd195071406f0800000000000000
+      internalID: -719424727783028141
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GoldHelmet_0: 8216988361221005011
+      GoldHead_0: -719424727783028141
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -3,8 +3,8 @@ guid: e2572a708294570498d910e6fb83d25b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1199616013237781700
-    second: BoneArmor_0
+      213: 60197247306830391
+    second: BoneChest_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BoneArmor_0
+      name: BoneChest_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c3b7710879b1a5fe0800000000000000
-      internalID: -1199616013237781700
+      spriteID: 7321e26d31dd5d000800000000000000
+      internalID: 60197247306830391
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BoneArmor_0: -1199616013237781700
+      BoneChest_0: 60197247306830391
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

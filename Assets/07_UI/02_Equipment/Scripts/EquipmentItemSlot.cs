@@ -9,9 +9,10 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
 
     // 슬롯 데이터
     private Image     _itemImage;
+    private Sprite     _previewItemSprite;
     private Transform _itemDurability;
     private Image     _itemDurabilityGauge;
-    public int _currentDurability;
+    public int        _currentDurability;
 
     private void Awake()
     {
@@ -19,7 +20,7 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
         _itemDurability      = transform.GetChild(1);
         _itemDurabilityGauge = _itemDurability.GetChild(1).GetComponent<Image>();
 
-        _itemImage.color = new Color(1, 1, 1, 0);
+        _itemImage.color = new Color(1, 1, 1, 0.3f);
         _itemDurability.gameObject.SetActive(false);
     }
 
@@ -39,6 +40,7 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
             }
         }
     }
+      
 
     public bool AddItemData(ItemData itemData, int durability)
     {
@@ -58,6 +60,12 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
 
         return true;
     }
+
+    public void SetPreviewImage(Sprite sprite)
+    {
+        _previewItemSprite = sprite;
+        _itemImage.sprite = _previewItemSprite;
+    }
     
     public ItemData GetItemData()
     {
@@ -74,8 +82,8 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
         if(destroy || InventoryManager.Instance.AddItem(_itemData, _currentDurability) == true)
         {
             _itemData = null;
-            _itemImage.sprite = null;
-            _itemImage.color = new Color(1, 1, 1, 0);
+            _itemImage.sprite = _previewItemSprite;
+            _itemImage.color = new Color(1, 1, 1, 0.3f);
             _itemDurability.gameObject.SetActive(false);
 
             EquipmentManager.Instance.InvokeOnEquipChanged(_itemData, EquipmentSlot.Unknown);

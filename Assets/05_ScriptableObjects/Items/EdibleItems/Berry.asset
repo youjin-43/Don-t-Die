@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemType: 2
   Name: Berry
   Prefab: {fileID: 2845073592911450659, guid: 4b407f6281f288d45885979a7308dc89, type: 3}
-  Image: {fileID: 21300000, guid: bcbb102c0b43ea4488f5984b4527ae7d, type: 2}
+  Image: {fileID: 21300000, guid: 68b012f16cfebdd4ba811e1fb4dbc730, type: 3}
   IsCountable: 1
   MaxCountSize: 9
   healthValue: 0

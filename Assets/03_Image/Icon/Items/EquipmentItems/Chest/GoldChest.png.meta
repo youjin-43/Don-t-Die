@@ -3,8 +3,8 @@ guid: 5cd18f46a12ccc1418bdfbc723763e07
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6934038508728537276
-    second: GoldArmor_0
+      213: 1783891460868167693
+    second: GoldChest_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GoldArmor_0
+      name: GoldChest_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 44f2b54e6b855cf90800000000000000
-      internalID: -6934038508728537276
+      spriteID: d0856ea05d7a1c810800000000000000
+      internalID: 1783891460868167693
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GoldArmor_0: -6934038508728537276
+      GoldChest_0: 1783891460868167693
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

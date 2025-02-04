@@ -15,7 +15,7 @@ MonoBehaviour:
   ItemType: 0
   Name: Branch
   Prefab: {fileID: 2235368862984631620, guid: a64675c8e6db86140934f139e09f6325, type: 3}
-  Image: {fileID: 21300000, guid: 225069a750824944db4866ac56c72092, type: 3}
+  Image: {fileID: 21300000, guid: 4378c33658d83e044bcdec7c78f3496f, type: 3}
   IsCountable: 1
   MaxCountSize: 9
   TestData: 0
