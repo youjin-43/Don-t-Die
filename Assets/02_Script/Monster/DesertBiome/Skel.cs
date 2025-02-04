@@ -18,6 +18,7 @@ public class Skel : MonsterBase
     }
 
     [SerializeField] private float detectionRadius = 5f; // 반응 거리
+
     // 플레이어가 주변 광석을 캐면 플레이어를 쫒아가서 공격 
     private void HandleResourceAttacked(Transform resourceTransform)
     {
