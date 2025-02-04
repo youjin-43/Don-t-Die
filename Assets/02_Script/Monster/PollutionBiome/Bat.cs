@@ -34,7 +34,7 @@ public class Bat : MonsterBase
                     Rigidbody2D playerRb = other.GetComponent<Rigidbody2D>();
                     if (playerRb != null)
                     {
-                        ApplyKnockback(playerRb, other.transform.position);
+                        ApplyKnockbackToTarget(playerRb, other.transform.position);
                     }
 
                     attackCollider.enabled = false; // 공격 후 잠시 비활성화
@@ -52,53 +52,20 @@ public class Bat : MonsterBase
         }
     }
 
-    //void OnTriggerExit2D(Collider2D other)
-    //{
-    //    // 플레이어가 감지 범위에서 벗어나면 다시 감지 가능하도록 변경
-    //    if (other.CompareTag("Player"))
-    //    {
-    //        Invoke(nameof(EnableDetectRange), 2f); // 2초 후 감지 범위 다시 활성화
-    //    }
-    //}
-
     void EnableAttackCollider()
     {
         attackCollider.enabled = true;
     }
-    //private void EnableDetectRange()
-    //{
-    //    detectCollider.enabled = true;
-    //}
 
-    ///// <summary>
-    ///// 플레이어에게 넉백 적용
-    ///// </summary>
-    //override void ApplyKnockback(Rigidbody2D playerRb, Vector2 playerPosition)
-    //{
-    //    float knockbackForce = 5f; // 넉백 세기 
-
-    //    // 박쥐 → 플레이어 방향 벡터
-    //    Vector2 knockbackDirection = (playerPosition - (Vector2)transform.position).normalized;
-
-    //    // 반대 방향으로 넉백 적용
-    //    playerRb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
-
-    //    // 박쥐가 플레이어와 반대 방향으로 이동하도록 설정
-    //    this.knockbackDirection = -knockbackDirection; // 반대 방향 설정
-    //    isKnockedBack = true;
-    //    knockbackTime = knockbackDuration; // 넉백 시간을 설정
-    //}
-
-    public override void ApplyKnockback(Rigidbody2D playerRb, Vector2 playerPosition)
+    public override void ApplyKnockbackToTarget(Rigidbody2D playerRb, Vector2 playerPosition)
     {
-        base.ApplyKnockback(playerRb, playerPosition); // 부모 클래스의 ApplyKnockback 호출
+        base.ApplyKnockbackToTarget(playerRb, playerPosition); // 부모 클래스의 ApplyKnockback 호출
 
         // 넉백 후 박쥐가 플레이어와 반대 방향으로 이동하도록 설정
         knockbackDirection = (playerPosition - (Vector2)transform.position).normalized * -1; // 반대 방향 설정
         isKnockedBack = true;
         knockbackTime = knockbackDuration; // 넉백 시간을 설정
     }
-
 
     protected override void Update()
     {

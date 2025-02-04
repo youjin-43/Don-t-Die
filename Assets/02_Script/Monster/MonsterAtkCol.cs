@@ -16,7 +16,7 @@ public class MonsterAtkCol : MonoBehaviour
             if (damageable != null)
             {
                 damageable.TakeDamage(atkDamage);
-                transform.parent.GetComponent<MonsterBase>().ApplyKnockback(attakTarget.GetComponent<Rigidbody2D>(), attakTarget.position);
+                transform.parent.GetComponent<MonsterBase>().ApplyKnockbackToTarget(attakTarget.GetComponent<Rigidbody2D>(), attakTarget.position);
 
                 Debug.Log($"몬스터가 {attakTarget.name}에게 {atkDamage} 데미지를 입혔습니다.");
 
