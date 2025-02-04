@@ -144,7 +144,7 @@ public class ObjectGenerator
                     continue;
                 }
 
-                if (UnityEngine.Random.Range(0, 10000) / 100f < currentBiome.DropItemsIntensity)
+                if (UnityEngine.Random.Range(0, 1000) / 100f < currentBiome.DropItemsIntensity)
                 {
                     ItemData itemData = currentBiome.DropItems[UnityEngine.Random.Range(0, currentBiome.DropItems.Count)].data;
                     Item item = PoolManager.Instance.InstantiateItem(itemData);
