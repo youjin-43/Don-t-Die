@@ -23,15 +23,6 @@ public class PlayerAnimator : MonoBehaviour
 
     #endregion
 
-    #region GetItem
-
-    public void TriggerGetItemAnimation()
-    {
-        playerAnimator.SetTrigger("GetItem");
-    }
-
-    #endregion
-
     #region Use Tool
 
     public void SetUseToolAnimation_True() => playerAnimator.SetBool("UseTool", true);

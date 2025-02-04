@@ -103,8 +103,7 @@ public class PlayerAutoInteract : MonoBehaviour
         switch (autoInteractTargetTransform.tag)
         {
             case "Item":
-                //GetItem(); //아이템습득
-                playerAnimator.TriggerGetItemAnimation();
+                GetItem(); //아이템습득 
                 break;
             case "Harvestable":
                 if (autoInteractTargetTransform.TryGetComponent(out ResourceNode resourceNode))
@@ -132,7 +131,7 @@ public class PlayerAutoInteract : MonoBehaviour
         autoInteractTargetTransform = null;
     }
 
-    public void GetItem()
+    void GetItem()
     {
         //DebugController.Log("GetItem 함수 실행됨");
         Item gotItem = autoInteractTargetTransform.GetComponent<Item>();

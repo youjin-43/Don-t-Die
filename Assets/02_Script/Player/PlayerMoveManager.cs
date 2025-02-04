@@ -72,7 +72,7 @@ public class PlayerMoveManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0)) playerUseTool.StopUsingEquippedTool(); 
 
         playerFishingAction.Fishing(); // 낚시 
-        //playerGetWaterAction.GetWater(); // 물 퍼오기ㄷ
+        playerGetWaterAction.GetWater(); // 물 퍼오기ㄷ
 
         // 인벤토리에서 선택된 아이템 사용
         if (Input.GetKeyDown(KeyCode.U))InventoryManager.Instance.UseSelectedItem();
