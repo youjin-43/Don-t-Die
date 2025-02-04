@@ -33,6 +33,14 @@ public class PlayerAnimator : MonoBehaviour
 
     #endregion
 
+    #region Craft
+
+    public void TriggerDoingAnimation()
+    {
+        playerAnimator.SetTrigger("Doing");
+    }
+    #endregion
+
     #region Use Tool
 
     public void SetUseToolAnimation_True() => playerAnimator.SetBool("UseTool", true);
