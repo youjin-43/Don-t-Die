@@ -32,9 +32,9 @@ public class Campfire : MonoBehaviour
             if (currentDurability <= 0)
             {
                 fireLight.intensity = 0;
-                //Vector2Int pos = new Vector2Int((int)transform.position.x, (int)transform.position.y);
-                //EnvironmentManager.Instance.objectMap.ClearTiles(pos, 1, 1);
-                //Destroy(gameObject);
+                Vector2Int pos = new Vector2Int((int)transform.position.x, (int)transform.position.y);
+                EnvironmentManager.Instance.objectMap.ClearTiles(pos, 1, 1);
+                Destroy(gameObject);
             }
         }
 
