@@ -103,7 +103,8 @@ public class PlayerAutoInteract : MonoBehaviour
         switch (autoInteractTargetTransform.tag)
         {
             case "Item":
-                GetItem(); //아이템습득 
+                playerAnimator.TriggerGetItemAnimation();
+                //GetItem(); //아이템습득 
                 break;
             case "Harvestable":
                 if (autoInteractTargetTransform.TryGetComponent(out ResourceNode resourceNode))
