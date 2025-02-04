@@ -384,8 +384,8 @@ public class InventoryManager : MonoBehaviour
         // 비어 있어야
         if (endSlot.IsEmpty() == true)
         {
-            endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
             endSlot._currentDurability = _startSlotDurability;
+            endSlot.AddItemData(_startSlotItemData, _startSlotItemCount);
         }
         // 비어있지 않다면
         else
