@@ -1,4 +1,6 @@
 using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerAutoInteract : MonoBehaviour
@@ -19,7 +21,8 @@ public class PlayerAutoInteract : MonoBehaviour
     [SerializeField] float InteractionRange = 1f; // 상호작용 반경
     [SerializeField] Collider2D[] colliders; // 주변에 상호작용 가능한 물체들 (디버그용)
     [SerializeField] Transform autoInteractTargetTransform; // 자동 상호작용 대상
-
+    [SerializeField] Transform targetItem; // Item 줍는 과정에서 널 레퍼런스 방지를 위해 캐싱
+    bool isPickingUp = false;
 
     private void Start()
     {
@@ -85,6 +88,12 @@ public class PlayerAutoInteract : MonoBehaviour
     /// </summary>
     void MoveTowardsTargetObj()
     {
+        if (isPickingUp) { return; }
+        if (!autoInteractTargetTransform.gameObject.activeSelf)
+        {
+            FindClosestInteractableObj();
+            return;
+        }
         if (autoInteractTargetTransform != null)
         {
             Vector3 direction = (autoInteractTargetTransform.position - transform.position).normalized;
@@ -103,7 +112,15 @@ public class PlayerAutoInteract : MonoBehaviour
         switch (autoInteractTargetTransform.tag)
         {
             case "Item":
-                playerAnimator.TriggerGetItemAnimation();
+                if (targetItem == null && autoInteractTargetTransform.gameObject.activeSelf)
+                {
+                    targetItem = autoInteractTargetTransform;
+                }
+                if (!isPickingUp && targetItem.gameObject.activeSelf)
+                {
+                    playerAnimator.TriggerGetItemAnimation();
+                    isPickingUp = true;
+                }
                 //GetItem(); //아이템습득 
                 break;
             case "Harvestable":
@@ -111,6 +128,7 @@ public class PlayerAutoInteract : MonoBehaviour
                     resourceNode.Harvest();
                 else if (autoInteractTargetTransform.TryGetComponent(out TreasureChest chest))
                     chest.Harvest();
+                    
                 break;
             // TODO : 태그 회의 후 추가 
             default:
@@ -135,14 +153,17 @@ public class PlayerAutoInteract : MonoBehaviour
     void GetItem()
     {
         //DebugController.Log("GetItem 함수 실행됨");
-        Item gotItem = autoInteractTargetTransform.GetComponent<Item>();
+        if (targetItem == null) return;
+        Item gotItem = targetItem.GetComponent<Item>();
         if (gotItem == null) return;
-
+        
         // 필드의 아이템을 인벤토리에 추가했다면
         if (InventoryManager.Instance.AddItem(gotItem.ItemData, gotItem.currentDurability))
         {
-            Destroy(autoInteractTargetTransform.gameObject); // 필드의 아이템은 지움 //TODO : 아이템들도 오브젝트 풀 써야할까? 
+            PoolManager.Instance.Push(targetItem.gameObject); // 필드의 아이템은 지움 //TODO : 아이템들도 오브젝트 풀 써야할까? 
+            targetItem = null;
         }
+        isPickingUp = false;
     }
 
     // 탐색 반경 디버그용 표시
