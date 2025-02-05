@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
@@ -25,6 +26,8 @@ public class PlayerAutoInteract : MonoBehaviour
     [SerializeField] Transform autoInteractTargetTransform; // 자동 상호작용 대상
     [SerializeField] Transform targetItem; // Item 줍는 과정에서 널 레퍼런스 방지를 위해 캐싱
     bool isPickingUp = false;
+
+    Coroutine harvestBushRoutine;
 
     private void Start()
     {
@@ -103,7 +106,7 @@ public class PlayerAutoInteract : MonoBehaviour
     /// </summary>
     void MoveTowardsTargetObj()
     {
-        if (isPickingUp) { return; }
+        if (isPickingUp || harvestBushRoutine != null) { return; }
         if (!autoInteractTargetTransform.gameObject.activeSelf)
         {
             FindClosestInteractableObj();
@@ -139,7 +142,12 @@ public class PlayerAutoInteract : MonoBehaviour
                 //GetItem(); //아이템습득 
                 break;
             case "Harvestable":
-                if (autoInteractTargetTransform.TryGetComponent(out ResourceNode resourceNode))
+                if (autoInteractTargetTransform.TryGetComponent(out BushNode bushNode))
+                {
+                    if (harvestBushRoutine != null) return;
+                    harvestBushRoutine = StartCoroutine(HarvestBushRoutine(bushNode));
+                }
+                else if (autoInteractTargetTransform.TryGetComponent(out ResourceNode resourceNode))
                     resourceNode.Harvest();
                 else if (autoInteractTargetTransform.TryGetComponent(out TreasureChest chest))
                     chest.Harvest();
@@ -155,6 +163,19 @@ public class PlayerAutoInteract : MonoBehaviour
         autoInteractTargetTransform = null; //상호작용 완료한 타겟은 없애고
         FindClosestInteractableObj();//새로운 타겟 탐색
         if (autoInteractTargetTransform == null) StopAutoInteraction();
+    }
+
+    IEnumerator HarvestBushRoutine(BushNode bushNode)
+    {
+        PlayerAnimator playerAnimator = GameManager.Instance.PlayerTransform.GetComponent<PlayerAnimator>();
+        playerAnimator.TriggerDoingAnimation();
+        SoundManager.Instance.Play(AudioType.Effect, AudioClipName.CraftStart);
+        yield return new WaitForSeconds(0.5f);
+
+        bushNode.Harvest();
+        SoundManager.Instance.Stop(AudioType.Effect);
+
+        harvestBushRoutine = null;
     }
 
     void StopAutoInteraction()
