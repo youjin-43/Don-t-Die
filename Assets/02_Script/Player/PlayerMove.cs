@@ -33,7 +33,7 @@ public class PlayerMove : MonoBehaviour
 
     void PlayFootStep()
     {
-        SoundManager.Instance.Play(AudioType.FootStep, AudioClipName.FootStep);
+        SoundManager.Instance.Play(AudioType.FootStep, AudioClipName.FootStep, 0.3f);
     }
 
     void StopFootStep()
