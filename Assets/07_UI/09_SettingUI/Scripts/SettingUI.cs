@@ -16,9 +16,12 @@ public class SettingUI : MonoBehaviour
     private void Start()
     {
         ToggleSettingUI();
+    }
 
-        _volumeSlider.maxValue = SoundManager.Instance.GetVolume();
-        _volumeSlider.value = _volumeSlider.maxValue / 2f;
+    private void OnEnable()
+    {
+        _volumeSlider.maxValue = 1f;
+        _volumeSlider.value = SoundManager.Instance.GetVolume();
     }
 
     public void ToggleSettingUI()
