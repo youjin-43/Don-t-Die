@@ -105,6 +105,10 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         Debug.Log($"플레이어가 {lastDamageCause} 원인으로 사망!");
         playerAnimator.TriggerDieAnimation();
         // TODO :  UI 사망 메시지 표시
+
+
+        UIManager.Instance.Death(lastDamageCause.ToString());
+
     }
     #region IDamageable
 

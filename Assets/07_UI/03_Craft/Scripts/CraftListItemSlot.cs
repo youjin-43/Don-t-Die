@@ -158,7 +158,9 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
             ItemData currentItemData = DataManager.Instance.ItemData[_itemName];
             int maxDurability = 0;
 
-            if (currentItemData is EquippableItemData)
+            EquippableItemData bottle = currentItemData as EquippableItemData;
+
+            if (bottle.ThisissBottle == true)
             {
                 string[] split = currentItemData.NameKR.Split(' ');
 

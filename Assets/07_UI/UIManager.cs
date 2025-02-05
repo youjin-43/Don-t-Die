@@ -32,6 +32,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _statusUI;
     [SerializeField] GameObject _boxUI;
 
+    [SerializeField] GameObject _deathUI;
+
     private void Awake()
     {
         SingletonInitialize();
@@ -39,6 +41,7 @@ public class UIManager : MonoBehaviour
         _craftUI.SetActive(true);
         _statusUI.SetActive(true);
         _boxUI.SetActive(true);
+        _deathUI.SetActive(false);
     }
 
     public bool IsUIClick()
@@ -52,5 +55,10 @@ public class UIManager : MonoBehaviour
         EventSystem.current.RaycastAll(eventData, results);
 
         return results.Count > 0;
+    }
+
+    public void Death(string code)
+    {
+
     }
 }

@@ -83,10 +83,5 @@ public class AchievementManager : MonoBehaviour
         DataManager.Instance.SetAchievement(code);
 
         RefreshAchievement(code);
-
-
-
-
-
     }
 }
