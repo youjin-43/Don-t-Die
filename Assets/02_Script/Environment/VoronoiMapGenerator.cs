@@ -126,6 +126,7 @@ public class VoronoiMapGenerator : MonoBehaviour
         foreach (ResourceObject obj in resourceObjects)
         {
             GameObject go = InstantiateObject(obj);
+            if (go == null) continue;
             obj.gameObject = go;
             if (go.GetComponent<Growable>() != null)
             {
@@ -191,6 +192,8 @@ public class VoronoiMapGenerator : MonoBehaviour
         {
             position.y = cellCenterPosition.y;
         }
+
+        if (position == EnvironmentManager.Instance.playerSpawnPosition) return null;
 
         GameObject go = PoolManager.Instance.InstantiatePoolObject(DataManager.Instance.NatureResources[obj.dataName].Prefab, rootParent:objectParent.transform);
         go.transform.position = position;
@@ -305,19 +308,21 @@ public class VoronoiMapGenerator : MonoBehaviour
         List<SeedPoint> points = GenerateSeedPoints(lakeCount);
         foreach (SeedPoint center in points)
         {
+            if (Vector3.Distance(center.position, EnvironmentManager.Instance.playerSpawnPosition) < float.Epsilon) { continue; }
             int maxRadius = UnityEngine.Random.Range(3, 8);
             for (int x = -maxRadius; x <= maxRadius; x++)
             {
                 for (int y = -maxRadius; y <= maxRadius; y++)
                 {
                     Vector2Int pos = new Vector2Int((int)center.position.x + x, (int)center.position.y + y);
+                    Vector3 posVec3 = new Vector3(pos.x, pos.y);
 
                     float distance = Vector2.Distance(center.position, pos);
 
                     float noise = Mathf.PerlinNoise(pos.x * noiseScale, pos.y * noiseScale);
                     float adjustedRadius = maxRadius * (0.8f + noise * 0.4f);
 
-                    if (distance <= adjustedRadius && isValidPosition(pos))
+                    if (distance <= adjustedRadius && isValidPosition(pos) && Vector3.Distance(posVec3, EnvironmentManager.Instance.playerSpawnPosition) > float.Epsilon)
                     {
                         landTilemap.SetTile(new Vector3Int(pos.y, pos.x, 0), null);
                         waterTilemap.SetTile(new Vector3Int(pos.y, pos.x, 0), waterBiome.Tiles[seasonIdx]);
