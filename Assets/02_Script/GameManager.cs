@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
 
     void GenMonsters()
     {
-        Debug.Log("GenMonsters 호출됨 ");
+        //Debug.Log("GenMonsters 호출됨 ");
         MonsterSpawnManager.Instance.InitializeBiomeMonsters();
     }
 

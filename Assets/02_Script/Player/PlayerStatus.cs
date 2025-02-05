@@ -102,7 +102,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        Debug.Log($"플레이어가 {lastDamageCause} 원인으로 사망!");
+        //Debug.Log($"플레이어가 {lastDamageCause} 원인으로 사망!");
         playerAnimator.TriggerDieAnimation();
         // TODO :  UI 사망 메시지 표시
         isDead = true;

@@ -14,7 +14,7 @@ public class DieMonsterState : IMonsterState
 
     public void EnterState()
     {
-        Debug.Log($"{monster.gameObject.name} 이 Die 상태로 진입!");
+        //Debug.Log($"{monster.gameObject.name} 이 Die 상태로 진입!");
 
         monster.SetDieAnimation(); // 애니메이션 설정 
 

@@ -15,7 +15,7 @@ public class DataTransformer : EditorWindow
         ParseExcelDataToJson<CraftingDataLoader, CraftingData>("CraftingData");
         ParseExcelDataToJson<AchievementDataLoader, AchievementData>("AchievementData");
 
-        Debug.Log("DataTransformer Completed");
+        //Debug.Log("DataTransformer Completed");
     }
 
     [MenuItem("★Tools★/CreateDefaultUserAchieveJson")]
@@ -27,7 +27,7 @@ public class DataTransformer : EditorWindow
 
         File.WriteAllText(PathManager.Instance.JsonFilePath("UserAchievementData"), json);
     
-        Debug.Log("CreateDefaultUserAchieveJson Completed");
+        //Debug.Log("CreateDefaultUserAchieveJson Completed");
     }
 
     private static void ParseExcelDataToJson<Loader, LoaderData>(string fileName) where Loader : new() where LoaderData : new()
@@ -36,7 +36,7 @@ public class DataTransformer : EditorWindow
 
         if (File.Exists(fullPath) == false)
         {
-            Debug.LogError("FilePath Error");
+            //Debug.LogError("FilePath Error");
             return;
         }
 

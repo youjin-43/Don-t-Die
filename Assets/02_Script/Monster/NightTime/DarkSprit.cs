@@ -44,7 +44,7 @@ public class DarkSprit : MonoBehaviour, IDamageable
         }
         else
         {
-            Debug.Log("moveCoroutine 이 없습니다");
+            //Debug.Log("moveCoroutine 이 없습니다");
         }
 
         SetIsMovingAnimation(false); // 이동 중지

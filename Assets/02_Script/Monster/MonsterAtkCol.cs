@@ -18,11 +18,11 @@ public class MonsterAtkCol : MonoBehaviour
                 attakTarget.GetComponent<PlayerStatus>().SetLastDamageCause(DeathCause.SkelAttack); // 사망 사유 셋팅 
                 transform.parent.GetComponent<MonsterBase>().ApplyKnockbackToTarget(attakTarget.GetComponent<Rigidbody2D>(), attakTarget.position);
 
-                Debug.Log($"몬스터가 {attakTarget.name}에게 {atkDamage} 데미지를 입혔습니다.");
+                //Debug.Log($"몬스터가 {attakTarget.name}에게 {atkDamage} 데미지를 입혔습니다.");
 
                 if (damageable.IsDead())
                 {
-                    Debug.Log($"{attakTarget.name}이 죽었으므로 공격을 멈춥니다.");
+                    //Debug.Log($"{attakTarget.name}이 죽었으므로 공격을 멈춥니다.");
 
                     attakTarget = null; // 타겟 초기화 
                     transform.parent.GetComponent<MonsterBase>().OnIdle();  // 몬스터 공격을 멈추고 Idle 상태로 전환

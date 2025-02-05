@@ -22,7 +22,7 @@ public class PlayerUseTool : MonoBehaviour
             MonsterBase monsterBase = collision.GetComponent<MonsterBase>();
             if (monsterBase != null)
             {
-                Debug.Log($"{transform.parent}가 {collision.name}을 공격!");
+                //Debug.Log($"{transform.parent}가 {collision.name}을 공격!");
                 monsterBase.OnHit(transform.parent, (int)currentTool.Atk); // OnHit 이벤트 발생 -> attacker로 플레이어의 transfrom 전달
                 EquipmentManager.Instance.ReduceToolDurability(out destroyed);
             }
@@ -112,12 +112,12 @@ public class PlayerUseTool : MonoBehaviour
     {
         if (currentTool == null)
         {
-            Debug.Log("착용중인 Tool 이 없습니다");
+            //Debug.Log("착용중인 Tool 이 없습니다");
             return;
         }
         else
         {
-            Debug.Log($"{currentTool.Type.ToString()} 사용 중");
+            //Debug.Log($"{currentTool.Type.ToString()} 사용 중");
 
             playerAnimator.SetUseToolAnimation_True();
 

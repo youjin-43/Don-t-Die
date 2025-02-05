@@ -19,7 +19,7 @@ public class ChaseMonsterState : IMonsterState
 
     public void EnterState()
     {
-        Debug.Log($"{monster.gameObject.name} 이 Chase 상태로 진입!");
+        //Debug.Log($"{monster.gameObject.name} 이 Chase 상태로 진입!");
         target = monster.Target;
     }
 
@@ -32,7 +32,7 @@ public class ChaseMonsterState : IMonsterState
         // 공격 대상이 없으면 idle로 상태 전환 
         if (target == null || target.GetComponent<IDamageable>().IsDead())
         {
-            Debug.Log("공격 대상이 없어 idle 상태로 전환합니다");
+            //Debug.Log("공격 대상이 없어 idle 상태로 전환합니다");
             monster.OnIdle();
             return;
         }
@@ -43,7 +43,7 @@ public class ChaseMonsterState : IMonsterState
 
         if (sqrDistance <= attackRange * attackRange)
         {
-            Debug.Log("target이 공격범위 안으로 들어왔으므로 공격상태로 전환합니다 ");
+            //Debug.Log("target이 공격범위 안으로 들어왔으므로 공격상태로 전환합니다 ");
             monster.OnAttack();
         }
         else

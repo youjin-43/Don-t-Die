@@ -49,7 +49,7 @@ public class PlayerGetWaterAction : MonoBehaviour
             PlayerDir = GameManager.Instance.PlayerDir;
         }
 
-        Debug.DrawRay(PlayerPos, PlayerDir * RayDistance, Color.red);
+        //Debug.DrawRay(PlayerPos, PlayerDir * RayDistance, Color.red);
 
         if (currentTool != null && currentTool.Type == ToolType.Bottle)
         {

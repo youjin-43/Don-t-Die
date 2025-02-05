@@ -419,7 +419,7 @@ namespace VInspector
                         requiredByComponent = otherComponent;
 
                 if (requiredByComponent != null && hoveredComponent is not Transform)
-                    Debug.Log($"Can't delete {hoveredComponent.GetType().Name.Decamelcase()} because it is required by {requiredByComponent.GetType().Name.Decamelcase()}");
+                    //Debug.Log($"Can't delete {hoveredComponent.GetType().Name.Decamelcase()} because it is required by {requiredByComponent.GetType().Name.Decamelcase()}");
 
 
 

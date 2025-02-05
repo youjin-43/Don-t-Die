@@ -120,7 +120,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     }
 
     public void OnChase(){
-        Debug.Log("OnChase 실행됨 ");
+        //Debug.Log("OnChase 실행됨 ");
         if (monsterStateMachine.CurrentState != monsterStateMachine.chaseMonsterState)
         {
             monsterStateMachine.TransitionTo(monsterStateMachine.chaseMonsterState);
@@ -157,7 +157,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     public virtual void PerformAttack()
     {
-        Debug.Log("공격!");
+        //Debug.Log("공격!");
         TriggerAttackAnimaiton();
     }
 
@@ -209,7 +209,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     {
         if (monsterRigidbody == null)
         {
-            Debug.Log($"{transform.name}에 Rigidbody2D가 컴포넌트가 없습니다 ");
+            //Debug.Log($"{transform.name}에 Rigidbody2D가 컴포넌트가 없습니다 ");
             return; // Rigidbody2D가 없으면 넉백을 적용하지 않음
         }
 
@@ -294,7 +294,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     public void SetDieAnimation() // DieMonsterState에서 호출 
     {
-        Debug.Log("SetDieAnimation 실행 ");
+        //Debug.Log("SetDieAnimation 실행 ");
         MonsterAnimator.SetTrigger(die);
     }
     #endregion

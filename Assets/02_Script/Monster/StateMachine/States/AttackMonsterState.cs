@@ -19,7 +19,7 @@ public class AttackMonsterState : IMonsterState
 
     public void EnterState()
     {
-        Debug.Log($"{monster.gameObject.name} 이 Attack 상태로 진입!");
+        //Debug.Log($"{monster.gameObject.name} 이 Attack 상태로 진입!");
 
         target = monster.Target.GetComponent<IDamageable>();
         lastAttackTime = -attackCooldown; // 상태 진입 시 즉시 공격
@@ -33,7 +33,7 @@ public class AttackMonsterState : IMonsterState
         // 공격 대상이 없으면 idle로 상태 전환 
         if (target == null || target.IsDead())
         {
-            Debug.Log("공격 대상이 없어 idle 상태로 전환합니다");
+            //Debug.Log("공격 대상이 없어 idle 상태로 전환합니다");
             monster.OnIdle();
             return;
         }

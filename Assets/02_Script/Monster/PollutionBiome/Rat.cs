@@ -112,7 +112,7 @@ public class Rat : MonsterBase
                 playerStatus.SetLastDamageCause(DeathCause.Plague); // 사망 사유 셋팅
                 playerStatus.Die();
 
-                Debug.Log("플레이어가 쥐를 죽였으나, 흑사병에 감염되어 사망했습니다.");
+                //Debug.Log("플레이어가 쥐를 죽였으나, 흑사병에 감염되어 사망했습니다.");
             }
         }
     }
