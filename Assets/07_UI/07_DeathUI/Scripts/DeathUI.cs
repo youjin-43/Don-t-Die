@@ -11,6 +11,11 @@ public class DeathUI : MonoBehaviour
         _reasonToDeath = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
     }
 
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void SetContentText(string reason)
     {
         _reasonToDeath.text = reason;

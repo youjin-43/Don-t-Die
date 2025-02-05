@@ -438,6 +438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _achievementUI: {fileID: 1117556430}
   SettingUI: {fileID: 1865836700}
+  _loadingImage: {fileID: 1472922326}
+  _loadingText: {fileID: 1515478174}
 --- !u!4 &135326888
 Transform:
   m_ObjectHideFlags: 0
@@ -872,7 +874,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 0.2
   m_WholeNumbers: 0
-  m_Value: 0.2
+  m_Value: 0.1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3335,7 +3337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1472922326
 RectTransform:
   m_ObjectHideFlags: 0

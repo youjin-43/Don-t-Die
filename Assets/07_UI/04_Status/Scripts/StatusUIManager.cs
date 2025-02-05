@@ -32,7 +32,6 @@ public class StatusUIManager : MonoBehaviour
     private Image _healthGauge;
     private Image _hungryGauge;
     private Image _thirstyGauge;
-    private Image _temperatureGauge;
 
     [Range(0f, 1f)]
     public float Temperature = 1f;
@@ -46,15 +45,8 @@ public class StatusUIManager : MonoBehaviour
         _healthGauge      = transform.GetChild(0).GetChild(0).GetComponent<Image>();
         _hungryGauge      = transform.GetChild(1).GetChild(0).GetComponent<Image>();
         _thirstyGauge     = transform.GetChild(2).GetChild(0).GetComponent<Image>();
-        _temperatureGauge = transform.GetChild(3).GetChild(0).GetComponent<Image>();
 
         //playerStatus = GameManager.Instance.PlayerTransform.GetComponent<PlayerStatus>();
-    }
-
-    private void Update()
-    {
-        // 디버그용
-        SetTemperature(Temperature);
     }
 
     public void UpdateHealthUI()
@@ -71,11 +63,5 @@ public class StatusUIManager : MonoBehaviour
     public void UpdateThirstyUI()
     {
         _thirstyGauge.fillAmount = playerStatus._currentThirstyPoint / playerStatus._maxThirstyPoint;
-    }
-
-    public void SetTemperature(float currentTemperature)
-    {
-        _temperatureGauge.fillAmount = Mathf.Clamp(currentTemperature, 0.3f, 0.9f);
-        _temperatureGauge.color = Gradient.Evaluate(_temperatureGauge.fillAmount);
     }
 }

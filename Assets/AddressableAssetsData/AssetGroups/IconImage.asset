@@ -81,6 +81,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 35d0589a036dbf84498b8e6c037fac5c
+    m_Address: Assets/03_Image/Icon/Items/EdibleItems/GrilledMushroom.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 375ecacf14401ef4bbd4604f29cc09a3
     m_Address: CraftingTable
     m_ReadOnly: 0
