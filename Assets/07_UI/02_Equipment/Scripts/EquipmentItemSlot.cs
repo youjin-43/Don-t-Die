@@ -122,7 +122,7 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
             _itemImage.color = new Color(1, 1, 1, 0.3f);
             _itemDurability.gameObject.SetActive(false);
 
-            EquipmentManager.Instance.InvokeOnEquipChanged(_itemData, EquipmentSlot.Unknown);
+            EquipmentManager.Instance.InvokeOnEquipChanged(_itemData, EquipmentSlot.Hand);
         }
     }
 

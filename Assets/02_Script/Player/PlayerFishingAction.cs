@@ -65,10 +65,11 @@ public class PlayerFishingAction : MonoBehaviour
         watingTimer = 0;
         targetWaitingTime = Random.Range(5f, 10f);
     }
-    
+
     public void Fishing()
     {
-        if (currentTool != null && currentTool.Type == ToolType.Rod && !isBobberThrown && !isPulling && !isFishing)
+        if (currentTool == null || currentTool.Type != ToolType.Rod) return;
+        if (!isBobberThrown && !isPulling && !isFishing)
         {
             if (Input.GetMouseButtonDown(0))
             {

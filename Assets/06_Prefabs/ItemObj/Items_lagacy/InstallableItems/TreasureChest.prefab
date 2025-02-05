@@ -103,8 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItems:
   - data: {fileID: 11400000, guid: 0b3e4601311f0294c830cfeefea8d93a, type: 2}
-    minAmount: 2
-    maxAmount: 5
+    minAmount: 1
+    maxAmount: 2
 --- !u!61 &3987745950174662345
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -180,6 +180,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
 
     IEnumerator DoingCraftRoutine(ItemData itemData, int maxDurability)
     {
+        CraftManager.Instance.isCrafing = true;
         PlayerAnimator playerAnimator = GameManager.Instance.PlayerTransform.GetComponent<PlayerAnimator>();
         playerAnimator.TriggerDoingAnimation();
         SoundManager.Instance.Play(AudioType.Effect, AudioClipName.CraftStart);
@@ -195,6 +196,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
             SoundManager.Instance.Play(AudioType.Effect, AudioClipName.CraftEnd);
             CraftManager.Instance.UpdateCraftingUI();
         }
+        CraftManager.Instance.isCrafing = false;
         co_doingCraft = null;
     }
 
