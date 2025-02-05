@@ -148,7 +148,12 @@ public class ObjectGenerator
                 {
                     ItemData itemData = currentBiome.DropItems[UnityEngine.Random.Range(0, currentBiome.DropItems.Count)].data;
                     Item item = PoolManager.Instance.InstantiateItem(itemData);
-                    Vector3 position = new Vector3(j, i) + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 0.5f));
+                    Vector3 position = new Vector3(j, i);
+                    do
+                    {
+                        position = new Vector3(j, i) + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 0.5f));
+                    } while (!biomeMap.IsOnMap(position));
+                    
                     item.transform.position = position;
                 }
             }

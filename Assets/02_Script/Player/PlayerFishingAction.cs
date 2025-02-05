@@ -6,6 +6,8 @@ public class PlayerFishingAction : MonoBehaviour
 {
     [SerializeField] ToolItemData currentTool;
 
+    public bool isFishing => isBobberThrown || isPulling;
+
     [SerializeField] Transform fishingTip;      // 낚싯대 끝부분
     [SerializeField] GameObject bobberPrefab;   // 찌 원본 프리팹
     Bobber bobber;                          // 지금 던져진 찌
@@ -27,7 +29,6 @@ public class PlayerFishingAction : MonoBehaviour
 
     float castingTimer;             // 낚시 버튼을 누르고 얼마나 흘렀는지 ( 찌를 얼마나 멀리 보낼지 체크 )
     float maxCastingTimer = 2f;
-    float maxBobberDistance = 10f;   // 찌와 플레이어 사이의 최대 거리
 
     const string TRIGGER_CAST = "Fish_Cast";
     const string TRIGGER_WAIT = "Fish_Wait";
@@ -67,18 +68,14 @@ public class PlayerFishingAction : MonoBehaviour
     
     public void Fishing()
     {
-        if (currentTool != null && currentTool.Type == ToolType.Rod && !isBobberThrown && !isPulling)
+        if (currentTool != null && currentTool.Type == ToolType.Rod && !isBobberThrown && !isPulling && !isFishing)
         {
             if (Input.GetMouseButtonDown(0))
             {
-                isPressed = true;
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector3 playerPos = GameManager.Instance.GetPlayerPos();
                 fishingPoint = (mousePos - playerPos).normalized;
-            }
-            else if (isPressed && Input.GetMouseButtonUp(0))
-            {
-                ThrowBobber();
+                animator.SetTrigger(TRIGGER_CAST);
             }
         }
 
@@ -144,8 +141,6 @@ public class PlayerFishingAction : MonoBehaviour
 
     void ThrowBobber()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Casting")
-            && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f) { return; }
         lineRenderer.enabled = true;
 
         // 현재 생성된 찌가 없으면 만듦
@@ -155,22 +150,19 @@ public class PlayerFishingAction : MonoBehaviour
             bobber.player = this;
         }
 
-        // 던지는 애니메이션
-        animator.SetTrigger(TRIGGER_CAST);
-
         // 찌 던질 위치를 정하고 그곳으로 던진다
         bobber.gameObject.SetActive(true);
         bobber.transform.position = transform.position;
 
-        float distMultiflier = Mathf.Max(3f, maxBobberDistance * (castingTimer / maxCastingTimer));
+        float distMultiflier = 10f;
         fishingPoint *= distMultiflier;
         fishingPoint += transform.position;
-
-        bobber.Throw(transform.position, fishingPoint);
 
         isPressed = false;
         castingTimer = 0f;
         isBobberThrown = true;
+
+        bobber.Throw(transform.position, fishingPoint);
     }
 
     public void WaitingAnimation()

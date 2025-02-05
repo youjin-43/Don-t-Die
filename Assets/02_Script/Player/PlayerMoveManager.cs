@@ -59,7 +59,7 @@ public class PlayerMoveManager : MonoBehaviour
 
 
 
-        if (canMove)
+        if (canMove && !playerFishingAction.isFishing)
         {
             playerAutoInteract.AutoInteract(); // 자동 상호작용 중이면 이동 X
             isAutoInteracting = playerAutoInteract.isAutoInteracting;
