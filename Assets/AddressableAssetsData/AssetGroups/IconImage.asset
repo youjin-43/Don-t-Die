@@ -1,0 +1,351 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: IconImage
+  m_EditorClassIdentifier: 
+  m_GroupName: IconImage
+  m_GUID: ffd961bf4a655554a997e2a2f98cf31f
+  m_SerializeEntries:
+  - m_GUID: 001b83bbd183b2d44890c77ffc82919a
+    m_Address: Grass
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 00233372fb25852469bcbff352cf72ff
+    m_Address: FishRod
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 014e763f4b503e04f9f6bbf710553f90
+    m_Address: Bone
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 02c50b0915e730e429442c5a1c279568
+    m_Address: Forbid
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c4f9dd2a52e62d4a8c62abf71f8e89a
+    m_Address: IronBottle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e0b6c87637acb0409043f1fd4e92658
+    m_Address: WoodPickaxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c462c3c596daf2488544c0b736a73db
+    m_Address: WoodAxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c8a0536b47febc41877cf4faf6a1bfe
+    m_Address: StoneHead
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f93b090d725c2143844fe367136810a
+    m_Address: RawFish
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 21b76e4bd1bb1e6429135198ff62c716
+    m_Address: Iron
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b7b2b7ae11af344ab6611d301336272
+    m_Address: Gold
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 35d0589a036dbf84498b8e6c037fac5c
+    m_Address: Assets/03_Image/Icon/Items/EdibleItems/GrilledMushroom.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 375ecacf14401ef4bbd4604f29cc09a3
+    m_Address: CraftingTable
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 396d283a341ef3e45b8b0ded781fb171
+    m_Address: StoneAxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f631d884aa618c4288926d349e36c49
+    m_Address: Equal
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f8161a884eb2fa4a8cc0eb4798e2e97
+    m_Address: WoodSword
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 432cbfd006861754ba1e08275c8f49ef
+    m_Address: Wood
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4378c33658d83e044bcdec7c78f3496f
+    m_Address: Branch
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e9455ac5f29e4144a4511c5e4bdb15e
+    m_Address: GoldBottle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4efb86c02c8fe1744b38cf609575bca9
+    m_Address: Stone
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5242dcfbeac0ade4d944e402c403c75d
+    m_Address: GoldSword
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 538e152a00953eb4d9495395b2651b24
+    m_Address: Rope
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 53a33bb9ea701034fa19b7e38e31b3a8
+    m_Address: IronPickaxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5607c7e5e49c12547953293d81e7bd92
+    m_Address: BoneHead
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ca12080a71b1ad4da4e00f24893224c
+    m_Address: IronChest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5cd18f46a12ccc1418bdfbc723763e07
+    m_Address: GoldChest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e65fd1cd1921234187e9052dbfb388a
+    m_Address: GrilledMeat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60f54f83cac6ef84d8447922b46bcd0a
+    m_Address: Assets/03_Image/Icon/Items/InventoryItem/Bag.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 67cb4ec51aff04f49b32da33df17610d
+    m_Address: BonePickaxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68b012f16cfebdd4ba811e1fb4dbc730
+    m_Address: Berry
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d507a9690ff330408f37d84f02545f7
+    m_Address: IronHead
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 74aa28bf4fb2cf54aa8b4391cf69e3a7
+    m_Address: GoldPickaxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 761d82abef34c2c409606321a0438bd7
+    m_Address: Torch
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a723cd025eb4a545b61eaee275bf199
+    m_Address: BoneAxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f45bf4b854043542bf421917b27b23c
+    m_Address: GoldAxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 883b3b98c69605e45b168b6541bd6ecd
+    m_Address: Flint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8d3adf9a19812ed46bf0743db6530ed4
+    m_Address: IronAxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90648a8d8b929eb4495d4d83938c0914
+    m_Address: StoneChest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9acde34f918ad2243b89869149e2c174
+    m_Address: BoneSword
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9bbc16c5f906c90478fee8c415442544
+    m_Address: Mushroom
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7a959f24618676438bed184aff458a2
+    m_Address: WoodHead
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b68965ccc5823874386a54b1dad1e168
+    m_Address: Plus
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c136756366d455a459903affc3f19f93
+    m_Address: StoneBottle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c6d1cff93f8570f45b2ce3d04206143c
+    m_Address: StonePickaxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c8a100436f1276547bd1b5d2fb96ebbc
+    m_Address: GrilledFish
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d535deb988f3f6e4895004777a8aa36b
+    m_Address: StoneSword
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2572a708294570498d910e6fb83d25b
+    m_Address: BoneChest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2f4a58041f05f34695e272d3f8d4f73
+    m_Address: Campfire
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3cd8e9a275421846b7b39c4f9b70f0c
+    m_Address: Box
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e5b2bf62f12338a4987da73e6bf20274
+    m_Address: WoodChest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e88a6e493e5a8be4f98b34c7d9d63731
+    m_Address: GoldHead
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec8edf9a644ebff428787cf2718451e9
+    m_Address: BoneBottle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef565a28b6e419a41a4c83702cf70332
+    m_Address: RawMeat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f06e25167a6d9b94eb57dff3d0de31db
+    m_Address: IronSword
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0b9de6b45095ab40a6ed9bfc07aa56a
+    m_Address: WoodBottle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 736d55df98445684191af185ca035f9d, type: 2}
+  m_SchemaSet:
+    m_Schemas: []

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44a951f04ff84e6880bebd1f684fbcd, type: 3}
+  m_Name: Bear
+  m_EditorClassIdentifier: 
+  MonsterName: Bear
+  MyBiomeType: 1
+  MoveSpeed: 2
+  MoveInterval: 5
+  MaxHP: 1000
+  ChaseOrFleeSpeed: 4
+  AttackDamage: 30
+  AttackRange: 2
+  KnockbackForce: 7
+  KnockbackDuration: 1
+  DropItems:
+  - data: {fileID: 11400000, guid: 36eecafa25e5ae9419d38595fa87c03f, type: 2}
+    minAmount: 5
+    maxAmount: 7

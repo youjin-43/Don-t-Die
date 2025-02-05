@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1303619f4b9d5aa4794d8d87c0d709a7, type: 3}
+  m_Name: FishingRod
+  m_EditorClassIdentifier: 
+  ItemType: 1
+  Name: FishingRod
+  NameKR: "\uB09A\uC2EF\uB300"
+  Prefab: {fileID: 0}
+  Image: {fileID: 21300000, guid: 00233372fb25852469bcbff352cf72ff, type: 3}
+  IsCountable: 0
+  MaxCountSize: 1
+  equipSlot: 2
+  maxDurability: 50
+  currentDurability: 0
+  ChargePerUse: 0
+  ThisissBottle: 0
+  availableTypes: 06000000
+  atk: 0
+  Type: 4

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf289d916cdaaa48bb9e03e7cbd8ebb, type: 3}
+  m_Name: WoodChest
+  m_EditorClassIdentifier: 
+  ItemType: 1
+  Name: WoodChest
+  NameKR: "\uB098\uBB34 \uAC11\uC637"
+  Prefab: {fileID: 1522524378567408781, guid: 36b8b440e4394f649851a06d59ccf4c0, type: 3}
+  Image: {fileID: 21300000, guid: e5b2bf62f12338a4987da73e6bf20274, type: 3}
+  IsCountable: 0
+  MaxCountSize: 1
+  equipSlot: 3
+  maxDurability: 10
+  currentDurability: 7
+  def: 1

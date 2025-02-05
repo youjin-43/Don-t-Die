@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: NatureResources
+  m_EditorClassIdentifier: 
+  m_GroupName: NatureResources
+  m_GUID: f2dc45452ad4d1744b83a6f713f4908b
+  m_SerializeEntries:
+  - m_GUID: 027a74d0f2ed26c40a4877f3882e8cb6
+    m_Address: Assets/05_ScriptableObjects/NatureResources/Trees/GrassTree1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - NatureResources
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e2417fa2ff442f43bcfc887038bbfbf
+    m_Address: Assets/05_ScriptableObjects/NatureResources/Minerals/DesertMineral1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - NatureResources
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 21dba384d14db454c862f481060775bc
+    m_Address: Assets/05_ScriptableObjects/NatureResources/Plants/GrassMushroom.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - NatureResources
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42c73f8d6367c3b4dadcdb530cf86b4e
+    m_Address: Assets/05_ScriptableObjects/NatureResources/Minerals/DesertMineral3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - NatureResources
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9e8ba6620b544b49aca1fe1da97c66c
+    m_Address: Assets/05_ScriptableObjects/NatureResources/Minerals/DesertMineral2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - NatureResources
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b17534cb61e5eb4439e7ca492a2128a1
+    m_Address: Assets/05_ScriptableObjects/NatureResources/Plants/GrassBerryBush.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - NatureResources
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e35807bd3f0d9c24eacf0b014d65756d
+    m_Address: Assets/05_ScriptableObjects/NatureResources/Trees/GrassTree1Trunk.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - NatureResources
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 736d55df98445684191af185ca035f9d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: fba0ddcb485370f43a3aa69bc2ac2ab6, type: 2}
+    - {fileID: 11400000, guid: 1f3039b4519d65c4394211d86a354849, type: 2}

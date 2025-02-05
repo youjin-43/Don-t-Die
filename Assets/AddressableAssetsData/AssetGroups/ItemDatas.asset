@@ -1,0 +1,299 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: ItemDatas
+  m_EditorClassIdentifier: 
+  m_GroupName: ItemDatas
+  m_GUID: 3ae65df29ea60d5488cb7f1f14b040cf
+  m_SerializeEntries:
+  - m_GUID: 0345136949176d84ba94771bddd06610
+    m_Address: Torch
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0826ab5676c2d6c48a7eb7d13b3c0c3d
+    m_Address: Branch
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0b3e4601311f0294c830cfeefea8d93a
+    m_Address: Gold
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0bcafbb0eda4ccf4d92da2f622ae2405
+    m_Address: IronHead
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0fe20021a1f924f4b94985424a0a8391
+    m_Address: IronPickaxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15f0f374eb56b3742a3cd1dda4f483f8
+    m_Address: Stone
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f861bce97f5bb9489a295e98a1996b8
+    m_Address: WoodChest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 225cfb444a9916a4981280ae1bbf6db6
+    m_Address: StoneBottle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 23abf2565d772b346a31f5431cc011da
+    m_Address: WoodAxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 292efb8955baa8246a171b3d8f815d2b
+    m_Address: BoneSword
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 31851cada355c1d419646b40930d8bc0
+    m_Address: BoneChest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 32b8e6989fe545f4b8d99985fb258e90
+    m_Address: Iron
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 348831d5cf34b2048990d49b258f0cf2
+    m_Address: GoldAxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 40cf6ab827bffc84db0d354f21913bee
+    m_Address: GoldBottle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 479d8121b7ad66143a9c55e0fa4947a8
+    m_Address: BoneBottle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4f9099c7664e1114fbb87a313fb6960e
+    m_Address: IronBottle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fc1faa75bbe1e9418f447a1597aae48
+    m_Address: GoldHead
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61f9040c5ae9ff548ab2c27fba3e2c44
+    m_Address: FishingRod
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62b608b058674f348a329c683464ff7a
+    m_Address: Wood
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66176cedc3758cb40afbbd6927d81abe
+    m_Address: CraftingTable
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6836eef3826fc5a498bba774144dd414
+    m_Address: Campfire
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6fa2eaa14a824f943b87e5863852326d
+    m_Address: Rope
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70b862d54c6da8343abbd8838ccce4d8
+    m_Address: TreasureChest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78d280e5c811e8e4ab8dba1ed6c45ed4
+    m_Address: Grass
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 82a3a865a4cf14149a4ffcd416b1665b
+    m_Address: StonePickaxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 82d7045b70568f641bbfd82bb61afa13
+    m_Address: WoodBottle
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86acdf7fae572a542b0e97aa64c74d37
+    m_Address: GoldChest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89db20671eae9ab4faaefc13b5828366
+    m_Address: StoneSword
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ac5234ae021f214a997f55887dca570
+    m_Address: StoneHead
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c8fdc65f9180e54682441f6e89bf34d
+    m_Address: IronAxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 995f3a062fa574644938d246a7428bf8
+    m_Address: Bone
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9e7e371f5785c9f4ea5930320c2253af
+    m_Address: StoneAxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a432a9b3beafd02468428949a5980406
+    m_Address: StoneChest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a843d2fe2c7d58c42a3199384e8eba93
+    m_Address: Flint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aa9b54a2c823b2248acecd51a44eb642
+    m_Address: GoldSword
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b43bd047a4528c74189eb94c02a9d5d5
+    m_Address: BoneAxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c27e647787914fb489b3dc824308e7ed
+    m_Address: WoodSword
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb6573e9bbd327d44b64dbd89ca6367b
+    m_Address: IronSword
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d2015a4470f2c034a9632c0e359d4d8e
+    m_Address: BoneHead
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d91b9da92870b4e40955bc670fd737de
+    m_Address: GoldPickaxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de7fb0a80e293fb40ace3fcdeeeac618
+    m_Address: IronChest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dee2419837521ec43895c435561409a6
+    m_Address: BonePickaxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dfd2402fe61ba544cb6fcfbbcb82d2c7
+    m_Address: Assets/05_ScriptableObjects/Items/InventoryItems/Bag.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec0fa6eb77fbab642aa2aba5f7f0630d
+    m_Address: WoodHead
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed7485af019750e45ad184b1fb76b500
+    m_Address: Box
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb377c9249975774ba97c32a373bbac3
+    m_Address: WoodPickaxe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ItemData
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 736d55df98445684191af185ca035f9d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 642f1b4eb17ee594c8ec438af2a39d1b, type: 2}
+    - {fileID: 11400000, guid: 53b4be025a67c0a4ea359b4b7e8bf35d, type: 2}

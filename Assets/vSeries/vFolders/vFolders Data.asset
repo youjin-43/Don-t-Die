@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb9c12a8c6c949f7af83a3d238359d0, type: 3}
+  m_Name: vFolders Data
+  m_EditorClassIdentifier: 
+  folderDatas_byGuid:
+    keys:
+    - 0842e487749e24a7c8fc9abcafdfa036
+    - bf0b8ed9c22ed435184fbfb2a40c83ca
+    - 245027305e60f4c7f901cd809677a6cb
+    - d6e2f62a46680413fad1310655d6d4b5
+    - 78eb7b5249ac5574b8526c2c65ea1d1a
+    - d284ee7c4a7224ecdb02f9f40c4e9e4e
+    - e42bfbf18efd64e848d2f5e9ed6bb7b5
+    - d5e5c7224bc74412590514b5d36c6a6a
+    - cfeeea9d8b6444e179383bb2a00063d7
+    - a3fcf04bd68f04af88bf9817863a39a1
+    - 7cbb2aa14e7fdb84588f972a5f3357ac
+    - 58b244c33abecde4683c40e357b8dca3
+    - 5d942f4f46dc2904884cf5eb38af4a86
+    - 27b4bef0e943c2542a7134298f35bc1b
+    values:
+    - iconNameOrGuid: cs Script Icon
+      colorIndex: 6
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 5
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: RawImage Icon
+      colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: AnimationClip Icon
+      colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 6
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 10
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: AnimatorController Icon
+      colorIndex: 7
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: cs Script Icon
+      colorIndex: 2
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: AnimatorController Icon
+      colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: Prefab Icon
+      colorIndex: 10
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: ScriptableObject Icon
+      colorIndex: 6
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: RawImage Icon
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: AudioSource Icon
+      colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+  bookmarks: []

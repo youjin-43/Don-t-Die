@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4988707389360140139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2768072201075710727}
+  - component: {fileID: 6877574137720104847}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2768072201075710727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988707389360140139}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6877574137720104847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988707389360140139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df93f05eca7c264188729de069c5ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSources: []
+  audioClips:
+    serializedKvps:
+    - Key: 0
+      Value: {fileID: 8300000, guid: 28387b0c3cc57384d8eb861825fadb49, type: 3}
+      index: 0
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 1
+      Value: {fileID: 8300000, guid: ceb48d400b748b84ebf746c08de5b14b, type: 3}
+      index: 1
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 2
+      Value: {fileID: 8300000, guid: f54a292b03f2e47d1b7ff8abd3c40c23, type: 3}
+      index: 2
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 3
+      Value: {fileID: 8300000, guid: 1fc208d72456a4e59b15ae2b4e2b0c55, type: 3}
+      index: 3
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 4
+      Value: {fileID: 8300000, guid: e3b8a47721f93450ea95597d9f7697e2, type: 3}
+      index: 4
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 5
+      Value: {fileID: 8300000, guid: 0dc2de04a29ca40f5b19632fdaa9b081, type: 3}
+      index: 5
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 7
+      Value: {fileID: 8300000, guid: 26a2115c4b491584c843ab450ac270a6, type: 3}
+      index: 6
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 8
+      Value: {fileID: 8300000, guid: cf58aa4c32edca44fab8133120192c2b, type: 3}
+      index: 7
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 6
+      Value: {fileID: 8300000, guid: d1579f57fedc5ae479be5fcf559c4204, type: 3}
+      index: 8
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 9
+      Value: {fileID: 8300000, guid: cb63eeaeec801d649a7cbed1e8f31d88, type: 3}
+      index: 9
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 10
+      Value: {fileID: 8300000, guid: 58003feeb1762ab46b47b5dfb31914f0, type: 3}
+      index: 10
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 11
+      Value: {fileID: 8300000, guid: 6ac67e37d3e2949488140525b7426801, type: 3}
+      index: 11
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 12
+      Value: {fileID: 8300000, guid: 789640c4f3d0f4ac294049003dfa8700, type: 3}
+      index: 12
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 13
+      Value: {fileID: 8300000, guid: a034bfa460c844c55862345b223e2dad, type: 3}
+      index: 13
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 14
+      Value: {fileID: 8300000, guid: 24e0ce9e93b564545803fd75186400cd, type: 3}
+      index: 14
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 15
+      Value: {fileID: 8300000, guid: 3a4b3267df06841d98d5ff183d1e17e3, type: 3}
+      index: 15
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 16
+      Value: {fileID: 8300000, guid: 54e532a679fe44b8ba3a09708ce8c1f7, type: 3}
+      index: 16
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 17
+      Value: {fileID: 8300000, guid: e15e4fb0be8ed441d99defc00536f45b, type: 3}
+      index: 17
+      isKeyRepeated: 0
+      isKeyNull: 0
+    dividerPos: 0.33
+  _currentVolume: 0

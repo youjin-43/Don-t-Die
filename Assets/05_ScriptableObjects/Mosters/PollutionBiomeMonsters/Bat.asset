@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44a951f04ff84e6880bebd1f684fbcd, type: 3}
+  m_Name: Bat
+  m_EditorClassIdentifier: 
+  MonsterName: Bat
+  MyBiomeType: 3
+  MoveSpeed: 3
+  MoveInterval: 2
+  MaxHP: 30
+  ChaseOrFleeSpeed: 4
+  AttackDamage: 10
+  AttackRange: 0
+  KnockbackForce: 10
+  KnockbackDuration: 1
+  DropItems:
+  - data: {fileID: 11400000, guid: 36eecafa25e5ae9419d38595fa87c03f, type: 2}
+    minAmount: 2
+    maxAmount: 3
