@@ -137,7 +137,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         }
     }
 
-    public void OnDie()
+    public virtual void OnDie()
     {
         if (monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState)
         {
