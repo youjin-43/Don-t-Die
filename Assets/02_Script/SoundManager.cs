@@ -18,7 +18,9 @@ public enum AudioClipName
     PlayerAttack,
     PlayerRevive,
     Mushroom_Flee,
-    Mushroom_Die
+    Mushroom_Die,
+    Rat_Flee,
+    Rat_Die
 }
 
 public enum AudioType
@@ -30,7 +32,7 @@ public enum AudioType
 
 public class SoundManager : MonoBehaviour
 {
-    List<AudioSource> audioSources = new List<AudioSource>();
+    [SerializeField] List<AudioSource> audioSources = new List<AudioSource>();
     public SerializedDictionary<AudioClipName, AudioClip> audioClips = new SerializedDictionary<AudioClipName, AudioClip>();
 
     private static SoundManager instance;
