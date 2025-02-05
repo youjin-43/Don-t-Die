@@ -58,7 +58,7 @@ public class EnvironmentManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
             timeController = GetComponent<TimeController>();
         }
         else

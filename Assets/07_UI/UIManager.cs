@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
     }
     #endregion
@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _statusUI;
     [SerializeField] GameObject _boxUI;
 
-    [SerializeField] GameObject _deathUI;
+    [SerializeField] DeathUI _deathUI;
 
     private void Awake()
     {
@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
         _craftUI.SetActive(true);
         _statusUI.SetActive(true);
         _boxUI.SetActive(true);
-        _deathUI.SetActive(false);
+        _deathUI.gameObject.SetActive(false);
     }
 
     public bool IsUIClick()
@@ -57,8 +57,15 @@ public class UIManager : MonoBehaviour
         return results.Count > 0;
     }
 
-    public void Death(string code)
+    public void Death(DeathCause cause)
     {
+        string code = ((int)(cause)).ToString("D3");
 
+        string Content = DataManager.Instance.AchievementData[code].Content;
+
+        _deathUI.gameObject.SetActive(true);
+        _deathUI.SetContentText(Content);
+
+        AchievementManager.Instance.SetAchievement(code);
     }
 }

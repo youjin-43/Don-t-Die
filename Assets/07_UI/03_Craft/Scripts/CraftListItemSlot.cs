@@ -160,7 +160,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
 
             EquippableItemData bottle = currentItemData as EquippableItemData;
 
-            if (bottle.ThisissBottle == true)
+            if (bottle != null && bottle.ThisissBottle == true)
             {
                 string[] split = currentItemData.NameKR.Split(' ');
 

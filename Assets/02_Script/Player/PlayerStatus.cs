@@ -107,7 +107,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         // TODO :  UI 사망 메시지 표시
 
 
-        UIManager.Instance.Death(lastDamageCause.ToString());
+        UIManager.Instance.Death(lastDamageCause);
 
     }
     #region IDamageable
