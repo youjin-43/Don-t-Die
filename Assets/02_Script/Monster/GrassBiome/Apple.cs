@@ -30,7 +30,9 @@ public class Apple : MonoBehaviour
         if (damageable != null)
         {
             Debug.Log(collision.name);
-            target.GetComponent<PlayerStatus>().SetLastDamageCause(DeathCause.BearAttack); // 사망 사유 셋팅 
+
+            PlayerStatus playerStatus = target.GetComponent<PlayerStatus>();
+            if(playerStatus != null) playerStatus.SetLastDamageCause(DeathCause.BearAttack); // 사망 사유 셋팅 
             damageable.TakeDamage(damage);
             Destroy(gameObject);
         }
