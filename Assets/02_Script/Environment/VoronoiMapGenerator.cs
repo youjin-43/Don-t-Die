@@ -114,7 +114,7 @@ public class VoronoiMapGenerator : MonoBehaviour
         if (objectParent == null)
         {
             GameObject parent = new GameObject("ObjectParent");
-            parent.transform.parent = transform;
+            parent.transform.parent = PoolManager.Instance.transform;
             objectParent = parent;
         }
 
