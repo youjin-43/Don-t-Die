@@ -83,7 +83,6 @@ public class TitleSceneManager : MonoBehaviour
         //SceneManager.LoadSceneAsync("GameScene");
 
         StartCoroutine(LoadSceneCoroutine("GameScene"));
-        SceneManager.LoadSceneAsync("GameScene");
     }
 
     public void OptionButton()
