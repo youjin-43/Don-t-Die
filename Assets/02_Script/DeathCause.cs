@@ -1,8 +1,10 @@
+
+
 public enum DeathCause
 {
     None, 
     BearAttack,   // 곰에게 공격받음
-    BatAttack,   // 박쥐에게 공격받음
+    BatAttack,    // 박쥐에게 공격받음
     SkelAttack,   // 스켈레톤에게 공격받음
     Starvation,   // 배고픔 게이지 0
     Dehydration,  // 목마름(탈수)으로 사망
