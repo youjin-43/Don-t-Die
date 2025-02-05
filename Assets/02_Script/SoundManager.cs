@@ -108,6 +108,19 @@ public class SoundManager : MonoBehaviour
         audioSources[(int)type].volume = volume;
     }
 
+    public float GetVolume()
+    {
+        return audioSources[0].volume;
+    }
+
+    public void SetAllVolume(float volume)
+    {
+        foreach(var audioSource in audioSources)
+        {
+            audioSource.volume = volume;
+        }
+    }
+
     public void FadeVolume(AudioType type, float volume)
     {
         StartCoroutine(FadeVolumeRoutine(type, volume));

@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class EscUI : MonoBehaviour
 {
+    [SerializeField] public SettingUI SettingUI;
+
     public void ReturnToTitle()
     {
         Time.timeScale = 1;
@@ -10,9 +12,9 @@ public class EscUI : MonoBehaviour
         SceneManager.LoadSceneAsync("TitleScene");
     }
 
-    public void Setting()
+    public void OpenSetting()
     {
-        UIManager.Instance.OpenSetting();
+        SettingUI.ToggleSettingUI();
     }
 
     public void Resume()

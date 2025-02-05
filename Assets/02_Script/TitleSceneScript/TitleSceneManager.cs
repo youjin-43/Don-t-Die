@@ -1,15 +1,15 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TitleSceneManager : MonoBehaviour
 {
     [SerializeField] GameObject _achievementUI;
-    [SerializeField] GameObject _settingUI;
+    [SerializeField] SettingUI   SettingUI;
 
     void Awake()
     {
         _achievementUI.SetActive(true);
-        _settingUI.SetActive(true);
     }
 
     private void Update()
@@ -20,9 +20,9 @@ public class TitleSceneManager : MonoBehaviour
             {
                 AchievementManager.Instance.ToggleAchievementUI();
             }
-            if(_settingUI.gameObject.activeSelf == true)
+            if(SettingUI.gameObject.activeSelf == true)
             {
-                SettingManager.Instance.ToggleSettingUI();
+                SettingUI.ToggleSettingUI();
             }
         }
     }
@@ -41,7 +41,7 @@ public class TitleSceneManager : MonoBehaviour
 
     public void OptionButton()
     {
-        SettingManager.Instance.ToggleSettingUI();
+        SettingUI.ToggleSettingUI();
     }
 
     public void AchievementButton()
