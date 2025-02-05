@@ -285,6 +285,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
             _itemImage.color  = new Color(1, 1, 1, 0);
             _itemCountImage.gameObject.SetActive(false);
             _itemDurability.gameObject.SetActive(false);
+            _description.SetActive(false);
         }
         // 5. 내구도 초기화
         {

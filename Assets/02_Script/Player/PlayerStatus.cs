@@ -244,5 +244,8 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         GainThirsty(edibleItemData.thirstValue);
     }
 
-
+    public void DrinkWater(float chargePerUse)
+    {
+        GainThirsty(chargePerUse);
+    }
 }

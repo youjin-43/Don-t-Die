@@ -124,6 +124,13 @@ public class PlayerUseTool : MonoBehaviour
                 case ToolType.Pickaxe:
                     playerAnimator.SetPickAxeAnimation_True();
                     break;
+
+
+                case ToolType.Bottle:
+                    DrinkWater();
+                    break;
+
+
                 default:
                     break;
             }
@@ -136,5 +143,11 @@ public class PlayerUseTool : MonoBehaviour
         playerAnimator.SetSwordAnimation_False();
         playerAnimator.SetAxeAnimation_False();
         playerAnimator.SetPickAxeAnimation_False();
+    }
+
+
+    public void DrinkWater()
+    {
+        EquipmentManager.Instance.DrinkWater();
     }
 }

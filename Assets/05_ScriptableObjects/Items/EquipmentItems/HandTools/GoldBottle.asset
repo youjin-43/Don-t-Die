@@ -20,8 +20,9 @@ MonoBehaviour:
   IsCountable: 0
   MaxCountSize: 1
   equipSlot: 2
-  maxDurability: 10
+  maxDurability: 100
   currentDurability: 0
+  ChargePerUse: 10
   availableTypes: 
   atk: 0
   Type: 6

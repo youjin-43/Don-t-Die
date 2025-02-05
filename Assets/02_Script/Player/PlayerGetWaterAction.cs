@@ -48,7 +48,7 @@ public class PlayerGetWaterAction : MonoBehaviour
 
         if (currentTool != null && currentTool.Type == ToolType.Bottle)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 RaycastHit2D hit = Physics2D.Raycast(PlayerPos, PlayerDir, 1f, LayerMask.GetMask("Water"));
 
@@ -56,7 +56,7 @@ public class PlayerGetWaterAction : MonoBehaviour
                 {
                     // 여기서 물병의 내구도를 최대로 올리면 될듯?
 
-                    // currentTool.GetComponent<Item>().SetDurability();
+                    EquipmentManager.Instance.AddDurability();
                 }
             }
         }
