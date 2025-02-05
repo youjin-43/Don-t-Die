@@ -93,7 +93,10 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     /// <summary>
     /// Flee 상태 이후 어떤 State로 넘어갈것인지 
     /// </summary>
-    public abstract void AfterFleeState();
+    public virtual void AfterFleeState()
+    {
+        OnAttack();
+    }
 
     #region OnState
 
@@ -116,6 +119,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
     }
 
     public void OnChase(){
+        Debug.Log("OnChase 실행됨 ");
         if (monsterStateMachine.CurrentState != monsterStateMachine.chaseMonsterState)
         {
             monsterStateMachine.TransitionTo(monsterStateMachine.chaseMonsterState);
@@ -143,12 +147,23 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     #endregion
 
-    #region Attack
+    #region Chase and Attack
+
+    public virtual void ChaseTarget()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, Target.position, chaseOrFleeSpeed * Time.deltaTime);
+    }
+
+    public virtual void PerformAttack()
+    {
+        Debug.Log("공격!");
+        TriggerAttackAnimaiton();
+    }
 
     /// <summary>
     /// 공격 타겟에게 넉백 적용
     /// </summary>
-    public virtual void ApplyKnockback(Rigidbody2D playerRb, Vector2 playerPosition)
+    public virtual void ApplyKnockbackToTarget(Rigidbody2D playerRb, Vector2 playerPosition)
     {
         float knockbackForce = 5f; // 넉백 세기 // TODO : 이거 따로 변수로 빼는게 좋을것 같음
 
@@ -170,7 +185,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         {   
             CurrentHp -= damage;
             TriggerDamagedAnimaiton(); // TODO : 피격 이미지 박쥐 참고해서 좀 수정하면 좋을것 같음
-            //DebugController.Log($"{transform.name} took {damage} damage -> Current HP : {CurrentHp} | called in MonsterBase");
+            Debug.Log($"{transform.name} took {damage} damage -> Current HP : {CurrentHp}");
 
             if (CurrentHp <= 0)
             {
@@ -259,6 +274,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     public void TriggerAttackAnimaiton()
     {
+        Debug.Log("TriggerAttackAnimaiton 실행 ");
         MonsterAnimator.SetTrigger(attack);
     }
 

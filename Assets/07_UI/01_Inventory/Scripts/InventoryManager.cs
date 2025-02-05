@@ -466,21 +466,23 @@ public class InventoryManager : MonoBehaviour
         Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
 
-        string[] split = hit.collider.name.Split('(');
-
-        if (hit.collider != null && split[0] == "Campfire" 
-            && Vector3.Distance(GameManager.Instance.GetPlayerPos(), hit.collider.transform.position) < 2f)
+        if (hit.collider != null)
         {
-            hit.collider.gameObject.GetComponent<Campfire>().AddDurability(_startSlotItemCount * 10);
+            string[] split = hit.collider.name.Split('(');
 
-            RemoveItemFromDict(wood.Name, _startSlotItemCount);
+            if(split[0] == "Campfire" &&
+            Vector3.Distance(GameManager.Instance.GetPlayerPos(), hit.collider.transform.position) < 2f)
+            {
+                hit.collider.gameObject.GetComponent<Campfire>().AddDurability(_startSlotItemCount * 10);
 
-            ClearDragUI();
+                RemoveItemFromDict(wood.Name, _startSlotItemCount);
+
+                ClearDragUI();
+            }
         }
         else
         {
             DropItemToField();
-
         }
     }
 
@@ -489,16 +491,21 @@ public class InventoryManager : MonoBehaviour
         Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
 
-        if (hit.collider != null && hit.collider.name == "Campfire" &&
-            Vector3.Distance(GameManager.Instance.GetPlayerPos(), hit.collider.transform.position) < 2f)
+        if (hit.collider != null)
         {
-            for (int i = 0; i < _startSlotItemCount; ++i)
+            string[] split = hit.collider.name.Split('(');
+
+            if (split[0] == "Campfire" &&
+            Vector3.Distance(GameManager.Instance.GetPlayerPos(), hit.collider.transform.position) < 2f)
             {
-                Item item = PoolManager.Instance.InstantiateItem(edibleItemData.ItemDataAfterGrilled);
+                for (int i = 0; i < _startSlotItemCount; ++i)
+                {
+                    Item item = PoolManager.Instance.InstantiateItem(edibleItemData.ItemDataAfterGrilled);
 
-                Vector3 dir = hit.collider.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
+                    Vector3 dir = hit.collider.transform.position + new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
 
-                item.Spread(hit.collider.transform.position, dir, Random.Range(2.5f, 3f));
+                    item.Spread(hit.collider.transform.position, dir, Random.Range(2.5f, 3f));
+                }
             }
 
             RemoveItemFromDict(edibleItemData.Name, _startSlotItemCount);
@@ -598,11 +605,11 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public bool SendItemDataToBox(ItemData itemData)
+    public bool SendItemDataToBox(ItemData itemData, int durability)
     {
         _inventoryDict[itemData.Name] -= 1;
 
-        return BoxManager.Instance.AddItem(itemData);
+        return BoxManager.Instance.AddItem(itemData, durability);
     }
 
     /* 호준님 코드

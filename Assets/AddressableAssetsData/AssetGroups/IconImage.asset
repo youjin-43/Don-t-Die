@@ -171,6 +171,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - IconImage
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60f54f83cac6ef84d8447922b46bcd0a
+    m_Address: Assets/03_Image/Icon/Items/InventoryItem/Bag.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - IconImage
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 67cb4ec51aff04f49b32da33df17610d
     m_Address: BonePickaxe
     m_ReadOnly: 0

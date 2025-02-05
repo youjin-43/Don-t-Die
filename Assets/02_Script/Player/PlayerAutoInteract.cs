@@ -16,7 +16,8 @@ public class PlayerAutoInteract : MonoBehaviour
     [HideInInspector] public PlayerAnimator playerAnimator;
     float moveSpeed =0f;
 
-    [SerializeField] bool isAutoInteracting = false; // 자동 상호작용 중인지(디버그용)
+    [SerializeField] public bool isAutoInteracting = false;
+
     [Space(10f)]
     [SerializeField] float detectionRange = 5f; // 탐색 반경
     [SerializeField] float InteractionRange = 1f; // 상호작용 반경

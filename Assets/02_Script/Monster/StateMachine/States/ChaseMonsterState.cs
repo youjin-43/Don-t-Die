@@ -7,15 +7,12 @@ public class ChaseMonsterState : IMonsterState
     MonsterBase monster;
 
     Transform target;
-    float chaseSpeed;
-
     float attackRange; // 공격 사거리
 
 
     public ChaseMonsterState(MonsterBase monster)
     {
         this.monster = monster;
-        chaseSpeed = monster.monsterData.ChaseOrFleeSpeed;
         attackRange = monster.monsterData.AttackRange;
     }
 
@@ -23,7 +20,6 @@ public class ChaseMonsterState : IMonsterState
     public void EnterState()
     {
         Debug.Log($"{monster.gameObject.name} 이 Chase 상태로 진입!");
-
         target = monster.Target;
     }
 
@@ -33,31 +29,27 @@ public class ChaseMonsterState : IMonsterState
 
     public void UpdateState()
     {
-        if (target != null)
+        // 목표 잃었을 때: target이 null이면 Idle로 전환
+        if (target == null)
         {
-            float distance = Vector3.Distance(monster.transform.position, target.position);
+            monster.OnIdle();
+            return;
+        }
 
-            if (distance <= attackRange)
-            {
-                monster.OnAttack();  // 공격 상태로 전환
-            }
-            else
-            {
-                ChaseTarget();
-                HandleAnimation();
-            }
+        // Vector3.Distance를 sqrMagnitude로 변경하여 성능 개선
+        Vector3 dir = target.position - monster.transform.position;
+        float sqrDistance = dir.sqrMagnitude;
+
+        if (sqrDistance <= attackRange * attackRange)
+        {
+            Debug.Log("target이 공격범위 안으로 들어왔으므로 공격상태로 전환합니다 ");
+            monster.OnAttack();
         }
         else
         {
-            monster.OnIdle();
+            monster.ChaseTarget();
+            HandleAnimation();
         }
-    }
-
-    void ChaseTarget()
-    {
-        //Debug.Log($"내 위치 : {monster.transform.position}, 타겟 위치 : {target.position}");
-        monster.transform.position = Vector3.MoveTowards(monster.transform.position, target.position, chaseSpeed * Time.deltaTime);
-
     }
 
     // TODO : 이거 꼭 매프레임 파라미터를 설정해야하나..?
@@ -67,7 +59,6 @@ public class ChaseMonsterState : IMonsterState
         Vector3 dir = target.position - monster.transform.position;
         monster.SetIsMovingAnimation(true);
         monster.SetDirnimaiton(dir.x, dir.y);
+
     }
-
-
 }

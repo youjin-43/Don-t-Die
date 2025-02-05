@@ -30,6 +30,8 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
     private CraftListItemSlotType _type;
     private bool                  _possibleCraft = false;
 
+    private bool _isBag = false;
+
     Coroutine co_doingCraft;
 
     public string GetItemName()
@@ -44,7 +46,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
             _currentItemCountText = transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
             _needItemCountText    = transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>();
 
-            _description     = transform.GetChild(3).gameObject;
+            _description     = transform.GetChild(3).GetChild(0).gameObject;
             _descriptionText = _description.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         
             _description.SetActive(false);
@@ -75,6 +77,11 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
             _descriptionText.text = itemData.NameKR;
             _itemNameKr = itemData.NameKR;
         }
+    }
+
+    public bool IsBag()
+    {
+        return _isBag;
     }
 
     public void SetRecipe(Dictionary<string, int> recipe)
@@ -133,12 +140,36 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
         if (co_doingCraft != null) return;
         if (eventData.button == PointerEventData.InputButton.Right && _type == CraftListItemSlotType.ResultSlot && _possibleCraft == true)
         {
+            if (_itemName == "Bag")
+            {
+                _isBag = true;
+
+                foreach (var ingredient in _recipe)
+                {
+                    InventoryManager.Instance.RemoveItem(ingredient.Key, ingredient.Value);
+                }
+
+                CraftManager.Instance.UpdateCraftingUI();
+                GameManager.Instance.IsBagCreated = true;
+
+                return;
+            }
+
             ItemData currentItemData = DataManager.Instance.ItemData[_itemName];
             int maxDurability = 0;
 
             if (currentItemData is EquippableItemData)
             {
-                maxDurability = (currentItemData as EquippableItemData).maxDurability;
+                string[] split = currentItemData.NameKR.Split(' ');
+
+                if (split[1] == "물병")
+                {
+                    maxDurability = 0;
+                }
+                else
+                {
+                    maxDurability = (currentItemData as EquippableItemData).maxDurability;
+                }
             }
 
             co_doingCraft = StartCoroutine(DoingCraftRoutine(currentItemData, maxDurability));
@@ -168,7 +199,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
     {
         if(_itemNameKr != null)
         {
-            _description.transform.SetParent(CraftManager.Instance.ToolTipCanvas);
+            //_description.transform.SetParent(CraftManager.Instance.ToolTipCanvas);
 
             // UI를 최상단으로
             //_description.transform.SetAsLastSibling();
@@ -181,7 +212,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
     {
         if (_itemNameKr != null)
         {
-            _description.transform.SetParent(transform);
+            //_description.transform.SetParent(transform);
             _description.SetActive(false);
         }
     }

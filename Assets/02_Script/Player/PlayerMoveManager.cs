@@ -11,6 +11,7 @@ public class PlayerMoveManager : MonoBehaviour
 {
     // 이동 가능한 상태인가? 
     [SerializeField] bool canMove;
+    [SerializeField] bool isAutoInteracting;
 
     // 플레이어 관련 수치들 
     PlayerStatus playerStatus;
@@ -56,18 +57,17 @@ public class PlayerMoveManager : MonoBehaviour
         // 플레이어가 죽었으면 조작 금지
         if (playerStatus.IsDead()) return;
 
-        if (canMove) // 도구 사용중에는 이동 및 공격 못하도록 
+
+
+        if (canMove)
         {
-            playerMove.HandleMovement(); // 상하좌우 입력 관리 
-            playerAutoInteract.AutoInteract(); // 자동 상호작용 (스페이스바)
+            playerAutoInteract.AutoInteract(); // 자동 상호작용 중이면 이동 X
+            isAutoInteracting = playerAutoInteract.isAutoInteracting;
 
-            // UI 클릭 중에는 도구 사용을 막아야 할 듯?
-            if(UIManager.Instance.IsUIClick() == false)
-            {
-                if (Input.GetMouseButtonDown(0)) playerUseTool.StartUsingEquippedTool(); // 도구 사용 
-            }
+            if (!isAutoInteracting) playerMove.HandleMovement(); // 상하좌우 이동
+            if (UIManager.Instance.IsUIClick() == false && Input.GetMouseButtonDown(0)) playerUseTool.StartUsingEquippedTool(); // 도구 사용 
+
         }
-
         if (Input.GetMouseButtonUp(0)) playerUseTool.StopUsingEquippedTool(); 
 
         playerFishingAction.Fishing(); // 낚시 
@@ -117,13 +117,11 @@ public class PlayerMoveManager : MonoBehaviour
         // DEBUG : 상자 토글
         if(Input.GetKeyDown(KeyCode.E))
         {
-            BoxManager.Instance.ToggleBoxUI();
+            if(GameManager.Instance.IsBagCreated == true)
+            {
+                BoxManager.Instance.ToggleBoxUI();
+            }
         }
-    }
-
-    public void Die()
-    {
-        playerAnimator.TriggerDieAnimation();
     }
 
     #region Set canMove - Tool 애니메이션에서 호출됨 
