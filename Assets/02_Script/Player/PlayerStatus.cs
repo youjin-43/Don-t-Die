@@ -243,6 +243,14 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     public void EatItem(EdibleItemData edibleItemData)
     {
+        if (edibleItemData.Name.Equals("Mushroom") || edibleItemData.Name.Equals("Fish") || edibleItemData.Name.Equals("RawMeat"))
+        {
+            if (UnityEngine.Random.Range(0f,1f) <= 0.8f)
+            {
+                SetLastDamageCause(DeathCause.ParasiticInfection);
+                Die();
+            }
+        }
         GainHP(edibleItemData.healthValue);
         GainHungry(edibleItemData.hungerValue);
         GainThirsty(edibleItemData.thirstValue);
