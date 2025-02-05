@@ -6106,51 +6106,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4496422571477699658, guid: 7f62210854361ad4b8f9fd9c581280a9, type: 3}
   m_PrefabInstance: {fileID: 445119338}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &452852999
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 452853001}
-  - component: {fileID: 452853000}
-  m_Layer: 0
-  m_Name: PoolManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &452853000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452852999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f73c1d14237512844afd1956dfb1e3f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 3746515995462291704, guid: 7f62210854361ad4b8f9fd9c581280a9, type: 3}
---- !u!4 &452853001
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452852999}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &464700357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23972,7 +23927,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1149138299}
   - {fileID: 1686254545}
-  - {fileID: 452853001}
   - {fileID: 723452117}
   - {fileID: 1443246695}
   - {fileID: 464700357}

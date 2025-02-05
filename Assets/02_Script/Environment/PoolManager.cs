@@ -82,6 +82,8 @@ public class PoolManager : MonoBehaviour
                 go = Create();
             }
 
+            if (go == null) return null;
+
             go.SetActive(true);
 
             if (parent != null)
