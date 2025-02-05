@@ -22,6 +22,8 @@ MonoBehaviour:
   equipSlot: 2
   maxDurability: 10
   currentDurability: 10
+  ChargePerUse: 0
+  ThisissBottle: 0
   availableTypes: 
-  atk: 0
+  atk: 12.5
   Type: 1

@@ -96,6 +96,11 @@ public class MushroomMonster : MonoBehaviour, IItemDroppable, IDamageable
         OnMonsterStateEnd?.Invoke(transform.position); // 이벤트 호출하여 버섯으로 변환
     }
 
+    void ReturnToPool()
+    {
+        PoolManager.Instance.Push(gameObject);
+    }
+
     #region 피격당했을 때 
 
     public void TakeDamage(int damage)
