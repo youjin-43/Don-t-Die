@@ -75,6 +75,7 @@ public class MushroomMonster : MonoBehaviour, IItemDroppable, IDamageable
 
     private IEnumerator MoveToPosition(Vector3 targetPos)
     {
+        SoundManager.Instance.Play(AudioType.Effect, AudioClipName.Mushroom_Flee);
         SetIsMovingAnimation(true); // 애니메이션 설정 
         SetDirnimaiton(targetPos - transform.position);
 
@@ -100,6 +101,7 @@ public class MushroomMonster : MonoBehaviour, IItemDroppable, IDamageable
     public void TakeDamage(int damage)
     {
         DropItems();
+        SoundManager.Instance.Play(AudioType.Effect, AudioClipName.Mushroom_Die);
         Destroy(gameObject); // TODO : 풀매니저로 나중에 변경.. 
     }
 
