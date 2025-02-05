@@ -29,9 +29,10 @@ public class ChaseMonsterState : IMonsterState
 
     public void UpdateState()
     {
-        // 목표 잃었을 때: target이 null이면 Idle로 전환
-        if (target == null)
+        // 공격 대상이 없으면 idle로 상태 전환 
+        if (target == null || target.GetComponent<IDamageable>().IsDead())
         {
+            Debug.Log("공격 대상이 없어 idle 상태로 전환합니다");
             monster.OnIdle();
             return;
         }
