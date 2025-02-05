@@ -5,7 +5,8 @@ using VInspector;
 
 public enum AudioClipName
 {
-    BGM,
+    None = 999,
+    BGM = 0,
     FootStep,
     AttackTree,
     AttackMineral,
@@ -18,7 +19,9 @@ public enum AudioClipName
     PlayerAttack,
     PlayerRevive,
     Mushroom_Flee,
-    Mushroom_Die
+    Mushroom_Die,
+    Rat_Flee,
+    Rat_Die
 }
 
 public enum AudioType

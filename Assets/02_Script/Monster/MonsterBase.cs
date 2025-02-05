@@ -180,6 +180,8 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
     #region Damaged(IDamageable)
 
+    protected AudioClipName dieClip;
+
     public virtual void TakeDamage(int damage) // TODO : 선택된 도구의 공격력을 받아오도록 
     {
         if(monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState)
@@ -190,6 +192,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
             if (CurrentHp <= 0)
             {
+                if(dieClip != AudioClipName.None) SoundManager.Instance.Play(AudioType.Effect, dieClip);
                 OnDie();
             }
             else ApplyKnockback(); // 넉백 적용
