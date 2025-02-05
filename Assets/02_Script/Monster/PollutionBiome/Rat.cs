@@ -93,5 +93,28 @@ public class Rat : MonsterBase
     {
         OnIdle();
     }
+
+    // OnDie() 메소드를 오버라이드하여 추가 로직 구현
+    public override void OnDie()
+    {
+        // 기본 사망 처리
+        base.OnDie();
+
+        // Target이 공격자로 등록되어 있다면(즉, 플레이어가 공격했을 경우)
+        if (Target != null && Target.CompareTag("Player"))
+        {
+            // 20% 확률로 감염
+            if (Random.Range(0f, 1f) <= 0.9f)
+            {
+
+                // 흑사병에 의한 사망 원인을 설정
+                PlayerStatus playerStatus = Target.GetComponent<PlayerStatus>();
+                playerStatus.SetLastDamageCause(DeathCause.Plague); // 사망 사유 셋팅
+                playerStatus.Die();
+
+                Debug.Log("플레이어가 쥐를 죽였으나, 흑사병에 감염되어 사망했습니다.");
+            }
+        }
+    }
 }
 
