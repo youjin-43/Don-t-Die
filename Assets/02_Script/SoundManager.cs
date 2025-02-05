@@ -5,8 +5,7 @@ using VInspector;
 
 public enum AudioClipName
 {
-    None = 999,
-    BGM = 0,
+    BGM,
     FootStep,
     AttackTree,
     AttackMineral,
@@ -33,7 +32,7 @@ public enum AudioType
 
 public class SoundManager : MonoBehaviour
 {
-    List<AudioSource> audioSources = new List<AudioSource>();
+    [SerializeField] List<AudioSource> audioSources = new List<AudioSource>();
     public SerializedDictionary<AudioClipName, AudioClip> audioClips = new SerializedDictionary<AudioClipName, AudioClip>();
 
     private static SoundManager instance;
