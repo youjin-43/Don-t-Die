@@ -7848,7 +7848,7 @@ MonoBehaviour:
       isKeyRepeated: 0
       isKeyNull: 0
     dividerPos: 0.33
-  CraftListPrefab: {fileID: 3481420466216304959, guid: 3e7803d64815ebe4c82bc3f8085c98aa, type: 3}
+  CraftListPrefab: {fileID: 3481420466216304959, guid: bf05676e5e52d364c953633b0eae887c, type: 3}
   CraftListItemSlotPrefab: {fileID: 405714739702161845, guid: dc21969b866595a41ba257d632b65edb, type: 3}
   isCrafing: 0
   ToolTipCanvas: {fileID: 0}
