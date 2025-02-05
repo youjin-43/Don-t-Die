@@ -117,9 +117,9 @@ public class PlayerMoveManager : MonoBehaviour
         // DEBUG : 상자 토글
         if(Input.GetKeyDown(KeyCode.E))
         {
-                BoxManager.Instance.ToggleBoxUI();
             if(GameManager.Instance.IsBagCreated == true)
             {
+                BoxManager.Instance.ToggleBoxUI();
             }
         }
     }

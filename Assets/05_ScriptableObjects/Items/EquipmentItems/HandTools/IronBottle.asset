@@ -23,7 +23,7 @@ MonoBehaviour:
   maxDurability: 80
   currentDurability: 0
   ChargePerUse: 10
-  ThisissBottle: 0
+  ThisissBottle: 1
   availableTypes: 
   atk: 0
   Type: 6
