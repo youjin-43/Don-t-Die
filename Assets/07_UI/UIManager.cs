@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] DeathUI _deathUI;
     [SerializeField] EscUI   _escUI;
+    [SerializeField] public SettingUI _settingUI;
 
     private void Awake()
     {
@@ -42,8 +43,9 @@ public class UIManager : MonoBehaviour
         _craftUI.SetActive(true);
         _statusUI.SetActive(true);
         _boxUI.SetActive(true);
-        _deathUI.gameObject.SetActive(false);
-        _escUI.gameObject.SetActive(false);
+        _deathUI.gameObject.SetActive(true);
+        _escUI.gameObject.SetActive(true);
+        _settingUI.gameObject.SetActive(true);
     }
 
     private void Update()
@@ -51,9 +53,9 @@ public class UIManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             // esc창이 켜져있고, 설정창 까지 켜져있으면 설정창만 닫아야 함
-            if (_escUI.SettingUI.IsOpened() == true)
+            if (_settingUI.IsOpened() == true)
             {
-                _escUI.SettingUI.ToggleSettingUI();
+                _settingUI.ToggleSettingUI();
             }
             else
             {
