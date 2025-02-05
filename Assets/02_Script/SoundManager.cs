@@ -1,17 +1,28 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VInspector;
 
 public enum AudioClipName
 {
-
+    BGM,
+    FootStep,
+    AttackTree,
+    AttackMineral,
+    Equip,
+    GetItem,
+    Hit,
+    CraftStart,
+    CraftEnd,
+    PlayerHit,
+    PlayerAttack
 }
 
 public enum AudioType
 {
     BGM,
     Effect,
-
+    FootStep
 }
 
 public class SoundManager : MonoBehaviour
@@ -58,10 +69,11 @@ public class SoundManager : MonoBehaviour
         Init();
     }
 
-    public void Play(AudioType type, AudioClipName clipName)
+    public void Play(AudioType type, AudioClipName clipName, float volume = 0.6f)
     {
         AudioSource audioSource = audioSources[(int)type];
         AudioClip clip = audioClips[clipName];
+        audioSource.volume = volume;
         if (clip == null) return;
 
         switch (type)
@@ -77,11 +89,46 @@ public class SoundManager : MonoBehaviour
                     audioSource.PlayOneShot(clip);
                     break;
                 }
+            case AudioType.FootStep:
+                {
+                    if (audioSource.isPlaying) { return; }
+                    audioSource.PlayOneShot(clip);
+                    break;
+                }
         }
     }
 
     public void Stop(AudioType type)
     {
         audioSources[(int)type].Stop();
+    }
+
+    public void SetVolume(AudioType type, float volume)
+    {
+        audioSources[(int)type].volume = volume;
+    }
+
+    public void FadeVolume(AudioType type, float volume)
+    {
+        StartCoroutine(FadeVolumeRoutine(type, volume));
+    }
+
+    IEnumerator FadeVolumeRoutine(AudioType type, float volume, float duration = 1f)
+    {
+        AudioSource audioSource = audioSources[(int)type];
+        float startVolume = audioSource.volume;
+        float timer = 0;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startVolume, volume, timer / duration);
+            yield return null;
+        }
+
+        if (audioSource.volume < float.Epsilon)
+        {
+            audioSource.Stop();
+        }
     }
 }

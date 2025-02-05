@@ -53,6 +53,7 @@ public class PlayerAutoInteract : MonoBehaviour
     /// </summary>
     void FindClosestInteractableObj()
     {
+        ToolItemData currentTool = EquipmentManager.Instance.GetCurrentTool();
         //DebugController.Log("FindClosestInteractableObj 실행 ");
 
         // 탐색 반경 내에 있는 Interactable 물체 탐지
@@ -61,7 +62,12 @@ public class PlayerAutoInteract : MonoBehaviour
         // 주변에 Interactable한 오브젝트가 있다면 가장 가까운 것으로 이동 타겟 설정 
         if (colliders.Count > 0)
         {
+            if (currentTool == null)
+            {
+                colliders.RemoveAll(collider => collider.TryGetComponent(out IDamageable damageable));
+            }
             colliders.RemoveAll(collider => collider.TryGetComponent(out Growable growable) && !growable.canBeHarvested);
+            colliders.RemoveAll(collider => collider.TryGetComponent(out DamageableResourceNode resource) && !currentTool.AvailableTypes.Contains(resource.Data.ObjectType));
 
             autoInteractTargetTransform = colliders // Collider2D 배열을 
                 .Select(collider => collider.transform) //transform 배열로 바꿔주고 (using System.Linq; 필요)
@@ -79,11 +85,16 @@ public class PlayerAutoInteract : MonoBehaviour
                 if (direction.x < 0) playerAnimator.LookLeft();
                 if (direction.x > 0) playerAnimator.LookRight();
             }
+            else
+            {
+                DebugController.Log("autoInteractTargetTransform is null");
+                StopAutoInteraction();
+            }
         }
         else
         {
-            //DebugController.Log("상호작용 가능한 오브젝트가 없습니다 ");
             autoInteractTargetTransform = null;
+            StopAutoInteraction();
         }
     }
 
@@ -164,6 +175,7 @@ public class PlayerAutoInteract : MonoBehaviour
         // 필드의 아이템을 인벤토리에 추가했다면
         if (InventoryManager.Instance.AddItem(gotItem.ItemData, gotItem.currentDurability))
         {
+            SoundManager.Instance.Play(AudioType.Effect, AudioClipName.GetItem, 0.8f);
             CraftManager.Instance.UpdateCraftingUI();
             PoolManager.Instance.Push(targetItem.gameObject); // 필드의 아이템은 지움 //TODO : 아이템들도 오브젝트 풀 써야할까? 
             targetItem = null;
