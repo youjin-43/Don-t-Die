@@ -53,6 +53,7 @@ public class PlayerAutoInteract : MonoBehaviour
     /// </summary>
     void FindClosestInteractableObj()
     {
+        ToolItemData currentTool = EquipmentManager.Instance.GetCurrentTool();
         //DebugController.Log("FindClosestInteractableObj 실행 ");
 
         // 탐색 반경 내에 있는 Interactable 물체 탐지
@@ -61,7 +62,12 @@ public class PlayerAutoInteract : MonoBehaviour
         // 주변에 Interactable한 오브젝트가 있다면 가장 가까운 것으로 이동 타겟 설정 
         if (colliders.Count > 0)
         {
+            if (currentTool == null)
+            {
+                colliders.RemoveAll(collider => collider.TryGetComponent(out DamageableResourceNode damageableResourceNode));
+            }
             colliders.RemoveAll(collider => collider.TryGetComponent(out Growable growable) && !growable.canBeHarvested);
+            colliders.RemoveAll(collider => collider.TryGetComponent(out DamageableResourceNode resource) && !currentTool.AvailableTypes.Contains(resource.Data.ObjectType));
 
             autoInteractTargetTransform = colliders // Collider2D 배열을 
                 .Select(collider => collider.transform) //transform 배열로 바꿔주고 (using System.Linq; 필요)
@@ -82,8 +88,8 @@ public class PlayerAutoInteract : MonoBehaviour
         }
         else
         {
-            //DebugController.Log("상호작용 가능한 오브젝트가 없습니다 ");
             autoInteractTargetTransform = null;
+            StopAutoInteraction();
         }
     }
 
