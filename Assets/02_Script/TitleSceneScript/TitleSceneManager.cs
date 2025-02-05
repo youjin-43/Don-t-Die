@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class TitleSceneManager : MonoBehaviour
 {
     [SerializeField] GameObject _achievementUI;
-    [SerializeField] SettingUI   SettingUI;
+    [SerializeField] SettingUI SettingUI;
+    [SerializeField] FadeInOut fadeInout; // ?????? ?? 
 
     void Awake()
     {
@@ -42,6 +43,7 @@ public class TitleSceneManager : MonoBehaviour
 
         if (asyncOperation != null)
         {
+            fadeInout.FadeIn();
             _loadingImage.gameObject.SetActive(true);
 
             _elapsedTime += Time.deltaTime;
@@ -68,6 +70,7 @@ public class TitleSceneManager : MonoBehaviour
                 _dots = "";
 
             }
+            _loadingText.text = _loading + _dots;
         }
     }
 
@@ -81,7 +84,7 @@ public class TitleSceneManager : MonoBehaviour
         Time.timeScale = 1;
         SoundManager.Instance.FadeVolume(AudioType.BGM, 0.1f);
         //SceneManager.LoadSceneAsync("GameScene");
-
+        fadeInout.FadeOut();
         StartCoroutine(LoadSceneCoroutine("GameScene"));
     }
 
@@ -102,6 +105,8 @@ public class TitleSceneManager : MonoBehaviour
 
     private IEnumerator LoadSceneCoroutine(string SceneName)
     {
+        yield return new WaitForSeconds(0.4f);
+
         asyncOperation = SceneManager.LoadSceneAsync(SceneName);
         asyncOperation.allowSceneActivation = false;
 
@@ -109,5 +114,10 @@ public class TitleSceneManager : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    private IEnumerator Wait(float amount)
+    {
+        yield return new WaitForSeconds(amount);
     }
 }
