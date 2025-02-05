@@ -77,22 +77,6 @@ public class EnvironmentManager : MonoBehaviour
         VoronoiMapGenerator.Generate();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            SaveData();
-        }
-
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            if (LoadData())
-            {
-                VoronoiMapGenerator.GenerateFromData(biomeMap, natureResources.Values.ToList());
-            } 
-        }
-    }
-
     public void SaveData()
     {
         foreach (ResourceObject obj in natureResources.Values)

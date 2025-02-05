@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
     void SpawnPlayer()
     {
         GameObject go = Instantiate(playerPrefab);
+        SoundManager.Instance.Play(AudioType.Effect, AudioClipName.PlayerRevive);
         PlayerTransform = go.transform;
         StatusUIManager.Instance.playerStatus = PlayerTransform.GetComponent<PlayerStatus>();
 

@@ -168,10 +168,10 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
                 {
                     maxDurability = 0;
                 }
-                else
-                {
-                    maxDurability = (currentItemData as EquippableItemData).maxDurability;
-                }
+            }
+            else if (currentItemData is EquippableItemData)
+            {
+                maxDurability = (currentItemData as EquippableItemData).maxDurability;
             }
 
             co_doingCraft = StartCoroutine(DoingCraftRoutine(currentItemData, maxDurability));
