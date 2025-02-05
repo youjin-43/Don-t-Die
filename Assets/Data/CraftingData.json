@@ -4,9 +4,9 @@
       "Name": "BoneBottle",
       "NameKR": "뼈물병",
       "Category": "Bone",
-      "NumOfMaterial": "1",
+      "NumOfMaterial": "2",
       "NeedCraftingTable": "true",
-      "Recipe": "Bone_1"
+      "Recipe": "Bone_2+Iron_1"
     },
     {
       "Name": "BoneAxe",
@@ -52,9 +52,9 @@
       "Name": "GoldBottle",
       "NameKR": "금물병",
       "Category": "Gold",
-      "NumOfMaterial": "1",
+      "NumOfMaterial": "3",
       "NeedCraftingTable": "true",
-      "Recipe": "Gold_1"
+      "Recipe": "Bone_1+Iron_1+Gold_1"
     },
     {
       "Name": "GoldAxe",
@@ -100,9 +100,9 @@
       "Name": "IronBottle",
       "NameKR": "철물병",
       "Category": "Iron",
-      "NumOfMaterial": "1",
+      "NumOfMaterial": "2",
       "NeedCraftingTable": "true",
-      "Recipe": "Iron_1"
+      "Recipe": "Bone_1+Iron_1"
     },
     {
       "Name": "IronAxe",
@@ -148,9 +148,9 @@
       "Name": "StoneBottle",
       "NameKR": "돌물병",
       "Category": "Stone",
-      "NumOfMaterial": "1",
+      "NumOfMaterial": "3",
       "NeedCraftingTable": "true",
-      "Recipe": "Stone_1"
+      "Recipe": "Stone_1+Bone_1+Iron_1"
     },
     {
       "Name": "StoneAxe",
@@ -236,9 +236,9 @@
       "Name": "WoodBottle",
       "NameKR": "나무물병",
       "Category": "Wood",
-      "NumOfMaterial": "1",
+      "NumOfMaterial": "3",
       "NeedCraftingTable": "false",
-      "Recipe": "Branch_1"
+      "Recipe": "Branch_1+Bone_1+Iron_1"
     },
     {
       "Name": "FishingRod",

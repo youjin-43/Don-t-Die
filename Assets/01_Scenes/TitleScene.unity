@@ -2411,10 +2411,10 @@ RectTransform:
   - {fileID: 1282558442}
   m_Father: {fileID: 749923622}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1117556432
 MonoBehaviour:
@@ -2466,7 +2466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c27d5932bef7bca499c4fca9ed589f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AchievementSlotPrefab: {fileID: 2840223299747374333, guid: 11b0ea2764af89244b37cf68fd384868, type: 3}
+  AchievementSlotPrefab: {fileID: 2173460838955915696, guid: 9be80a9566be3734c91be4a1beb0c455, type: 3}
 --- !u!1 &1214231857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2793,7 +2793,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -768, y: -216}
+  m_SizeDelta: {x: -501.6312, y: -216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1282558444
 MonoBehaviour:
@@ -3830,8 +3830,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1094.4, y: 820.8}
+  m_AnchoredPosition: {x: -0.0037689, y: 0}
+  m_SizeDelta: {x: 1418.4, y: 820.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1941452640
 MonoBehaviour:
