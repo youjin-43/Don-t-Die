@@ -88,7 +88,7 @@ public class TimeController : MonoBehaviour
         growTimer += Time.deltaTime * timeScale;
         playerTimer += Time.deltaTime * timeScale;
 
-        DisplayTime();
+        //DisplayTime();
         ControlLight();
 
         if (timer > secondsInDay)

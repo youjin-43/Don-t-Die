@@ -104,7 +104,7 @@ public class Rat : MonsterBase
         if (Target != null && Target.CompareTag("Player"))
         {
             // 20% 확률로 감염
-            if (Random.Range(0f, 1f) <= 0.9f)
+            if (Random.Range(0f, 1f) <= 0.2f)
             {
 
                 // 흑사병에 의한 사망 원인을 설정
