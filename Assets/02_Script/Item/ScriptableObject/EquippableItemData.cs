@@ -19,6 +19,7 @@ public class EquippableItemData : ItemData
 
     [Header("BottleItem Only")]
     [SerializeField] public int ChargePerUse;
+    [SerializeField] public bool ThisissBottle;
 
     public EquipmentSlot EquipSlot { get { return equipSlot; } }
 }

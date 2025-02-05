@@ -136,7 +136,7 @@ public class DataManager : MonoBehaviour
 
     public void SetAchievement(string code)
     {
-        UserAchievementData.Add(code, AchievementData[code]);
+        UserAchievementData.TryAdd(code, AchievementData[code]);
 
         //string json = JsonUtility.ToJson(UserAchievementData, true);
         string json = JsonConvert.SerializeObject(new { Items = ToList(UserAchievementData) }, Formatting.Indented);
