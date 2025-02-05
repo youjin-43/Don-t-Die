@@ -64,7 +64,7 @@ public class PlayerAutoInteract : MonoBehaviour
         {
             if (currentTool == null)
             {
-                colliders.RemoveAll(collider => collider.TryGetComponent(out DamageableResourceNode damageableResourceNode));
+                colliders.RemoveAll(collider => collider.TryGetComponent(out IDamageable damageable));
             }
             colliders.RemoveAll(collider => collider.TryGetComponent(out Growable growable) && !growable.canBeHarvested);
             colliders.RemoveAll(collider => collider.TryGetComponent(out DamageableResourceNode resource) && !currentTool.AvailableTypes.Contains(resource.Data.ObjectType));
@@ -84,6 +84,11 @@ public class PlayerAutoInteract : MonoBehaviour
                 Vector3 direction = autoInteractTargetTransform.position - transform.position;
                 if (direction.x < 0) playerAnimator.LookLeft();
                 if (direction.x > 0) playerAnimator.LookRight();
+            }
+            else
+            {
+                DebugController.Log("autoInteractTargetTransform is null");
+                StopAutoInteraction();
             }
         }
         else
