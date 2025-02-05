@@ -1726,6 +1726,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 6399303531053045431, guid: 661156808213248eb968b902125bc270, type: 3}
   Test: 1
   PlayerTransform: {fileID: 776206013}
+  IsBagCreated: 0
 --- !u!4 &121632193
 Transform:
   m_ObjectHideFlags: 0
@@ -25588,7 +25589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &4951602950993559971
 GameObject:
   m_ObjectHideFlags: 0

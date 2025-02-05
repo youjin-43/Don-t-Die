@@ -41,6 +41,42 @@ public class EquipmentItemSlot : MonoBehaviour, IPointerClickHandler
         }
     }
       
+    /// <summary>
+    /// 물병 전용
+    /// </summary>
+    public void AddDurability()
+    {
+        EquippableItemData bottle = _itemData as EquippableItemData;
+
+        _currentDurability = bottle.maxDurability;
+
+        float fillAmount = _currentDurability / (float)bottle.maxDurability;
+
+        _itemDurabilityGauge.fillAmount = fillAmount;
+        _itemDurabilityGauge.color = Color.HSVToRGB(fillAmount / 3, 1.0f, 1.0f);
+    }
+
+    /// <summary>
+    /// 물병 전용
+    /// </summary>
+    public void DrinkWater()
+    {
+        if(_currentDurability <= 0)
+        {
+            return;
+        }
+
+        EquippableItemData bottle = _itemData as EquippableItemData;
+
+        _currentDurability -= bottle.ChargePerUse;
+
+        float fillAmount = _currentDurability / (float)bottle.maxDurability;
+
+        _itemDurabilityGauge.fillAmount = fillAmount;
+        _itemDurabilityGauge.color = Color.HSVToRGB(fillAmount / 3, 1.0f, 1.0f);
+
+        GameManager.Instance.PlayerTransform.GetComponent<PlayerStatus>().DrinkWater(bottle.ChargePerUse);
+    }
 
     public bool AddItemData(ItemData itemData, int durability)
     {

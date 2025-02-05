@@ -17,5 +17,8 @@ public class EquippableItemData : ItemData
     [SerializeField] public int maxDurability;
     [SerializeField] public int currentDurability;
 
+    [Header("BottleItem Only")]
+    [SerializeField] public int ChargePerUse;
+
     public EquipmentSlot EquipSlot { get { return equipSlot; } }
 }

@@ -14,13 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 1
   Name: IronBottle
+  NameKR: 
   Prefab: {fileID: 2006341027302073098, guid: c17cbf0ec384d4d4abd1a2b493dbc2e3, type: 3}
   Image: {fileID: 21300000, guid: 0c4f9dd2a52e62d4a8c62abf71f8e89a, type: 3}
   IsCountable: 0
   MaxCountSize: 1
   equipSlot: 2
-  maxDurability: 10
+  maxDurability: 80
   currentDurability: 0
+  ChargePerUse: 10
   availableTypes: 
   atk: 0
   Type: 6

@@ -68,6 +68,22 @@ public class EquipmentManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 물병 전용
+    /// </summary>
+    public void AddDurability()
+    {
+        _toolItemSlot.AddDurability();
+    }
+
+    /// <summary>
+    /// 물병 전용
+    /// </summary>
+    public void DrinkWater()
+    {
+        _toolItemSlot.DrinkWater();
+    }
+
+    /// <summary>
     /// 장비창에 있는 장비를 가져오는 함수
     /// </summary>
     public ToolItemData GetCurrentTool()
