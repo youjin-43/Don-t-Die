@@ -333,6 +333,7 @@ public class InventoryItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
                 }
             case ItemType.Equippable:
                 {
+                    SoundManager.Instance.Play(AudioType.Effect, AudioClipName.Equip);
                     EquippableItemData equippableItemData = _itemData as EquippableItemData;
 
                     // 현재 슬롯의 장비를 장비창으로 넘기고

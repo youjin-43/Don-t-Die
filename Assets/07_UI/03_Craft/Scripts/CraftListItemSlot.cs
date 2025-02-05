@@ -182,7 +182,7 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
     {
         PlayerAnimator playerAnimator = GameManager.Instance.PlayerTransform.GetComponent<PlayerAnimator>();
         playerAnimator.TriggerDoingAnimation();
-
+        SoundManager.Instance.Play(AudioType.Effect, AudioClipName.CraftStart);
         yield return new WaitForSeconds(0.5f);
 
         if (InventoryManager.Instance.AddItem(itemData, maxDurability) == true)
@@ -191,7 +191,8 @@ public class CraftListItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEn
             {
                 InventoryManager.Instance.RemoveItem(ingredient.Key, ingredient.Value);
             }
-
+            SoundManager.Instance.Stop(AudioType.Effect);
+            SoundManager.Instance.Play(AudioType.Effect, AudioClipName.CraftEnd);
             CraftManager.Instance.UpdateCraftingUI();
         }
         co_doingCraft = null;
