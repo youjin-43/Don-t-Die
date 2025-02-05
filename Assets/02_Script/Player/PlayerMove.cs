@@ -30,4 +30,14 @@ public class PlayerMove : MonoBehaviour
         if (dir.x < 0) playerAnimator.LookLeft();
         if (dir.x > 0) playerAnimator.LookRight();
     }
+
+    void PlayFootStep()
+    {
+        SoundManager.Instance.Play(AudioType.FootStep, AudioClipName.FootStep);
+    }
+
+    void StopFootStep()
+    {
+        SoundManager.Instance.Stop(AudioType.FootStep);
+    }
 }

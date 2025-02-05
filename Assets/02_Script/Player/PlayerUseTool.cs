@@ -35,6 +35,14 @@ public class PlayerUseTool : MonoBehaviour
                     {
                         ObjectType type = collision.gameObject.GetComponent<DamageableResourceNode>().Data.ObjectType;
                         if (!currentTool.AvailableTypes.Contains(type)) return;
+                        if (type == ObjectType.Tree)
+                        {
+                            SoundManager.Instance.Play(AudioType.Effect, AudioClipName.AttackTree);
+                        }
+                        else if (type == ObjectType.Mineral)
+                        {
+                            SoundManager.Instance.Play(AudioType.Effect, AudioClipName.AttackMineral);
+                        }
                     }
                     damageable.TakeDamage((int)currentTool.Atk);
                     EquipmentManager.Instance.ReduceToolDurability(out destroyed);
@@ -117,6 +125,7 @@ public class PlayerUseTool : MonoBehaviour
             {
                 case ToolType.Sword:
                     playerAnimator.SetSwordAnimation_True();
+                    SoundManager.Instance.Play(AudioType.Effect, AudioClipName.PlayerAttack);
                     break;
                 case ToolType.Axe:
                     playerAnimator.SetAxeAnimation_True();

@@ -164,6 +164,7 @@ public class PlayerAutoInteract : MonoBehaviour
         // 필드의 아이템을 인벤토리에 추가했다면
         if (InventoryManager.Instance.AddItem(gotItem.ItemData, gotItem.currentDurability))
         {
+            SoundManager.Instance.Play(AudioType.Effect, AudioClipName.GetItem, 0.8f);
             CraftManager.Instance.UpdateCraftingUI();
             PoolManager.Instance.Push(targetItem.gameObject); // 필드의 아이템은 지움 //TODO : 아이템들도 오브젝트 풀 써야할까? 
             targetItem = null;

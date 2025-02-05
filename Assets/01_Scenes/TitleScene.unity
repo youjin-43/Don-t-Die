@@ -416,7 +416,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClips:
-    serializedKvps: []
+    serializedKvps:
+    - Key: 0
+      Value: {fileID: 8300000, guid: 28387b0c3cc57384d8eb861825fadb49, type: 3}
+      index: 0
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 1
+      Value: {fileID: 8300000, guid: ceb48d400b748b84ebf746c08de5b14b, type: 3}
+      index: 1
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 2
+      Value: {fileID: 8300000, guid: f54a292b03f2e47d1b7ff8abd3c40c23, type: 3}
+      index: 2
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 3
+      Value: {fileID: 8300000, guid: 1fc208d72456a4e59b15ae2b4e2b0c55, type: 3}
+      index: 3
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 4
+      Value: {fileID: 8300000, guid: e3b8a47721f93450ea95597d9f7697e2, type: 3}
+      index: 4
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 5
+      Value: {fileID: 8300000, guid: 0dc2de04a29ca40f5b19632fdaa9b081, type: 3}
+      index: 5
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 7
+      Value: {fileID: 8300000, guid: 26a2115c4b491584c843ab450ac270a6, type: 3}
+      index: 6
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 8
+      Value: {fileID: 8300000, guid: cf58aa4c32edca44fab8133120192c2b, type: 3}
+      index: 7
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 6
+      Value: {fileID: 8300000, guid: 97b85053812414217838ab427f7a5d58, type: 3}
+      index: 8
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 9
+      Value: {fileID: 8300000, guid: cb63eeaeec801d649a7cbed1e8f31d88, type: 3}
+      index: 9
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 10
+      Value: {fileID: 8300000, guid: 58003feeb1762ab46b47b5dfb31914f0, type: 3}
+      index: 10
+      isKeyRepeated: 0
+      isKeyNull: 0
     dividerPos: 0.33
 --- !u!4 &331554223
 Transform:
