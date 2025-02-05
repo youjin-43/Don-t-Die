@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.UI.Image;
@@ -5,6 +6,8 @@ using static UnityEngine.UI.Image;
 public class PlayerGetWaterAction : MonoBehaviour
 {
     [SerializeField] ToolItemData currentTool;
+
+    Coroutine getWaterRoutine;
 
     #region 장비 변경 이벤트
 
@@ -37,6 +40,8 @@ public class PlayerGetWaterAction : MonoBehaviour
 
     public void GetWater()
     {
+        if (getWaterRoutine != null) return;
+
         Vector2 PlayerPos = GameManager.Instance.GetPlayerPos();
 
         if (GameManager.Instance.PlayerDir != Vector2.zero)
@@ -56,9 +61,23 @@ public class PlayerGetWaterAction : MonoBehaviour
                 {
                     // 여기서 물병의 내구도를 최대로 올리면 될듯?
 
-                    EquipmentManager.Instance.AddDurability();
+                    getWaterRoutine = StartCoroutine(GetWaterRoutine());
                 }
             }
         }
+    }
+
+    IEnumerator GetWaterRoutine()
+    {
+        PlayerAnimator playerAnimator = GameManager.Instance.PlayerTransform.GetComponent<PlayerAnimator>();
+        playerAnimator.TriggerDoingAnimation();
+        SoundManager.Instance.Play(AudioType.Effect, AudioClipName.CraftStart);
+        yield return new WaitForSeconds(0.5f);
+
+        EquipmentManager.Instance.AddDurability();
+        SoundManager.Instance.Stop(AudioType.Effect);
+        SoundManager.Instance.Play(AudioType.Effect, AudioClipName.WaterUp);
+
+        getWaterRoutine = null;
     }
 }

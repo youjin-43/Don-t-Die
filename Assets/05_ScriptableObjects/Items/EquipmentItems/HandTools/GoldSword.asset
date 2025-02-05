@@ -20,8 +20,10 @@ MonoBehaviour:
   IsCountable: 0
   MaxCountSize: 1
   equipSlot: 2
-  maxDurability: 10
+  maxDurability: 200
   currentDurability: 10
+  ChargePerUse: 0
+  ThisissBottle: 0
   availableTypes: 
-  atk: 0
+  atk: 40
   Type: 1

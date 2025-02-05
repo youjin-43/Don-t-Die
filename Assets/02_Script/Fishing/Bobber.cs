@@ -50,12 +50,17 @@ public class Bobber : MonoBehaviour
         {
             player.CatchBobber();
         }
+        else
+        {
+            SoundManager.Instance.Play(AudioType.Effect, AudioClipName.WaterDown);
+        }
 
         gameObject.SetActive(!deactivate);
     }
 
     public Item InstantiateFish()
     {
+        SoundManager.Instance.Play(AudioType.Effect, AudioClipName.WaterUp);
         int randIdx = Random.Range(0, fishDatas.Count);
         Item fish = PoolManager.Instance.InstantiateItem(fishDatas[randIdx]);
         fish.transform.position = transform.position;

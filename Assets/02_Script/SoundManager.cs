@@ -20,7 +20,9 @@ public enum AudioClipName
     Mushroom_Flee,
     Mushroom_Die,
     Rat_Flee,
-    Rat_Die
+    Rat_Die,
+    WaterDown,
+    WaterUp
 }
 
 public enum AudioType
@@ -57,6 +59,7 @@ public class SoundManager : MonoBehaviour
                 GameObject go = new GameObject { name = audioTypeNames[i] };
                 audioSources.Add(go.AddComponent<AudioSource>());
                 go.transform.parent = transform;
+                go.GetComponent<AudioSource>().playOnAwake = false;
             }
 
             audioSources[(int)AudioType.BGM].loop = true;

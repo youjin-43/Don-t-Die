@@ -241,7 +241,7 @@ public class PoolManager : MonoBehaviour
     public Item InstantiateItem(ItemData data)
     {
         if (data == null) { return null; }
-
+        if (itemPrefab == null) { return null; }
         Item go = Pop(itemPrefab).GetOrAddComponent<Item>();
         go.SetItemData(data);
 

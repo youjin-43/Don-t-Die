@@ -227,6 +227,11 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         monsterRigidbody.linearVelocity = Vector2.zero; // Rigidbody의 속도를 초기화
     }
 
+    void ReturnToPool()
+    {
+        PoolManager.Instance.Push(gameObject);
+    }
+
     #endregion
 
     #region IItemDroppable

@@ -25,5 +25,5 @@ MonoBehaviour:
   ChargePerUse: 0
   ThisissBottle: 0
   availableTypes: 02000000
-  atk: 0
+  atk: 40
   Type: 2

@@ -6,7 +6,7 @@ public class SettingUI : MonoBehaviour
 {
     [SerializeField] Slider _volumeSlider;
 
-    public static float _value = 0.1f;
+    private float _maxVolume;
 
     void Awake()
     {
@@ -18,9 +18,10 @@ public class SettingUI : MonoBehaviour
         ToggleSettingUI();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        _volumeSlider.value = _value;    
+        _volumeSlider.maxValue = 1f;
+        _volumeSlider.value = SoundManager.Instance.GetVolume();
     }
 
     public void ToggleSettingUI()
@@ -30,9 +31,7 @@ public class SettingUI : MonoBehaviour
 
     public void SetVolume()
     {
-        SoundManager.Instance.SetAllVolume(_volumeSlider.value);
-
-        _value = _volumeSlider.value;
+        SoundManager.Instance.SetAllVolume(_volumeSlider.value * 1.2f);
     }
 
     public bool IsOpened()
