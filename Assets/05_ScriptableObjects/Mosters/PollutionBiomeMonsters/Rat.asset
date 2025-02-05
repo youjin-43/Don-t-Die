@@ -19,9 +19,10 @@ MonoBehaviour:
   MaxHP: 30
   ChaseOrFleeSpeed: 3
   AttackDamage: 0
+  AttackRange: 0
   KnockbackForce: 10
   KnockbackDuration: 1
   DropItems:
-  - data: {fileID: 11400000, guid: 62b608b058674f348a329c683464ff7a, type: 2}
+  - data: {fileID: 11400000, guid: 36eecafa25e5ae9419d38595fa87c03f, type: 2}
     minAmount: 1
-    maxAmount: 3
+    maxAmount: 1

@@ -22,5 +22,5 @@ MonoBehaviour:
   healthValue: 0
   hungerValue: 20
   thirstValue: 0
-  PossibleGrilling: 0
-  ItemDataAfterGrilled: {fileID: 0}
+  PossibleGrilling: 1
+  ItemDataAfterGrilled: {fileID: 11400000, guid: dc802203218c1ff4ba372da52de4906f, type: 2}

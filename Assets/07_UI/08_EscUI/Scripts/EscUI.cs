@@ -3,11 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class EscUI : MonoBehaviour
 {
-    [SerializeField] public SettingUI SettingUI;
-
-    private void Awake()
+    private void Start()
     {
-        SettingUI.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     public void ReturnToTitle()
@@ -19,7 +17,7 @@ public class EscUI : MonoBehaviour
 
     public void OpenSetting()
     {
-        SettingUI.ToggleSettingUI();
+        UIManager.Instance._settingUI.ToggleSettingUI();
     }
 
     public void Resume()

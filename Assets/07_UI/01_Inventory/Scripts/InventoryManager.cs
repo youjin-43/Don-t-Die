@@ -506,11 +506,11 @@ public class InventoryManager : MonoBehaviour
 
                     item.Spread(hit.collider.transform.position, dir, Random.Range(2.5f, 3f));
                 }
+
+                RemoveItemFromDict(edibleItemData.Name, _startSlotItemCount);
+
+                ClearDragUI();
             }
-
-            RemoveItemFromDict(edibleItemData.Name, _startSlotItemCount);
-
-            ClearDragUI();
         }
         else
         {
