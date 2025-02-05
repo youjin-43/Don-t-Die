@@ -21,10 +21,10 @@ public class TimeAgent : MonoBehaviour
     private void OnDisable()
     {
         if (isQuitting) { return; }
-        if (EnvironmentManager.Instance.TryGetComponent(out TimeController timeController))
-        {
-            timeController.Unsubscribe(this);
-        }
+        //if (EnvironmentManager.Instance.TryGetComponent(out TimeController timeController))
+        //{
+        //    timeController.Unsubscribe(this);
+        //}
     }
 
     // 게임뷰에서 씬뷰로 넘어올 때 에러 방지

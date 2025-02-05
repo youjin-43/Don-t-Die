@@ -54,6 +54,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
         Target = attacker;
         OnHitEvent?.Invoke(attacker); // 이벤트 발생
         TakeDamage(damage);
+        SoundManager.Instance.Play(AudioType.Effect, AudioClipName.Hit);
     }
 
     #endregion
