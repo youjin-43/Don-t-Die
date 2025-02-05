@@ -144,7 +144,7 @@ public class PlayerAutoInteract : MonoBehaviour
             case "Harvestable":
                 if (autoInteractTargetTransform.TryGetComponent(out BushNode bushNode))
                 {
-                    if (harvestBushRoutine != null) return;
+                    if (harvestBushRoutine != null || !bushNode.GetComponent<Growable>().canBeHarvested) return;
                     harvestBushRoutine = StartCoroutine(HarvestBushRoutine(bushNode));
                 }
                 else if (autoInteractTargetTransform.TryGetComponent(out ResourceNode resourceNode))
