@@ -14,6 +14,7 @@ public class MushroomNode : ResourceNode
         else
         {
             base.Harvest(); // 기본 아이템 드랍 로직 실행
+            SoundManager.Instance.Play(AudioType.Effect, AudioClipName.Mushroom_Die);
         }
     }
 
