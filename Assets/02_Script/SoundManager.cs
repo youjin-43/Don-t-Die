@@ -15,7 +15,8 @@ public enum AudioClipName
     CraftStart,
     CraftEnd,
     PlayerHit,
-    PlayerAttack
+    PlayerAttack,
+    PlayerRevive
 }
 
 public enum AudioType
