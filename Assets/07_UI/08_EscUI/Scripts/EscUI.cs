@@ -5,6 +5,11 @@ public class EscUI : MonoBehaviour
 {
     [SerializeField] public SettingUI SettingUI;
 
+    private void Awake()
+    {
+        SettingUI.gameObject.SetActive(true);
+    }
+
     public void ReturnToTitle()
     {
         Time.timeScale = 1;

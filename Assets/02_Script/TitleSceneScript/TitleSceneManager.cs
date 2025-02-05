@@ -10,6 +10,7 @@ public class TitleSceneManager : MonoBehaviour
     void Awake()
     {
         _achievementUI.SetActive(true);
+        SettingUI.gameObject.SetActive(true);
     }
 
     private void Update()

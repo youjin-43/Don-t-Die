@@ -870,9 +870,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 380274069}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 5
+  m_MaxValue: 0.2
   m_WholeNumbers: 0
-  m_Value: 5
+  m_Value: 0.2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3438,7 +3438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3b85f576fad4442aecc823d000dcab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _volumeSlider: {fileID: 391199346}
+  _volumeSlider: {fileID: 0}
 --- !u!1 &1941452638
 GameObject:
   m_ObjectHideFlags: 0

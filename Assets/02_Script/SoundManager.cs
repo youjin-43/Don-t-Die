@@ -114,14 +114,6 @@ public class SoundManager : MonoBehaviour
         return audioSources[0].volume;
     }
 
-    public void SetAllVolume(float volume)
-    {
-        foreach(var audioSource in audioSources)
-        {
-            audioSource.volume = volume;
-        }
-    }
-
     public void FadeVolume(AudioType type, float volume)
     {
         StartCoroutine(FadeVolumeRoutine(type, volume));
@@ -143,6 +135,16 @@ public class SoundManager : MonoBehaviour
         if (audioSource.volume < float.Epsilon)
         {
             audioSource.Stop();
+        }
+    }
+
+    public float _currentVolume;
+
+    public void SetAllVolume(float volume)
+    {
+        foreach (var audioSource in audioSources)
+        {
+            _currentVolume = audioSource.volume = volume;
         }
     }
 }
