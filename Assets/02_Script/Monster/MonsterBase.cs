@@ -192,7 +192,7 @@ public abstract class MonsterBase : MonoBehaviour, IDamageable, IItemDroppable
 
             if (CurrentHp <= 0)
             {
-                if(dieClip != AudioClipName.None) SoundManager.Instance.Play(AudioType.Effect, dieClip);
+                if(dieClip != AudioClipName.BGM) SoundManager.Instance.Play(AudioType.Effect, dieClip);
                 OnDie();
             }
             else ApplyKnockback(); // 넉백 적용
