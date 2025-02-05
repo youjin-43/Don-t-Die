@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _boxUI;
 
     [SerializeField] DeathUI _deathUI;
+    [SerializeField] EscUI   _escUI;
 
     private void Awake()
     {
@@ -42,6 +43,15 @@ public class UIManager : MonoBehaviour
         _statusUI.SetActive(true);
         _boxUI.SetActive(true);
         _deathUI.gameObject.SetActive(false);
+        _escUI.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            _escUI.ToggleEscUI();
+        }
     }
 
     public bool IsUIClick()

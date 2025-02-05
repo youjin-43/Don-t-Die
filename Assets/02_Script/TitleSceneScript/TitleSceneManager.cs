@@ -10,8 +10,17 @@ public class TitleSceneManager : MonoBehaviour
         _achievementUI.SetActive(true);
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape) && _achievementUI.gameObject.activeSelf == true)
+        {
+            AchievementManager.Instance.ToggleAchievementUI();
+        }
+    }
+
     public void StartButton()
     {
+        Time.timeScale = 1;
         SceneManager.LoadSceneAsync("GameScene");
     }
 
