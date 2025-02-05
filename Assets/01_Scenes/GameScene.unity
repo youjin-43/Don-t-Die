@@ -10310,7 +10310,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  timeScale: 180
+  timeScale: 288
   startAtTime: 0
   globalLight: {fileID: 1686254544}
   daysPerSeason: 1900000019000000

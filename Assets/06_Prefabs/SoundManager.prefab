@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df93f05eca7c264188729de069c5ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSources: []
   audioClips:
     serializedKvps:
     - Key: 0
@@ -124,6 +125,16 @@ MonoBehaviour:
     - Key: 15
       Value: {fileID: 8300000, guid: 3a4b3267df06841d98d5ff183d1e17e3, type: 3}
       index: 15
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 16
+      Value: {fileID: 8300000, guid: 54e532a679fe44b8ba3a09708ce8c1f7, type: 3}
+      index: 16
+      isKeyRepeated: 0
+      isKeyNull: 0
+    - Key: 17
+      Value: {fileID: 8300000, guid: e15e4fb0be8ed441d99defc00536f45b, type: 3}
+      index: 17
       isKeyRepeated: 0
       isKeyNull: 0
     dividerPos: 0.33
