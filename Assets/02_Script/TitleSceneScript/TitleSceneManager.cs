@@ -68,8 +68,6 @@ public class TitleSceneManager : MonoBehaviour
                 _dots = "";
 
             }
-
-            _loadingText.text = _loading + _dots;
         }
     }
 
@@ -85,7 +83,6 @@ public class TitleSceneManager : MonoBehaviour
         //SceneManager.LoadSceneAsync("GameScene");
 
         StartCoroutine(LoadSceneCoroutine("GameScene"));
-        //SceneManager.LoadSceneAsync("GameScene");
     }
 
     public void OptionButton()
