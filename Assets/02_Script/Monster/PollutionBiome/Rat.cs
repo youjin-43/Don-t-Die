@@ -24,6 +24,7 @@ public class Rat : MonsterBase
         base.Start();
         // fleeSpeed 계산: fleeDistance / fleeDuration
         fleeSpeed = fleeDistance / fleeDuration;
+        dieClip = AudioClipName.Rat_Die;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -35,10 +36,13 @@ public class Rat : MonsterBase
             {
                 // 플레이어와 반대 방향으로 도망가기
                 fleeDirection = (transform.position - other.transform.position).normalized;
+                SetDirnimaiton(fleeDirection.x, fleeDirection.y);
                 isFleeing = true;
                 fleeTime = fleeDuration; // 도망가는 시간 설정
                 //fleeSpeed = fleeDistance / fleeDuration;
                 detectCollider.enabled = false;
+
+                SoundManager.Instance.Play(AudioType.Effect, AudioClipName.Rat_Flee);
             }
         }
     }
@@ -90,34 +94,4 @@ public class Rat : MonsterBase
         OnIdle();
     }
 }
-
-    //protected override void HandleMonsterHit(Transform attacker)
-    //{
-    //    if (monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState) OnFlee();
-    //}
-
-    //void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState)
-    //    {
-    //        if (other.CompareTag("Player")) // 플레이어가 감지 범위 안으로 들어오면
-    //        {
-    //            Target = other.transform;
-    //            OnFlee();
-    //        }
-    //    }
-
-    //}
-
-    //void OnTriggerExit2D(Collider2D other)
-    //{
-    //    if (monsterStateMachine.CurrentState != monsterStateMachine.dieMonsterState)
-    //    {
-    //        if (other.CompareTag("Player")) // 플레이어가 감지 범위에서 벗어나면 
-    //        {
-    //            Target = other.transform;
-    //            OnIdle();
-    //        }
-    //    }
-    //}
 
