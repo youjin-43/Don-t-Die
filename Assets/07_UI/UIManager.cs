@@ -31,7 +31,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _craftUI;
     [SerializeField] GameObject _statusUI;
     [SerializeField] GameObject _boxUI;
-    [SerializeField] GameObject _settingUI;
 
     [SerializeField] DeathUI _deathUI;
     [SerializeField] EscUI   _escUI;
@@ -45,14 +44,21 @@ public class UIManager : MonoBehaviour
         _boxUI.SetActive(true);
         _deathUI.gameObject.SetActive(false);
         _escUI.gameObject.SetActive(false);
-        _settingUI.gameObject.SetActive(false);
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            _escUI.ToggleEscUI();
+            // esc창이 켜져있고, 설정창 까지 켜져있으면 설정창만 닫아야 함
+            if (_escUI.SettingUI.IsOpened() == true)
+            {
+                _escUI.SettingUI.ToggleSettingUI();
+            }
+            else
+            {
+                _escUI.ToggleEscUI();
+            }
         }
     }
 
@@ -79,10 +85,5 @@ public class UIManager : MonoBehaviour
         _deathUI.SetContentText(Content);
 
         AchievementManager.Instance.SetAchievement(code);
-    }
-
-    public void OpenSetting()
-    {
-        _settingUI.GetComponent<SettingManager>().ToggleSettingUI();
     }
 }
