@@ -57,7 +57,7 @@ public class PlayerMoveManager : MonoBehaviour
         // 플레이어가 죽었으면 조작 금지
         if (playerStatus.IsDead()) return;
 
-
+        if (CraftManager.Instance.isCrafing) return;
 
         if (canMove && !playerFishingAction.isFishing)
         {

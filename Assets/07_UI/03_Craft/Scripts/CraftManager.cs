@@ -39,6 +39,7 @@ public class CraftManager : MonoBehaviour
     [SerializeField] GameObject CraftListItemSlotPrefab;
 
     private bool _startFlag = false;
+    public bool isCrafing = false;
 
 
     [SerializeField] public Transform ToolTipCanvas;
@@ -82,7 +83,8 @@ public class CraftManager : MonoBehaviour
     // 카테고리 클릭 이벤트
     public void TabClicked(string tabName)
     {
-        foreach(var tab in Categories)
+        if (isCrafing) return;
+        foreach (var tab in Categories)
         {
             tab.Value.ToggleCraftCategory(tabName);
         }
