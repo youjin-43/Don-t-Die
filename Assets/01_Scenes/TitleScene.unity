@@ -2576,6 +2576,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AchievementSlotPrefab: {fileID: 2173460838955915696, guid: 9be80a9566be3734c91be4a1beb0c455, type: 3}
+--- !u!1001 &1139180810
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1655165403950082651, guid: 89ecc4ef60718114eb0af85a8a948e09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655165403950082651, guid: 89ecc4ef60718114eb0af85a8a948e09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655165403950082651, guid: 89ecc4ef60718114eb0af85a8a948e09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655165403950082651, guid: 89ecc4ef60718114eb0af85a8a948e09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655165403950082651, guid: 89ecc4ef60718114eb0af85a8a948e09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655165403950082651, guid: 89ecc4ef60718114eb0af85a8a948e09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655165403950082651, guid: 89ecc4ef60718114eb0af85a8a948e09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655165403950082651, guid: 89ecc4ef60718114eb0af85a8a948e09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655165403950082651, guid: 89ecc4ef60718114eb0af85a8a948e09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655165403950082651, guid: 89ecc4ef60718114eb0af85a8a948e09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938727503623365073, guid: 89ecc4ef60718114eb0af85a8a948e09, type: 3}
+      propertyPath: m_Name
+      value: PoolManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 89ecc4ef60718114eb0af85a8a948e09, type: 3}
 --- !u!1 &1214231857
 GameObject:
   m_ObjectHideFlags: 0
@@ -4293,3 +4350,4 @@ SceneRoots:
   - {fileID: 500043487}
   - {fileID: 1522830132}
   - {fileID: 1008493973}
+  - {fileID: 1139180810}
