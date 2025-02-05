@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _craftUI;
     [SerializeField] GameObject _statusUI;
     [SerializeField] GameObject _boxUI;
+    [SerializeField] GameObject _settingUI;
 
     [SerializeField] DeathUI _deathUI;
     [SerializeField] EscUI   _escUI;
@@ -44,6 +45,7 @@ public class UIManager : MonoBehaviour
         _boxUI.SetActive(true);
         _deathUI.gameObject.SetActive(false);
         _escUI.gameObject.SetActive(false);
+        _settingUI.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -77,5 +79,10 @@ public class UIManager : MonoBehaviour
         _deathUI.SetContentText(Content);
 
         AchievementManager.Instance.SetAchievement(code);
+    }
+
+    public void OpenSetting()
+    {
+        _settingUI.GetComponent<SettingManager>().ToggleSettingUI();
     }
 }

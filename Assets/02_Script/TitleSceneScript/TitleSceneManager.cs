@@ -4,17 +4,26 @@ using UnityEngine.SceneManagement;
 public class TitleSceneManager : MonoBehaviour
 {
     [SerializeField] GameObject _achievementUI;
+    [SerializeField] GameObject _settingUI;
 
     void Awake()
     {
         _achievementUI.SetActive(true);
+        _settingUI.SetActive(true);
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && _achievementUI.gameObject.activeSelf == true)
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            AchievementManager.Instance.ToggleAchievementUI();
+            if(_achievementUI.gameObject.activeSelf == true)
+            {
+                AchievementManager.Instance.ToggleAchievementUI();
+            }
+            if(_settingUI.gameObject.activeSelf == true)
+            {
+                SettingManager.Instance.ToggleSettingUI();
+            }
         }
     }
 
@@ -26,7 +35,7 @@ public class TitleSceneManager : MonoBehaviour
 
     public void OptionButton()
     {
-
+        SettingManager.Instance.ToggleSettingUI();
     }
 
     public void AchievementButton()

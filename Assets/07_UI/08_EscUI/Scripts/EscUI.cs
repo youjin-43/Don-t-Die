@@ -12,7 +12,7 @@ public class EscUI : MonoBehaviour
 
     public void Setting()
     {
-
+        UIManager.Instance.OpenSetting();
     }
 
     public void Resume()
