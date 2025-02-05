@@ -37,7 +37,6 @@ public class TitleSceneManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync("GameScene");
-        SoundManager.Instance.FadeVolume(AudioType.BGM, 0.1f);
     }
 
     public void OptionButton()
