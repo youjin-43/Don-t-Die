@@ -100,7 +100,9 @@ public class MonsterSpawnManager : MonoBehaviour
                         Vector2Int tilePosition = new Vector2Int((int)spawnPosition.x, (int)spawnPosition.y);
                         if (EnvironmentManager.Instance.biomeMap.GetTileBiome(tilePosition) == biome)
                         {
-                            GameObject go = Instantiate(monsters[monsterPrefabIdx++], spawnPosition, Quaternion.identity);
+                            GameObject go = PoolManager.Instance.InstantiatePoolObject(monsters[monsterPrefabIdx++]);
+                            go.transform.position = spawnPosition;
+                            // GameObject go = Instantiate(monsters[monsterPrefabIdx++], spawnPosition, Quaternion.identity);
                             if (monsterPrefabIdx == monsters.Count) monsterPrefabIdx = 0; //하나의 몬스터만 생성되는것을 방지하기 위해 
                             go.GetComponent<SpriteRenderer>().sortingOrder = 100;
                             SpawnedMonster[biome].Add(go);

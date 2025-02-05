@@ -3230,6 +3230,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6877574137720104847, guid: 2ac601f429226ad4984d7451c83f6a81, type: 3}
+      propertyPath: audioClips.serializedKvps.Array.size
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877574137720104847, guid: 2ac601f429226ad4984d7451c83f6a81, type: 3}
+      propertyPath: audioClips.serializedKvps.Array.data[16].Key
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877574137720104847, guid: 2ac601f429226ad4984d7451c83f6a81, type: 3}
+      propertyPath: audioClips.serializedKvps.Array.data[17].Key
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877574137720104847, guid: 2ac601f429226ad4984d7451c83f6a81, type: 3}
+      propertyPath: audioClips.serializedKvps.Array.data[16].Value
+      value: 
+      objectReference: {fileID: 8300000, guid: 54e532a679fe44b8ba3a09708ce8c1f7, type: 3}
+    - target: {fileID: 6877574137720104847, guid: 2ac601f429226ad4984d7451c83f6a81, type: 3}
+      propertyPath: audioClips.serializedKvps.Array.data[16].index
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877574137720104847, guid: 2ac601f429226ad4984d7451c83f6a81, type: 3}
+      propertyPath: audioClips.serializedKvps.Array.data[17].Value
+      value: 
+      objectReference: {fileID: 8300000, guid: e15e4fb0be8ed441d99defc00536f45b, type: 3}
+    - target: {fileID: 6877574137720104847, guid: 2ac601f429226ad4984d7451c83f6a81, type: 3}
+      propertyPath: audioClips.serializedKvps.Array.data[17].index
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877574137720104847, guid: 2ac601f429226ad4984d7451c83f6a81, type: 3}
+      propertyPath: audioClips.serializedKvps.Array.data[16].isKeyRepeated
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877574137720104847, guid: 2ac601f429226ad4984d7451c83f6a81, type: 3}
+      propertyPath: audioClips.serializedKvps.Array.data[17].isKeyRepeated
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

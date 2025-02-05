@@ -76,6 +76,7 @@ public class PlayerGetWaterAction : MonoBehaviour
 
         EquipmentManager.Instance.AddDurability();
         SoundManager.Instance.Stop(AudioType.Effect);
+        SoundManager.Instance.Play(AudioType.Effect, AudioClipName.WaterUp);
 
         getWaterRoutine = null;
     }
