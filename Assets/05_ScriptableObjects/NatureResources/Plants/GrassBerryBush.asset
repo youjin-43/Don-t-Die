@@ -22,9 +22,12 @@ MonoBehaviour:
   - data: {fileID: 11400000, guid: e42862b5c8b08d54d87dab10151ccd7f, type: 2}
     minAmount: 2
     maxAmount: 3
-  timeToAllGrown: 1441
+  - data: {fileID: 11400000, guid: 78d280e5c811e8e4ab8dba1ed6c45ed4, type: 2}
+    minAmount: 1
+    maxAmount: 2
+  timeToAllGrown: 86400
   sprites:
   - {fileID: -4743401, guid: bbcd361f555a947ac98c3d39099e6235, type: 3}
   - {fileID: -1706188496, guid: bbcd361f555a947ac98c3d39099e6235, type: 3}
-  growthStageTime: a0050000a1050000
-  minTimeToHarvest: 1440
+  growthStageTime: 8051010081510100
+  minTimeToHarvest: 86400
