@@ -67,6 +67,23 @@ public class EquipmentManager : MonoBehaviour
         }
     }
 
+    public int GetCurrentDurability(EquipmentSlot equipmentSlot)
+    {
+        switch (equipmentSlot)
+        {
+            case EquipmentSlot.Head:
+                return _headItemSlot._currentDurability;
+
+            case EquipmentSlot.Chest:
+                return _chestItemSlot._currentDurability;
+
+            case EquipmentSlot.Hand:
+                return _toolItemSlot._currentDurability;
+        }
+
+        return 0;
+    }
+
     /// <summary>
     /// 물병 전용
     /// </summary>

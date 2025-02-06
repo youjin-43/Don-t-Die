@@ -545,15 +545,15 @@ public class InventoryManager : MonoBehaviour
         {
             case EquipmentSlot.Head:
                 if (EquipmentManager.Instance.GetCurrentHead() != null)
-                    exchangedDurability = EquipmentManager.Instance.GetCurrentHead().currentDurability;
+                    exchangedDurability = EquipmentManager.Instance.GetCurrentDurability(EquipmentSlot.Head);
                 break;
             case EquipmentSlot.Chest:
                 if (EquipmentManager.Instance.GetCurrentChest() != null)
-                    exchangedDurability = EquipmentManager.Instance.GetCurrentChest().currentDurability;
+                    exchangedDurability = EquipmentManager.Instance.GetCurrentDurability(EquipmentSlot.Chest);
                 break;
             case EquipmentSlot.Hand:
                 if (EquipmentManager.Instance.GetCurrentTool() != null)
-                    exchangedDurability = EquipmentManager.Instance.GetCurrentTool().currentDurability;
+                    exchangedDurability = EquipmentManager.Instance.GetCurrentDurability(EquipmentSlot.Hand);
                 break;
         }
 
