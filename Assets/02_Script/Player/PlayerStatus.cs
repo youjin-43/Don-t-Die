@@ -233,6 +233,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
             if (!Physics2D.OverlapCircle(transform.position, 5f, LayerMask.GetMask("Light")))
             {
                 LoseHP(37.5f);
+                SetLastDamageCause(DeathCause.DarkDamage);
             }
             yield return new WaitForSeconds(3f);
         }

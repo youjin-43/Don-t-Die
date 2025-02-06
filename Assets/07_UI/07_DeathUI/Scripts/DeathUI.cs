@@ -23,6 +23,8 @@ public class DeathUI : MonoBehaviour
 
     public void ReturnToTitle()
     {
+        EnvironmentManager.Instance.VoronoiMapGenerator.Clear();
+        PoolManager.Instance.DestroyAllPools();
         SceneManager.LoadSceneAsync("TitleScene");
     }
 }

@@ -362,6 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
+  isAutoInteracting: 0
 --- !u!114 &639041255283887235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,6 +385,7 @@ MonoBehaviour:
   _currentHungryPoint: 75
   _currentThirstyPoint: 75
   _currentTemperture: 0
+  lastDamageCause: 0
   playerAnimator: {fileID: 0}
   knockbackDuration: 0.2
 --- !u!114 &9006268405667800640
@@ -398,6 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f50112b032324e369e9b6ff2aa795bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 0}
 --- !u!114 &924179375020231119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,8 +784,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
+  m_PointLightInnerRadius: 1
+  m_PointLightOuterRadius: 1.5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -805,8 +808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588cef802f47e824d9abb2478dba1c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDuration: 1440
-  currentDuration: 0
 --- !u!58 &2174516683945297726
 CircleCollider2D:
   m_ObjectHideFlags: 0

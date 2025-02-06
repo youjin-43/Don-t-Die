@@ -177,6 +177,15 @@ public class PoolManager : MonoBehaviour
         }
     }
 
+    public void DestroyAllPools()
+    {
+        foreach (string pool in pools.Keys)
+        {
+            DestroyPool(pool);
+        }
+        pools.Clear();
+    }
+
     /// <summary>
     /// 풀에 오브젝트를 반환한다.
     /// </summary>
