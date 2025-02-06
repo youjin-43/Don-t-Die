@@ -21,6 +21,6 @@ MonoBehaviour:
   MaxCountSize: 9
   healthValue: 0
   hungerValue: 0
-  thirstValue: 20
+  thirstValue: 15
   PossibleGrilling: 0
   ItemDataAfterGrilled: {fileID: 0}

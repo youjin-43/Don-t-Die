@@ -19,8 +19,8 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: 35d0589a036dbf84498b8e6c037fac5c, type: 3}
   IsCountable: 1
   MaxCountSize: 9
-  healthValue: 0
-  hungerValue: 40
+  healthValue: 3
+  hungerValue: 15
   thirstValue: 0
   PossibleGrilling: 0
   ItemDataAfterGrilled: {fileID: 0}
